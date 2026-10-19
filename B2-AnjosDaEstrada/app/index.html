@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e293b">
+  <title>Anjos da Estrada</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icone.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header id="topo">
+    <strong>🚚 Anjos da Estrada</strong>
+    <span class="espaco"></span>
+    <button id="btn-mudo" type="button" aria-pressed="false">🔊 Som ligado</button>
+    <button id="btn-conectar" type="button">Conectar</button>
+  </header>
+  <div id="banners" role="alert"></div>
+  <main id="painel"></main>
+  <aside id="painel-simulador" hidden></aside>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
