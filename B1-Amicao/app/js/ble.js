@@ -63,6 +63,9 @@ export function criarBle({ aoLinha, aoEstado }) {
 
   // Precisa ser chamado por um toque do usuario (exigencia do Chrome).
   async function conectar() {
+    if (!navigator.bluetooth) {
+      throw new Error('Este navegador não tem Bluetooth Web. Abra o app no Chrome do Android.');
+    }
     querConectado = true;
     dispositivo = await navigator.bluetooth.requestDevice({
       acceptAllDevices: true,
@@ -76,7 +79,9 @@ export function criarBle({ aoLinha, aoEstado }) {
   async function escrever(texto) {
     if (!caracteristica) return false;
     for (const bloco of quebrarEmBlocos(texto)) {
-      await caracteristica.writeValueWithoutResponse(bloco);
+      // Alguns modulos so aceitam escrita com resposta: usa a que a caracteristica oferece.
+      if (caracteristica.properties.writeWithoutResponse) await caracteristica.writeValueWithoutResponse(bloco);
+      else await caracteristica.writeValueWithResponse(bloco);
       await esperar(ESPERA_ENTRE_BLOCOS_MS);
     }
     return true;
