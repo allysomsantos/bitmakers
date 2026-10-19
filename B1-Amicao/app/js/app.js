@@ -1,4 +1,4 @@
-import { lerLinha, comando } from './protocolo.js';
+import { lerLinha, comando, uidValido, nomeParaLcd, backupValido } from './protocolo.js';
 import { PADRAO, avaliarPeso } from './pesos.js';
 import * as banco from './banco.js';
 import { criarBle } from './ble.js';
@@ -10,6 +10,7 @@ import { telaInicio, telaDetalhe, telaCadastro, telaAjustes } from './telas.js';
 
 const MAX_CACHORROS = 10;           // o Arduino guarda no maximo 10 tags
 const DURACAO_CADASTRO_MS = 30000;  // igual ao firmware
+const ESPERA_RESPOSTA_MS = 1500;    // quanto o app espera o Arduino responder a um comando
 const modoSimulador = new URLSearchParams(location.search).has('sim');
 
 function novoCadastro() {
@@ -29,6 +30,7 @@ export const estado = {
 
 let ble = null;
 let falso = null;
+let travaTela = null;
 
 const conteudo = document.getElementById('conteudo');
 const alertasEl = document.getElementById('alertas');
@@ -38,6 +40,49 @@ async function enviar(texto) {
   if (falso) { falso.receberComando(texto); return true; }
   return ble ? ble.enviar(texto) : false;
 }
+
+// O Arduino responde a "permitir" e "remover" com a lista de tags ("cadastros").
+// Para nao entupir o buffer dele (so 63 bytes), o app manda UM comando por vez
+// e espera essa resposta antes de mandar o proximo.
+let acordarEspera = null;   // funcao que termina a espera atual (null = ninguem esperando)
+
+function enviarEEsperarCadastros(texto) {
+  return new Promise((pronto) => {
+    function terminar() {
+      clearTimeout(temporizador);
+      if (acordarEspera === terminar) acordarEspera = null;
+      pronto();
+    }
+    // Registra a espera ANTES de enviar: o simulador responde no meio do enviar().
+    const temporizador = setTimeout(terminar, ESPERA_RESPOSTA_MS);
+    acordarEspera = terminar;
+    // Se nao deu para enviar (sem conexao) ou deu erro, nao adianta esperar a resposta.
+    enviar(texto).then((enviou) => { if (!enviou) terminar(); }, terminar);
+  });
+}
+
+// Pede a lista de tags ao Arduino. A resposta a ESTE pedido (e so ela) dispara a reconciliacao.
+let esperandoListar = false;
+
+function pedirListar() {
+  esperandoListar = true;
+  enviar(comando.listar());
+}
+
+// Tags do Arduino que a pessoa decidiu manter, mesmo o tablet nao conhecendo (vale ate fechar o app).
+const tagsMantidas = new Set();
+
+// Mantem a tela do tablet acesa (o totem registra visitas sozinho; se a tela apagar, o Bluetooth cai).
+async function manterTelaLigada() {
+  try {
+    travaTela = await navigator.wakeLock?.request('screen');
+  } catch {
+    travaTela = null;   // sem suporte ou negado: segue sem a trava
+  }
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') manterTelaLigada();
+});
 
 // ---------- chegada de linhas ----------
 function receberLinha(texto) {
@@ -54,10 +99,26 @@ function receberLinha(texto) {
     if (ev.ativo) estado.cadastro = { ...novoCadastro(), fase: 'ouvindo', fimEm: Date.now() + DURACAO_CADASTRO_MS };
     else if (estado.cadastro.fase === 'ouvindo') estado.cadastro.fase = 'esgotado';
   } else if (ev.evento === 'tag_lida') {
-    estado.cadastro.fase = 'lido';
-    estado.cadastro.uidLido = ev.uid;
+    if (uidValido(ev.uid)) {
+      estado.cadastro.fase = 'lido';
+      estado.cadastro.uidLido = ev.uid;
+    } else {
+      estado.cadastro.fase = 'esgotado';
+      estado.cadastro.mensagem = 'Tag com formato não suportado.';
+    }
+  } else if (ev.evento === 'ligado') {
+    // O Arduino reiniciou: se estava no modo cadastro, ele nao esta mais.
+    if (['aguardando', 'ouvindo'].includes(estado.cadastro.fase)) {
+      estado.cadastro.fase = 'esgotado';
+      estado.cadastro.mensagem = 'O totem reiniciou. Tente de novo.';
+      pedirListar();
+    }
   } else if (ev.evento === 'cadastros') {
-    reconciliar(ev.uids ?? []);
+    if (acordarEspera) acordarEspera();   // alguem esperava esta resposta para mandar o proximo comando
+    if (esperandoListar) {                // so reconcilia a resposta ao "listar" que o app pediu
+      esperandoListar = false;
+      reconciliar(ev.uids ?? []);
+    }
   }
   render();
 }
@@ -84,16 +145,19 @@ async function reconciliar(uidsDoArduino) {
   try {
     const conhecidos = new Set(estado.cachorros.map(c => c.uid));
     const noArduino = new Set(uidsDoArduino);
-    const soNoArduino = uidsDoArduino.filter(uid => !conhecidos.has(uid));
+    const soNoArduino = uidsDoArduino.filter(uid => !conhecidos.has(uid) && !tagsMantidas.has(uid));
     const soNoApp = estado.cachorros.filter(c => !noArduino.has(c.uid));
 
     // Tablet novo (sem cachorros) ligado a um totem que ja tem tags: nao apaga sem perguntar.
     if (soNoArduino.length > 0 && estado.cachorros.length === 0) {
       const apagar = confirm(`O Arduino tem ${soNoArduino.length} tag(s) que este tablet não conhece. Apagar do Arduino?`);
-      if (!apagar) return;
+      if (!apagar) {
+        for (const uid of soNoArduino) tagsMantidas.add(uid);   // nao pergunta de novo nesta sessao
+        return;
+      }
     }
-    for (const uid of soNoArduino) await enviar(comando.remover(uid));
-    for (const c of soNoApp) await enviar(comando.permitir(c.uid, c.nome));
+    for (const uid of soNoArduino) await enviarEEsperarCadastros(comando.remover(uid));
+    for (const c of soNoApp) await enviarEEsperarCadastros(comando.permitir(c.uid, c.nome));
   } finally {
     reconciliando = false;
   }
@@ -102,6 +166,7 @@ async function reconciliar(uidsDoArduino) {
 // ---------- ações chamadas pelas telas ----------
 export const acoes = {
   async conectar() {
+    manterTelaLigada();   // o toque em "Conectar" e o gesto que o navegador exige
     if (modoSimulador) return;
     try {
       await ble.conectar();
@@ -130,7 +195,12 @@ export const acoes = {
 
   async salvarCachorro(nome, arquivoFoto) {
     const uid = estado.cadastro.uidLido;
-    if (!uid || !nome.trim()) return;
+    if (!uid) return;
+    if (!nomeParaLcd(nome)) {   // so simbolos: o LCD do totem ficaria sem nome
+      estado.cadastro.mensagem = 'Use pelo menos uma letra ou número no nome.';
+      render();
+      return;
+    }
     const cachorro = {
       uid,
       nome: nome.trim(),
@@ -140,7 +210,7 @@ export const acoes = {
     await banco.salvarCachorro(cachorro);
     estado.cachorros = await banco.listarCachorros();
     estado.visitas[uid] = [];
-    await enviar(comando.permitir(uid, cachorro.nome));
+    await enviarEEsperarCadastros(comando.permitir(uid, cachorro.nome));
     estado.cadastro = novoCadastro();
     location.hash = '#/';
   },
@@ -149,7 +219,7 @@ export const acoes = {
     await banco.removerCachorro(uid);
     estado.cachorros = await banco.listarCachorros();
     delete estado.visitas[uid];
-    await enviar(comando.remover(uid));
+    await enviarEEsperarCadastros(comando.remover(uid));
     render();
   },
 
@@ -176,14 +246,20 @@ export const acoes = {
       alert('Esse arquivo não é um backup válido.');
       return;
     }
-    if (!Array.isArray(dados.cachorros) || !Array.isArray(dados.visitas)) {
-      alert('Esse arquivo não é um backup do Amicão.');
+    if (!backupValido(dados)) {
+      alert('Esse backup tem dados inválidos.');
       return;
     }
     if (!confirm('Importar vai SUBSTITUIR todos os cachorros e visitas deste tablet. Continuar?')) return;
-    await banco.importarTudo(dados);
+    try {
+      await banco.importarTudo(dados);
+    } catch {
+      alert('Não consegui importar o backup. Os dados do tablet não foram alterados.');
+      return;
+    }
+    tagsMantidas.clear();   // o backup e a nova verdade: as escolhas anteriores nao valem mais
     await carregarDados();
-    await enviar(comando.listar());
+    pedirListar();
     render();
   },
 };
@@ -275,7 +351,7 @@ async function carregarDados() {
 
 function aoMudarEstadoBle(novo) {
   estado.conexao = novo;
-  if (novo === 'conectado') enviar(comando.listar());
+  if (novo === 'conectado') pedirListar();
   render();
 }
 
@@ -296,7 +372,7 @@ async function iniciar() {
 
   if (modoSimulador) {
     falso.ligar();
-    enviar(comando.listar());
+    pedirListar();
   }
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     navigator.serviceWorker.register('sw.js');

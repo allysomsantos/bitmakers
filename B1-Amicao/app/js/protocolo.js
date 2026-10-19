@@ -53,6 +53,26 @@ export function uidValido(uid) {
   return /^[0-9A-F]{2}(?::[0-9A-F]{2}){3}(?:(?::[0-9A-F]{2}){3})?$/.test(String(uid));
 }
 
+// Confere se o conteudo de um arquivo de backup tem o formato certo, ANTES de apagar qualquer coisa.
+export function backupValido(dados) {
+  if (!dados || !Array.isArray(dados.cachorros) || !Array.isArray(dados.visitas)) return false;
+
+  for (const cachorro of dados.cachorros) {
+    if (!cachorro || typeof cachorro !== 'object') return false;
+    if (!uidValido(cachorro.uid)) return false;
+    if (typeof cachorro.nome !== 'string' || cachorro.nome.trim() === '') return false;
+  }
+
+  for (const visita of dados.visitas) {
+    if (!visita || typeof visita !== 'object') return false;
+    if (!uidValido(visita.uid)) return false;
+    if (typeof visita.quando !== 'string') return false;
+    if (visita.peso_kg !== null && typeof visita.peso_kg !== 'number') return false;
+    if (typeof visita.racao !== 'boolean') return false;
+  }
+  return true;
+}
+
 // Comandos do app para o Arduino (uma linha JSON cada).
 export const comando = {
   cadastrar: () => '{"cmd":"cadastrar"}\n',

@@ -1,4 +1,5 @@
 import { PADRAO } from './pesos.js';
+import { backupValido } from './protocolo.js';
 
 const NOME_BANCO = 'amicao';
 let bancoAberto = null;
@@ -72,16 +73,24 @@ export async function exportarTudo() {
 }
 
 // Troca TUDO que existe pelo conteudo do backup.
+// Se qualquer gravacao falhar, a transacao inteira e cancelada (abort) e nada muda.
 export async function importarTudo(dados) {
+  if (!backupValido(dados)) throw new Error('Backup inválido.');
   const db = await abrir();
   await new Promise((ok, erro) => {
     const transacao = db.transaction(['cachorros', 'visitas', 'config'], 'readwrite');
-    transacao.objectStore('cachorros').clear();
-    transacao.objectStore('visitas').clear();
-    for (const c of dados.cachorros) transacao.objectStore('cachorros').put(c);
-    for (const v of dados.visitas) transacao.objectStore('visitas').put(v);
-    transacao.objectStore('config').put({ chave: 'principal', valores: dados.config ?? {} });
     transacao.oncomplete = ok;
     transacao.onerror = () => erro(transacao.error);
+    transacao.onabort = () => erro(transacao.error ?? new Error('Importação cancelada.'));
+    try {
+      transacao.objectStore('cachorros').clear();
+      transacao.objectStore('visitas').clear();
+      for (const c of dados.cachorros) transacao.objectStore('cachorros').put(c);
+      for (const v of dados.visitas) transacao.objectStore('visitas').put(v);
+      transacao.objectStore('config').put({ chave: 'principal', valores: dados.config ?? {} });
+    } catch (falha) {
+      transacao.abort();   // desfaz tudo, inclusive os clear()
+      erro(falha);
+    }
   });
 }

@@ -375,11 +375,23 @@ void lerComandos() {
 #endif
 }
 
+// Espera "ms" milissegundos, mas continua lendo os comandos do app durante a espera.
+// Por que nao usar delay()? O SoftwareSerial guarda so 63 bytes. Se o app mandar
+// varios comandos enquanto o Arduino esta parado num delay(), o buffer enche e os
+// comandos se perdem. Aqui a gente esvazia o buffer a cada milissegundo.
+void esperarLendo(unsigned long ms) {
+  unsigned long inicio = millis();
+  while (millis() - inicio < ms) {
+    lerComandos();
+    delay(1);
+  }
+}
+
 void atenderCachorro(int slot, String uid) {
   String nome = nomeDoSlot(slot);
 
   mostrar("Ola, " + nome + "!", "Pesando...");
-  delay(TEMPO_PESAGEM);  // espera o cachorro se acomodar na balanca
+  esperarLendo(TEMPO_PESAGEM);  // espera o cachorro se acomodar na balanca
 
   float peso = balanca.get_units(10);  // media de 10 leituras
   bool pesoValido = peso >= PESO_MINIMO_KG;
@@ -399,7 +411,7 @@ void atenderCachorro(int slot, String uid) {
   json += ",\"racao\":" + String(podeComer ? "true" : "false") + "}";
   enviarParaApp(json);
 
-  delay(TEMPO_MENSAGEM);
+  esperarLendo(TEMPO_MENSAGEM);
 }
 
 // ---------------- PROGRAMA ----------------
@@ -462,5 +474,5 @@ void loop() {
   }
 
   telaInicial();
-  delay(200);
+  esperarLendo(200);   // pausa curta, lendo os comandos do app enquanto espera
 }

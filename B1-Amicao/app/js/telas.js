@@ -118,6 +118,7 @@ function formularioCadastro(estado, acoes) {
   const entradaFoto = h('input', { type: 'file', accept: 'image/*', capture: 'environment' });
   return h('section', { class: 'cadastro' },
     h('h2', {}, 'Tag lida! Agora o nome e a foto'),
+    estado.cadastro.mensagem ? h('p', { class: 'aviso-texto' }, estado.cadastro.mensagem) : '',
     h('p', { class: 'neutro' }, 'Tag: ' + uid),
     h('form', {
         id: 'form-cadastro',
@@ -147,7 +148,7 @@ export function telaCadastro(estado, acoes) {
           h('p', {}, 'Tempo restante: ', h('strong', { id: 'contagem', class: 'contagem' }, segundos), ' s'))
       : '',
     c.fase === 'esgotado'
-      ? h('div', {}, h('p', { class: 'aviso-texto' }, 'O tempo acabou e nenhuma tag foi lida.'),
+      ? h('div', {}, c.mensagem ? '' : h('p', { class: 'aviso-texto' }, 'O tempo acabou e nenhuma tag foi lida.'),
           h('button', { onclick: acoes.iniciarCadastro }, 'Tentar de novo'))
       : '',
     h('p', {}, h('a', { class: 'botao claro', href: '#/' }, 'Cancelar')),
