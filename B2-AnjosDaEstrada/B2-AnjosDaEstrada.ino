@@ -3,58 +3,124 @@
   Console de seguranca para veiculos antigos.
 
   Sensores:
-    - HC-SR04 ............ ponto cego
+    - 4 x HC-SR04 ........ proximidade: frente esquerda/direita e tras esquerda/direita
     - FC-37 .............. pista molhada   (no Wokwi: potenciometro)
-    - LDR ................ pouca luz / noite
-    - SW-18010P .......... impacto/vibracao (no Wokwi: botao)
+    - 2 x chave + LED + INA219 .. farois. Chave ligada e sem corrente no LED = farol queimado
   Saidas:
     - LCD 16x2 I2C ....... console do motorista
-    - Buzzer + LED ....... alertas
+    - LED ................ alerta
+    - Bluetooth HM-10 .... manda tudo pro app no tablet (o som fica no app)
 
-  O codigo e o MESMO no Wokwi e na montagem real.
+  O codigo e o MESMO no Wokwi e na montagem real; so muda SIMULACAO.
   Na montagem real, abra o Monitor Serial e ajuste os LIMITES abaixo
   olhando os valores que os sensores de verdade mostram.
 */
 
+#define SIMULACAO 1   // 1 = Wokwi   |   0 = montagem real
+
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+#include <SoftwareSerial.h>
 
 // ---------------- PINOS ----------------
-const int PINO_TRIG     = 9;   // HC-SR04 TRIG
-const int PINO_ECHO     = 10;  // HC-SR04 ECHO
-const int PINO_CHUVA    = A0;  // FC-37 AO
-const int PINO_LUZ      = A1;  // LDR AO
-const int PINO_VIBRACAO = 2;   // SW-18010P DO
-const int PINO_LED      = 7;   // LED de alerta
-const int PINO_BUZZER   = 8;   // buzzer
+const int PINO_BT_RX = 2;   // TXD do HM-10 (o B2 so envia, mas o pino fica reservado)
+const int PINO_BT_TX = 3;   // RXD do HM-10 (com divisor de tensao 1k/2k!)
+
+// Sensores de proximidade, na ordem: 0 frente esq, 1 frente dir, 2 tras esq, 3 tras dir
+const int PINOS_TRIG[4] = { 4, 6, 8, 10 };
+const int PINOS_ECHO[4] = { 5, 7, 9, 11 };
+
+const int PINO_LED       = 12;  // LED de alerta
+const int PINO_CHUVA     = A0;  // FC-37 AO
+const int PINO_CHAVE_ESQ = A1;  // chave do farol esquerdo (HIGH = ligada)
+const int PINO_CHAVE_DIR = A2;  // chave do farol direito  (HIGH = ligada)
+
+#if SIMULACAO
+  const int PINO_SEM_LED_ESQ = 13;  // Wokwi: chave "LED esquerdo removido" (LOW = removido)
+  const int PINO_SEM_LED_DIR = A3;  // Wokwi: chave "LED direito removido"  (LOW = removido)
+#else
+  const byte ENDERECO_INA_ESQ = 0x40;  // INA219 do farol esquerdo
+  const byte ENDERECO_INA_DIR = 0x41;  // INA219 do farol direito (jumper A0 soldado)
+#endif
 
 // ---------------- AJUSTES ----------------
-const int DISTANCIA_ALERTA_CM = 100; // abaixo disso: algo no ponto cego
-const int DISTANCIA_PERIGO_CM = 40;  // abaixo disso: bip continuo
-const int LIMITE_CHUVA  = 500;       // FC-37: valor CAI quando molha. Abaixo = molhado
-const int LIMITE_ESCURO = 800;       // LDR: valor SOBE quando escurece. Acima = escuro
-const int NIVEL_VIBRACAO = LOW;      // nivel do pino quando vibra (teste no modulo real!)
-const unsigned long TEMPO_ALERTA_IMPACTO = 4000; // ms que o alerta de impacto fica na tela
+const int   DIST_ATENCAO_CM = 15;    // de 15 a 5 cm: atencao (escala de prototipo; no caminhao real, x10)
+const int   DIST_CRITICO_CM = 5;     // abaixo de 5 cm: critico
+const int   LIMITE_CHUVA    = 500;   // FC-37: valor CAI quando molha. Abaixo = molhado
+const float LIMIAR_CORRENTE_MA = 3.0;  // chave ligada e corrente abaixo disso = LED queimado/removido
+const int   LEITURAS_PARA_QUEIMADO = 3;  // leituras seguidas sem corrente antes de avisar
+const unsigned long TEMPO_ECO_US = 25000UL;  // espera o eco por 25 ms (cerca de 4 m)
+
+const char* NOMES_CURTOS[4] = { "F.Esq", "F.Dir", "T.Esq", "T.Dir" };
+const char* CHAVES_JSON[4]  = { "frente_esq", "frente_dir", "tras_esq", "tras_dir" };
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+SoftwareSerial bluetooth(PINO_BT_RX, PINO_BT_TX);
 
-bool teveImpacto = false;
-unsigned long momentoImpacto = 0;
-unsigned long ultimoBip = 0;
-unsigned long ultimoSerial = 0;
+int distancia[4];                  // em cm; -1 = sem eco
+int leiturasSemCorrente[2] = { 0, 0 };
+float correnteMa[2] = { 0, 0 };    // so para mostrar no Serial
 
-// Mede a distancia em cm. Retorna 999 se nao achou nada.
-long medirDistanciaCm() {
-  digitalWrite(PINO_TRIG, LOW);
+// ---------------- DISTANCIA ----------------
+// Mede a distancia em cm. Retorna -1 se nao voltou eco.
+int medirCm(int sensor) {
+  digitalWrite(PINOS_TRIG[sensor], LOW);
   delayMicroseconds(2);
-  digitalWrite(PINO_TRIG, HIGH);
+  digitalWrite(PINOS_TRIG[sensor], HIGH);
   delayMicroseconds(10);
-  digitalWrite(PINO_TRIG, LOW);
-  long duracao = pulseIn(PINO_ECHO, HIGH, 30000);
-  if (duracao == 0) return 999;
+  digitalWrite(PINOS_TRIG[sensor], LOW);
+  long duracao = pulseIn(PINOS_ECHO[sensor], HIGH, TEMPO_ECO_US);
+  if (duracao == 0) return -1;
   return duracao / 58;
 }
 
+// Indice do sensor com o objeto mais perto, ou -1 se nenhum viu nada.
+int sensorMaisPerto() {
+  int melhor = -1;
+  for (int i = 0; i < 4; i++) {
+    if (distancia[i] >= 0 && (melhor < 0 || distancia[i] < distancia[melhor])) melhor = i;
+  }
+  return melhor;
+}
+
+// ---------------- FAROIS ----------------
+// Corrente do LED do farol, em mA. lado: 0 = esquerdo, 1 = direito.
+float lerCorrenteMa(int lado) {
+#if SIMULACAO
+  // O Wokwi nao tem INA219: uma chave faz o papel do LED tirado da protoboard.
+  bool removido = digitalRead(lado == 0 ? PINO_SEM_LED_ESQ : PINO_SEM_LED_DIR) == LOW;
+  return removido ? 0.0 : 13.0;
+#else
+  byte endereco = (lado == 0) ? ENDERECO_INA_ESQ : ENDERECO_INA_DIR;
+  Wire.beginTransmission(endereco);
+  Wire.write(0x01);                                // registrador da tensao no resistor shunt
+  if (Wire.endTransmission() != 0) return 0.0;     // INA219 nao respondeu: trata como sem corrente
+  if (Wire.requestFrom(endereco, (byte)2) != 2) return 0.0;
+  byte alto = Wire.read();
+  byte baixo = Wire.read();
+  int bruto = (int16_t)((alto << 8) | baixo);
+  return bruto * 0.1;   // cada unidade = 10 uV; com shunt de 0,1 ohm isso vale 0,1 mA
+#endif
+}
+
+// "desligado", "ok" ou "queimado". Queimado = chave ligada e sem corrente varias leituras seguidas.
+const char* estadoFarol(int lado) {
+  bool ligada = digitalRead(lado == 0 ? PINO_CHAVE_ESQ : PINO_CHAVE_DIR) == HIGH;
+  if (!ligada) {
+    leiturasSemCorrente[lado] = 0;
+    correnteMa[lado] = 0;
+    return "desligado";
+  }
+  correnteMa[lado] = lerCorrenteMa(lado);
+  if (correnteMa[lado] < LIMIAR_CORRENTE_MA) {
+    if (leiturasSemCorrente[lado] < 100) leiturasSemCorrente[lado]++;
+  } else {
+    leiturasSemCorrente[lado] = 0;
+  }
+  return leiturasSemCorrente[lado] >= LEITURAS_PARA_QUEIMADO ? "queimado" : "ok";
+}
+
+// ---------------- LCD ----------------
 // Escreve uma linha inteira no LCD (completa com espacos pra apagar o resto)
 void escreverLinha(int linha, String texto) {
   while (texto.length() < 16) texto += " ";
@@ -67,26 +133,43 @@ void mostrar(String linha1, String linha2) {
   escreverLinha(1, linha2);
 }
 
-// Bip estilo sensor de estacionamento: quanto mais perto, mais rapido
-void biparPontoCego(long distancia) {
-  if (distancia <= DISTANCIA_PERIGO_CM) {
-    tone(PINO_BUZZER, 2000);
-    return;
+// ---------------- ENVIO PRO APP ----------------
+// Imprime a leitura como UMA linha de JSON. Funciona com Serial e com o Bluetooth.
+void imprimirLeitura(Print& saida, bool chuva, const char* farolE, const char* farolD) {
+  saida.print('{');
+  for (int i = 0; i < 4; i++) {
+    saida.print('"');
+    saida.print(CHAVES_JSON[i]);
+    saida.print(F("\":"));
+    if (distancia[i] < 0) saida.print(F("null"));
+    else saida.print(distancia[i]);
+    saida.print(',');
   }
-  unsigned long intervalo = map(distancia, DISTANCIA_PERIGO_CM, DISTANCIA_ALERTA_CM, 100, 600);
-  if (millis() - ultimoBip >= intervalo) {
-    tone(PINO_BUZZER, 2000, 50);
-    ultimoBip = millis();
-  }
+  saida.print(F("\"chuva\":"));
+  saida.print(chuva ? F("true") : F("false"));
+  saida.print(F(",\"farol_e\":\""));
+  saida.print(farolE);
+  saida.print(F("\",\"farol_d\":\""));
+  saida.print(farolD);
+  saida.println(F("\"}"));
 }
 
 void setup() {
   Serial.begin(9600);
-  pinMode(PINO_TRIG, OUTPUT);
-  pinMode(PINO_ECHO, INPUT);
-  pinMode(PINO_VIBRACAO, INPUT_PULLUP);
+  bluetooth.begin(9600);   // velocidade padrao do HM-10
+  Wire.begin();
+
+  for (int i = 0; i < 4; i++) {
+    pinMode(PINOS_TRIG[i], OUTPUT);
+    pinMode(PINOS_ECHO[i], INPUT);
+  }
   pinMode(PINO_LED, OUTPUT);
-  pinMode(PINO_BUZZER, OUTPUT);
+  pinMode(PINO_CHAVE_ESQ, INPUT);   // a chave tem resistor de 10k pro GND
+  pinMode(PINO_CHAVE_DIR, INPUT);
+#if SIMULACAO
+  pinMode(PINO_SEM_LED_ESQ, INPUT_PULLUP);
+  pinMode(PINO_SEM_LED_DIR, INPUT_PULLUP);
+#endif
 
   lcd.init();
   lcd.backlight();
@@ -95,54 +178,45 @@ void setup() {
 }
 
 void loop() {
-  // 1. LER OS SENSORES
-  long distancia = medirDistanciaCm();
-  int chuva = analogRead(PINO_CHUVA);
-  int luz   = analogRead(PINO_LUZ);
-
-  bool pontoCego    = distancia <= DISTANCIA_ALERTA_CM;
-  bool pistaMolhada = chuva < LIMITE_CHUVA;
-  bool escuro       = luz > LIMITE_ESCURO;
-
-  // Vibracao e um pulso rapido: guardamos o momento pra o alerta durar alguns segundos
-  if (digitalRead(PINO_VIBRACAO) == NIVEL_VIBRACAO) {
-    if (!teveImpacto) tone(PINO_BUZZER, 800, 400);
-    teveImpacto = true;
-    momentoImpacto = millis();
+  // 1. LER OS SENSORES (um de cada vez, pra um sensor nao ouvir o eco do outro)
+  for (int i = 0; i < 4; i++) {
+    distancia[i] = medirCm(i);
+    delay(50);
   }
-  if (teveImpacto && millis() - momentoImpacto > TEMPO_ALERTA_IMPACTO) {
-    teveImpacto = false;
-  }
+  int chuvaBruto = analogRead(PINO_CHUVA);
+  bool chuva = chuvaBruto < LIMITE_CHUVA;
+  const char* farolE = estadoFarol(0);
+  const char* farolD = estadoFarol(1);
+  bool queimadoE = strcmp(farolE, "queimado") == 0;
+  bool queimadoD = strcmp(farolD, "queimado") == 0;
+
+  int perto = sensorMaisPerto();
+  bool critico = perto >= 0 && distancia[perto] < DIST_CRITICO_CM;
+  bool atencao = perto >= 0 && distancia[perto] <= DIST_ATENCAO_CM && !critico;
 
   // 2. DECIDIR O QUE MOSTRAR (do mais urgente pro menos urgente)
-  if (pontoCego) {
-    mostrar("!! PONTO CEGO !!", "Objeto a " + String(distancia) + " cm");
-  } else if (teveImpacto) {
-    mostrar("!!  IMPACTO   !!", "Cheque o veiculo");
-  } else if (pistaMolhada) {
+  if (critico) {
+    mostrar("!! CRITICO !!", String(NOMES_CURTOS[perto]) + " " + String(distancia[perto]) + " cm");
+  } else if (atencao) {
+    mostrar("ATENCAO", String(NOMES_CURTOS[perto]) + " " + String(distancia[perto]) + " cm");
+  } else if (queimadoE || queimadoD) {
+    mostrar("FAROL QUEIMADO", queimadoE && queimadoD ? "Esq e Dir" : (queimadoE ? "Esquerdo" : "Direito"));
+  } else if (chuva) {
     mostrar("PISTA MOLHADA", "Reduza velocidade");
-  } else if (escuro) {
-    mostrar("POUCA LUZ", "Acenda os farois");
   } else {
     mostrar("ANJOS DA ESTRADA", "Tudo OK");
   }
 
-  // 3. ALERTAS DE SOM E LUZ
-  digitalWrite(PINO_LED, (pontoCego || teveImpacto) ? HIGH : LOW);
-  if (pontoCego) {
-    biparPontoCego(distancia);
-  } else if (!teveImpacto) {
-    noTone(PINO_BUZZER);
-  }
+  // 3. LED DE ALERTA (o som e feito pelo app no tablet)
+  digitalWrite(PINO_LED, (critico || atencao || queimadoE || queimadoD || chuva) ? HIGH : LOW);
 
-  // 4. VALORES NO MONITOR SERIAL (pra calibrar na montagem real)
-  if (millis() - ultimoSerial > 500) {
-    Serial.print(F("distancia="));  Serial.print(distancia);
-    Serial.print(F("cm  chuva="));  Serial.print(chuva);
-    Serial.print(F("  luz="));      Serial.print(luz);
-    Serial.print(F("  impacto="));  Serial.println(teveImpacto ? "sim" : "nao");
-    ultimoSerial = millis();
-  }
+  // 4. ENVIAR PRO APP (Serial com "APP> " e Bluetooth)
+  Serial.print(F("APP> "));
+  imprimirLeitura(Serial, chuva, farolE, farolD);
+  imprimirLeitura(bluetooth, chuva, farolE, farolD);
 
-  delay(50);
+  // 5. VALORES BRUTOS NO MONITOR SERIAL (pra calibrar na montagem real)
+  Serial.print(F("DEBUG chuva=")); Serial.print(chuvaBruto);
+  Serial.print(F("  mA_esq="));    Serial.print(correnteMa[0], 1);
+  Serial.print(F("  mA_dir="));    Serial.println(correnteMa[1], 1);
 }

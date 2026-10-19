@@ -1,9 +1,11 @@
-name: 'B2 - Anjos da Estrada: sensores e prioridade da tela'
+name: 'B2 - Anjos da Estrada: chuva, farois e prioridade da tela'
 version: 1
 author: 'BITMAKERS'
+# ATENCAO: este cenario foi escrito sem poder ser executado (token do Wokwi invalido).
+# Convencao das chaves deslizantes: value 0 = esquerda (desligada), value 1 = direita (ligada).
 steps:
-  # 1. Inicio: potenciometro em 1023 (seco), LDR em 500 lux (claro) -> "Tudo OK"
-  - wait-serial: 'chuva=1023'
+  # 1. Tudo parado: HC-SR04 em 200 cm (nada perto), pista seca, farois desligados -> "Tudo OK"
+  - wait-serial: '"chuva":false,"farol_e":"desligado","farol_d":"desligado"}'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
@@ -14,48 +16,45 @@ steps:
       part-id: chuva
       control: position
       value: 0
-  - wait-serial: 'chuva=0'
+  - wait-serial: '"chuva":true'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
       save-to: prints/b2-2-pista-molhada.png
 
-  # 3. Pouca luz: volta a pista pra seca e escurece o LDR (AO sobe no escuro, esperado ~913)
+  # 3. Pista seca de novo; liga o farol esquerdo: corrente normal -> "ok"
   - set-control:
       part-id: chuva
       control: position
       value: 1
   - set-control:
-      part-id: ldr
-      control: lux
-      value: 5
-  - wait-serial: 'luz=9'
-  - delay: 300ms
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b2-3-pouca-luz.png
-
-  # 4. Impacto: aperta o botao (dublê do SW-18010P). Tem prioridade sobre pista molhada e pouca luz.
-  - set-control:
-      part-id: chuva
-      control: position
-      value: 0
-  - set-control:
-      part-id: vibra
-      control: pressed
+      part-id: sw_fe
+      control: value
       value: 1
-  - wait-serial: 'impacto=sim'
+  - wait-serial: '"farol_e":"ok"'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
-      save-to: prints/b2-4-impacto-com-chuva-e-escuro.png
-  - set-control:
-      part-id: vibra
-      control: pressed
-      value: 0
+      save-to: prints/b2-7-farol-ok.png
 
-  # 5. O alerta de impacto deve sumir sozinho depois de 4 s
-  - wait-serial: 'impacto=nao'
+  # 4. Tira o LED esquerdo (chave "LED esq removido" para a direita): depois de 3 leituras vira "queimado"
+  - set-control:
+      part-id: sw_sem_e
+      control: value
+      value: 1
+  - wait-serial: '"farol_e":"queimado"'
+  - delay: 300ms
   - take-screenshot:
       part-id: lcd1
-      save-to: prints/b2-5-depois-do-impacto.png
+      save-to: prints/b2-7-farol-queimado.png
+
+  # 5. Desliga a chave do farol esquerdo: volta a "desligado" e o alerta some
+  - set-control:
+      part-id: sw_fe
+      control: value
+      value: 0
+  - wait-serial: '"farol_e":"desligado"'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-7-farol-desligado.png

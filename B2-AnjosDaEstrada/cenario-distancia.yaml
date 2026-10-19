@@ -1,26 +1,48 @@
-name: 'B2 - Anjos da Estrada: ponto cego (EXPERIMENTAL)'
+name: 'B2 - Anjos da Estrada: sensores de proximidade (EXPERIMENTAL)'
 version: 1
 author: 'BITMAKERS'
+# ATENCAO: este cenario foi escrito sem poder ser executado (token do Wokwi invalido).
 # A documentacao do Wokwi nao lista controle de distancia pro HC-SR04.
 # Este cenario tenta "distance". Se o Wokwi recusar, o erro aparece no primeiro set-control
-# e o ponto cego precisa ser testado no navegador (clicando no HC-SR04).
+# e a distancia precisa ser testada no navegador (clicando no HC-SR04).
+# O Wokwi nao devolve a distancia exata (200 cm vira 201, 20 cm vira 19): por isso o
+# cenario procura so o comeco do numero.
 steps:
-  - wait-serial: 'distancia=201'
+  # 1. Nada perto (200 cm): o sensor da frente esquerda mostra 20x
+  - wait-serial: '"frente_esq":20'
+
+  # 2. Objeto a 12 cm na frente esquerda: "ATENCAO F.Esq 12 cm"
   - set-control:
-      part-id: ultra
+      part-id: ultra_fe
       control: distance
-      value: 80
-  - wait-serial: 'distancia=8'
-  - delay: 300ms
+      value: 12
+  - wait-serial: '"frente_esq":1'
+  - delay: 500ms
   - take-screenshot:
       part-id: lcd1
-      save-to: prints/b2-6-ponto-cego-80cm.png
+      save-to: prints/b2-7-atencao-12cm.png
+
+  # 3. Objeto a 3 cm na frente esquerda: "!! CRITICO !!"
   - set-control:
-      part-id: ultra
+      part-id: ultra_fe
       control: distance
-      value: 20
-  - wait-serial: 'distancia=1'   # 20 cm aparece como 19 (divisao inteira por 58)
-  - delay: 300ms
+      value: 3
+  - delay: 1500ms
   - take-screenshot:
       part-id: lcd1
-      save-to: prints/b2-7-ponto-cego-20cm.png
+      save-to: prints/b2-7-critico-3cm.png
+
+  # 4. Frente esquerda livre; objeto a 12 cm atras na direita: o LCD aponta o sensor certo ("T.Dir")
+  - set-control:
+      part-id: ultra_fe
+      control: distance
+      value: 200
+  - set-control:
+      part-id: ultra_td
+      control: distance
+      value: 12
+  - wait-serial: '"tras_dir":1'
+  - delay: 500ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-7-atencao-tras-dir.png
