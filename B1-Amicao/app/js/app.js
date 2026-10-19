@@ -76,19 +76,27 @@ async function registrarVisita(ev) {
 }
 
 // O app e a fonte da verdade: faz a lista do Arduino ficar igual a do app.
-async function reconciliar(uidsDoArduino) {
-  const conhecidos = new Set(estado.cachorros.map(c => c.uid));
-  const noArduino = new Set(uidsDoArduino);
-  const soNoArduino = uidsDoArduino.filter(uid => !conhecidos.has(uid));
-  const soNoApp = estado.cachorros.filter(c => !noArduino.has(c.uid));
+let reconciliando = false;   // impede duas reconciliacoes ao mesmo tempo (cada remocao faz o Arduino responder de novo)
 
-  // Tablet novo (sem cachorros) ligado a um totem que ja tem tags: nao apaga sem perguntar.
-  if (soNoArduino.length > 0 && estado.cachorros.length === 0) {
-    const apagar = confirm(`O Arduino tem ${soNoArduino.length} tag(s) que este tablet não conhece. Apagar do Arduino?`);
-    if (!apagar) return;
+async function reconciliar(uidsDoArduino) {
+  if (reconciliando) return;
+  reconciliando = true;
+  try {
+    const conhecidos = new Set(estado.cachorros.map(c => c.uid));
+    const noArduino = new Set(uidsDoArduino);
+    const soNoArduino = uidsDoArduino.filter(uid => !conhecidos.has(uid));
+    const soNoApp = estado.cachorros.filter(c => !noArduino.has(c.uid));
+
+    // Tablet novo (sem cachorros) ligado a um totem que ja tem tags: nao apaga sem perguntar.
+    if (soNoArduino.length > 0 && estado.cachorros.length === 0) {
+      const apagar = confirm(`O Arduino tem ${soNoArduino.length} tag(s) que este tablet não conhece. Apagar do Arduino?`);
+      if (!apagar) return;
+    }
+    for (const uid of soNoArduino) await enviar(comando.remover(uid));
+    for (const c of soNoApp) await enviar(comando.permitir(c.uid, c.nome));
+  } finally {
+    reconciliando = false;
   }
-  for (const uid of soNoArduino) await enviar(comando.remover(uid));
-  for (const c of soNoApp) await enviar(comando.permitir(c.uid, c.nome));
 }
 
 // ---------- ações chamadas pelas telas ----------

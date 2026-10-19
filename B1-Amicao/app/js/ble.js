@@ -14,6 +14,7 @@ export function criarBle({ aoLinha, aoEstado }) {
   let buffer = new LinhaBuffer();
   let querConectado = false;
   let reconectando = false;
+  let fila = Promise.resolve();
   const decodificador = new TextDecoder();
 
   function aoChegarDados(evento) {
@@ -23,12 +24,20 @@ export function criarBle({ aoLinha, aoEstado }) {
 
   async function ligar() {
     aoEstado('conectando');
-    const servidor = await dispositivo.gatt.connect();
-    const servico = await servidor.getPrimaryService(SERVICO);
-    caracteristica = await servico.getCharacteristic(CARACTERISTICA);
-    await caracteristica.startNotifications();
-    caracteristica.addEventListener('characteristicvaluechanged', aoChegarDados);
-    buffer = new LinhaBuffer();
+    try {
+      const servidor = await dispositivo.gatt.connect();
+      const servico = await servidor.getPrimaryService(SERVICO);
+      const nova = await servico.getCharacteristic(CARACTERISTICA);
+      await nova.startNotifications();
+      nova.addEventListener('characteristicvaluechanged', aoChegarDados);
+      // So guarda a caracteristica depois que tudo deu certo (enviar() usa isso para saber se ha link).
+      caracteristica = nova;
+      buffer = new LinhaBuffer();
+    } catch (erro) {
+      caracteristica = null;
+      aoEstado('desconectado');
+      throw erro;   // quem chamou (conectar ou tentarReconectar) continua sabendo do erro
+    }
     aoEstado('conectado');
   }
 
@@ -64,13 +73,20 @@ export function criarBle({ aoLinha, aoEstado }) {
   }
 
   // Quebra em blocos de 20 bytes, que e o que o HM-10 aceita por vez.
-  async function enviar(texto) {
+  async function escrever(texto) {
     if (!caracteristica) return false;
     for (const bloco of quebrarEmBlocos(texto)) {
       await caracteristica.writeValueWithoutResponse(bloco);
       await esperar(ESPERA_ENTRE_BLOCOS_MS);
     }
     return true;
+  }
+
+  // Fila: um envio so comeca quando o anterior termina (senao os blocos de linhas diferentes se misturam).
+  function enviar(texto) {
+    const resultado = fila.then(() => escrever(texto));
+    fila = resultado.catch(() => {});   // um envio que falhou nao trava os proximos
+    return resultado;
   }
 
   function desconectar() {
