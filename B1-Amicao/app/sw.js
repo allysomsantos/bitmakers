@@ -14,7 +14,7 @@ self.addEventListener('install', (evento) => {
 self.addEventListener('activate', (evento) => {
   evento.waitUntil(
     caches.keys()
-      .then(nomes => Promise.all(nomes.filter(n => n !== VERSAO).map(n => caches.delete(n))))
+      .then(nomes => Promise.all(nomes.filter(n => n.startsWith('amicao-') && n !== VERSAO).map(n => caches.delete(n))))
       .then(() => self.clients.claim()));
 });
 
