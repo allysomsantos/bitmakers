@@ -60,7 +60,7 @@ docs/PUBLICAR.md                como publicar no GitHub Pages
 
 ---
 
-### Tarefa 0: Preparação do ambiente
+### Task 0: Preparação do ambiente
 
 **Arquivos:**
 - Criar: `.claude/launch.json`
@@ -106,7 +106,7 @@ git commit -m "chore: estado inicial do projeto"
 
 ## PARTE 1 — App B1 Amicão
 
-### Tarefa 1: B1 `protocolo.js` com testes
+### Task 1: B1 `protocolo.js` com testes
 
 **Arquivos:**
 - Criar: `B1-Amicao/app/package.json`, `B1-Amicao/app/js/protocolo.js`, `B1-Amicao/app/teste/protocolo.test.js`
@@ -263,7 +263,7 @@ git commit -m "feat(b1-app): protocolo puro com testes"
 
 ---
 
-### Tarefa 2: B1 `pesos.js` com testes
+### Task 2: B1 `pesos.js` com testes
 
 **Arquivos:**
 - Criar: `B1-Amicao/app/js/pesos.js`, `B1-Amicao/app/teste/pesos.test.js`
@@ -382,7 +382,7 @@ git commit -m "feat(b1-app): regra do alerta de perda de peso"
 
 ---
 
-### Tarefa 3: B1 `arduino-falso.js` com testes
+### Task 3: B1 `arduino-falso.js` com testes
 
 **Arquivos:**
 - Criar: `B1-Amicao/app/js/arduino-falso.js`, `B1-Amicao/app/teste/arduino-falso.test.js`
@@ -620,7 +620,7 @@ git commit -m "feat(b1-app): arduino falso para o simulador"
 
 ---
 
-### Tarefa 4: B1 base do app (banco, BLE, DOM, tela inicial, simulador)
+### Task 4: B1 base do app (banco, BLE, DOM, tela inicial, simulador)
 
 **Arquivos:**
 - Criar: `B1-Amicao/app/index.html`, `estilo.css`, `js/dom.js`, `js/banco.js`, `js/ble.js`, `js/foto.js`, `js/telas.js`, `js/simulador.js`, `js/app.js`
@@ -1351,7 +1351,7 @@ git commit -m "feat(b1-app): base do app, banco, BLE, simulador e tela inicial"
 
 ---
 
-### Tarefa 5: B1 tela de detalhe com gráfico de peso
+### Task 5: B1 tela de detalhe com gráfico de peso
 
 **Arquivos:**
 - Modificar: `B1-Amicao/app/js/telas.js` (trocar `telaDetalhe` provisória; adicionar `graficoPeso`)
@@ -1468,7 +1468,7 @@ git commit -m "feat(b1-app): detalhe do cachorro com grafico de peso"
 
 ---
 
-### Tarefa 6: B1 cadastro de cachorro
+### Task 6: B1 cadastro de cachorro
 
 **Arquivos:**
 - Modificar: `B1-Amicao/app/js/telas.js` (trocar `telaCadastro` provisória)
@@ -1551,7 +1551,7 @@ git commit -m "feat(b1-app): fluxo de cadastro com modo cadastro de 30 s"
 
 ---
 
-### Tarefa 7: B1 ajustes e backup
+### Task 7: B1 ajustes e backup
 
 **Arquivos:**
 - Modificar: `B1-Amicao/app/js/telas.js` (trocar `telaAjustes` provisória)
@@ -1634,7 +1634,7 @@ git commit -m "feat(b1-app): ajustes, remocao e backup"
 
 ---
 
-### Tarefa 8: B1 PWA (manifest, Service Worker, ícones)
+### Task 8: B1 PWA (manifest, Service Worker, ícones)
 
 **Arquivos:**
 - Criar: `ferramentas/gerar_icones.py`, `B1-Amicao/app/manifest.webmanifest`, `B1-Amicao/app/sw.js`, `B1-Amicao/app/icone.svg`, `B1-Amicao/app/icone-192.png`, `B1-Amicao/app/icone-512.png`
@@ -1790,7 +1790,7 @@ git commit -m "feat(b1-app): PWA instalavel (manifest, service worker, icones)"
 
 ## PARTE 2 — App B2 Anjos da Estrada
 
-### Tarefa 9: B2 `protocolo.js` e `faixas.js` com testes
+### Task 9: B2 `protocolo.js` e `faixas.js` com testes
 
 **Arquivos:**
 - Criar: `B2-AnjosDaEstrada/app/package.json`, `js/protocolo.js`, `js/faixas.js`, `teste/protocolo.test.js`, `teste/faixas.test.js`
@@ -2040,7 +2040,7 @@ git commit -m "feat(b2-app): protocolo e faixas de proximidade com testes"
 
 ---
 
-### Tarefa 10: B2 `caminhao-falso.js` com testes
+### Task 10: B2 `caminhao-falso.js` com testes
 
 **Arquivos:**
 - Criar: `B2-AnjosDaEstrada/app/js/caminhao-falso.js`, `teste/caminhao-falso.test.js`
@@ -2170,7 +2170,7 @@ git commit -m "feat(b2-app): caminhao falso para o simulador"
 
 ---
 
-### Tarefa 11: B2 tela do caminhão, banners e simulador
+### Task 11: B2 tela do caminhão, banners e simulador
 
 **Arquivos:**
 - Criar: `B2-AnjosDaEstrada/app/index.html`, `estilo.css`, `js/dom.js`, `js/ble.js`, `js/caminhao.js`, `js/tela.js`, `js/simulador.js`, `js/app.js`
@@ -2564,7 +2564,7 @@ git commit -m "feat(b2-app): tela do caminhao em SVG, cards, banners e simulador
 
 ---
 
-### Tarefa 12: B2 som (Web Audio) e tela sempre ligada
+### Task 12: B2 som (Web Audio) e tela sempre ligada
 
 **Arquivos:**
 - Criar: `B2-AnjosDaEstrada/app/js/som.js`
@@ -2743,7 +2743,7 @@ git commit -m "feat(b2-app): som de alerta e proximidade, botao mudo e tela semp
 
 ---
 
-### Tarefa 13: B2 PWA (manifest, Service Worker, ícones)
+### Task 13: B2 PWA (manifest, Service Worker, ícones)
 
 **Arquivos:**
 - Criar: `B2-AnjosDaEstrada/app/manifest.webmanifest`, `sw.js`, `icone.svg`
@@ -2832,7 +2832,7 @@ git commit -m "feat(b2-app): PWA instalavel"
 
 > `arduino-cli` **não estava no PATH** quando este plano foi escrito (os `build/` existem, então já funcionou nesta máquina). Antes das Tarefas 14 e 15, localizar o executável seguindo o `SETUP.md` (ex.: pasta de instalação do Arduino CLI) e usar o caminho completo, ou abrir um terminal novo. `wokwi-cli` versão 0.28.1 está disponível. Bibliotecas já usadas pelo B1: MFRC522, HX711, Stepper, LiquidCrystal_I2C, SoftwareSerial (padrão). O B2 passa a usar também `SoftwareSerial`; **nenhuma biblioteca nova** (o INA219 é lido direto pelo I2C).
 
-### Tarefa 14: Firmware B1 (HM-10, EEPROM, modo cadastro)
+### Task 14: Firmware B1 (HM-10, EEPROM, modo cadastro)
 
 **Arquivos:**
 - Modificar: `B1-Amicao/B1-Amicao.ino`, `B1-Amicao/diagram.json` (só o rótulo do módulo Bluetooth, se existir), `B1-Amicao/cenario.yaml`
@@ -3203,7 +3203,7 @@ git commit -m "feat(b1-firmware): HM-10, lista de tags na EEPROM e modo cadastro
 
 ---
 
-### Tarefa 15: Firmware B2 (4 sensores, lâmpadas com corrente, JSON)
+### Task 15: Firmware B2 (4 sensores, lâmpadas com corrente, JSON)
 
 **Arquivos:**
 - Modificar (reescrever): `B2-AnjosDaEstrada/B2-AnjosDaEstrada.ino`
@@ -3489,7 +3489,7 @@ git commit -m "feat(b2-firmware): 4 sensores de proximidade, farois com corrente
 
 ## PARTE 4 — Documentação e publicação
 
-### Tarefa 16: Documentação, spec e publicação
+### Task 16: Documentação, spec e publicação
 
 **Arquivos:**
 - Criar: `docs/PUBLICAR.md`, `B1-Amicao/app/README.md`, `B2-AnjosDaEstrada/app/README.md`
