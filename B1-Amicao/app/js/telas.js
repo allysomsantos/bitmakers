@@ -154,5 +154,55 @@ export function telaCadastro(estado, acoes) {
   );
 }
 
-// Provisoria: a tarefa 7 troca esta funcao pela tela de verdade.
-export function telaAjustes() { return h('p', {}, 'Ajustes: em construção'); }
+function campoNumero(rotulo, valor, minimo, maximo, passo = 1) {
+  const entrada = h('input', { type: 'number', value: valor, min: minimo, max: maximo, step: passo, required: true });
+  return { entrada, linha: h('label', {}, rotulo, entrada) };
+}
+
+export function telaAjustes(estado, acoes) {
+  const queda = campoNumero('Alerta de peso: queda de (%) ', estado.config.quedaPercentual, 1, 50);
+  const recente = campoNumero('Visitas recentes na média ', estado.config.janelaRecente, 1, 10);
+  const anterior = campoNumero('Visitas de referência ', estado.config.janelaAnterior, 1, 20);
+  const minimo = campoNumero('Mínimo de visitas com peso ', estado.config.minimoVisitas, 2, 30);
+  const entradaBackup = h('input', { type: 'file', accept: 'application/json' });
+
+  return h('section', { class: 'ajustes' },
+    h('a', { href: '#/', class: 'botao claro' }, '← Voltar'),
+    h('h2', {}, 'Ajustes'),
+
+    h('h3', {}, 'Totem'),
+    estado.conexao === 'conectado'
+      ? h('p', { class: 'ok' }, '✔ Conectado ao totem')
+      : h('p', {}, h('button', { onclick: acoes.conectar }, 'Conectar ao totem')),
+
+    h('h3', {}, 'Alerta de perda de peso'),
+    h('form', {
+        onsubmit: (evento) => {
+          evento.preventDefault();
+          acoes.salvarConfig({
+            quedaPercentual: Number(queda.entrada.value),
+            janelaRecente: Number(recente.entrada.value),
+            janelaAnterior: Number(anterior.entrada.value),
+            minimoVisitas: Number(minimo.entrada.value),
+          });
+        },
+      },
+      queda.linha, recente.linha, anterior.linha, minimo.linha,
+      h('p', {}, h('button', { type: 'submit' }, 'Salvar'))),
+
+    h('h3', {}, 'Cachorros cadastrados'),
+    estado.cachorros.length
+      ? h('ul', { class: 'lista-ajustes' }, estado.cachorros.map(c => h('li', {},
+          c.nome,
+          h('button', {
+            class: 'perigo',
+            onclick: () => { if (confirm(`Remover ${c.nome} e todo o histórico dele?`)) acoes.removerCachorro(c.uid); },
+          }, 'Remover'))))
+      : h('p', { class: 'vazio' }, 'Nenhum cachorro cadastrado.'),
+
+    h('h3', {}, 'Backup'),
+    h('p', {}, h('button', { onclick: acoes.exportar }, 'Exportar backup')),
+    h('label', {}, 'Importar backup (substitui tudo)'), entradaBackup,
+    h('p', {}, h('button', { onclick: () => { if (entradaBackup.files[0]) acoes.importar(entradaBackup.files[0]); } }, 'Importar')),
+  );
+}
