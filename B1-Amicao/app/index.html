@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2f7d4f">
+  <title>Amicão</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icone.svg">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header id="topo">
+    <a href="#/" class="logo">🐾 Amicão</a>
+    <span id="status-conexao" class="selo perigo">Desconectado</span>
+    <span id="status-bomba" class="selo neutro" hidden></span>
+    <span class="espaco"></span>
+    <button id="btn-conectar" class="botao">Conectar</button>
+    <a href="#/ajustes" class="botao claro" aria-label="Ajustes">⚙ Ajustes</a>
+  </header>
+  <div id="alertas" role="alert"></div>
+  <main id="conteudo"></main>
+  <aside id="painel-simulador" hidden></aside>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
