@@ -38,7 +38,6 @@ export function telaInicio(estado, acoes) {
   );
 }
 
-// Provisorias: as tarefas 5, 6 e 7 trocam estas funcoes pelas telas de verdade.
 const NS_SVG = 'http://www.w3.org/2000/svg';
 
 function noSvg(tag, atributos = {}, texto = null) {
@@ -105,5 +104,55 @@ export function telaDetalhe(estado, uid) {
       : h('p', { class: 'vazio' }, 'Nenhuma visita registrada ainda.'),
   );
 }
-export function telaCadastro() { return h('p', {}, 'Cadastro: em construção'); }
+function formularioCadastro(estado, acoes) {
+  const uid = estado.cadastro.uidLido;
+  const jaCadastrado = estado.cachorros.find(c => c.uid === uid);
+  if (jaCadastrado) {
+    return h('section', { class: 'cadastro' },
+      h('h2', {}, 'Tag já cadastrada'),
+      h('p', {}, `Esta tag já pertence ao ${jaCadastrado.nome}.`),
+      h('a', { class: 'botao', href: '#/' }, 'Voltar'));
+  }
+
+  const entradaNome = h('input', { type: 'text', maxlength: '10', required: true, placeholder: 'Ex.: Rex', autocomplete: 'off' });
+  const entradaFoto = h('input', { type: 'file', accept: 'image/*', capture: 'environment' });
+  return h('section', { class: 'cadastro' },
+    h('h2', {}, 'Tag lida! Agora o nome e a foto'),
+    h('p', { class: 'neutro' }, 'Tag: ' + uid),
+    h('form', {
+        id: 'form-cadastro',
+        onsubmit: (evento) => {
+          evento.preventDefault();
+          acoes.salvarCachorro(entradaNome.value, entradaFoto.files[0]);
+        },
+      },
+      h('label', {}, 'Nome (até 10 letras)'), entradaNome,
+      h('label', {}, 'Foto (opcional)'), entradaFoto,
+      h('p', {}, h('button', { type: 'submit' }, 'Salvar cachorro'), ' ',
+        h('a', { class: 'botao claro', href: '#/' }, 'Cancelar'))));
+}
+
+export function telaCadastro(estado, acoes) {
+  const c = estado.cadastro;
+  if (c.fase === 'lido') return formularioCadastro(estado, acoes);
+
+  const segundos = Math.max(0, Math.ceil((c.fimEm - Date.now()) / 1000));
+  return h('section', { class: 'cadastro' },
+    h('h2', {}, 'Cadastrar cachorro'),
+    c.mensagem ? h('p', { class: 'aviso-texto' }, c.mensagem) : '',
+    c.fase === 'aguardando' ? h('p', {}, 'Avisando o totem…') : '',
+    c.fase === 'ouvindo'
+      ? h('div', {},
+          h('p', { class: 'instrucao' }, 'Encoste a tag da coleira no leitor do totem.'),
+          h('p', {}, 'Tempo restante: ', h('strong', { id: 'contagem', class: 'contagem' }, segundos), ' s'))
+      : '',
+    c.fase === 'esgotado'
+      ? h('div', {}, h('p', { class: 'aviso-texto' }, 'O tempo acabou e nenhuma tag foi lida.'),
+          h('button', { onclick: acoes.iniciarCadastro }, 'Tentar de novo'))
+      : '',
+    h('p', {}, h('a', { class: 'botao claro', href: '#/' }, 'Cancelar')),
+  );
+}
+
+// Provisoria: a tarefa 7 troca esta funcao pela tela de verdade.
 export function telaAjustes() { return h('p', {}, 'Ajustes: em construção'); }
