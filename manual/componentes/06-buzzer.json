@@ -1,0 +1,66 @@
+{
+  "nome": "Buzzer",
+  "nome_curto": "Buzzer",
+  "apelido": "O alto-falante do Arduino: faz bipes e tons",
+  "categoria": "interface",
+  "nivel": 1,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "Um mini alto-falante que apita. O buzzer do projeto é passivo: toca o tom que o Arduino mandar. O ativo tem circuito próprio e apita sempre no mesmo tom.",
+  "pra_que_serve": "Avisar sem a pessoa precisar olhar: bipes de alerta e tons diferentes. O motorista ouve o perigo com os olhos na estrada.",
+  "onde_vive": [
+    "Sensor de ré do carro: bipes mais rápidos quando o obstáculo chega perto.",
+    "Micro-ondas e máquina de lavar: o bip de fim.",
+    "Alarmes, campainhas e brinquedos que tocam musiquinha."
+  ],
+  "legenda_peca": "Buzzer passivo: a perna longa é o positivo (+).",
+  "ficha": {
+    "Liga em": "3 a 5 V",
+    "Tipo": "passivo (toca o que mandar)",
+    "Lado certo": "perna longa é o +",
+    "Comando": "tone(pino, Hz) e noTone()"
+  },
+  "passos": [
+    "O Arduino manda tone() e o pino liga e desliga bem rápido.",
+    "Esse liga-desliga faz uma pecinha dentro do buzzer tremer.",
+    "A tremida empurra o ar e vira o som que a gente ouve.",
+    "Treme mais vezes por segundo (Hz): som mais agudo.",
+    "Treme menos vezes: som mais grave."
+  ],
+  "formula": "Regra de ouro: mais Hz = som mais agudo; menos Hz = mais grave. O ritmo dos bipes é o tempo entre um tone() e o próximo.",
+  "no_projeto": {
+    "B2": {
+      "texto": "Liga num pino digital. No ponto cego, faz bipes como o sensor de ré: quanto mais perto, mais rápidos; abaixo de 40 cm, o som não para. Seta queimada: 2 bipes curtos.",
+      "pinos": [
+        [
+          "Liga em",
+          "pino digital"
+        ],
+        [
+          "Seta queimada",
+          "2 bipes curtos"
+        ]
+      ],
+      "ligacao": [
+        [
+          "+ (positivo)",
+          "pino digital",
+          "laranja"
+        ],
+        [
+          "− (negativo)",
+          "GND",
+          "preto"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Buzzer ativo não muda de tom com tone(): só o ritmo dos bipes funciona.",
+    "Perna longa (+) no pino digital, perna curta (−) no GND.",
+    "Teste com bipes curtos: som contínuo cansa o ouvido de todo mundo."
+  ],
+  "desafio": "Qual é mais agudo: um bipe de 500 Hz ou de 2.000 Hz? E no sensor de ré do projeto, o que muda quando o obstáculo chega perto?",
+  "resposta": "2.000 Hz é mais agudo (mais tremidas por segundo). No projeto o que muda é o ritmo: mais perto, bipes mais rápidos."
+}

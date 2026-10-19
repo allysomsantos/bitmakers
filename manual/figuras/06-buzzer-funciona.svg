@@ -1,0 +1,41 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-buzzer" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+
+  <!-- 1: onda quadrada -->
+  <text x="6" y="16" font-size="9.5" font-weight="700" fill="#d9640a">1) o pino digital liga e desliga</text>
+  <polyline points="8,60 8,36 34,36 34,60 60,60 60,36 86,36 86,60 112,60 112,36 138,36 138,60 164,60" fill="none" stroke="#d9640a" stroke-width="2.6"/>
+  <text x="8" y="76" font-size="9" fill="#37474f">bem rápido, muitas vezes por segundo</text>
+
+  <!-- 2 e 3: disco piezo -->
+  <text x="214" y="16" font-size="9.5" font-weight="700" fill="#0d47a1">2) uma pecinha treme</text>
+  <rect x="214" y="52" width="76" height="6" rx="2" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="214" y="58" width="76" height="5" rx="2" fill="#90a4ae" stroke="#546e7a"/>
+  <path d="M214,63 Q252,92 290,63" fill="none" stroke="#546e7a" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M214,52 Q252,24 290,52" fill="none" stroke="#546e7a" stroke-width="2" stroke-dasharray="4 3"/>
+  <line x1="252" y1="30" x2="252" y2="44" stroke="#5b6770" stroke-width="1.6" marker-end="url(#seta-buzzer)"/>
+  <line x1="252" y1="88" x2="252" y2="76" stroke="#5b6770" stroke-width="1.6" marker-end="url(#seta-buzzer)"/>
+  <text x="298" y="52" font-size="9" fill="#37474f">pecinha</text>
+  <text x="298" y="66" font-size="9" fill="#37474f">de metal</text>
+  <text x="214" y="100" font-size="9.5" font-weight="700" fill="#0d47a1">3) a tremida empurra o ar</text>
+
+  <!-- 4: ondas de som -->
+  <g fill="none" stroke="#188038" stroke-width="2.8" stroke-linecap="round">
+    <path d="M350,34 q9,8 0,16"/>
+    <path d="M366,28 q13,14 0,28"/>
+    <path d="M384,22 q17,20 0,40"/>
+  </g>
+  <text x="346" y="84" font-size="9.5" font-weight="700" fill="#188038">4) vira som</text>
+
+  <!-- 5: grave x agudo -->
+  <text x="6" y="124" font-size="9.5" font-weight="700" fill="#37474f">Quanto mais treme por segundo (Hz), mais agudo o som:</text>
+  <text x="6" y="152" font-size="9.5" font-weight="700" fill="#0d47a1">800 Hz</text>
+  <text x="6" y="164" font-size="9" fill="#37474f">grave</text>
+  <path d="M60,152 q20,-24 40,0 t40,0 t40,0 t40,0 t40,0 t40,0" fill="none" stroke="#0d47a1" stroke-width="2.4"/>
+  <text x="6" y="186" font-size="9.5" font-weight="700" fill="#c62828">2.000 Hz</text>
+  <text x="6" y="198" font-size="9" fill="#37474f">agudo</text>
+  <path d="M60,186 q8,-18 16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0 t16,0" fill="none" stroke="#c62828" stroke-width="2.4"/>
+</svg>

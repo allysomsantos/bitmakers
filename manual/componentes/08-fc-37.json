@@ -1,0 +1,93 @@
+{
+  "nome": "Sensor de umidade e gotas FC-37",
+  "nome_curto": "FC-37",
+  "apelido": "Sente a água: gotas na placa viram número",
+  "categoria": "sensor",
+  "nivel": 2,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "Uma plaquinha com trilhas de cobre que não se encostam, ligada a um módulo. Quando a água molha a placa, ela liga as trilhas e o número lido muda.",
+  "pra_que_serve": "Detectar água: gotas de chuva ou água no pote. O Arduino lê o número e decide se avisa o motorista ou se liga uma bomba.",
+  "onde_vive": [
+    "Estação do tempo e irrigação: avisam que choveu.",
+    "Janela e toldo automáticos que fecham quando começa a chover.",
+    "Alarme de vazamento em casa e em máquina de lavar."
+  ],
+  "legenda_peca": "A placa de trilhas (que molha) e o módulo (que fica seco).",
+  "ficha": {
+    "Liga em": "5 V",
+    "Saídas": "AO (número) e DO (sim/não)",
+    "Sente": "água sobre as trilhas",
+    "Molhou": "o número CAI"
+  },
+  "passos": [
+    "Duas trilhas de cobre ficam bem perto, sem se tocar.",
+    "Seca: só ar entre elas, quase nenhuma corrente passa.",
+    "Molhada: a água liga as trilhas e a corrente passa.",
+    "O Arduino lê um número no pino AO: molhou, o número CAI."
+  ],
+  "formula": "Mais água = número MENOR. Seco fica perto de 1023. Nos nossos projetos, abaixo de 500 = molhado.",
+  "no_projeto": {
+    "B1": {
+      "texto": "Fica no pote: com a trilha na água, o número cai abaixo de 500 e a bomba desliga. Pote seco, a bomba liga (máx. 30 s; se estourar, alerta \"reservatório vazio\").",
+      "pinos": [
+        [
+          "Saída usada",
+          "AO em pino analógico"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "AO",
+          "pino analógico",
+          "verde"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Fica exposto ao tempo para sentir a chuva. Abaixo de 500 = molhado: \"PISTA MOLHADA, reduza velocidade\". Ele sente gotas na própria placa, não o estado da pista.",
+      "pinos": [
+        [
+          "Saída usada",
+          "AO em pino analógico"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "AO",
+          "pino analógico",
+          "verde"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Corrói: com água e corrente, as trilhas se gastam. Ligue só na hora de ler.",
+    "Só a placa de trilhas pode molhar; o módulo precisa ficar seco.",
+    "Depois da chuva, gotas na placa mantêm o \"molhado\" até secarem."
+  ],
+  "desafio": "A placa seca lê 1000 e, dentro da água, lê 320. Qual das duas passa abaixo do limite de 500? O que isso significa no B1 e no B2?",
+  "resposta": "A de 320 (320 < 500 = molhado). No B1 o pote tem água e a bomba desliga; no B2 aparece \"PISTA MOLHADA\"."
+}

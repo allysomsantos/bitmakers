@@ -1,0 +1,85 @@
+{
+  "nome": "Motor de passo 28BYJ-48",
+  "nome_curto": "28BYJ-48",
+  "apelido": "Gira passo a passo e sabe quanto girou",
+  "categoria": "atuador",
+  "nivel": 3,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Um motorzinho que gira aos pouquinhos, em passos, como o ponteiro de um relógio. Como a gente conta os passos, sabe exatamente quanto ele girou.",
+  "pra_que_serve": "Girar uma quantidade certa: meia volta, uma volta, 90 graus. No B1, ele gira o dosador e solta a porção de ração.",
+  "onde_vive": [
+    "Impressoras 3D: cada passo move a peça uma distância certinha.",
+    "Ar-condicionado: o motorzinho vira a aleta que direciona o ar.",
+    "Dispensadores automáticos de ração, de remédio e de sabonete."
+  ],
+  "legenda_peca": "O 28BYJ-48 visto de frente, com o plugue de 5 pinos.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Passos por volta": "cerca de 2048",
+    "Jeito": "lento e forte",
+    "Cuidado": "usar o ULN2003"
+  },
+  "passos": [
+    "Dentro há 4 bobinas (eletroímãs) e um ímã no meio.",
+    "O Arduino liga uma bobina de cada vez, em sequência.",
+    "O ímã é puxado para a bobina ligada: um passinho.",
+    "Mudando a bobina, vem o próximo passo, e o eixo gira.",
+    "Engrenagens deixam tudo lento e forte: 2048 passos = 1 volta."
+  ],
+  "formula": "Contou os passos, sabe quanto girou: 2048 passos = 1 volta do eixo. Meia volta = 1024 passos.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O Rex é identificado e o Arduino manda o motor dar meia volta (1024 passos): uma porção de ração cai no pote. Só gira se já passou o tempo mínimo entre porções (4 h no real). No fim, o código desliga as bobinas, para o motor não esquentar parado.",
+      "pinos": [
+        [
+          "Porção",
+          "meia volta = 1024 passos"
+        ],
+        [
+          "Velocidade",
+          "10 voltas por minuto"
+        ],
+        [
+          "Controle",
+          "via ULN2003 (IN1 a IN4)"
+        ],
+        [
+          "Alimentação",
+          "5 V da fonte externa"
+        ]
+      ],
+      "ligacao": [
+        [
+          "Fio azul",
+          "OUT1",
+          "azul"
+        ],
+        [
+          "Fio rosa",
+          "OUT2",
+          "rosa"
+        ],
+        [
+          "Fio amarelo",
+          "OUT3",
+          "amarelo"
+        ],
+        [
+          "Fio laranja",
+          "OUT4",
+          "laranja"
+        ]
+      ],
+      "ligacao_destino": "ULN2003"
+    }
+  },
+  "cuidados": [
+    "Parado com as bobinas ligadas, ele esquenta: o código as desliga no fim.",
+    "Rápido demais, ele só treme e pula passos: fique em 10 voltas por minuto.",
+    "Não ligue nos pinos do Arduino: use o ULN2003 e a fonte de 5 V."
+  ],
+  "desafio": "A porção é meia volta. Uma volta tem 2048 passos. Quantos passos tem a porção? E quanto tempo leva, se 1 volta demora 6 s?",
+  "resposta": "Metade de 2048 = 1024 passos. Meia volta leva metade de 6 s: 3 s (equivale a 10 voltas por minuto)."
+}

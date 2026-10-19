@@ -1,0 +1,111 @@
+{
+  "nome": "Display LCD 16x2 com módulo I2C",
+  "nome_curto": "LCD I2C",
+  "apelido": "A telinha onde o Arduino escreve com só 4 fios",
+  "categoria": "interface",
+  "nivel": 2,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "Uma tela de texto com 16 colunas e 2 linhas (32 letras). Atrás dela vem uma plaquinha, o módulo I2C, que troca 16 fios por apenas 4.",
+  "pra_que_serve": "Mostrar mensagens, nomes e números sem precisar do computador: o Arduino escreve e qualquer pessoa lê na hora.",
+  "onde_vive": [
+    "Impressora 3D e máquina de café: telinhas de texto como esta.",
+    "Forno, balança e termômetro digitais.",
+    "Painel de máquinas e de bombas, que mostra estado e alarmes."
+  ],
+  "legenda_peca": "A tela de frente e o módulo I2C que fica atrás dela.",
+  "ficha": {
+    "Tamanho": "16 colunas x 2 linhas",
+    "Liga em": "5 V",
+    "Fios": "só 4 (VCC, GND, SDA, SCL)",
+    "Cuidado": "não aceita acentos"
+  },
+  "passos": [
+    "O módulo I2C, atrás da tela, troca 16 fios por só 4.",
+    "O Arduino manda a mensagem por SDA (dados) e SCL (ritmo).",
+    "O módulo recebe e repassa tudo para a tela.",
+    "A tela escreve cada letra na coluna e na linha pedidas."
+  ],
+  "formula": "16 colunas x 2 linhas = 32 letras. lcd.setCursor(coluna, linha) escolhe onde escrever (a contagem começa em 0).",
+  "no_projeto": {
+    "B1": {
+      "texto": "Mostra \"Ola, Rex!\" quando a tag é reconhecida, depois o peso do cachorro e o estado da bomba. Sem acento: \"Ola\", e não \"Olá\".",
+      "pinos": [
+        [
+          "Endereço",
+          "0x27 (às vezes 0x3F)"
+        ],
+        [
+          "Mostra",
+          "nome, peso e bomba"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "SDA",
+          "pino SDA (I2C)",
+          "azul"
+        ],
+        [
+          "SCL",
+          "pino SCL (I2C)",
+          "amarelo"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Console da cabine: uma mensagem por vez, por prioridade: ponto cego, seta queimada, pista molhada, pouca luz e, sem problemas, \"Tudo OK\".",
+      "pinos": [
+        [
+          "Endereço",
+          "0x27 (às vezes 0x3F)"
+        ],
+        [
+          "SDA e SCL",
+          "divididos com outras peças"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "SDA",
+          "pino SDA (I2C)",
+          "azul"
+        ],
+        [
+          "SCL",
+          "pino SCL (I2C)",
+          "amarelo"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Sem acentos: a tela não tem á, ç, ã. Escreva \"Ola\", \"ATENCAO\".",
+    "Tela acesa e sem texto: gire o parafuso azul. Ainda nada? Troque 0x27 por 0x3F.",
+    "Passou da coluna 16, o texto é cortado. clear() toda hora faz a tela piscar."
+  ],
+  "desafio": "A mensagem \"ATENCAO: PONTO CEGO\" cabe numa linha de 16 colunas? Conte letras e espaços. Como mostrar usando as duas linhas?",
+  "resposta": "Tem 19 caracteres: não cabe em 16 (o resto some). Divida: \"ATENCAO:\" na linha 0 e \"PONTO CEGO\" na linha 1."
+}

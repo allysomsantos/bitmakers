@@ -1,0 +1,84 @@
+{
+  "nome": "Módulo HX711",
+  "nome_curto": "HX711",
+  "apelido": "O tradutor que escuta a célula de carga",
+  "categoria": "sensor",
+  "nivel": 4,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma plaquinha que é o tradutor da balança: pega o sinalzinho fraco da célula de carga, aumenta e entrega um número para o Arduino. Usa só 2 fios de dados.",
+  "pra_que_serve": "Ligar a célula de carga ao Arduino. Sozinho, ele não enxerga um sinal tão fraco; com o HX711 a balança mede o peso direitinho.",
+  "onde_vive": [
+    "Balanças digitais caseiras e projetos de balança com Arduino.",
+    "Balanças de precisão, para pesar ingredientes e embalagens.",
+    "Máquinas que soltam produto até chegar a um peso certo."
+  ],
+  "legenda_peca": "O HX711: entradas da célula em cima, 4 pinos embaixo.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Recebe": "o sinal da célula",
+    "Fios de dados": "2 (DT e SCK)",
+    "Leituras": "cerca de 10 por segundo"
+  },
+  "passos": [
+    "A célula manda um sinalzinho fraco para o HX711.",
+    "O HX711 aumenta esse sinal.",
+    "Depois transforma o sinal em um número.",
+    "O Arduino pede o número pelos fios DT e SCK.",
+    "O código tira o zero e usa o fator: sai o peso em kg."
+  ],
+  "formula": "Regra de ouro: peso = (número lido − zero) ÷ fator. O zero é a balança vazia; o fator ensina quanto vale 1 kg.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O HX711 fica entre a célula e o Arduino. Ao ligar, o código zera a balança vazia (tare) e usa o fator de calibração (set_scale). Na simulação o fator é 420. Na balança real, ponha um peso conhecido e ajuste o fator até o peso mostrado bater.",
+      "pinos": [
+        [
+          "DT",
+          "pino digital"
+        ],
+        [
+          "SCK",
+          "pino digital"
+        ],
+        [
+          "VCC · GND",
+          "5V · GND"
+        ],
+        [
+          "Célula",
+          "E+ E− A+ A−"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "DT",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "SCK",
+          "pino digital",
+          "laranja"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Ligue com a plataforma VAZIA: é nesse instante que ele zera.",
+    "Fios soltos ou batidas na plataforma fazem o número oscilar.",
+    "Peso negativo? Os fios A+ e A− da célula estão trocados."
+  ],
+  "desafio": "Na simulação, com 50 kg o número lido é 21.000. Quanto vale 1 kg (o fator)? Se o número lido for 2.940, quantos kg tem o cachorro? (Dica: divida.)",
+  "resposta": "21.000 ÷ 50 = 420 por kg. Depois 2.940 ÷ 420 = 7 kg, o peso do Rex no exemplo do código."
+}

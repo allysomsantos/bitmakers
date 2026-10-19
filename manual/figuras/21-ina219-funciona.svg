@@ -1,0 +1,54 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-ina" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#188038"/>
+    </marker>
+    <marker id="setaR-ina" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#c62828"/>
+    </marker>
+    <marker id="setaC-ina" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+
+  <!-- ===== linha 1: lampada boa ===== -->
+  <text x="6" y="14" font-size="10.5" font-weight="700" fill="#188038">Lâmpada boa</text>
+  <rect x="6" y="22" width="42" height="40" rx="5" fill="#ffd54f" stroke="#b28704" stroke-width="2"/>
+  <text x="27" y="40" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">fonte</text>
+  <text x="27" y="53" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">5 V</text>
+  <line x1="48" y1="42" x2="108" y2="42" stroke="#188038" stroke-width="3" marker-end="url(#seta-ina)"/>
+  <text x="78" y="34" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">1) passa</text>
+  <rect x="110" y="22" width="92" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2"/>
+  <text x="156" y="39" font-size="10" font-weight="700" fill="#0d47a1" text-anchor="middle">INA219</text>
+  <text x="156" y="53" font-size="9.5" fill="#0d47a1" text-anchor="middle">2) sente a corrente</text>
+  <line x1="202" y1="42" x2="238" y2="42" stroke="#188038" stroke-width="3" marker-end="url(#seta-ina)"/>
+  <circle cx="262" cy="42" r="19" fill="#fff59d" stroke="#b28704" stroke-width="2.2"/>
+  <path d="M254,50 q4,-14 8,-4 q4,10 8,-4" fill="none" stroke="#b28704" stroke-width="2"/>
+  <line x1="298" y1="42" x2="316" y2="42" stroke="#5b6770" stroke-width="2.2" marker-end="url(#setaC-ina)"/>
+  <rect x="318" y="22" width="96" height="40" rx="6" fill="#e6f4ea" stroke="#188038" stroke-width="1.8"/>
+  <text x="366" y="39" font-size="10" font-weight="700" fill="#188038" text-anchor="middle">3) Arduino lê</text>
+  <text x="366" y="53" font-size="10" font-weight="700" fill="#188038" text-anchor="middle">14 mA: ok</text>
+
+  <!-- ===== linha 2: lampada queimada ===== -->
+  <line x1="6" y1="82" x2="414" y2="82" stroke="#cfd8dc" stroke-width="1.4"/>
+  <text x="6" y="104" font-size="10.5" font-weight="700" fill="#c62828">Lâmpada queimada</text>
+  <rect x="6" y="112" width="42" height="40" rx="5" fill="#ffd54f" stroke="#b28704" stroke-width="2"/>
+  <text x="27" y="130" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">fonte</text>
+  <text x="27" y="143" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">5 V</text>
+  <line x1="48" y1="132" x2="108" y2="132" stroke="#c62828" stroke-width="2.2" stroke-dasharray="5 4"/>
+  <text x="78" y="124" font-size="9.5" font-weight="700" fill="#c62828" text-anchor="middle">nada passa</text>
+  <rect x="110" y="112" width="92" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2"/>
+  <text x="156" y="129" font-size="10" font-weight="700" fill="#0d47a1" text-anchor="middle">INA219</text>
+  <text x="156" y="143" font-size="9.5" fill="#0d47a1" text-anchor="middle">não sente nada</text>
+  <line x1="202" y1="132" x2="238" y2="132" stroke="#c62828" stroke-width="2.2" stroke-dasharray="5 4"/>
+  <circle cx="262" cy="132" r="19" fill="#eceff1" stroke="#78909c" stroke-width="2.2"/>
+  <line x1="250" y1="120" x2="274" y2="144" stroke="#c62828" stroke-width="2.6"/>
+  <line x1="274" y1="120" x2="250" y2="144" stroke="#c62828" stroke-width="2.6"/>
+  <line x1="298" y1="132" x2="316" y2="132" stroke="#5b6770" stroke-width="2.2" marker-end="url(#setaC-ina)"/>
+  <rect x="318" y="112" width="96" height="40" rx="6" fill="#fce8e6" stroke="#c62828" stroke-width="1.8"/>
+  <text x="366" y="129" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle">Arduino lê</text>
+  <text x="366" y="143" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle">0 mA: queimada!</text>
+
+  <text x="210" y="182" font-size="10.5" font-weight="700" fill="#37474f" text-anchor="middle">Seta ligada + corrente sumiu = o painel avisa</text>
+  <text x="210" y="195" font-size="9.5" fill="#5b6770" text-anchor="middle">(limite do projeto: menos de cerca de 5 mA = queimada)</text>
+</svg>

@@ -1,0 +1,80 @@
+{
+  "nome": "Monitor de corrente INA219",
+  "nome_curto": "INA219",
+  "apelido": "O medidor que sente a corrente passando",
+  "categoria": "sensor",
+  "nivel": 4,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "Um módulo que mede quanta corrente passa por um fio e qual é a tensão ali, e conta tudo ao Arduino. Fica no meio do caminho entre a fonte e a lâmpada.",
+  "pra_que_serve": "Saber se uma lâmpada está acesa ou queimada sem abrir o circuito: lâmpada boa deixa a corrente passar, lâmpada queimada não.",
+  "onde_vive": [
+    "Carregadores e fontes: medem a corrente que vai para o aparelho.",
+    "Carros modernos: o computador avisa quando uma lâmpada queima.",
+    "Painéis solares e baterias: mostram quanta energia entra e sai."
+  ],
+  "legenda_peca": "O INA219: entradas VIN+ e VIN− em cima, 4 pinos embaixo.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Mede": "corrente e tensão",
+    "Limite": "26 V e 3,2 A",
+    "Posição": "no meio do fio da lâmpada"
+  },
+  "passos": [
+    "A corrente da lâmpada passa por dentro do módulo.",
+    "O módulo sente quanta corrente está passando.",
+    "Ele também mede a tensão do fio, em volts.",
+    "O Arduino pergunta os dois números pelos fios SDA e SCL.",
+    "Seta ligada e quase sem corrente: lâmpada queimada."
+  ],
+  "formula": "Regra de ouro: lâmpada boa deixa a corrente passar; lâmpada queimada é como um fio cortado e a corrente some.",
+  "no_projeto": {
+    "B2": {
+      "texto": "Dois módulos, um por seta, no mesmo par de fios do LCD (SDA e SCL). Com a seta ligada, o Arduino confere se passa corrente. Se não passa, a lâmpada queimou e o painel avisa. A seta de verdade pisca, então a conferência leva cerca de 1,5 s. No protótipo, o LED com resistor faz de lâmpada: tire o LED e ela \"queima\".",
+      "pinos": [
+        [
+          "Seta desligada",
+          "sem tensão: nada a medir"
+        ],
+        [
+          "Seta ok",
+          "tensão alta + corrente acima de ~5 mA"
+        ],
+        [
+          "Lâmpada queimada",
+          "tensão alta + corrente abaixo de ~5 mA"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "SDA",
+          "pino SDA (I2C)",
+          "azul"
+        ],
+        [
+          "SCL",
+          "pino SCL (I2C)",
+          "amarelo"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Liga no meio do fio, entre a fonte e a lâmpada. Os GND ficam juntos.",
+    "O segundo módulo precisa de uma ponte de solda no pad A0 (endereço 0x41).",
+    "Passou de 26 V ou de 3,2 A, o módulo queima ou lê errado."
+  ],
+  "desafio": "Uma lâmpada boa deixa passar 14 mA e o limite do projeto é 5 mA. Com a seta ligada, o INA219 mostra 14 mA. E se mostrar 0 mA? E 3 mA?",
+  "resposta": "14 mA: lâmpada boa (acima de 5 mA). 0 mA e 3 mA: abaixo de 5 mA, então a lâmpada está queimada."
+}

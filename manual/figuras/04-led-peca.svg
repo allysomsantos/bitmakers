@@ -1,0 +1,38 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- LED 5 mm -->
+  <path d="M52,100 L52,52 A28,28 0 0 1 108,52 L108,100 Z" fill="#ef5350" stroke="#b71c1c" stroke-width="2"/>
+  <path d="M60,56 A20,20 0 0 1 72,36" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+  <!-- base com lado chato -->
+  <path d="M46,100 L114,100 L114,108 L52,108 L46,104 Z" fill="#c62828" stroke="#7f1d1d" stroke-width="1.5"/>
+  <!-- cabecas internas -->
+  <path d="M72,100 L72,70 M92,100 L92,60" stroke="#bf6a60" stroke-width="2" fill="none"/>
+  <path d="M82,56 L102,56 L92,66 Z" fill="#cfd8dc" stroke="#78909c" stroke-width=".8" opacity=".9"/>
+  <!-- pernas -->
+  <line x1="68" y1="108" x2="68" y2="146" stroke="#b0bec5" stroke-width="4" stroke-linecap="round"/>
+  <line x1="92" y1="108" x2="92" y2="178" stroke="#b0bec5" stroke-width="4" stroke-linecap="round"/>
+  <!-- rotulos -->
+  <text x="58" y="136" font-size="10.5" font-weight="700" fill="#202124" text-anchor="end">Cátodo (−)</text>
+  <text x="58" y="148" font-size="9" fill="#5b6770" text-anchor="end">perna curta</text>
+  <text x="102" y="164" font-size="10.5" font-weight="700" fill="#c62828">Ânodo (+)</text>
+  <text x="102" y="176" font-size="9" fill="#5b6770">perna longa</text>
+  <text x="42" y="96" font-size="9" fill="#5b6770" text-anchor="end">lado chato</text>
+  <line x1="43" y1="93" x2="48" y2="102" stroke="#9aa0a6" stroke-width="1"/>
+  <text x="80" y="16" font-size="10.5" font-weight="700" fill="#b71c1c" text-anchor="middle">LED de 5 mm</text>
+
+  <!-- simbolo -->
+  <line x1="170" y1="100" x2="210" y2="100" stroke="#37474f" stroke-width="2.4"/>
+  <path d="M210,78 L210,122 L250,100 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="2.2"/>
+  <line x1="250" y1="78" x2="250" y2="122" stroke="#c62828" stroke-width="3"/>
+  <line x1="250" y1="100" x2="290" y2="100" stroke="#37474f" stroke-width="2.4"/>
+  <g stroke="#f9a825" stroke-width="2.2" stroke-linecap="round" fill="none">
+    <line x1="226" y1="76" x2="240" y2="58"/><line x1="238" y1="82" x2="252" y2="64"/>
+  </g>
+  <path d="M240,58 l-7,1 m7,-1 l-1,7" stroke="#f9a825" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M252,64 l-7,1 m7,-1 l-1,7" stroke="#f9a825" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="190" y="138" font-size="9" font-weight="700" fill="#c62828" text-anchor="middle">ânodo (+)</text>
+  <text x="272" y="138" font-size="9" font-weight="700" fill="#202124" text-anchor="middle">cátodo (−)</text>
+  <text x="230" y="30" font-size="10.5" font-weight="700" fill="#b71c1c" text-anchor="middle">símbolo no esquema</text>
+  <text x="230" y="155" font-size="9" fill="#5b6770" text-anchor="middle">A corrente anda no sentido</text>
+  <text x="230" y="166" font-size="9" fill="#5b6770" text-anchor="middle">da ponta do triângulo.</text>
+  <text x="230" y="180" font-size="9" fill="#5b6770" text-anchor="middle">As setas amarelas são a luz.</text>
+</svg>

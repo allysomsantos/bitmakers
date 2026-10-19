@@ -1,0 +1,50 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+    <!-- ===== SOLTO ===== -->
+  <text x="100" y="13" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle">1) SOLTO: caminho aberto</text>
+  <rect x="44" y="26" width="112" height="116" rx="5" fill="#eceff1" stroke="#90a4ae" stroke-width="1.8"/>
+  <!-- tampa e haste -->
+  <rect x="70" y="30" width="60" height="16" rx="4" fill="#e53935" stroke="#9b1c1c" stroke-width="1.5"/>
+  <rect x="92" y="46" width="16" height="36" fill="#b0bec5" stroke="#78909c"/>
+  <!-- molas -->
+  <path d="M64,46 l6,5 l-12,5 l12,5 l-12,5 l6,5" fill="none" stroke="#78909c" stroke-width="1.6" transform="translate(0,0)"/>
+  <path d="M136,46 l6,5 l-12,5 l12,5 l-12,5 l6,5" fill="none" stroke="#78909c" stroke-width="1.6"/>
+  <!-- lamina -->
+  <rect x="62" y="82" width="76" height="8" fill="#f9a825" stroke="#b27800"/>
+  <!-- contatos -->
+  <rect x="52" y="116" width="28" height="12" fill="#b0bec5" stroke="#607d8b"/>
+  <rect x="120" y="116" width="28" height="12" fill="#b0bec5" stroke="#607d8b"/>
+  <text x="100" y="109" font-size="9" font-weight="700" fill="#c62828" text-anchor="middle">espaço: nada passa</text>
+  <!-- fios -->
+  <line x1="44" y1="122" x2="14" y2="122" stroke="#c62828" stroke-width="3"/>
+  <line x1="156" y1="122" x2="190" y2="122" stroke="#37474f" stroke-width="3"/>
+  <text x="14" y="136" font-size="9.5" font-weight="700" fill="#c62828" text-anchor="start">5 V</text>
+  <text x="196" y="114" font-size="9" font-weight="700" fill="#37474f" text-anchor="end">vai à seta</text>
+  <text x="100" y="158" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">corrente: zero</text>
+  <text x="100" y="170" font-size="9" fill="#5b6770" text-anchor="middle">seta apagada</text>
+
+  <line x1="210" y1="6" x2="210" y2="194" stroke="#cfd8dc" stroke-dasharray="3 3"/>
+
+  <!-- ===== APERTADO ===== -->
+  <text x="316" y="13" font-size="10" font-weight="700" fill="#188038" text-anchor="middle">2) APERTADO: caminho fechado</text>
+  <rect x="260" y="26" width="112" height="116" rx="5" fill="#eceff1" stroke="#90a4ae" stroke-width="1.8"/>
+  <rect x="286" y="50" width="60" height="16" rx="4" fill="#e53935" stroke="#9b1c1c" stroke-width="1.5"/>
+  <rect x="308" y="66" width="16" height="36" fill="#b0bec5" stroke="#78909c"/>
+  <path d="M280,66 l6,3 l-12,3 l12,3 l-12,3 l6,3" fill="none" stroke="#78909c" stroke-width="1.6"/>
+  <path d="M352,66 l6,3 l-12,3 l12,3 l-12,3 l6,3" fill="none" stroke="#78909c" stroke-width="1.6"/>
+  <rect x="278" y="102" width="76" height="8" fill="#f9a825" stroke="#b27800"/>
+  <rect x="268" y="110" width="28" height="12" fill="#b0bec5" stroke="#607d8b"/>
+  <rect x="336" y="110" width="28" height="12" fill="#b0bec5" stroke="#607d8b"/>
+  <!-- dedo -->
+  <text x="316" y="40" font-size="9" font-weight="700" fill="#d9640a" text-anchor="middle">aperta</text>
+  <text x="316" y="134" font-size="9" font-weight="700" fill="#188038" text-anchor="middle">a lâmina fecha o contato</text>
+  <!-- fios -->
+  <line x1="260" y1="116" x2="230" y2="116" stroke="#c62828" stroke-width="3"/>
+  <line x1="372" y1="116" x2="406" y2="116" stroke="#188038" stroke-width="3"/>
+  <text x="230" y="132" font-size="9.5" font-weight="700" fill="#c62828" text-anchor="start">5 V</text>
+  <text x="412" y="108" font-size="9" font-weight="700" fill="#37474f" text-anchor="end">vai à seta</text>
+  <text x="316" y="158" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">a corrente passa</text>
+  <text x="316" y="170" font-size="9" fill="#5b6770" text-anchor="middle">LED da seta acende</text>
+
+  <!-- rodape -->
+  <text x="210" y="192" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">Botão: fecha só enquanto apertado · Interruptor: fica na posição</text>
+</svg>

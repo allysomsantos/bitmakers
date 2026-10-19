@@ -1,0 +1,30 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- agua -->
+  <rect x="6" y="128" width="288" height="56" rx="6" fill="#bbdefb" opacity=".75"/>
+  <path d="M6,128 q14,-7 28,0 t28,0 t28,0 t28,0 t28,0 t28,0 t28,0 t28,0 t28,0 t28,0" fill="none" stroke="#1a73e8" stroke-width="2"/>
+  <text x="288" y="180" font-size="9.5" font-weight="700" fill="#0d47a1" text-anchor="end">água</text>
+  <!-- corpo -->
+  <rect x="86" y="52" width="104" height="78" rx="12" fill="#37474f" stroke="#1c262b" stroke-width="2"/>
+  <circle cx="132" cy="92" r="26" fill="#546e7a" stroke="#263238" stroke-width="2"/>
+  <g stroke="#263238" stroke-width="2.2"><line x1="132" y1="70" x2="132" y2="114"/><line x1="110" y1="92" x2="154" y2="92"/></g>
+  <circle cx="132" cy="92" r="5" fill="#cfd8dc"/>
+  <!-- bico -->
+  <rect x="190" y="62" width="58" height="20" rx="5" fill="#546e7a" stroke="#263238" stroke-width="2"/>
+  <ellipse cx="248" cy="72" rx="4" ry="8" fill="#1c262b"/>
+  <!-- entrada embaixo -->
+  <g fill="none" stroke="#1a73e8" stroke-width="2.4" stroke-linecap="round">
+    <path d="M118,176 v-26"/><path d="M146,176 v-26"/>
+  </g>
+  <path d="M118,146 l-4,7 h8 z M146,146 l-4,7 h8 z" fill="#1a73e8"/>
+  <!-- fios -->
+  <path d="M86,82 C60,82 46,72 14,72" fill="none" stroke="#d93025" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M86,100 C60,100 46,100 14,100" fill="none" stroke="#202124" stroke-width="3.2" stroke-linecap="round"/>
+  <text x="8" y="62" font-size="10.5" font-weight="700" fill="#c62828">Fio vermelho</text>
+  <text x="8" y="116" font-size="10.5" font-weight="700" fill="#202124">Fio preto</text>
+  <!-- rotulos -->
+  <text x="222" y="48" font-size="10.5" font-weight="700" fill="#0d47a1" text-anchor="middle">Bico (saída da água)</text>
+  <text x="198" y="100" font-size="9" fill="#5b6770">hélice e motorzinho</text>
+  <text x="198" y="111" font-size="9" fill="#5b6770">ficam dentro</text>
+  <text x="8" y="152" font-size="10.5" font-weight="700" fill="#0d47a1">Entrada de água</text>
+  <text x="8" y="164" font-size="9" fill="#5b6770">(embaixo, mergulhada)</text>
+</svg>

@@ -1,0 +1,61 @@
+name: 'B2 - Anjos da Estrada: sensores e prioridade da tela'
+version: 1
+author: 'BITMAKERS'
+steps:
+  # 1. Inicio: potenciometro em 1023 (seco), LDR em 500 lux (claro) -> "Tudo OK"
+  - wait-serial: 'chuva=1023'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-1-tudo-ok.png
+
+  # 2. Pista molhada: potenciometro no minimo (FC-37 molhado = valor baixo)
+  - set-control:
+      part-id: chuva
+      control: position
+      value: 0
+  - wait-serial: 'chuva=0'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-2-pista-molhada.png
+
+  # 3. Pouca luz: volta a pista pra seca e escurece o LDR (AO sobe no escuro, esperado ~913)
+  - set-control:
+      part-id: chuva
+      control: position
+      value: 1
+  - set-control:
+      part-id: ldr
+      control: lux
+      value: 5
+  - wait-serial: 'luz=9'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-3-pouca-luz.png
+
+  # 4. Impacto: aperta o botao (dublê do SW-18010P). Tem prioridade sobre pista molhada e pouca luz.
+  - set-control:
+      part-id: chuva
+      control: position
+      value: 0
+  - set-control:
+      part-id: vibra
+      control: pressed
+      value: 1
+  - wait-serial: 'impacto=sim'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-4-impacto-com-chuva-e-escuro.png
+  - set-control:
+      part-id: vibra
+      control: pressed
+      value: 0
+
+  # 5. O alerta de impacto deve sumir sozinho depois de 4 s
+  - wait-serial: 'impacto=nao'
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-5-depois-do-impacto.png

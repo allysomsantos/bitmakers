@@ -1,0 +1,26 @@
+name: 'B2 - Anjos da Estrada: ponto cego (EXPERIMENTAL)'
+version: 1
+author: 'BITMAKERS'
+# A documentacao do Wokwi nao lista controle de distancia pro HC-SR04.
+# Este cenario tenta "distance". Se o Wokwi recusar, o erro aparece no primeiro set-control
+# e o ponto cego precisa ser testado no navegador (clicando no HC-SR04).
+steps:
+  - wait-serial: 'distancia=201'
+  - set-control:
+      part-id: ultra
+      control: distance
+      value: 80
+  - wait-serial: 'distancia=8'
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-6-ponto-cego-80cm.png
+  - set-control:
+      part-id: ultra
+      control: distance
+      value: 20
+  - wait-serial: 'distancia=1'   # 20 cm aparece como 19 (divisao inteira por 58)
+  - delay: 300ms
+  - take-screenshot:
+      part-id: lcd1
+      save-to: prints/b2-7-ponto-cego-20cm.png

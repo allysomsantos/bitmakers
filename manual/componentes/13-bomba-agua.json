@@ -1,0 +1,71 @@
+{
+  "nome": "Mini bomba d'água 5 V",
+  "nome_curto": "Bomba 5 V",
+  "apelido": "Uma hélice que empurra a água até o pote",
+  "categoria": "atuador",
+  "nivel": 3,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma bombinha que fica mergulhada na água. Dentro tem um motorzinho com uma hélice, que puxa a água por baixo e empurra por um bico.",
+  "pra_que_serve": "Levar água de um lugar para outro sem esforço. No B1, ela enche o pote do cachorro quando ele está seco.",
+  "onde_vive": [
+    "Fontes de água decorativas e filtros de aquário.",
+    "Esguicho do para-brisa dos carros.",
+    "Bebedouros automáticos para gatos e cachorros."
+  ],
+  "legenda_peca": "A mini bomba, com o bico e os dois fios.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Corrente": "cerca de 100 a 300 mA",
+    "Na partida": "puxa ainda mais",
+    "Cuidado": "só funciona na água"
+  },
+  "passos": [
+    "Quando passa corrente, o motorzinho gira a hélice.",
+    "A hélice empurra a água para fora, como um ventilador.",
+    "A água entra por baixo e sai pelo bico.",
+    "Um tubinho leva a água até o pote do cachorro.",
+    "A água também esfria a bomba: a seco, ela esquenta."
+  ],
+  "formula": "Pino do Arduino: até 20 mA. Bomba: 100 a 300 mA. Por isso, nunca direto no pino: sempre driver e fonte externa.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O pote do Rex fica seco e o FC-37 avisa. O Arduino liga a bomba até o sensor molhar. Se passar de 30 s ligada (5 s na simulação), ele desliga e manda o alerta \"reservatório vazio\". Na simulação, um LED azul faz o papel da bomba.",
+      "pinos": [
+        [
+          "Comando",
+          "L9110S: A-IA e A-IB (2 pinos digitais)"
+        ],
+        [
+          "Alimentação",
+          "fonte 5 V externa"
+        ],
+        [
+          "Tempo máximo",
+          "30 s (5 s na simulação)"
+        ]
+      ],
+      "ligacao": [
+        [
+          "Fio vermelho",
+          "OA",
+          "vermelho"
+        ],
+        [
+          "Fio preto",
+          "OB",
+          "preto"
+        ]
+      ],
+      "ligacao_destino": "L9110S"
+    }
+  },
+  "cuidados": [
+    "Nunca ligue a bomba direto no Arduino: use o driver e a fonte externa.",
+    "Sem água ela esquenta e estraga. Por isso existe o tempo máximo.",
+    "Mantenha a protoboard longe da água: respingo causa curto-circuito."
+  ],
+  "desafio": "A bomba enche o pote em 12 s. O limite de 30 s (real) basta? E o de 5 s (simulação)? Dica: compare os números.",
+  "resposta": "30 s basta: 12 é menos que 30 e a bomba desliga quando o sensor molha. Com 5 s não: o tempo estoura e vem o alerta."
+}

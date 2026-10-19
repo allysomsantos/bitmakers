@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-ldr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9a400"/>
+    </marker>
+  </defs>
+
+  <!-- o LDR e o resistor dividem a tensao -->
+  <text x="75" y="14" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle">5 V</text>
+  <line x1="75" y1="18" x2="75" y2="36" stroke="#37474f" stroke-width="2.4"/>
+  <!-- resistor fixo -->
+  <polyline points="75,36 75,40 67,44 83,50 67,56 83,62 67,68 83,74 75,78 75,84" fill="none" stroke="#37474f" stroke-width="2.4" stroke-linejoin="round"/>
+  <text x="58" y="62" font-size="10" font-weight="700" fill="#37474f" text-anchor="end">resistor</text>
+  <!-- ponto do meio -->
+  <line x1="75" y1="84" x2="75" y2="100" stroke="#37474f" stroke-width="2.4"/>
+  <circle cx="75" cy="100" r="4" fill="#188038"/>
+  <line x1="75" y1="100" x2="116" y2="100" stroke="#188038" stroke-width="2.4"/>
+  <text x="120" y="97" font-size="10" font-weight="700" fill="#188038">3) o Arduino lê</text>
+  <text x="120" y="109" font-size="10" font-weight="700" fill="#188038">o meio (pino AO)</text>
+  <!-- LDR -->
+  <line x1="75" y1="100" x2="75" y2="112" stroke="#37474f" stroke-width="2.4"/>
+  <rect x="62" y="112" width="26" height="44" rx="3" fill="#f5d98b" stroke="#a98307" stroke-width="2.2"/>
+  <polyline points="68,120 82,120 82,128 68,128 68,136 82,136 82,144 68,144" fill="none" stroke="#6d4c41" stroke-width="1.8"/>
+  <text x="56" y="138" font-size="10" font-weight="700" fill="#a98307" text-anchor="end">LDR</text>
+  <line x1="75" y1="156" x2="75" y2="170" stroke="#37474f" stroke-width="2.4"/>
+  <line x1="63" y1="170" x2="87" y2="170" stroke="#202124" stroke-width="2.4"/>
+  <line x1="68" y1="175" x2="82" y2="175" stroke="#202124" stroke-width="2.4"/>
+  <line x1="72" y1="180" x2="78" y2="180" stroke="#202124" stroke-width="2.4"/>
+  <text x="75" y="195" font-size="10" font-weight="700" fill="#202124" text-anchor="middle">GND</text>
+  <!-- luz entrando -->
+  <line x1="118" y1="132" x2="94" y2="135" stroke="#d9a400" stroke-width="2.4" marker-end="url(#seta-ldr)"/>
+  <line x1="118" y1="148" x2="94" y2="148" stroke="#d9a400" stroke-width="2.4" marker-end="url(#seta-ldr)"/>
+  <text x="122" y="138" font-size="10" font-weight="700" fill="#8a6500">1) a luz muda</text>
+  <text x="122" y="150" font-size="10" font-weight="700" fill="#8a6500">o LDR</text>
+  <text x="104" y="32" font-size="10" font-weight="700" fill="#37474f">2) o LDR e o resistor</text>
+  <text x="104" y="44" font-size="10" font-weight="700" fill="#37474f">dividem a tensão</text>
+
+  <!-- claro -->
+  <rect x="226" y="8" width="188" height="86" rx="8" fill="#fff8e1" stroke="#d9a400" stroke-width="1.8"/>
+  <circle cx="256" cy="38" r="11" fill="#ffd54f" stroke="#d9a400" stroke-width="2"/>
+  <g stroke="#d9a400" stroke-width="2.2" stroke-linecap="round">
+    <line x1="256" y1="18" x2="256" y2="22"/><line x1="256" y1="54" x2="256" y2="58"/>
+    <line x1="236" y1="38" x2="240" y2="38"/><line x1="272" y1="38" x2="276" y2="38"/>
+  </g>
+  <text x="290" y="34" font-size="11" font-weight="700" fill="#8a6500">CLARO</text>
+  <text x="236" y="76" font-size="10" fill="#37474f">o LDR deixa a corrente passar</text>
+  <text x="236" y="88" font-size="10" font-weight="700" fill="#188038">4) AO: número baixo</text>
+
+  <!-- escuro -->
+  <rect x="226" y="104" width="188" height="90" rx="8" fill="#263238" stroke="#455a64" stroke-width="1.8"/>
+  <path d="M262,122 a14,14 0 1,0 8,26 a11,11 0 0,1 -8,-26 z" fill="#eceff1"/>
+  <text x="290" y="140" font-size="11" font-weight="700" fill="#ffe082">ESCURO</text>
+  <text x="236" y="168" font-size="10" fill="#eceff1">o LDR segura a corrente</text>
+  <text x="236" y="183" font-size="10" font-weight="700" fill="#a5d6a7">4) AO: número alto (&gt; 800)</text>
+</svg>

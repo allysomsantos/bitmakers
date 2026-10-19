@@ -1,0 +1,58 @@
+{
+  "nome": "Célula de carga",
+  "nome_curto": "Cél. carga",
+  "apelido": "A barra que entorta um tiquinho e diz o peso",
+  "categoria": "sensor",
+  "nivel": 4,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma barra de alumínio que entorta um tiquinho quando recebe peso. Essa entortada vira um sinalzinho elétrico. Tem 4 fios e é o coração da balança.",
+  "pra_que_serve": "Transformar peso em sinal elétrico. O sinal é bem fraquinho, por isso ela precisa do HX711 para o Arduino entender.",
+  "onde_vive": [
+    "Balanças de cozinha e de banheiro: tem uma célula escondida.",
+    "Balanças de caminhão em rodovias e portos.",
+    "Balanças de padaria, de loja e de feira."
+  ],
+  "legenda_peca": "Célula de carga: uma barra com 4 fios.",
+  "ficha": {
+    "Tipo": "barra de alumínio",
+    "Aguenta": "20 kg ou 50 kg",
+    "Fios": "4 (E+ E− A+ A−)",
+    "Liga em": "HX711 (ele dá a energia)"
+  },
+  "passos": [
+    "O peso empurra a ponta livre da barra.",
+    "A barra entorta um tiquinho, que o olho nem vê.",
+    "Sensores colados na barra sentem a entortada.",
+    "Eles a transformam em um sinalzinho elétrico.",
+    "Mais peso, mais entorta, maior o sinal."
+  ],
+  "formula": "Regra de ouro: mais peso, mais a barra entorta e maior fica o sinalzinho elétrico. Sem peso, quase não sai sinal.",
+  "no_projeto": {
+    "B1": {
+      "texto": "A célula fica sob a plataforma da balança e vai ligada ao HX711. O projeto cita célula de 20 kg, mas vira-lata grande pode passar disso: 50 kg é mais seguro (a simulação usa 50 kg). Peso menor que 1 kg = cachorro fora da balança.",
+      "pinos": [
+        [
+          "E+ e E−",
+          "levam a energia"
+        ],
+        [
+          "A+ e A−",
+          "trazem o sinal"
+        ],
+        [
+          "Cores dos fios",
+          "variam: confira"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "As cores dos fios variam: confira o datasheet antes de ligar.",
+    "Não passe da capacidade: peso demais entorta a barra de vez.",
+    "Fixe uma ponta, carregue a outra e deixe a plataforma firme e reta."
+  ],
+  "desafio": "A célula de 50 kg aguenta até 50 kg. O Rex pesa 7 kg e outro cachorro pesa 30 kg. Qual entorta mais a barra? A célula de 20 kg serviria para o de 30 kg?",
+  "resposta": "O de 30 kg entorta mais. A de 20 kg não serve: 30 kg passa do limite e estraga a célula. Por isso 50 kg é mais seguro."
+}

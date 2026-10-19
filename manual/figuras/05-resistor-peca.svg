@@ -1,0 +1,70 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <text x="150" y="15" font-size="12" font-weight="700" fill="#37474f" text-anchor="middle">este resistor: 220 Ω</text>
+  <!-- pernas -->
+  <line x1="8" y1="62" x2="292" y2="62" stroke="#90a4ae" stroke-width="4" stroke-linecap="round"/>
+  <!-- corpo -->
+  <rect x="70" y="42" width="160" height="40" rx="14" fill="#e6c79c" stroke="#b08d57" stroke-width="2"/>
+  <!-- aneis -->
+  <rect x="96" y="42" width="9" height="40" fill="#e53935"/>
+  <rect x="118" y="42" width="9" height="40" fill="#e53935"/>
+  <rect x="140" y="42" width="9" height="40" fill="#795548"/>
+  <rect x="194" y="42" width="9" height="40" fill="#d4af37"/>
+  <!-- valores -->
+  <text x="100.5" y="37" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">2</text>
+  <text x="122.5" y="37" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">2</text>
+  <text x="144.5" y="37" font-size="10.5" font-weight="700" fill="#795548" text-anchor="middle">×10</text>
+  <text x="198.5" y="37" font-size="10.5" font-weight="700" fill="#9a7b0a" text-anchor="middle">±5%</text>
+  <!-- nomes -->
+  <g stroke="#9aa0a6" stroke-width="1">
+    <line x1="100.5" y1="83" x2="48" y2="91"/>
+    <line x1="122.5" y1="83" x2="116" y2="91"/>
+    <line x1="144.5" y1="83" x2="186" y2="91"/>
+    <line x1="198.5" y1="83" x2="254" y2="91"/>
+  </g>
+  <g font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">
+    <text x="48" y="101">1º número</text>
+    <text x="116" y="101">2º número</text>
+    <text x="186" y="101">multiplica</text>
+    <text x="254" y="101">erro</text>
+  </g>
+  <!-- tabela de cores -->
+  <g stroke="#9aa0a6" stroke-width=".8">
+    <rect x="5" y="110" width="29" height="22" fill="#111111"/>
+    <rect x="34" y="110" width="29" height="22" fill="#795548"/>
+    <rect x="63" y="110" width="29" height="22" fill="#e53935"/>
+    <rect x="92" y="110" width="29" height="22" fill="#fb8c00"/>
+    <rect x="121" y="110" width="29" height="22" fill="#fdd835"/>
+    <rect x="150" y="110" width="29" height="22" fill="#43a047"/>
+    <rect x="179" y="110" width="29" height="22" fill="#1e88e5"/>
+    <rect x="208" y="110" width="29" height="22" fill="#8e24aa"/>
+    <rect x="237" y="110" width="29" height="22" fill="#9e9e9e"/>
+    <rect x="266" y="110" width="29" height="22" fill="#ffffff"/>
+  </g>
+  <g font-size="12" font-weight="700" text-anchor="middle">
+    <text x="19.5" y="126" fill="#fff">0</text>
+    <text x="48.5" y="126" fill="#fff">1</text>
+    <text x="77.5" y="126" fill="#fff">2</text>
+    <text x="106.5" y="126" fill="#202124">3</text>
+    <text x="135.5" y="126" fill="#202124">4</text>
+    <text x="164.5" y="126" fill="#fff">5</text>
+    <text x="193.5" y="126" fill="#fff">6</text>
+    <text x="222.5" y="126" fill="#fff">7</text>
+    <text x="251.5" y="126" fill="#202124">8</text>
+    <text x="280.5" y="126" fill="#202124">9</text>
+  </g>
+  <g font-size="9" fill="#37474f" text-anchor="middle">
+    <text x="19.5" y="143">preto</text>
+    <text x="48.5" y="152">marrom</text>
+    <text x="77.5" y="143">vermelho</text>
+    <text x="106.5" y="152">laranja</text>
+    <text x="135.5" y="143">amarelo</text>
+    <text x="164.5" y="152">verde</text>
+    <text x="193.5" y="143">azul</text>
+    <text x="222.5" y="152">violeta</text>
+    <text x="251.5" y="143">cinza</text>
+    <text x="280.5" y="152">branco</text>
+  </g>
+  <text x="150" y="166" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">vermelho + vermelho + marrom = 22 × 10 = 220 Ω</text>
+  <text x="150" y="177" font-size="9" fill="#5b6770" text-anchor="middle">Anel dourado = erro de 5%, sempre no fim.</text>
+  <text x="150" y="187" font-size="9" fill="#5b6770" text-anchor="middle">Leia começando pelo lado oposto ao dourado.</text>
+</svg>

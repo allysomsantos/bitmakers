@@ -1,0 +1,58 @@
+{
+  "nome": "Fonte 5 V externa",
+  "nome_curto": "Fonte 5 V",
+  "apelido": "O Arduino manda o sinal, a fonte dá a força",
+  "categoria": "energia",
+  "nivel": 3,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma fonte separada do Arduino, que entrega 5 V com bastante força (até 2 A). Pode ser um carregador de celular com saída USB.",
+  "pra_que_serve": "Dar força ao motor e à bomba, que pedem mais corrente do que o Arduino consegue dar. (O B2 não precisa: a USB basta.)",
+  "onde_vive": [
+    "Carregadores de celular: todos são fontes de 5 V.",
+    "Roteador de Wi-Fi, câmera e fita de LED: cada um com a sua fonte.",
+    "Power banks: guardam energia e entregam 5 V por USB."
+  ],
+  "legenda_peca": "Um carregador USB de 5 V e 2 A: o tipo que usamos.",
+  "ficha": {
+    "Liga em": "tomada (127 ou 220 V)",
+    "Entrega": "5 V, até 2 A",
+    "Fios": "+5 V (vermelho), GND (preto)",
+    "Cuidado": "GND junto com o do Arduino"
+  },
+  "passos": [
+    "A tomada traz 127 V ou 220 V: forte demais para o Arduino.",
+    "A fonte reduz isso para 5 V, bem mais fraco e seguro.",
+    "O Arduino só manda o sinal: liga, desliga, gira.",
+    "Motor e bomba pegam a força da fonte, não do Arduino.",
+    "O GND da fonte é ligado ao GND do Arduino."
+  ],
+  "formula": "O Arduino manda o sinal, a fonte dá a força, e os GND ficam sempre juntos. Conta: motor 240 mA + bomba 500 mA = 740 mA.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O Arduino decide quando o motor e a bomba funcionam, mas quem dá a força é a fonte. O + dela vai nos drivers; o − vai nos drivers e também no GND do Arduino. Assim todos entendem os sinais.",
+      "pinos": [
+        [
+          "Saída +5 V",
+          "VCC do ULN2003 e do L9110S"
+        ],
+        [
+          "Saída −",
+          "GND dos drivers e do Arduino"
+        ],
+        [
+          "Corrente prevista",
+          "cerca de 740 mA no pior caso"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Sem GND comum, o sinal do Arduino não é entendido e nada funciona direito.",
+    "Cuidado com os fios: + com +, − com −. Invertidos, podem queimar os módulos.",
+    "Não use o 5V do Arduino: a USB dá só cerca de 500 mA e a placa reinicia."
+  ],
+  "desafio": "Motor (240 mA) e bomba (500 mA no pico) ligam juntos. Qual a corrente total? Quanto sobra numa fonte de 2 A (2000 mA)?",
+  "resposta": "240 + 500 = 740 mA. Sobram 2000 − 740 = 1260 mA: folga de sobra. Uma fonte de 1 A também aguentaria, mas quase sem folga."
+}

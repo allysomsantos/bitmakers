@@ -1,0 +1,60 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-uno" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+    <marker id="setaL-uno" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9640a"/>
+    </marker>
+  </defs>
+
+  <!-- computador -->
+  <rect x="6" y="10" width="86" height="40" rx="5" fill="#eceff1" stroke="#78909c" stroke-width="1.6"/>
+  <text x="49" y="28" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">Computador</text>
+  <text x="49" y="41" font-size="8.8" fill="#5b6770" text-anchor="middle">escreve o código</text>
+  <line x1="92" y1="30" x2="132" y2="30" stroke="#5b6770" stroke-width="2" marker-end="url(#seta-uno)"/>
+  <text x="112" y="19" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">1) USB</text>
+
+  <!-- placa -->
+  <rect x="136" y="8" width="164" height="136" rx="8" fill="#e0f2f1" stroke="#00838f" stroke-width="2.2"/>
+  <text x="218" y="22" font-size="9.5" font-weight="700" fill="#00695c" text-anchor="middle">Arduino Uno</text>
+  <rect x="146" y="28" width="144" height="22" rx="4" fill="#b2dfdb" stroke="#00838f"/>
+  <text x="218" y="43" font-size="9" fill="#004d40" text-anchor="middle">guarda o seu programa</text>
+  <!-- setup -->
+  <rect x="146" y="56" width="144" height="20" rx="4" fill="#fff" stroke="#00838f"/>
+  <text x="218" y="70" font-size="9" font-weight="700" fill="#004d40" text-anchor="middle">2) setup(): prepara, 1 vez</text>
+  <!-- loop -->
+  <rect x="146" y="82" width="144" height="56" rx="6" fill="#fff" stroke="#d9640a" stroke-width="1.8"/>
+  <text x="218" y="95" font-size="9" font-weight="700" fill="#d9640a" text-anchor="middle">3) loop(): repete sem parar</text>
+  <rect x="152" y="101" width="38" height="18" rx="3" fill="#bbdefb" stroke="#1a73e8"/>
+  <text x="171" y="113.5" font-size="8.8" font-weight="700" fill="#0d47a1" text-anchor="middle">ler</text>
+  <rect x="199" y="101" width="38" height="18" rx="3" fill="#fff3e0" stroke="#d9640a"/>
+  <text x="218" y="113.5" font-size="8.8" font-weight="700" fill="#b4510a" text-anchor="middle">decidir</text>
+  <rect x="246" y="101" width="38" height="18" rx="3" fill="#c8e6c9" stroke="#188038"/>
+  <text x="265" y="113.5" font-size="8.8" font-weight="700" fill="#0f5a26" text-anchor="middle">agir</text>
+  <line x1="190" y1="110" x2="198" y2="110" stroke="#5b6770" stroke-width="1.6" marker-end="url(#seta-uno)"/>
+  <line x1="237" y1="110" x2="245" y2="110" stroke="#5b6770" stroke-width="1.6" marker-end="url(#seta-uno)"/>
+  <path d="M265,119 L265,129 L171,129 L171,120" fill="none" stroke="#d9640a" stroke-width="1.6" marker-end="url(#setaL-uno)"/>
+
+  <!-- entradas -->
+  <rect x="6" y="84" width="92" height="44" rx="5" fill="#e3f2fd" stroke="#1a73e8" stroke-width="1.6"/>
+  <text x="52" y="102" font-size="9.5" font-weight="700" fill="#0d47a1" text-anchor="middle">Entradas</text>
+  <text x="52" y="115" font-size="8.8" fill="#37474f" text-anchor="middle">sensores e botões</text>
+  <line x1="98" y1="106" x2="136" y2="106" stroke="#1a73e8" stroke-width="2.2" marker-end="url(#seta-uno)"/>
+
+  <!-- saidas -->
+  <rect x="322" y="84" width="92" height="44" rx="5" fill="#e8f5e9" stroke="#188038" stroke-width="1.6"/>
+  <text x="368" y="102" font-size="9.5" font-weight="700" fill="#0f5a26" text-anchor="middle">Saídas</text>
+  <text x="368" y="115" font-size="8.8" fill="#37474f" text-anchor="middle">LED, buzzer e motor</text>
+  <line x1="300" y1="106" x2="322" y2="106" stroke="#188038" stroke-width="2.2" marker-end="url(#seta-uno)"/>
+
+  <!-- leitura analogica -->
+  <text x="6" y="164" font-size="9.5" font-weight="700" fill="#37474f">Como o Arduino lê uma tensão (pinos A0 a A5):</text>
+  <line x1="20" y1="180" x2="400" y2="180" stroke="#5b6770" stroke-width="2.2"/>
+  <g stroke="#37474f" stroke-width="1.8">
+    <line x1="20" y1="174" x2="20" y2="186"/><line x1="210" y1="174" x2="210" y2="186"/><line x1="400" y1="174" x2="400" y2="186"/>
+  </g>
+  <text x="20" y="197" font-size="8.8" font-weight="700" fill="#37474f" text-anchor="start">0 V = 0</text>
+  <text x="210" y="197" font-size="8.8" font-weight="700" fill="#37474f" text-anchor="middle">2,5 V = cerca de 511</text>
+  <text x="400" y="197" font-size="8.8" font-weight="700" fill="#37474f" text-anchor="end">5 V = 1023</text>
+</svg>

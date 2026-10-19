@@ -1,0 +1,72 @@
+{
+  "nome": "Protoboard e fios jumper",
+  "nome_curto": "Protoboard",
+  "apelido": "A mesa de montagem: liga tudo sem solda",
+  "categoria": "montagem",
+  "nivel": 1,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "A protoboard é uma placa cheia de furinhos com ligações escondidas por baixo. Os jumpers são fios com pontinha de metal. Juntos, montam o circuito sem solda.",
+  "pra_que_serve": "Montar, testar e mudar um circuito rápido: é só encaixar e desencaixar. Perfeita para protótipos.",
+  "onde_vive": [
+    "Laboratórios de escola e oficinas: todo teste de eletrônica começa nela.",
+    "Feiras de ciência e maratonas de tecnologia.",
+    "Engenheiros testam ideias nela antes da placa definitiva."
+  ],
+  "legenda_peca": "Protoboard com as ligações internas destacadas e dois jumpers.",
+  "ficha": {
+    "Sem solda": "encaixa e tira",
+    "Coluna": "5 furos ligados entre si",
+    "Barras + e −": "linha inteira ligada",
+    "Jumpers": "fios com pontinha"
+  },
+  "passos": [
+    "Cada furo tem uma mola de metal que segura a perninha.",
+    "Embaixo, uma tira de metal liga os 5 furos da mesma coluna.",
+    "O vão do meio separa o lado de cima do lado de baixo.",
+    "As barras + e − correm no comprimento e levam 5 V e GND.",
+    "Jumpers ligam um ponto a outro e saem fácil se você errar."
+  ],
+  "formula": "Regra de ouro: furos na MESMA coluna estão ligados entre si; colunas diferentes, não. Nas barras + e −, a linha toda é ligada.",
+  "no_projeto": {
+    "B1": {
+      "texto": "Recebe os dois resistores do Bluetooth (HC-06) e junta o GND de tudo: Arduino, fonte e módulos. Jumpers levam cada sinal ao pino certo.",
+      "pinos": [
+        [
+          "Resistores HC-06",
+          "1 kΩ e 2 kΩ"
+        ],
+        [
+          "Barra −",
+          "GND comum"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Monta os botões, os LEDs com resistor de 220 Ω das setas e os medidores das setas. Tirar o LED \"queima\" a lâmpada de mentirinha.",
+      "pinos": [
+        [
+          "Barra +",
+          "5 V da USB"
+        ],
+        [
+          "Barra −",
+          "GND"
+        ],
+        [
+          "Seta",
+          "LED + 220 Ω"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Nunca ligue 5 V direto no GND: isso é um curto-circuito.",
+    "Sem contato? Troque de furo. Algumas barras + e − são cortadas no meio.",
+    "Fio de 5 V e de GND trocados podem queimar peças: confira as cores."
+  ],
+  "desafio": "Um LED está na coluna 12, furo a. O resistor está na coluna 12, furo c. Os dois estão ligados? E se o resistor estivesse no furo f, do outro lado do vão do meio?",
+  "resposta": "Furos a e c: mesma coluna, mesmo lado do vão, ligados. O furo f fica do outro lado do vão: NÃO liga, o caminho fica cortado."
+}

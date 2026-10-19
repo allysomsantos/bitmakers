@@ -1,0 +1,47 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="30" y="36" width="240" height="100" rx="7" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <!-- borneira (VIN+ e VIN-) -->
+  <rect x="70" y="26" width="62" height="40" rx="3" fill="#1565c0" stroke="#0d47a1" stroke-width="1.5"/>
+  <rect x="138" y="26" width="62" height="40" rx="3" fill="#1565c0" stroke="#0d47a1" stroke-width="1.5"/>
+  <circle cx="90" cy="44" r="9" fill="#cfd8dc" stroke="#78909c" stroke-width="1.5"/>
+  <line x1="84" y1="44" x2="96" y2="44" stroke="#455a64" stroke-width="2"/>
+  <circle cx="158" cy="44" r="9" fill="#cfd8dc" stroke="#78909c" stroke-width="1.5"/>
+  <line x1="152" y1="44" x2="164" y2="44" stroke="#455a64" stroke-width="2"/>
+  <circle cx="116" cy="56" r="3.2" fill="#0d47a1"/>
+  <circle cx="184" cy="56" r="3.2" fill="#0d47a1"/>
+  <text x="101" y="14" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">VIN+</text>
+  <text x="169" y="14" font-size="11" font-weight="700" fill="#202124" text-anchor="middle">VIN−</text>
+  <text x="298" y="20" font-size="9" fill="#5b6770" text-anchor="end">VIN+ entra da fonte,</text>
+  <text x="298" y="31" font-size="9" fill="#5b6770" text-anchor="end">VIN− sai para a carga</text>
+  <!-- shunt -->
+  <rect x="212" y="52" width="46" height="20" rx="2" fill="#263238"/>
+  <text x="235" y="66" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">medidor</text>
+  <text x="225" y="86" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">mede a corrente</text>
+  <!-- chip -->
+  <rect x="62" y="80" width="52" height="30" rx="2" fill="#263238"/>
+  <circle cx="69" cy="87" r="2" fill="#90a4ae"/>
+  <text x="88" y="99" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">INA219</text>
+  <!-- pads de endereco -->
+  <rect x="140" y="102" width="12" height="9" rx="1.5" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="156" y="102" width="12" height="9" rx="1.5" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="140" y="116" width="12" height="9" rx="1.5" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="156" y="116" width="12" height="9" rx="1.5" fill="#ffd54f" stroke="#b28704"/>
+  <text x="176" y="110" font-size="9.5" font-weight="700" fill="#fff">A0</text>
+  <text x="176" y="124" font-size="9.5" font-weight="700" fill="#fff">A1</text>
+  <text x="208" y="118" font-size="9.5" fill="#fff">ponte em A0</text>
+  <text x="208" y="128" font-size="9.5" fill="#fff">= 0x41</text>
+  <!-- pinos -->
+  <rect x="66" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="112" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="158" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="204" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <text x="70.5" y="172" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">VCC</text>
+  <text x="116.5" y="172" font-size="11" font-weight="700" fill="#202124" text-anchor="middle">GND</text>
+  <text x="162.5" y="172" font-size="11" font-weight="700" fill="#b28704" text-anchor="middle">SCL</text>
+  <text x="208.5" y="172" font-size="11" font-weight="700" fill="#1a73e8" text-anchor="middle">SDA</text>
+  <text x="70.5" y="184" font-size="9" fill="#5b6770" text-anchor="middle">5 V</text>
+  <text x="116.5" y="184" font-size="9" fill="#5b6770" text-anchor="middle">terra</text>
+  <text x="162.5" y="184" font-size="9" fill="#5b6770" text-anchor="middle">ritmo</text>
+  <text x="208.5" y="184" font-size="9" fill="#5b6770" text-anchor="middle">dados</text>
+</svg>

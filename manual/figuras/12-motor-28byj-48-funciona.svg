@@ -1,0 +1,43 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- carcaca do motor -->
+  <circle cx="90" cy="84" r="72" fill="#eceff1" stroke="#90a4ae" stroke-width="2.5"/>
+  <!-- ligacao ao conjunto de engrenagens -->
+  <line x1="154" y1="84" x2="208" y2="84" stroke="#78909c" stroke-width="5"/>
+  <!-- bobina 1 (ligada) -->
+  <rect x="73" y="26" width="34" height="24" rx="4" fill="#ff9800" stroke="#d9640a" stroke-width="2"/>
+  <text x="90" y="43" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <!-- bobina 2 -->
+  <rect x="126" y="72" width="28" height="24" rx="4" fill="#fff" stroke="#90a4ae" stroke-width="2"/>
+  <text x="140" y="89" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">2</text>
+  <!-- bobina 3 -->
+  <rect x="73" y="118" width="34" height="24" rx="4" fill="#fff" stroke="#90a4ae" stroke-width="2"/>
+  <text x="90" y="135" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">3</text>
+  <!-- bobina 4 -->
+  <rect x="26" y="72" width="28" height="24" rx="4" fill="#fff" stroke="#90a4ae" stroke-width="2"/>
+  <text x="40" y="89" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">4</text>
+  <!-- ima (rotor) apontando para a bobina 1 -->
+  <circle cx="90" cy="84" r="23" fill="#1a73e8" stroke="#0d47a1" stroke-width="2"/>
+  <path d="M67,84 A23,23 0 0 1 113,84 Z" fill="#d93025" stroke="#8e0000" stroke-width="2"/>
+  <text x="90" y="78" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N</text>
+  <text x="90" y="101" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">S</text>
+  <!-- seta de giro -->
+  <path d="M116,62 A30,30 0 0 1 120,100" fill="none" stroke="#d9640a" stroke-width="2.6"/>
+  <path d="M120,106 L113,97 L125,97 z" fill="#d9640a"/>
+  <!-- engrenagens -->
+  <circle cx="220" cy="84" r="13" fill="#cfd8dc" stroke="#607d8b" stroke-width="5" stroke-dasharray="4 3"/>
+  <circle cx="220" cy="84" r="3.5" fill="#546e7a"/>
+  <circle cx="274" cy="84" r="40" fill="#cfd8dc" stroke="#607d8b" stroke-width="5" stroke-dasharray="4 3"/>
+  <circle cx="274" cy="84" r="7" fill="#546e7a"/>
+  <path d="M274,84 H336" stroke="#546e7a" stroke-width="5"/>
+  <circle cx="336" cy="84" r="6" fill="#fff8e1" stroke="#8d6e00" stroke-width="2.4"/>
+  <text x="220" y="112" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">rápida</text>
+  <text x="274" y="38" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">lenta e forte</text>
+  <text x="346" y="80" font-size="9.5" font-weight="700" fill="#0d47a1">Eixo</text>
+  <text x="346" y="92" font-size="9.5" font-weight="700" fill="#0d47a1">de saída</text>
+  <!-- explicacoes -->
+  <text x="170" y="150" font-size="9.5" font-weight="700" fill="#5b6770">Cada passo é um tique, como o ponteiro de um relógio.</text>
+  <text x="6" y="172" font-size="9.5" font-weight="700" fill="#d9640a">1 a bobina ligada (laranja) puxa o ímã</text>
+  <text x="6" y="188" font-size="9.5" font-weight="700" fill="#d93025">2 muda a bobina: o ímã dá outro passo</text>
+  <text x="250" y="172" font-size="9.5" font-weight="700" fill="#37474f">3 engrenagens: lento e forte</text>
+  <text x="250" y="188" font-size="9.5" font-weight="700" fill="#0d47a1">4 2048 passos = 1 volta do eixo</text>
+</svg>

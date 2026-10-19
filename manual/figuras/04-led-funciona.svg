@@ -1,0 +1,43 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-led" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+    <marker id="seta-led-cor" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#f9a825"/>
+    </marker>
+  </defs>
+
+  <text x="6" y="16" font-size="10" font-weight="700" fill="#37474f">O caminho da corrente: do + para o −</text>
+
+  <!-- fios -->
+  <g stroke="#37474f" stroke-width="3" fill="none">
+    <line x1="30" y1="120" x2="92" y2="120" stroke="#c62828"/>
+    <polyline points="92,120 100,120 106,104 118,136 130,104 142,136 148,120 158,120"/>
+    <line x1="158" y1="120" x2="222" y2="120"/>
+    <line x1="270" y1="120" x2="392" y2="120" stroke="#202124"/>
+  </g>
+  <text x="30" y="150" font-size="10" font-weight="700" fill="#c62828">5 V</text>
+  <text x="392" y="150" font-size="10" font-weight="700" fill="#202124" text-anchor="end">GND</text>
+
+  <!-- setas da corrente -->
+  <line x1="40" y1="106" x2="84" y2="106" stroke="#5b6770" stroke-width="2" marker-end="url(#seta-led)"/>
+  <line x1="290" y1="106" x2="340" y2="106" stroke="#5b6770" stroke-width="2" marker-end="url(#seta-led)"/>
+  <text x="62" y="98" font-size="9" fill="#5b6770" text-anchor="middle">corrente</text>
+
+  <!-- LED -->
+  <polygon points="222,98 222,142 262,120" fill="#ffcdd2" stroke="#c62828" stroke-width="2.4"/>
+  <line x1="264" y1="98" x2="264" y2="142" stroke="#c62828" stroke-width="3.4"/>
+  <line x1="234" y1="92" x2="254" y2="68" stroke="#f9a825" stroke-width="3" stroke-linecap="round" marker-end="url(#seta-led-cor)"/>
+  <line x1="250" y1="98" x2="272" y2="72" stroke="#f9a825" stroke-width="3" stroke-linecap="round" marker-end="url(#seta-led-cor)"/>
+
+  <!-- numeros e rotulos -->
+  <text x="242" y="168" font-size="10" font-weight="700" fill="#b71c1c" text-anchor="middle">LED</text>
+  <text x="242" y="180" font-size="9" fill="#5b6770" text-anchor="middle">ânodo (+) à esquerda</text>
+  <text x="125" y="168" font-size="10" font-weight="700" fill="#b4510a" text-anchor="middle">3) resistor 220 Ω</text>
+  <text x="125" y="180" font-size="9" fill="#5b6770" text-anchor="middle">segura a corrente</text>
+  <text x="300" y="58" font-size="10" font-weight="700" fill="#b4510a">2) vira LUZ</text>
+  <text x="300" y="70" font-size="9" fill="#5b6770">quando a corrente passa</text>
+  <text x="300" y="92" font-size="10" font-weight="700" fill="#37474f">1) só passa nesse sentido</text>
+  <text x="6" y="198" font-size="9" fill="#37474f">Ao contrário, não passa e não acende, como uma catraca de um sentido só.</text>
+</svg>

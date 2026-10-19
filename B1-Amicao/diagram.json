@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "BITMAKERS B1 - Amicao",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 0, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -120, "left": 0, "attrs": { "pins": "i2c", "background": "blue", "color": "white" } },
+    { "type": "board-mfrc522", "id": "rfid", "top": -140, "left": 400, "attrs": { "uid": "0A:0B:0C:0D" } },
+    { "type": "wokwi-hx711", "id": "balanca", "top": 120, "left": 420, "attrs": { "type": "50kg" } },
+    { "type": "wokwi-stepper-motor", "id": "dosador", "top": 330, "left": -10, "attrs": { "size": "17", "arrow": "orange", "display": "angle" } },
+    { "type": "wokwi-potentiometer", "id": "agua", "top": 330, "left": 420, "attrs": {} },
+    { "type": "wokwi-led", "id": "bomba", "top": 330, "left": 250, "attrs": { "color": "blue" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 420, "left": 240, "attrs": { "value": "220" } },
+    { "type": "wokwi-text", "id": "t1", "top": -170, "left": 400, "attrs": { "text": "Clique no RC522 e escolha a tag (Blue Card = Rex)" } },
+    { "type": "wokwi-text", "id": "t2", "top": 95, "left": 420, "attrs": { "text": "Clique na balanca pra colocar o peso do cachorro" } },
+    { "type": "wokwi-text", "id": "t3", "top": 305, "left": -10, "attrs": { "text": "Motor = 28BYJ-48 + ULN2003 (dosador)" } },
+    { "type": "wokwi-text", "id": "t4", "top": 305, "left": 250, "attrs": { "text": "LED azul = bomba (L9110S)" } },
+    { "type": "wokwi-text", "id": "t5", "top": 305, "left": 420, "attrs": { "text": "Potenciometro = FC-37 no pote (girado ao maximo = seco)" } }
+  ],
+  "connections": [
+    [ "lcd1:VCC", "uno:5V", "red", [] ],
+    [ "lcd1:GND", "uno:GND.1", "black", [] ],
+    [ "lcd1:SDA", "uno:A4", "blue", [] ],
+    [ "lcd1:SCL", "uno:A5", "purple", [] ],
+
+    [ "rfid:3.3V", "uno:3.3V", "orange", [] ],
+    [ "rfid:GND", "uno:GND.1", "black", [] ],
+    [ "rfid:RST", "uno:9", "white", [] ],
+    [ "rfid:SDA", "uno:10", "green", [] ],
+    [ "rfid:MOSI", "uno:11", "blue", [] ],
+    [ "rfid:MISO", "uno:12", "violet", [] ],
+    [ "rfid:SCK", "uno:13", "yellow", [] ],
+
+    [ "balanca:VCC", "uno:5V", "red", [] ],
+    [ "balanca:GND", "uno:GND.2", "black", [] ],
+    [ "balanca:DT", "uno:A1", "green", [] ],
+    [ "balanca:SCK", "uno:A0", "yellow", [] ],
+
+    [ "dosador:A+", "uno:4", "green", [] ],
+    [ "dosador:B+", "uno:5", "blue", [] ],
+    [ "dosador:A-", "uno:6", "gray", [] ],
+    [ "dosador:B-", "uno:7", "orange", [] ],
+
+    [ "agua:VCC", "uno:5V", "red", [] ],
+    [ "agua:GND", "uno:GND.2", "black", [] ],
+    [ "agua:SIG", "uno:A2", "blue", [] ],
+
+    [ "uno:3", "r1:1", "blue", [] ],
+    [ "r1:2", "bomba:A", "blue", [] ],
+    [ "bomba:C", "uno:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}

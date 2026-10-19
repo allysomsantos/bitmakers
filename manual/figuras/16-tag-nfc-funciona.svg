@@ -1,0 +1,56 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-tag" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+    <marker id="seta-tag-o" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9640a"/>
+    </marker>
+    <marker id="seta-tag-v" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#188038"/>
+    </marker>
+  </defs>
+
+  <!-- leitor -->
+  <rect x="6" y="16" width="64" height="72" rx="6" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <rect x="14" y="24" width="48" height="56" rx="3" fill="none" stroke="#eceff1" stroke-width="2.6"/>
+  <rect x="22" y="32" width="32" height="40" rx="2" fill="none" stroke="#eceff1" stroke-width="2.6"/>
+  <text x="38" y="106" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">leitor</text>
+
+  <!-- tag -->
+  <rect x="300" y="16" width="112" height="72" rx="7" fill="#fafafa" stroke="#78909c" stroke-width="2"/>
+  <rect x="308" y="24" width="96" height="56" rx="3" fill="none" stroke="#90a4ae" stroke-width="2.2"/>
+  <rect x="316" y="32" width="80" height="40" rx="2" fill="none" stroke="#90a4ae" stroke-width="2.2"/>
+  <rect x="338" y="38" width="36" height="28" rx="3" fill="#ffd54f" stroke="#b28704" stroke-width="1.6"/>
+  <text x="356" y="56" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">chip</text>
+  <text x="356" y="106" font-size="11" font-weight="700" fill="#37474f" text-anchor="middle">tag (sem bateria)</text>
+
+  <!-- energia: ida -->
+  <g fill="none" stroke="#d9640a" stroke-width="2.6" stroke-linecap="round">
+    <path d="M82,36 q8,14 0,28"/>
+    <path d="M96,28 q12,22 0,44"/>
+  </g>
+  <line x1="112" y1="38" x2="292" y2="38" stroke="#d9640a" stroke-width="2.6" stroke-dasharray="6 4" marker-end="url(#seta-tag-o)"/>
+  <text x="202" y="30" font-size="10.5" font-weight="700" fill="#d9640a" text-anchor="middle">1) energia invisível</text>
+  <!-- resposta: volta -->
+  <line x1="292" y1="66" x2="112" y2="66" stroke="#188038" stroke-width="2.6" marker-end="url(#seta-tag-v)"/>
+  <text x="202" y="84" font-size="10.5" font-weight="700" fill="#188038" text-anchor="middle">4) responde: UID 0A:0B:0C:0D</text>
+
+  <!-- o que acontece -->
+  <text x="6" y="130" font-size="10" font-weight="700" fill="#37474f">O que acontece:</text>
+  <g stroke-width="1.8">
+    <rect x="6" y="140" width="126" height="52" rx="6" fill="#e8f0fe" stroke="#1a73e8"/>
+    <rect x="147" y="140" width="126" height="52" rx="6" fill="#fff8e1" stroke="#b28704"/>
+    <rect x="288" y="140" width="126" height="52" rx="6" fill="#e6f4ea" stroke="#188038"/>
+  </g>
+  <g font-size="10" font-weight="700" text-anchor="middle" fill="#37474f">
+    <text x="69" y="158">2) a antena da tag</text>
+    <text x="69" y="172">capta a energia</text>
+    <text x="210" y="158">3) o chip acorda</text>
+    <text x="210" y="172">(sem bateria!)</text>
+    <text x="351" y="158">5) o leitor passa</text>
+    <text x="351" y="172">o número ao Arduino</text>
+  </g>
+  <line x1="132" y1="166" x2="145" y2="166" stroke="#5b6770" stroke-width="2" marker-end="url(#seta-tag)"/>
+  <line x1="273" y1="166" x2="286" y2="166" stroke="#5b6770" stroke-width="2" marker-end="url(#seta-tag)"/>
+</svg>

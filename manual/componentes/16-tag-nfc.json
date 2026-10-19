@@ -1,0 +1,58 @@
+{
+  "nome": "Tag NFC/RFID (cartão ou chaveiro)",
+  "nome_curto": "Tag NFC",
+  "apelido": "A identidade do Rex, sem bateria nenhuma",
+  "categoria": "sensor",
+  "nivel": 4,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Um chip minúsculo ligado a uma antena em espiral, dentro de um cartão ou chaveiro. Não tem bateria nem fio. Guarda um número de identidade, o UID.",
+  "pra_que_serve": "Dizer quem é. Cada tag tem o seu UID, então basta ler o número para saber quem chegou. É como o RG do cachorro.",
+  "onde_vive": [
+    "Cartão do ônibus e do metrô: encostou, a catraca liberou.",
+    "Crachá da escola, da academia ou do condomínio.",
+    "Cartão de pagamento por aproximação, na maquininha."
+  ],
+  "legenda_peca": "Cartão e chaveiro: a antena e o chip ficam por dentro.",
+  "ficha": {
+    "Bateria": "nenhuma",
+    "Identidade": "um número (UID)",
+    "Alcance": "2 a 5 cm",
+    "Formato": "cartão ou chaveiro"
+  },
+  "passos": [
+    "O leitor manda uma energia invisível pelo ar.",
+    "A antena em espiral da tag capta essa energia.",
+    "A energia acorda o chip, que não tem bateria.",
+    "O chip responde com o seu número de identidade (UID).",
+    "O leitor ouve a resposta e passa o número ao Arduino."
+  ],
+  "formula": "Regra de ouro: a tag não tem bateria. Ela vive da energia do leitor e só acorda quando chega bem pertinho dele.",
+  "no_projeto": {
+    "B1": {
+      "texto": "Cada cachorro usa uma tag presa na coleira. O Rex tem o número 0A:0B:0C:0D e a Pipoca, 11:22:33:44. Se aparecer uma tag que o totem não conhece, o LCD mostra \"Novo amigo\" e o número sai no Serial, pronto para cadastrar no app.",
+      "pinos": [
+        [
+          "Rex",
+          "0A:0B:0C:0D"
+        ],
+        [
+          "Pipoca",
+          "11:22:33:44"
+        ],
+        [
+          "Tag desconhecida",
+          "Novo amigo"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "O número pode ser copiado: serve para identificar, não é uma senha.",
+    "Metal colado atrás da tag atrapalha a leitura: deixe um espaço.",
+    "Prenda a tag firme na coleira e proteja da água com uma capinha."
+  ],
+  "desafio": "O UID do Rex tem 4 pares de dígitos (0A, 0B, 0C, 0D) e cada par tem 256 jeitos de ser. Quantos UIDs diferentes existem? (Dica: 256 x 256 = 65.536.)",
+  "resposta": "65.536 x 65.536 = 4.294.967.296, cerca de 4,3 bilhões de números diferentes. Por isso é difícil dois cachorros terem o mesmo."
+}

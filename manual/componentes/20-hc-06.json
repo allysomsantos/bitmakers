@@ -1,0 +1,112 @@
+{
+  "nome": "Módulo Bluetooth HC-06",
+  "nome_curto": "HC-06",
+  "apelido": "O rádio que leva as mensagens até o tablet",
+  "categoria": "comunicacao",
+  "nivel": 4,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "Um rádio Bluetooth do tamanho de um selo. Tudo o que o Arduino escreve no Serial sai pelo ar. Ele só atende: quem faz a conexão é o tablet.",
+  "pra_que_serve": "Mandar as mensagens do Arduino para o tablet ou celular, sem fio, a até cerca de 10 metros.",
+  "onde_vive": [
+    "Fones e caixas de som sem fio.",
+    "Som do carro ligado ao celular.",
+    "Carrinhos e robôs controlados pelo celular."
+  ],
+  "legenda_peca": "O HC-06 visto de cima, com os quatro pinos embaixo.",
+  "ficha": {
+    "Liga em": "5 V (pino VCC)",
+    "Pino RXD": "aguenta só 3,3 V",
+    "Senha": "1234 ou 0000",
+    "Alcance": "cerca de 10 m"
+  },
+  "passos": [
+    "O tablet pareia com o HC-06 usando a senha.",
+    "LED piscando = esperando; LED aceso = conectado.",
+    "O Arduino escreve a mensagem para o HC-06.",
+    "O HC-06 manda a mensagem pelo ar, por Bluetooth.",
+    "O app do tablet lê cada mensagem recebida."
+  ],
+  "formula": "Regra de ouro: o RXD aguenta só 3,3 V. O divisor de 1 kΩ + 2 kΩ baixa os 5 V do Arduino para cerca de 3,3 V.",
+  "no_projeto": {
+    "B1": {
+      "texto": "Manda cada evento (visita, água, alerta) como uma linha de texto para o app do tablet. Só envia: se o tablet estiver desconectado, o evento se perde.",
+      "pinos": [
+        [
+          "Divisor no RXD",
+          "1 kΩ + 2 kΩ"
+        ],
+        [
+          "Confirmação",
+          "nenhuma"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "TXD",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "RXD",
+          "pino digital (com divisor)",
+          "laranja"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Manda quando algo muda e, a cada 5 s, um resumo do estado de tudo. Se o tablet perder um aviso, o resumo conserta em até 5 s.",
+      "pinos": [
+        [
+          "Divisor no RXD",
+          "1 kΩ + 2 kΩ"
+        ],
+        [
+          "Resumo",
+          "a cada 5 s"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "TXD",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "RXD",
+          "pino digital (com divisor)",
+          "laranja"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Nunca ligue o RXD direto num pino de 5 V: use o divisor.",
+    "TX liga no RX e RX no TX (TX com TX não funciona).",
+    "Só envia, sem confirmação. Pareie o tablet antes da apresentação."
+  ],
+  "desafio": "O divisor deixa o RXD com 2/3 da tensão do Arduino (5 V). Quantos volts chegam ao RXD? Por que não ligar o RXD direto no pino?",
+  "resposta": "5 x 2/3 ≈ 3,3 V, o que o RXD aguenta. Ligado direto, os 5 V podem queimar o módulo."
+}

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-fc37" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9640a"/>
+    </marker>
+  </defs>
+
+  <!-- seca -->
+  <rect x="6" y="6" width="204" height="90" rx="7" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5"/>
+  <text x="14" y="22" font-size="10.5" font-weight="700" fill="#37474f">SECA</text>
+  <rect x="16" y="32" width="150" height="9" rx="2" fill="#78909c"/>
+  <rect x="16" y="52" width="150" height="9" rx="2" fill="#78909c"/>
+  <text x="172" y="40" font-size="9.5" fill="#37474f">trilha A</text>
+  <text x="172" y="60" font-size="9.5" fill="#37474f">trilha B</text>
+  <text x="14" y="76" font-size="10" fill="#37474f">1) duas trilhas, só ar entre elas</text>
+  <text x="14" y="89" font-size="10" font-weight="700" fill="#d9640a">2) quase nenhuma corrente passa</text>
+
+  <!-- molhada -->
+  <rect x="6" y="102" width="204" height="94" rx="7" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1.5"/>
+  <text x="14" y="118" font-size="10.5" font-weight="700" fill="#0d47a1">MOLHADA</text>
+  <rect x="16" y="128" width="150" height="9" rx="2" fill="#78909c"/>
+  <rect x="16" y="148" width="150" height="9" rx="2" fill="#78909c"/>
+  <ellipse cx="91" cy="142" rx="30" ry="19" fill="#42a5f5" opacity=".75"/>
+  <line x1="80" y1="130" x2="80" y2="154" stroke="#d9640a" stroke-width="2.2" marker-end="url(#seta-fc37)"/>
+  <line x1="98" y1="130" x2="98" y2="154" stroke="#d9640a" stroke-width="2.2" marker-end="url(#seta-fc37)"/>
+  <text x="172" y="136" font-size="9.5" fill="#37474f">trilha A</text>
+  <text x="172" y="156" font-size="9.5" fill="#37474f">trilha B</text>
+  <text x="14" y="173" font-size="10" fill="#37474f">a água liga as trilhas e</text>
+  <text x="14" y="186" font-size="10" font-weight="700" fill="#d9640a">3) a corrente passa pela água</text>
+
+  <!-- medidor -->
+  <text x="222" y="16" font-size="10.5" font-weight="700" fill="#37474f">4) número lido no pino AO</text>
+  <text x="222" y="42" font-size="10.5" font-weight="700" fill="#d9640a">Seco</text>
+  <rect x="222" y="48" width="180" height="22" rx="3" fill="#ffcc80" stroke="#d9640a" stroke-width="1.5"/>
+  <text x="396" y="63" font-size="10" font-weight="700" fill="#7a3a00" text-anchor="end">perto de 1023</text>
+  <text x="222" y="100" font-size="10.5" font-weight="700" fill="#0d47a1">Molhado</text>
+  <rect x="222" y="106" width="55" height="22" rx="3" fill="#90caf9" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="249.5" y="121" font-size="10" font-weight="700" fill="#0d47a1" text-anchor="middle">baixo</text>
+  <!-- limite 500 -->
+  <line x1="312" y1="36" x2="312" y2="140" stroke="#c62828" stroke-width="1.8" stroke-dasharray="4 3"/>
+  <text x="312" y="153" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">limite 500</text>
+  <text x="312" y="166" font-size="10" fill="#37474f" text-anchor="middle">abaixo = tem água</text>
+  <!-- eixo -->
+  <line x1="222" y1="176" x2="402" y2="176" stroke="#5b6770" stroke-width="1.5"/>
+  <text x="222" y="190" font-size="10" fill="#37474f">0</text>
+  <text x="402" y="190" font-size="10" fill="#37474f" text-anchor="end">1023</text>
+</svg>

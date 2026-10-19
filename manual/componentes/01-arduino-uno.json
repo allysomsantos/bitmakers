@@ -1,0 +1,76 @@
+{
+  "nome": "Arduino Uno",
+  "nome_curto": "Arduino Uno",
+  "apelido": "O cérebro do projeto: lê, decide e manda fazer",
+  "categoria": "controle",
+  "nivel": 1,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "Uma placa que funciona como o cérebro do projeto. Você escreve o programa e ela o executa. Tem pinos para ligar sensores, LEDs e motores, e uma entrada USB.",
+  "pra_que_serve": "Ler os sensores, decidir o que fazer e mandar LED, motor, buzzer e display agirem. Tudo isso muitas vezes por segundo.",
+  "onde_vive": [
+    "Escolas e feiras de ciência: é a placa preferida de quem está aprendendo.",
+    "Robôs, estufas e portões automáticos feitos em casa.",
+    "Brinquedos programáveis e arte interativa."
+  ],
+  "legenda_peca": "O Arduino Uno visto de cima, com os grupos de pinos.",
+  "ficha": {
+    "Liga em": "5 V (pela USB)",
+    "Pinos": "14 liga/desliga, 6 de leitura",
+    "Programa": "vai pelo cabo USB",
+    "Cuidado": "peça de 3,3 V não recebe 5 V"
+  },
+  "passos": [
+    "Você escreve o programa no computador.",
+    "O cabo USB leva o programa para o Arduino.",
+    "Ao ligar, ele faz a preparação uma vez só (setup).",
+    "Depois repete sem parar: ler, decidir, agir (loop).",
+    "Entradas sentem (sensor, botão). Saídas agem (LED, buzzer)."
+  ],
+  "formula": "Pino liga/desliga: só tem dois estados, 0 V (desligado) ou 5 V (ligado). Pino de leitura: mede de 0 (sem tensão) até 1023 (5 V cheios).",
+  "no_projeto": {
+    "B1": {
+      "texto": "Usa quase todos os pinos: leitor de tag, motor, bomba, balança, Bluetooth e display. Ele junta tudo e conta ao tablet o que aconteceu.",
+      "pinos": [
+        [
+          "Leitor de tag (RC522)",
+          "pinos digitais"
+        ],
+        [
+          "Motor e bomba",
+          "pinos digitais"
+        ],
+        [
+          "Balança · FC-37",
+          "pinos analógicos"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Lê os sensores de distância, chuva e luz, confere as lâmpadas das setas e liga buzzer, LED e display. Conta tudo ao tablet.",
+      "pinos": [
+        [
+          "Ponto cego (×4)",
+          "8 pinos digitais"
+        ],
+        [
+          "Buzzer · LED",
+          "2 pinos digitais"
+        ],
+        [
+          "Chuva · luz",
+          "2 pinos analógicos"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Cada pino manda pouca força: motor e bomba pedem fonte externa.",
+    "Os pinos 0 e 1 falam com o computador pela USB: evite usá-los.",
+    "Peça de 3,3 V não pode receber 5 V: use resistores no caminho (página 05)."
+  ],
+  "desafio": "O Arduino lê um sensor e vê 0. Em outro, vê 1023. Qual está recebendo os 5 V cheios? E com 2,5 V (meio caminho), a leitura seria perto de 0, de 500 ou de 1023?",
+  "resposta": "1023 são os 5 V cheios, e 0 é sem tensão. Meio caminho (2,5 V) dá cerca de 511, então a leitura fica perto de 500."
+}

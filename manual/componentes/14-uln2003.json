@@ -1,0 +1,76 @@
+{
+  "nome": "Driver ULN2003",
+  "nome_curto": "ULN2003",
+  "apelido": "O músculo que o Arduino não tem",
+  "categoria": "atuador",
+  "nivel": 3,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Um amplificador de corrente: o Arduino manda um sinalzinho e o ULN2003 libera a corrente grande. Vem numa plaquinha com 4 LEDs e o plugue do motor.",
+  "pra_que_serve": "Acionar o motor de passo. O pino do Arduino dá só uns 20 mA e o motor pede mais de 200 mA: o ULN2003 faz a ponte.",
+  "onde_vive": [
+    "Kits de Arduino: vem quase sempre junto com o motor 28BYJ-48.",
+    "Placas que acionam relés e travas elétricas.",
+    "Automação em geral: um sinal de 5 V liga algo grande."
+  ],
+  "legenda_peca": "A plaquinha do ULN2003: plugue, chip, LEDs e pinos IN.",
+  "ficha": {
+    "Entradas usadas": "4 (IN1 a IN4)",
+    "Liga em": "5 V da fonte externa",
+    "LEDs": "4, um para cada bobina",
+    "Cuidado": "GND junto com o Arduino"
+  },
+  "passos": [
+    "O Arduino manda um sinalzinho (HIGH) num pino IN.",
+    "O ULN2003 sente o sinal e libera a corrente grande.",
+    "A força vem da fonte de 5 V e passa pela bobina do motor.",
+    "O LED daquele canal acende: dá para ver qual bobina liga.",
+    "Sem sinal, a passagem fecha e a bobina desliga."
+  ],
+  "formula": "Um sinalzinho comanda uma corrente muito maior: é como girar um registro pequeno que libera uma torneira grande.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O Arduino não aguenta o motor sozinho. Ele manda o sinal por 4 pinos digitais (IN1 a IN4) e o ULN2003 libera a força da fonte de 5 V. No código, a ordem é IN1, IN3, IN2, IN4: com a ordem errada o motor treme e não gira.",
+      "pinos": [
+        [
+          "No código",
+          "ordem no código: IN1, IN3, IN2, IN4"
+        ],
+        [
+          "Alimentação",
+          "fonte 5 V externa, GND comum"
+        ]
+      ],
+      "ligacao": [
+        [
+          "IN1",
+          "pino digital",
+          "laranja"
+        ],
+        [
+          "IN2",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "IN3",
+          "pino digital",
+          "azul"
+        ],
+        [
+          "IN4",
+          "pino digital",
+          "amarelo"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Ligue a fonte de 5 V nos pinos + e − da placa e o GND dela no do Arduino.",
+    "Se o LED de uma bobina nunca acende, confira o fio daquele IN.",
+    "Na dúvida sobre a ordem no código, use a ordem IN1, IN3, IN2, IN4: trocando, o motor só treme."
+  ],
+  "desafio": "Cada pino do Arduino dá uns 20 mA e o motor pede cerca de 240 mA. Quantos pinos juntos seriam precisos? Dica: 240 ÷ 20.",
+  "resposta": "12 pinos. E seria má ideia: o Arduino inteiro aguenta só uns 200 mA. Por isso usamos o ULN2003 e a fonte externa."
+}

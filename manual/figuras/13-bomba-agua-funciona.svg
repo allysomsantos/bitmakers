@@ -1,0 +1,49 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-bomba" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a73e8"/>
+    </marker>
+    <marker id="setaY-bomba" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#e2a600"/>
+    </marker>
+  </defs>
+  <!-- agua -->
+  <rect x="6" y="100" width="260" height="92" rx="6" fill="#bbdefb" opacity=".7"/>
+  <path d="M6,100 q13,-6 26,0 t26,0 t26,0 t26,0 t26,0 t26,0 t26,0 t26,0 t26,0 t26,0" fill="none" stroke="#1a73e8" stroke-width="2"/>
+  <!-- bomba -->
+  <rect x="60" y="88" width="150" height="72" rx="10" fill="#37474f" stroke="#1c262b" stroke-width="2"/>
+  <rect x="140" y="98" width="62" height="52" rx="4" fill="#78909c" stroke="#263238" stroke-width="1.5"/>
+  <text x="171" y="123" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">motorzinho</text>
+  <!-- helice -->
+  <circle cx="100" cy="124" r="22" fill="#546e7a" stroke="#263238" stroke-width="1.8"/>
+  <g stroke="#cfd8dc" stroke-width="3.2" stroke-linecap="round">
+    <line x1="100" y1="106" x2="100" y2="142"/><line x1="82" y1="124" x2="118" y2="124"/>
+  </g>
+  <circle cx="100" cy="124" r="4" fill="#fff"/>
+  <path d="M80,114 A22,22 0 0 1 112,106" fill="none" stroke="#e2a600" stroke-width="2.4" marker-end="url(#setaY-bomba)"/>
+  <line x1="122" y1="124" x2="140" y2="124" stroke="#263238" stroke-width="4"/>
+  <!-- bico de saida -->
+  <rect x="90" y="56" width="20" height="32" fill="#546e7a" stroke="#263238" stroke-width="1.8"/>
+  <line x1="100" y1="54" x2="100" y2="22" stroke="#1a73e8" stroke-width="3" marker-end="url(#seta-bomba)"/>
+  <text x="114" y="38" font-size="9.5" font-weight="700" fill="#0d47a1">3 sai pelo bico</text>
+  <!-- entrada embaixo -->
+  <line x1="100" y1="196" x2="100" y2="164" stroke="#1a73e8" stroke-width="3" marker-end="url(#seta-bomba)"/>
+  <text x="110" y="182" font-size="9.5" font-weight="700" fill="#0d47a1">3 entra por baixo</text>
+  <!-- fios -->
+  <path d="M202,112 H262" fill="none" stroke="#d93025" stroke-width="3" stroke-linecap="round"/>
+  <path d="M202,138 H262" fill="none" stroke="#202124" stroke-width="3" stroke-linecap="round"/>
+  <text x="232" y="74" font-size="9.5" font-weight="700" fill="#c62828" text-anchor="middle">1 a corrente</text>
+  <text x="232" y="86" font-size="9" fill="#37474f" text-anchor="middle">chega pelos fios</text>
+  <text x="8" y="74" font-size="9.5" font-weight="700" fill="#d9640a">2 a hélice gira</text>
+  <text x="8" y="86" font-size="9" fill="#37474f">e empurra a água</text>
+  <!-- com agua x a seco -->
+  <rect x="290" y="30" width="124" height="60" rx="8" fill="#e8f5e9" stroke="#188038" stroke-width="2"/>
+  <text x="352" y="50" font-size="10" font-weight="700" fill="#188038" text-anchor="middle">Com água</text>
+  <text x="352" y="65" font-size="9" fill="#37474f" text-anchor="middle">a água esfria</text>
+  <text x="352" y="77" font-size="9" fill="#37474f" text-anchor="middle">a bomba</text>
+  <rect x="290" y="108" width="124" height="68" rx="8" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+  <text x="352" y="128" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle">A seco</text>
+  <text x="352" y="143" font-size="9" fill="#37474f" text-anchor="middle">a bomba esquenta</text>
+  <text x="352" y="155" font-size="9" fill="#37474f" text-anchor="middle">e estraga. Por isso</text>
+  <text x="352" y="167" font-size="9" fill="#37474f" text-anchor="middle">há tempo máximo.</text>
+</svg>

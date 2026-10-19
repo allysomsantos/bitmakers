@@ -1,0 +1,99 @@
+{
+  "nome": "Leitor RFID/NFC RC522",
+  "nome_curto": "RC522",
+  "apelido": "A leitora de crachá que reconhece a coleira",
+  "categoria": "sensor",
+  "nivel": 4,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma plaquinha com antena que lê tags e cartões sem encostar. É o leitor de crachá do totem: manda uma energia invisível e escuta a resposta.",
+  "pra_que_serve": "Descobrir QUEM está perto: ela lê o número de identidade (UID) da tag. Assim o Arduino sabe qual cachorro chegou ao totem.",
+  "onde_vive": [
+    "Catracas de empresas, escolas e academias.",
+    "Leitores de cartão de transporte e de pagamento por aproximação.",
+    "Fechaduras de hotel e portarias de condomínio."
+  ],
+  "legenda_peca": "O RC522: antena desenhada na placa e 8 pinos embaixo.",
+  "ficha": {
+    "Liga em": "3,3 V (NUNCA 5 V)",
+    "Alcance": "2 a 5 cm",
+    "Lê": "tags e cartões NFC",
+    "Pinos": "8 (usamos 7 fios)"
+  },
+  "passos": [
+    "A antena do leitor manda uma energia invisível.",
+    "A tag (sem bateria) capta a energia e acorda.",
+    "A tag responde com o seu número de identidade (UID).",
+    "O RC522 recebe esse número.",
+    "O Arduino lê o número e procura o nome do cachorro."
+  ],
+  "formula": "Regra de ouro: quanto mais longe, mais fraca a energia. Por isso a tag precisa chegar a 2 a 5 cm do leitor.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O RC522 fica no totem. Quando a coleira chega perto, ele lê o número da tag e o Arduino procura esse número na lista de cachorros. Se não achar, o LCD mostra \"Novo amigo\". A coleira precisa passar a 2 a 5 cm do leitor, com o cachorro inteiro sobre a balança.",
+      "pinos": [
+        [
+          "Alimentação",
+          "3.3V (NUNCA 5V)"
+        ],
+        [
+          "Leitura",
+          "número (UID)"
+        ],
+        [
+          "Fios ligados",
+          "7 de 8 pinos"
+        ],
+        [
+          "Pino IRQ",
+          "não usado"
+        ]
+      ],
+      "ligacao": [
+        [
+          "3.3V",
+          "3.3V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "RST",
+          "pino digital",
+          "roxo"
+        ],
+        [
+          "SDA (SS)",
+          "pino digital",
+          "amarelo"
+        ],
+        [
+          "MOSI",
+          "pino digital",
+          "azul"
+        ],
+        [
+          "MISO",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "SCK",
+          "pino digital",
+          "laranja"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Ligue no 3.3V, NUNCA no 5V: os 5 V queimam o módulo.",
+    "Metal perto (parafusos, chapa do totem) diminui o alcance.",
+    "São 7 fios: com um fio solto, a leitura falha."
+  ],
+  "desafio": "A tag só é lida de 2 a 5 cm. O Rex para com a coleira a 8 cm do leitor. O totem reconhece o Rex? O que você mudaria no totem?",
+  "resposta": "Não: 8 cm passa do alcance e a tag nem acorda. Mude a posição do leitor para a coleira passar a 2 a 5 cm dele."
+}

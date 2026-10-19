@@ -1,0 +1,83 @@
+{
+  "nome": "Sensor ultrassônico HC-SR04",
+  "nome_curto": "HC-SR04",
+  "apelido": "O sonar do Arduino: mede distância com eco",
+  "categoria": "sensor",
+  "nivel": 2,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "Um sensor que mede distância com um som que a gente não ouve (ultrassom). Tem dois \"olhos\": um é o alto-falante (T) e o outro é o microfone (R).",
+  "pra_que_serve": "Descobrir a que distância está um objeto, de 2 cm a 4 m, sem encostar. O Arduino usa esse número para avisar o motorista.",
+  "onde_vive": [
+    "Sensor de ré dos carros: os bipes aceleram quando você chega perto.",
+    "Morcegos e golfinhos: usam o eco para se orientar no escuro e na água.",
+    "Robô aspirador e carrinho de robótica: não batem na parede."
+  ],
+  "legenda_peca": "O HC-SR04 de frente, com os quatro pinos embaixo.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Alcance": "de 2 cm até 4 m",
+    "Enxerga": "só o que está bem na frente",
+    "Pinos": "4"
+  },
+  "passos": [
+    "O Arduino manda o sensor apitar (um apito que a gente não ouve).",
+    "O apito bate no objeto e volta como eco.",
+    "O pino ECHO fica ligado enquanto o som vai e volta.",
+    "O Arduino cronometra esse tempo e calcula a distância."
+  ],
+  "formula": "Eco demorou mais = objeto mais longe. Eco rápido = objeto pertinho (como gritar numa quadra e ouvir a resposta).",
+  "no_projeto": {
+    "B2": {
+      "texto": "São 4 sensores, um para cada ponto cego: frente, traseira e as duas laterais. O Arduino lê um de cada vez, para um não ouvir o eco do outro. Abaixo de 100 cm o kit alerta; abaixo de 40 cm o buzzer apita sem parar.",
+      "pinos": [
+        [
+          "Frente",
+          "TRIG e ECHO: 2 pinos digitais"
+        ],
+        [
+          "Traseira",
+          "TRIG e ECHO: 2 pinos digitais"
+        ],
+        [
+          "Lateral esquerda",
+          "TRIG e ECHO: 2 pinos digitais"
+        ],
+        [
+          "Lateral direita",
+          "TRIG e ECHO: 2 pinos digitais"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "TRIG",
+          "pino digital",
+          "laranja"
+        ],
+        [
+          "ECHO",
+          "pino digital",
+          "verde"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Tecido, espuma e superfícies inclinadas desviam o som: o sensor não vê esses objetos.",
+    "Dois sensores apitando juntos se confundem; por isso lemos um de cada vez.",
+    "Precisa de 5 V. Com 3,3 V ele lê errado."
+  ],
+  "desafio": "O eco voltou depois de 2.900 µs (milionésimos de segundo). Dica: cada centímetro de distância gasta 58 µs, contando ida e volta. A que distância está o objeto?",
+  "resposta": "2.900 ÷ 58 = 50 cm. O número 58 já leva em conta a ida e a volta do som."
+}

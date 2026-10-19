@@ -1,0 +1,77 @@
+{
+  "nome": "Driver de motor L9110S",
+  "nome_curto": "L9110S",
+  "apelido": "Chaves que ligam, param e invertem o motor",
+  "categoria": "atuador",
+  "nivel": 3,
+  "projetos": [
+    "B1"
+  ],
+  "o_que_e": "Uma plaquinha com 2 canais. Cada canal tem chaves que ligam o motor, param e invertem o sentido, usando a força de uma fonte externa.",
+  "pra_que_serve": "Deixar o Arduino comandar motores e bombas que pedem mais corrente do que um pino aguenta: ligar, parar e girar nos dois sentidos.",
+  "onde_vive": [
+    "Carrinhos de robótica: um canal para cada roda.",
+    "Ventiladores e brinquedos com motorzinho.",
+    "Vidros elétricos do carro: inverter o motor sobe e desce o vidro."
+  ],
+  "legenda_peca": "O módulo L9110S: saídas em cima, entradas embaixo.",
+  "ficha": {
+    "Canais": "2 (usamos o A)",
+    "Liga em": "fonte 5 V externa",
+    "Recebe": "sinais do Arduino (5 V)",
+    "Pinos do canal A": "A-IA, A-IB, OA, OB"
+  },
+  "passos": [
+    "O Arduino manda dois sinais: A-IA e A-IB (alto ou baixo).",
+    "Dentro do módulo, chaves decidem para que lado a corrente vai.",
+    "A-IA alto e A-IB baixo: o motor gira num sentido.",
+    "Os dois baixos: nada passa e o motor para.",
+    "A-IA baixo e A-IB alto: gira no sentido contrário."
+  ],
+  "formula": "Alto + baixo = gira · baixo + baixo = para · baixo + alto = gira ao contrário. Nosso código usa só os dois primeiros.",
+  "no_projeto": {
+    "B1": {
+      "texto": "O canal A comanda a bomba com dois pinos digitais: A-IA e A-IB. Para ligar, o código põe A-IA alto e A-IB baixo. Para parar, os dois ficam baixos. A força vem da fonte de 5 V externa, com o GND junto com o do Arduino.",
+      "pinos": [
+        [
+          "Saídas OA e OB",
+          "fios da bomba"
+        ],
+        [
+          "VCC e GND",
+          "fonte 5 V externa"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "+5 V da fonte",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND (comum)",
+          "preto"
+        ],
+        [
+          "A-IA",
+          "pino digital",
+          "laranja"
+        ],
+        [
+          "A-IB",
+          "pino digital",
+          "verde"
+        ]
+      ],
+      "ligacao_destino": "Fonte 5 V / Uno"
+    }
+  },
+  "cuidados": [
+    "O GND da fonte e o do Arduino precisam estar juntos, senão o sinal se perde.",
+    "Não alimente o VCC pelo 5V do Arduino: a bomba pede corrente demais.",
+    "Bomba girando ao contrário? Troque os fios em OA e OB."
+  ],
+  "desafio": "Com dois pinos (A-IA e A-IB) há 4 combinações de alto e baixo. Quais fazem o motor girar num sentido, no outro e parar?",
+  "resposta": "Alto+baixo: um sentido. Baixo+alto: o outro. Baixo+baixo: para (alto+alto costuma parar também). Nosso código usa só duas."
+}

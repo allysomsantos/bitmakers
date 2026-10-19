@@ -1,0 +1,49 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-celf" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto">
+      <path d="M0,0 L8,0 L4,8 z" fill="#c62828"/>
+    </marker>
+    <marker id="setaC-celf" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+
+  <!-- parede (lado fixo) -->
+  <rect x="6" y="56" width="14" height="76" fill="#cfd8dc" stroke="#78909c" stroke-width="1.5"/>
+  <line x1="6" y1="70" x2="20" y2="62" stroke="#78909c"/>
+  <line x1="6" y1="88" x2="20" y2="80" stroke="#78909c"/>
+  <line x1="6" y1="106" x2="20" y2="98" stroke="#78909c"/>
+  <line x1="6" y1="124" x2="20" y2="116" stroke="#78909c"/>
+  <text x="6" y="148" font-size="9.5" font-weight="700" fill="#5b6770">lado fixo</text>
+
+  <!-- barra entortada -->
+  <path d="M20,94 C70,94 105,100 150,122" fill="none" stroke="#90a4ae" stroke-width="22" stroke-linecap="butt"/>
+  <path d="M20,94 C70,94 105,100 150,122" fill="none" stroke="#b0bec5" stroke-width="18" stroke-linecap="butt"/>
+  <!-- sensor colado -->
+  <path d="M34,80 C64,80 84,84 102,92" fill="none" stroke="#ffd54f" stroke-width="6" stroke-linecap="round"/>
+  <text x="66" y="68" font-size="10" font-weight="700" fill="#8a6a00" text-anchor="middle">3) sensor colado</text>
+
+  <!-- peso -->
+  <line x1="150" y1="70" x2="150" y2="110" stroke="#c62828" stroke-width="3.2" marker-end="url(#seta-celf)"/>
+  <text x="150" y="60" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">1) peso</text>
+  <text x="100" y="164" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">2) a barra entorta um tiquinho</text>
+  <text x="100" y="177" font-size="9.5" fill="#5b6770" text-anchor="middle">(exagerado no desenho)</text>
+
+  <!-- seta para o sinal -->
+  <line x1="182" y1="96" x2="240" y2="96" stroke="#5b6770" stroke-width="2.2" marker-end="url(#setaC-celf)"/>
+
+  <!-- sinalzinho -->
+  <rect x="246" y="62" width="100" height="68" rx="8" fill="#fff8e1" stroke="#b28704" stroke-width="2"/>
+  <text x="296" y="82" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">4) sinalzinho</text>
+  <text x="296" y="96" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">elétrico</text>
+  <polyline points="262,118 274,118 280,108 288,122 296,110 304,120 310,114 330,114" fill="none" stroke="#d9640a" stroke-width="2.4" stroke-linejoin="round"/>
+  <text x="296" y="150" font-size="9.5" fill="#5b6770" text-anchor="middle">(fraquinho: sai por A+ e A−)</text>
+
+  <!-- vai para o HX711 -->
+  <line x1="348" y1="96" x2="362" y2="96" stroke="#5b6770" stroke-width="2.2" marker-end="url(#setaC-celf)"/>
+  <rect x="364" y="70" width="50" height="52" rx="6" fill="#e0f2f1" stroke="#00796b" stroke-width="1.8"/>
+  <text x="389" y="93" font-size="10" font-weight="700" fill="#004d40" text-anchor="middle">HX711</text>
+  <text x="389" y="107" font-size="9" fill="#004d40" text-anchor="middle">(próxima</text>
+  <text x="389" y="118" font-size="9" fill="#004d40" text-anchor="middle">página)</text>
+  <text x="296" y="186" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">5) mais peso = mais entorta = maior o sinal</text>
+</svg>

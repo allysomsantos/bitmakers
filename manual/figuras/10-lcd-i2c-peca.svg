@@ -1,0 +1,38 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- tela (frente) -->
+  <rect x="10" y="6" width="280" height="92" rx="6" fill="#2e7d32" stroke="#1b5e20" stroke-width="2"/>
+  <rect x="26" y="16" width="248" height="62" rx="3" fill="#1565c0" stroke="#0d3c75" stroke-width="2"/>
+  <g font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#e3f2fd">
+    <text x="36" y="40">Ola, Rex!</text>
+    <text x="36" y="64">Peso: 7.0 kg</text>
+  </g>
+  <circle cx="18" cy="14" r="2.5" fill="#cfd8dc"/><circle cx="282" cy="14" r="2.5" fill="#cfd8dc"/>
+  <circle cx="18" cy="90" r="2.5" fill="#cfd8dc"/><circle cx="282" cy="90" r="2.5" fill="#cfd8dc"/>
+  <text x="150" y="91" font-size="9" fill="#c8e6c9" text-anchor="middle">16 colunas x 2 linhas</text>
+
+  <!-- modulo I2C (atras) -->
+  <text x="110" y="113" font-size="10" font-weight="700" fill="#0d47a1" text-anchor="middle">módulo I2C (fica atrás da tela)</text>
+  <rect x="30" y="118" width="170" height="30" rx="4" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <rect x="100" y="124" width="52" height="18" rx="2" fill="#263238"/>
+  <rect x="164" y="122" width="28" height="22" rx="2" fill="#0d47a1" stroke="#082a63"/>
+  <circle cx="178" cy="133" r="7" fill="#90caf9" stroke="#082a63"/>
+  <line x1="173" y1="133" x2="183" y2="133" stroke="#082a63" stroke-width="2"/>
+  <text x="212" y="130" font-size="10" font-weight="700" fill="#0d47a1">parafuso azul</text>
+  <text x="212" y="142" font-size="10" fill="#37474f">ajusta o contraste</text>
+
+  <!-- pinos -->
+  <rect x="45" y="148" width="9" height="14" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="73" y="148" width="9" height="14" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="101" y="148" width="9" height="14" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="129" y="148" width="9" height="14" fill="#ffd54f" stroke="#b28704"/>
+  <text x="49.5" y="175" font-size="11" font-weight="700" fill="#202124" text-anchor="middle">GND</text>
+  <text x="77.5" y="175" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">VCC</text>
+  <text x="105.5" y="175" font-size="11" font-weight="700" fill="#1a73e8" text-anchor="middle">SDA</text>
+  <text x="133.5" y="175" font-size="11" font-weight="700" fill="#b28704" text-anchor="middle">SCL</text>
+  <text x="49.5" y="186" font-size="9" fill="#5b6770" text-anchor="middle">terra</text>
+  <text x="77.5" y="186" font-size="9" fill="#5b6770" text-anchor="middle">5 V</text>
+  <text x="105.5" y="186" font-size="9" fill="#5b6770" text-anchor="middle">dados</text>
+  <text x="133.5" y="186" font-size="9" fill="#5b6770" text-anchor="middle">ritmo</text>
+  <text x="212" y="172" font-size="10.5" font-weight="700" fill="#37474f">só 4 fios</text>
+  <text x="212" y="184" font-size="10" fill="#37474f">para a tela toda</text>
+</svg>

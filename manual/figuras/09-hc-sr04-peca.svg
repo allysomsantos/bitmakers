@@ -1,0 +1,35 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="25" y="32" width="250" height="104" rx="7" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <!-- transmissor -->
+  <circle cx="95" cy="82" r="36" fill="#cfd8dc" stroke="#78909c" stroke-width="2.5"/>
+  <circle cx="95" cy="82" r="27" fill="#455a64"/>
+  <circle cx="95" cy="82" r="18" fill="none" stroke="#78909c" stroke-width="1.2"/>
+  <circle cx="95" cy="82" r="9" fill="none" stroke="#78909c" stroke-width="1.2"/>
+  <!-- receptor -->
+  <circle cx="205" cy="82" r="36" fill="#cfd8dc" stroke="#78909c" stroke-width="2.5"/>
+  <circle cx="205" cy="82" r="27" fill="#455a64"/>
+  <circle cx="205" cy="82" r="18" fill="none" stroke="#78909c" stroke-width="1.2"/>
+  <circle cx="205" cy="82" r="9" fill="none" stroke="#78909c" stroke-width="1.2"/>
+  <!-- chip e cristal -->
+  <rect x="132" y="96" width="36" height="18" rx="2" fill="#263238"/>
+  <rect x="140" y="62" width="20" height="9" rx="2" fill="#b0bec5" stroke="#78909c"/>
+  <!-- pinos -->
+  <rect x="86" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="124" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="162" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="200" y="136" width="9" height="20" fill="#ffd54f" stroke="#b28704"/>
+  <text x="90.5" y="171" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">VCC</text>
+  <text x="128.5" y="171" font-size="11" font-weight="700" fill="#d9640a" text-anchor="middle">TRIG</text>
+  <text x="166.5" y="171" font-size="11" font-weight="700" fill="#188038" text-anchor="middle">ECHO</text>
+  <text x="204.5" y="171" font-size="11" font-weight="700" fill="#202124" text-anchor="middle">GND</text>
+  <text x="90.5" y="183" font-size="9" fill="#5b6770" text-anchor="middle">5 V</text>
+  <text x="128.5" y="183" font-size="9" fill="#5b6770" text-anchor="middle">manda</text>
+  <text x="166.5" y="183" font-size="9" fill="#5b6770" text-anchor="middle">resposta</text>
+  <text x="204.5" y="183" font-size="9" fill="#5b6770" text-anchor="middle">terra</text>
+  <!-- rotulos T e R -->
+  <text x="95" y="18" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">T = Transmissor</text>
+  <text x="95" y="29" font-size="9" fill="#5b6770" text-anchor="middle">(alto-falante)</text>
+  <text x="205" y="18" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">R = Receptor</text>
+  <text x="205" y="29" font-size="9" fill="#5b6770" text-anchor="middle">(microfone)</text>
+</svg>

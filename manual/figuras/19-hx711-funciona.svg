@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-hx" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+    <marker id="seta-hx-d" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#188038"/>
+    </marker>
+    <marker id="seta-hx-s" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9640a"/>
+    </marker>
+  </defs>
+
+  <!-- blocos -->
+  <g stroke-width="1.8">
+    <rect x="6" y="14" width="88" height="66" rx="6" fill="#e8f0fe" stroke="#1a73e8"/>
+    <rect x="112" y="14" width="88" height="66" rx="6" fill="#fff3e0" stroke="#d9640a"/>
+    <rect x="218" y="14" width="88" height="66" rx="6" fill="#fff8e1" stroke="#b28704"/>
+    <rect x="324" y="14" width="90" height="66" rx="6" fill="#e0f2f1" stroke="#00796b"/>
+  </g>
+  <g font-size="10.5" font-weight="700" text-anchor="middle">
+    <text x="50" y="34" fill="#0d47a1">1) célula</text>
+    <text x="156" y="34" fill="#d9640a">2) aumenta</text>
+    <text x="262" y="34" fill="#8a6a00">3) vira número</text>
+    <text x="369" y="34" fill="#004d40">4) Arduino</text>
+  </g>
+  <g font-size="9.5" text-anchor="middle" fill="#37474f">
+    <text x="50" y="52">sinalzinho</text>
+    <text x="50" y="65">fraco</text>
+    <text x="156" y="52">o sinal fica</text>
+    <text x="156" y="65">bem maior</text>
+    <text x="262" y="52">o sinal vira</text>
+    <text x="262" y="65">um número</text>
+    <text x="369" y="52">pede e recebe</text>
+    <text x="369" y="65">o número</text>
+  </g>
+  <g stroke="#5b6770" stroke-width="2" marker-end="url(#seta-hx)">
+    <line x1="94" y1="47" x2="110" y2="47"/>
+    <line x1="200" y1="47" x2="216" y2="47"/>
+    <line x1="306" y1="47" x2="322" y2="47"/>
+  </g>
+  <line x1="112" y1="90" x2="306" y2="90" stroke="#9aa0a6" stroke-width="1.4"/>
+  <text x="209" y="104" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">tudo isto acontece dentro do HX711</text>
+
+  <!-- fios -->
+  <text x="369" y="96" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">DT: o número vem</text>
+  <text x="369" y="108" font-size="9.5" font-weight="700" fill="#d9640a" text-anchor="middle">SCK: o pedido vai</text>
+
+  <!-- conta -->
+  <rect x="6" y="122" width="408" height="72" rx="8" fill="#f1f3f4" stroke="#90a4ae" stroke-width="1.6"/>
+  <text x="210" y="142" font-size="10.5" font-weight="700" fill="#37474f" text-anchor="middle">5) O código do Arduino faz uma conta simples:</text>
+  <text x="210" y="162" font-size="12" font-weight="700" fill="#0d47a1" text-anchor="middle">peso = (número lido − zero) ÷ fator</text>
+  <text x="110" y="182" font-size="10" fill="#37474f" text-anchor="middle">zero = balança vazia (tare)</text>
+  <text x="312" y="182" font-size="10" fill="#37474f" text-anchor="middle">fator = quanto vale 1 kg</text>
+</svg>

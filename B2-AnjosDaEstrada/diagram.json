@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "BITMAKERS B2",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 120, "left": 0, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -120, "left": 0, "attrs": { "pins": "i2c", "background": "blue", "color": "white" } },
+    { "type": "wokwi-hc-sr04", "id": "ultra", "top": -110, "left": 380, "attrs": { "distance": "200" } },
+    { "type": "wokwi-potentiometer", "id": "chuva", "top": 120, "left": 420, "attrs": { "value": "1023" } },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": 230, "left": 400, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "vibra", "top": 380, "left": 420, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-buzzer", "id": "bz", "top": 360, "left": 40, "attrs": {} },
+    { "type": "wokwi-led", "id": "led", "top": 360, "left": 160, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 450, "left": 150, "attrs": { "value": "220" } },
+    { "type": "wokwi-text", "id": "t1", "top": 90, "left": 420, "attrs": { "text": "Potenciometro = FC-37 (chuva)" } },
+    { "type": "wokwi-text", "id": "t2", "top": 350, "left": 420, "attrs": { "text": "Botao = SW-18010P (vibracao)" } },
+    { "type": "wokwi-text", "id": "t3", "top": -140, "left": 380, "attrs": { "text": "HC-SR04 = ponto cego" } }
+  ],
+  "connections": [
+    [ "lcd1:VCC", "uno:5V", "red", [] ],
+    [ "lcd1:GND", "uno:GND.1", "black", [] ],
+    [ "lcd1:SDA", "uno:A4", "blue", [] ],
+    [ "lcd1:SCL", "uno:A5", "purple", [] ],
+
+    [ "ultra:VCC", "uno:5V", "red", [] ],
+    [ "ultra:GND", "uno:GND.2", "black", [] ],
+    [ "ultra:TRIG", "uno:9", "orange", [] ],
+    [ "ultra:ECHO", "uno:10", "green", [] ],
+
+    [ "chuva:VCC", "uno:5V", "red", [] ],
+    [ "chuva:GND", "uno:GND.2", "black", [] ],
+    [ "chuva:SIG", "uno:A0", "blue", [] ],
+
+    [ "ldr:VCC", "uno:5V", "red", [] ],
+    [ "ldr:GND", "uno:GND.2", "black", [] ],
+    [ "ldr:AO", "uno:A1", "gold", [] ],
+
+    [ "vibra:1.l", "uno:2", "yellow", [] ],
+    [ "vibra:2.l", "uno:GND.3", "black", [] ],
+
+    [ "bz:2", "uno:8", "magenta", [] ],
+    [ "bz:1", "uno:GND.3", "black", [] ],
+
+    [ "uno:7", "r1:1", "red", [] ],
+    [ "r1:2", "led:A", "red", [] ],
+    [ "led:C", "uno:GND.3", "black", [] ]
+  ],
+  "dependencies": {}
+}

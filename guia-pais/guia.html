@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Guia para as famílias · BITMAKERS</title>
+<style>
+@page { size: A4; margin: 11mm 13mm 12mm; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: #1f2933; font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.3pt; line-height: 1.38;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+h1 { font-size: 19pt; line-height: 1.1; margin: 0 0 2.5mm; }
+h2 { font-size: 12.5pt; margin: 4mm 0 2mm; }
+h3 { font-size: 11.5pt; margin: 4mm 0 1.5mm; }
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 5.2mm; }
+li { margin-bottom: 1.3mm; }
+.pg { break-before: page; }
+.sem-quebra { break-inside: avoid; }
+.b1 { --c: #2e7d32; --f: #eaf9ef; }
+.b2 { --c: #1565c0; --f: #f0f5fd; }
+.neutro { --c: #37474f; --f: #f4f6f8; }
+
+/* capa */
+.capa { min-height: 262mm; display: flex; flex-direction: column; justify-content: center; color: #fff;
+  background: linear-gradient(160deg, #0d47a1 0%, #1565c0 45%, #2e7d32 100%); padding: 18mm; border-radius: 6mm; }
+.capa h1 { font-size: 34pt; }
+.capa .sub { font-size: 14pt; max-width: 140mm; margin-bottom: 10mm; }
+.capa .duplo { display: flex; gap: 6mm; margin-top: 6mm; }
+.capa .cx { flex: 1; background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.55); border-radius: 4mm; padding: 5mm; }
+.capa .cx b { display: block; font-size: 14pt; margin-bottom: 1mm; }
+.capa .rodape { margin-top: 14mm; font-size: 10pt; opacity: .92; }
+
+/* topo de cada projeto */
+.topo { background: var(--c); color: #fff; border-radius: 4mm; padding: 3.5mm 5mm; margin-bottom: 3mm; }
+.topo h1 { margin: 0; font-size: 19pt; }
+.topo p { margin: 1mm 0 0; font-size: 11.5pt; opacity: .95; }
+
+.cartao { background: var(--f); border: 1.2px solid var(--c); border-radius: 3mm; padding: 2.6mm 4mm; margin-bottom: 3mm; }
+.cartao h3 { margin-top: 0; color: var(--c); }
+.cartao p:last-child, .cartao ul:last-child { margin-bottom: 0; }
+.grade2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.grade3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+
+.passos { counter-reset: p; list-style: none; padding: 0; }
+.passos li { counter-increment: p; display: grid; grid-template-columns: 8mm 1fr; gap: 2.6mm; align-items: start; margin-bottom: 1.8mm; }
+.passos li::before { content: counter(p); background: var(--c); color: #fff; font-weight: 800; border-radius: 50%;
+  width: 7mm; height: 7mm; display: flex; align-items: center; justify-content: center; }
+
+.fotos { display: flex; gap: 3mm; margin: 3mm 0 4mm; }
+.fotos figure { flex: 1; margin: 0; text-align: center; font-size: 8.6pt; color: #5b6770; }
+.fotos img { width: 100%; height: 25mm; object-fit: contain; background: #fff; border: 1px solid #d5dbe3; border-radius: 2.5mm; padding: 1.5mm; }
+
+table.papeis { width: 100%; border-collapse: collapse; font-size: 9.9pt; }
+table.papeis td { padding: 1.1mm 2mm; border-bottom: 1px solid #d5dbe3; vertical-align: top; }
+table.papeis td:first-child { width: 34%; font-weight: 700; color: var(--c); }
+
+.aviso { background: #fff8e1; border: 1.2px solid #f4d37a; border-radius: 3mm; padding: 3mm 4mm; margin: 3mm 0; font-size: 10pt; }
+.dica { background: #e8f5e9; border: 1.2px solid #a5d6a7; border-radius: 3mm; padding: 3mm 4mm; margin: 3mm 0; font-size: 10pt; }
+
+/* perguntas */
+.q { break-inside: avoid; border: 1.2px solid #d5dbe3; border-radius: 2.5mm; margin-bottom: 1.3mm; overflow: hidden; }
+.q .p { background: var(--f); padding: 1mm 3.2mm; font-weight: 700; }
+.q .p span { color: var(--c); margin-right: 2mm; }
+.q .r { padding: 1mm 3.2mm; font-size: 9.5pt; color: #3d4852; }
+.q .r b { color: var(--c); }
+.sec { margin-top: 2.2mm; font-size: 11.5pt; font-weight: 800; color: var(--c); border-bottom: 2px solid var(--c); padding-bottom: 1mm; margin-bottom: 3mm; }
+
+table.gloss { width: 100%; border-collapse: collapse; font-size: 10pt; }
+table.gloss td { padding: 1.8mm 2.2mm; border-bottom: 1px solid #e5e9ef; vertical-align: top; }
+table.gloss td:first-child { width: 28%; font-weight: 700; }
+
+table.ficha { width: 100%; border-collapse: collapse; font-size: 10pt; margin-top: 2mm; }
+table.ficha th, table.ficha td { border: 1px solid #b8c1cc; padding: 2.2mm 2.5mm; text-align: left; }
+table.ficha th { background: #f4f6f8; }
+.caixa { display: inline-block; width: 4.2mm; height: 4.2mm; border: 1.3px solid #5b6770; border-radius: 1mm; margin-right: 1.4mm; vertical-align: -1mm; }
+.rodape-pg { font-size: 8.4pt; color: #8a949e; margin-top: 4mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ CAPA ============ -->
+<section class="capa">
+  <h1>Guia para as famílias</h1>
+  <div class="sub">Entenda o projeto do seu filho ou da sua filha e ajude a treinar a apresentação.</div>
+  <div class="duplo">
+    <div class="cx"><b>Amicão</b>O totem que cuida dos cachorros de rua.</div>
+    <div class="cx"><b>Anjos da Estrada</b>Um segundo par de olhos para o caminhoneiro.</div>
+  </div>
+  <div class="rodape">BITMAKERS · Futebol de Rua</div>
+</section>
+
+<!-- ============ COMO USAR ============ -->
+<section class="pg neutro">
+  <h1>Como usar este guia</h1>
+  <p>Você <b>não precisa entender de tecnologia</b> para ajudar. Basta ouvir, perguntar e dar sua opinião de quem vê o projeto de fora. É exatamente isso que a banca vai fazer.</p>
+
+  <div class="grade3">
+    <div class="cartao"><h3>1. Entender</h3><p>Páginas 3 e 4. Uma página por projeto, sem termos técnicos: o que é, o que faz e por que importa.</p></div>
+    <div class="cartao"><h3>2. Treinar em casa</h3><p>Páginas 6 e 7. Perguntas simples para fazer ao seu filho, com o que uma boa resposta precisa ter.</p></div>
+    <div class="cartao"><h3>3. Simular a banca</h3><p>Páginas 8 a 11. Perguntas mais difíceis que os avaliadores podem fazer e um roteiro de ensaio de 15 minutos.</p></div>
+  </div>
+
+  <h2>Regras do ensaio em casa</h2>
+  <ol>
+    <li><b>Quem explica é o aluno.</b> Resista à vontade de responder por ele.</li>
+    <li><b>"Não sei" é uma resposta honesta.</b> Peça para ele completar com "não sei, mas eu faria assim para descobrir".</li>
+    <li><b>Não interrompa no meio da fala.</b> Anote as dúvidas e pergunte depois.</li>
+    <li><b>Peça para explicar como se você tivesse 10 anos.</b> Quem consegue explicar assim, entendeu de verdade.</li>
+    <li><b>Termine sempre com dois elogios e uma sugestão.</b> Confiança vale mais do que decorar o texto.</li>
+  </ol>
+
+  <div class="aviso"><b>Importante:</b> este guia descreve os projetos como foram planejados para o protótipo. Se alguma peça ou função mudar até a apresentação, a equipe avisa. Quando uma pergunta tiver um ponto fraco real do projeto, o guia diz isso de forma clara. A banca costuma valorizar mais a honestidade sobre os limites do que uma resposta perfeita.</div>
+
+  <div class="dica"><b>O que é um protótipo?</b> É a primeira versão, feita para testar a ideia. Ele funciona na mesa, ainda não na rua nem na estrada. Os alunos devem dizer isso com orgulho, sem constrangimento.</div>
+</section>
+
+<!-- ============ AMICAO ============ -->
+<section class="pg b1">
+  <div class="topo"><h1>Amicão</h1><p>O totem que cuida dos cachorros de rua</p></div>
+
+  <div class="grade2">
+    <div class="cartao"><h3>O problema</h3><p>Muitos cachorros de rua ficam sem comida e sem água fresca todos os dias, e ninguém sabe se eles estão bem ou emagrecendo.</p></div>
+    <div class="cartao"><h3>A ideia</h3><p>Um totem na calçada com comida e água. Cada cachorro usa uma plaquinha na coleira e o totem sabe quem ele é, quanto pesa e quando comeu pela última vez.</p></div>
+  </div>
+
+  <h2 style="margin-top:2mm">Como funciona, passo a passo</h2>
+  <ol class="passos">
+    <li><div><b>O cachorro chega</b> com a plaquinha na coleira e sobe na balança do totem.</div></li>
+    <li><div><b>O totem reconhece e pesa.</b> Ele lê a plaquinha, descobre quem é o cachorro e anota o peso.</div></li>
+    <li><div><b>Solta a ração certa.</b> Se já passou tempo suficiente desde a última refeição daquele cachorro, o totem solta uma porção. O totem também dispensa água no pote para ele beber.</div></li>
+    <li><div><b>Conta tudo ao tablet.</b> Cada visita é enviada por Bluetooth para um tablet, que guarda o histórico e avisa se um cachorro some ou perde peso.</div></li>
+  </ol>
+
+  <div class="fotos">
+    <figure><img src="../fotos/dispenser%20racao.jpg" alt=""><br>Dispenser de ração</figure>
+    <figure><img src="../fotos/tag.webp" alt=""><br>Plaquinha da coleira</figure>
+    <figure><img src="../fotos/galao%20agua.jpg" alt=""><br>Reservatório de água</figure>
+    <figure><img src="../fotos/arduino.webp" alt=""><br>O "cérebro" do totem</figure>
+  </div>
+
+  <div class="cartao sem-quebra">
+    <h3>Quem faz o quê no totem</h3>
+    <table class="papeis">
+      <tr><td>Cérebro (Arduino)</td><td>Uma plaquinha de computador que recebe as informações e decide o que fazer.</td></tr>
+      <tr><td>Plaquinha e leitor</td><td>É o "RG" do cachorro. O leitor lê o número da plaquinha, que não tem bateria.</td></tr>
+      <tr><td>Balança</td><td>Pesa o cachorro. Acompanhar o peso ajuda a perceber se ele está doente.</td></tr>
+      <tr><td>Dosador</td><td>Um motorzinho que gira e solta a quantidade certa de ração, depois para.</td></tr>
+      <tr><td>Bomba de água</td><td>Leva a água do reservatório até o pote, para o cachorro beber.</td></tr>
+      <tr><td>Tela e Bluetooth</td><td>A tela dá o recado na hora. O Bluetooth é o rádio que leva os dados ao tablet.</td></tr>
+    </table>
+  </div>
+
+  <div class="grade2">
+    <div class="cartao"><h3>Por que importa</h3><p>Liga-se aos <b>ODS 11, 12 e 15</b>: cidades que cuidam melhor dos animais, menos desperdício de comida (a dose é medida) e proteção da vida dos animais.</p></div>
+    <div class="cartao"><h3>O que ainda é limite</h3><p>É um protótipo de bancada. Ainda não é à prova de chuva e o tablet precisa ficar a até uns 10 metros do totem.</p></div>
+  </div>
+</section>
+
+<!-- ============ ANJOS ============ -->
+<section class="pg b2">
+  <div class="topo"><h1>Anjos da Estrada</h1><p>Um segundo par de olhos para o caminhoneiro</p></div>
+
+  <div class="grade2">
+    <div class="cartao"><h3>O problema</h3><p>Caminhões antigos não têm sensores. O motorista não enxerga tudo ao redor (os "pontos cegos"), nem percebe quando uma lâmpada da seta queimou ou quando começa a chover forte.</p></div>
+    <div class="cartao"><h3>A ideia</h3><p>Um kit barato, que pode ser instalado em caminhões antigos, que vigia o veículo e avisa o motorista com <b>som, luz e um aplicativo no tablet</b>.</p></div>
+  </div>
+
+  <h2 style="margin-top:2mm">O que o kit avisa</h2>
+  <ol class="passos">
+    <li><div><b>Tem alguém no ponto cego.</b> Quatro sensores (frente, traseira e os dois lados) medem a distância. A partir de 1 metro, o kit já avisa que existe alguma coisa ali. Ele não sabe o que é, só que tem algo perto.</div></li>
+    <li><div><b>A seta queimou.</b> O kit confere se a luz da seta realmente acendeu. Assim o motorista não dá seta achando que está sinalizando quando a lâmpada está queimada.</div></li>
+    <li><div><b>Está chovendo ou está escuro.</b> O aviso aparece no aplicativo, que também lembra de acender os faróis.</div></li>
+    <li><div><b>O tablet é o painel do motorista.</b> Um aplicativo simples mostra um cartão por sensor. Quando o sensor apita, o cartão fica vermelho e o motorista decide o que fazer.</div></li>
+  </ol>
+  <p style="margin-top:-1mm">Se vários avisos acontecem juntos, vários cartões ficam vermelhos ao mesmo tempo. Quem decide o que fazer primeiro é o motorista.</p>
+
+  <div class="fotos">
+    <figure><img src="../fotos/caminho.jpg" alt=""><br>Os pontos cegos de um caminhão</figure>
+    <figure><img src="../fotos/HC-SR04.webp" alt=""><br>Sensor de distância</figure>
+    <figure><img src="../fotos/INA219.jpg" alt=""><br>Medidor das setas</figure>
+    <figure><img src="../fotos/arduino.webp" alt=""><br>O "cérebro" do kit</figure>
+  </div>
+
+  <div class="cartao sem-quebra">
+    <h3>Quem faz o quê no kit</h3>
+    <table class="papeis">
+      <tr><td>Cérebro (Arduino)</td><td>Lê todos os sensores e manda os avisos para o tablet.</td></tr>
+      <tr><td>Sensores de distância</td><td>Mandam um som que a gente não ouve e medem quanto demora o eco, como um morcego.</td></tr>
+      <tr><td>Medidor das setas</td><td>Sente se a eletricidade está passando pela lâmpada. Se a seta foi acionada e não passa nada, a lâmpada queimou.</td></tr>
+      <tr><td>Sensores de chuva e luz</td><td>Percebem gotas de chuva e o escuro.</td></tr>
+      <tr><td>Tablet, bipe e luz</td><td>É como o kit fala com o motorista: o aplicativo mostra um cartão por sensor, e o bipe e a luz chamam a atenção.</td></tr>
+    </table>
+  </div>
+
+  <div class="grade2">
+    <div class="cartao"><h3>Por que importa</h3><p>Liga-se aos <b>ODS 3 e 9</b>: menos acidentes e mais segurança nas estradas, e tecnologia barata que chega a quem tem veículo antigo.</p></div>
+    <div class="cartao"><h3>O que ainda é limite</h3><p>É um protótipo, e os sensores ainda não têm proteção. O kit sabe que existe algo no ponto cego, mas não o que é (sem câmera). Só deve ir a um caminhão de verdade com um técnico.</p></div>
+  </div>
+</section>
+
+<!-- ============ GLOSSARIO ============ -->
+<section class="pg neutro">
+  <h1>Palavras que você vai ouvir</h1>
+  <p>Se seu filho usar uma palavra que você não conhece, peça para explicar. Aqui vai uma ajuda rápida.</p>
+  <table class="gloss">
+    <tr><td>Arduino</td><td>Uma plaquinha de computador barata e programável. É o cérebro dos dois projetos.</td></tr>
+    <tr><td>Sensor</td><td>Uma peça que "sente" algo do mundo: distância, luz, água, peso.</td></tr>
+    <tr><td>Tag (NFC)</td><td>Uma plaquinha pequena, sem bateria, com um número único. O leitor lê esse número de perto.</td></tr>
+    <tr><td>Bluetooth</td><td>Rádio de curto alcance, o mesmo que liga o fone ao celular.</td></tr>
+    <tr><td>Célula de carga</td><td>Uma barra de metal que entorta um tiquinho com o peso. É assim que a balança funciona.</td></tr>
+    <tr><td>Ultrassom</td><td>Som tão agudo que o ouvido humano não percebe. O sensor de distância usa o eco dele.</td></tr>
+    <tr><td>Corrente elétrica</td><td>O "fluxo" de eletricidade que passa por um fio. Lâmpada queimada não deixa a corrente passar.</td></tr>
+    <tr><td>Protótipo</td><td>A primeira versão de uma ideia, feita para testar se funciona.</td></tr>
+    <tr><td>Simulação</td><td>Um teste no computador, que imita as peças antes de montar de verdade.</td></tr>
+    <tr><td>Calibrar</td><td>Ajustar um sensor com um valor conhecido, como pesar um objeto de peso certo, para ele medir direito.</td></tr>
+    <tr><td>Registro</td><td>O histórico guardado no tablet: quem veio, quando, quanto pesava, quanto comeu.</td></tr>
+    <tr><td>ODS</td><td>Objetivos de Desenvolvimento Sustentável: metas da ONU para um mundo melhor. Cada projeto se liga a alguns.</td></tr>
+  </table>
+</section>
+
+<!-- ============ TREINO EM CASA ============ -->
+<section class="pg b1">
+  <h1>Treino em casa: Amicão</h1>
+  <p>Faça as perguntas em voz alta, uma de cada vez. Ao lado de cada uma está o que uma <b>boa resposta</b> costuma ter.</p>
+
+  <div class="sec">Para entender o projeto</div>
+  <div class="q"><div class="p"><span>1.</span>Explica pra mim, o que é esse projeto do Amicão?</div><div class="r"><b>Boa resposta:</b> fala do problema (cachorros sem comida e água), da solução (totem que reconhece, pesa e alimenta) e de quem se beneficia.</div></div>
+  <div class="q"><div class="p"><span>2.</span>O que acontece quando um cachorro chega no totem?</div><div class="r"><b>Boa resposta:</b> conta os passos na ordem: lê a plaquinha, pesa, solta a ração se já passou o tempo, manda a visita ao tablet.</div></div>
+  <div class="q"><div class="p"><span>3.</span>Para que serve a plaquinha na coleira?</div><div class="r"><b>Boa resposta:</b> identifica cada cachorro, como um RG. Sem ela o totem não saberia quem comeu e quando.</div></div>
+  <div class="q"><div class="p"><span>4.</span>Por que o totem pesa o cachorro?</div><div class="r"><b>Boa resposta:</b> para acompanhar a saúde. Se o peso cai com o tempo, o tablet pode avisar que algo está errado.</div></div>
+  <div class="q"><div class="p"><span>5.</span>Como o totem dá água ao cachorro?</div><div class="r"><b>Boa resposta:</b> um reservatório guarda a água e uma bomba leva até o pote. Por ser um protótipo, ele só dispensa a água. Vigiar o nível do reservatório fica como ideia para uma versão futura.</div></div>
+  <div class="q"><div class="p"><span>6.</span>O que o tablet mostra e para que serve?</div><div class="r"><b>Boa resposta:</b> mostra o histórico de visitas. Serve para quem cuida dos cachorros acompanhar de longe, por exemplo ver se um cachorro parou de aparecer.</div></div>
+
+  <div class="sec">Para sentir o projeto</div>
+  <div class="q"><div class="p"><span>7.</span>Qual foi a parte mais difícil de montar ou de entender?</div><div class="r"><b>Boa resposta:</b> um problema real, como ele percebeu e o que fez para resolver. Não precisa ser heroico.</div></div>
+  <div class="q"><div class="p"><span>8.</span>Se vocês tivessem mais uma semana, o que melhorariam?</div><div class="r"><b>Boa resposta:</b> algo concreto e honesto, como proteção contra chuva, guardar histórico no próprio totem ou confirmar que a ração caiu.</div></div>
+
+  <div class="sec">Um pouco mais técnico (para quem quiser ir além)</div>
+  <div class="q"><div class="p"><span>9.</span>O que o Arduino faz no totem?</div><div class="r"><b>Boa resposta:</b> lê as peças (leitor da tag e balança), decide, e comanda o motor, a bomba, a tela e o Bluetooth, tudo por um programa que a equipe escreveu.</div></div>
+  <div class="q"><div class="p"><span>10.</span>Como vocês decidiram a quantidade de ração de cada porção?</div><div class="r"><b>Boa resposta:</b> explica como escolheram (por exemplo, pesar a ração de algumas voltas do dosador e ajustar o giro até chegar à porção desejada) e por que a dose certa evita desperdício e excesso.</div></div>
+</section>
+
+<section class="pg b2">
+  <h1>Treino em casa: Anjos da Estrada</h1>
+  <p>Mesmas regras: uma pergunta de cada vez, e o aluno responde sozinho.</p>
+
+  <div class="sec">Para entender o projeto</div>
+  <div class="q"><div class="p"><span>1.</span>Explica pra mim, o que são os Anjos da Estrada?</div><div class="r"><b>Boa resposta:</b> fala do problema (pontos cegos e falhas que o motorista não percebe), da solução (kit barato que avisa) e de quem usaria.</div></div>
+  <div class="q"><div class="p"><span>2.</span>O que é o ponto cego e como o kit ajuda?</div><div class="r"><b>Boa resposta:</b> é a região ao redor do caminhão que o motorista não vê. Sensores medem a distância e o kit avisa a partir de 1 metro.</div></div>
+  <div class="q"><div class="p"><span>3.</span>Como o kit descobre que a lâmpada da seta queimou?</div><div class="r"><b>Boa resposta:</b> mede se a eletricidade está passando. Seta acionada sem eletricidade passando é lâmpada queimada.</div></div>
+  <div class="q"><div class="p"><span>4.</span>Dá para saber se tem uma criança, uma pessoa ou um cachorro no ponto cego?</div><div class="r"><b>Boa resposta:</b> não. O kit só sabe que existe alguma coisa ali, porque mede distância. Para saber o que é, seria preciso uma câmera.</div></div>
+  <div class="q"><div class="p"><span>5.</span>E por que vocês não usaram uma câmera?</div><div class="r"><b>Boa resposta:</b> porque não havia dinheiro nem tempo para estudar e colocar isso no projeto. Fica como ideia para uma versão futura.</div></div>
+  <div class="q"><div class="p"><span>6.</span>Por que o kit só avisa e não freia o caminhão sozinho?</div><div class="r"><b>Boa resposta:</b> quem decide é o motorista. O kit é um segundo par de olhos, não toma decisões por ele, e isso também é mais seguro.</div></div>
+  <div class="q"><div class="p"><span>7.</span>O que o tablet faz no projeto?</div><div class="r"><b>Boa resposta:</b> é o painel do motorista: um aplicativo simples mostra um cartão para cada sensor. Quando o sensor apita, o cartão fica vermelho e o motorista decide o que fazer.</div></div>
+
+  <div class="sec">Para sentir o projeto</div>
+  <div class="q"><div class="p"><span>8.</span>Qual foi a parte mais difícil de montar ou de entender?</div><div class="r"><b>Boa resposta:</b> um problema real e como foi resolvido. Calibrar sensores é um bom exemplo.</div></div>
+  <div class="q"><div class="p"><span>9.</span>Se vocês tivessem mais uma semana, o que melhorariam?</div><div class="r"><b>Boa resposta:</b> algo concreto, como proteger os sensores, usar uma câmera ou testar em um veículo de verdade com um técnico.</div></div>
+
+  <div class="sec">Um pouco mais técnico (para quem quiser ir além)</div>
+  <div class="q"><div class="p"><span>10.</span>Como um sensor mede distância só com som?</div><div class="r"><b>Boa resposta:</b> manda um pulso de ultrassom, o som bate no objeto e volta como eco. Quanto mais demora o eco, mais longe está o objeto.</div></div>
+  <div class="q"><div class="p"><span>11.</span>E se o motorista não der seta, o que acontece?</div><div class="r"><b>Boa resposta:</b> nada. O kit só age quando a seta é acionada: se a lâmpada estiver queimada, o sensor dispara. Na demonstração, a equipe leva um LED que funciona e outro queimado.</div></div>
+</section>
+
+<!-- ============ BANCA ============ -->
+<section class="pg neutro">
+  <h1>Perguntas que a banca pode fazer</h1>
+  <p>Estas valem para <b>qualquer projeto</b>. A resposta de referência mostra o caminho; o aluno deve responder com os dados do próprio projeto.</p>
+
+  <div class="q"><div class="p"><span>1.</span>Qual problema vocês escolheram e por quê?</div><div class="r"><b>Referência:</b> quem sofre com o problema, por que importa na comunidade e como o grupo descobriu isso (conversa, observação, notícia).</div></div>
+  <div class="q"><div class="p"><span>2.</span>Em uma frase, o que o projeto faz?</div><div class="r"><b>Referência:</b> "O [projeto] ajuda [quem] a [fazer o quê], usando [ideia central]." Treinem a frase até sair natural.</div></div>
+  <div class="q"><div class="p"><span>3.</span>O que já funciona de verdade e o que ainda é ideia?</div><div class="r"><b>Referência:</b> separar com clareza o que está montado, o que só foi simulado no computador e o que ainda é plano. A banca valoriza muito essa honestidade.</div></div>
+  <div class="q"><div class="p"><span>4.</span>Como vocês testaram?</div><div class="r"><b>Referência:</b> testaram cada peça sozinha, depois tudo junto, usaram simulação e anotaram leituras reais dos sensores para ajustar.</div></div>
+  <div class="q"><div class="p"><span>5.</span>O que deu errado no caminho e como resolveram?</div><div class="r"><b>Referência:</b> um erro verdadeiro (peça diferente da planejada, fio trocado, valor de sensor que precisou de ajuste) e o que aprenderam.</div></div>
+  <div class="q"><div class="p"><span>6.</span>Quanto custa e outras comunidades conseguiriam repetir?</div><div class="r"><b>Referência:</b> os alunos não sabem o preço exato, porque as peças foram fornecidas pelo projeto. O que podem dizer é que são peças baratas e comuns, que com certeza podem ser replicadas em outros lugares.</div></div>
+  <div class="q"><div class="p"><span>7.</span>O que cada integrante da equipe fez?</div><div class="r"><b>Referência:</b> cada um cita uma parte real que fez (montagem, programa, testes, texto, apresentação). Todos devem saber explicar o projeto inteiro, não só a própria parte.</div></div>
+  <div class="q"><div class="p"><span>8.</span>Como o projeto se liga aos ODS?</div><div class="r"><b>Referência:</b> dar um exemplo concreto de impacto, em vez de só citar o número do ODS.</div></div>
+  <div class="q"><div class="p"><span>9.</span>O que o projeto não faz, e por quê?</div><div class="r"><b>Referência:</b> listar com honestidade 2 ou 3 coisas que o projeto não faz (veja as perguntas de cada projeto) e explicar o motivo: tempo, dinheiro ou ser um protótipo. Dizer o que ficaria para uma versão futura.</div></div>
+  <div class="q"><div class="p"><span>10.</span>Por que o seu projeto é melhor que o dos colegas?</div><div class="r"><b>Referência:</b> aqui vale humildade: não é melhor, é uma ideia muito boa e relativamente simples se pensar no impacto e na causa social que ela tem. Elogiar os colegas e mostrar o que o seu projeto tem de próprio.</div></div>
+</section>
+
+<section class="pg b1">
+  <h1>Banca: perguntas sobre o Amicão</h1>
+  <div class="q"><div class="p"><span>1.</span>Como o totem sabe qual cachorro é?</div><div class="r"><b>Referência:</b> cada cachorro usa uma tag NFC com número único. O leitor RC522 lê o número a uns 2 a 5 cm e o totem compara com a lista de cachorros conhecidos.</div></div>
+  <div class="q"><div class="p"><span>2.</span>E se aparecer um cachorro sem coleira?</div><div class="r"><b>Referência:</b> sem tag, não recebe nada. O totem não tem como saber se é mesmo um cachorro ou alguém querendo sabotar o equipamento.</div></div>
+  <div class="q"><div class="p"><span>3.</span>Como evita dar comida demais?</div><div class="r"><b>Referência:</b> a porção é fixa (o dosador gira um tanto e para sozinho) e cada cachorro tem um intervalo mínimo entre refeições (4 horas no protótipo final).</div></div>
+  <div class="q"><div class="p"><span>4.</span>Como vocês sabem que a ração realmente caiu?</div><div class="r"><b>Referência:</b> hoje o sistema registra que mandou soltar a ração. Confirmar de verdade exigiria um sensor a mais, como uma segunda balança no pote. <b>É um limite honesto.</b></div></div>
+  <div class="q"><div class="p"><span>5.</span>Quem cuida do totem no dia a dia?</div><div class="r"><b>Referência:</b> o totem não se reabastece sozinho: alguém precisa repor ração e água. A equipe deve saber dizer quem faria isso (um voluntário, a ONG, a comunidade) e de quanto em quanto tempo.</div></div>
+  <div class="q"><div class="p"><span>6.</span>Como o totem dá água, e ele sabe quando a água acaba?</div><div class="r"><b>Referência:</b> no protótipo a bomba só dispensa água no pote. Não há sensor de nível, então ele não sabe quando o reservatório esvazia. É um limite assumido e uma ideia para uma versão futura.</div></div>
+  <div class="q"><div class="p"><span>7.</span>E se o tablet estiver longe ou desligado?</div><div class="r"><b>Referência:</b> só se perdem os registros do que aconteceu naquele período. O Amicão continua funcionando normalmente: o tablet é um extra para ajudar a entender o que aconteceu.</div></div>
+  <div class="q"><div class="p"><span>8.</span>O que acontece quando um cachorro não vem comer por vários dias?</div><div class="r"><b>Referência:</b> dá para ver pelo aplicativo simples: o registro mostra quando foi a última visita daquele cachorro, e a equipe percebe que ele sumiu.</div></div>
+  <div class="q"><div class="p"><span>9.</span>Por que Bluetooth e não Wi-Fi?</div><div class="r"><b>Referência:</b> é barato e simples para o protótipo, com alcance de cerca de 10 metros. Wi-Fi seria a evolução para o totem ficar longe do tablet.</div></div>
+  <div class="q"><div class="p"><span>10.</span>Que dados o sistema guarda? Tem risco de privacidade?</div><div class="r"><b>Referência:</b> guarda número da tag, peso e horários dos cachorros. Não identifica pessoas. Mesmo assim vale dizer que os dados ficam só no tablet da equipe.</div></div>
+</section>
+
+<section class="pg b2">
+  <h1>Banca: perguntas sobre o Anjos da Estrada</h1>
+  <div class="q"><div class="p"><span>1.</span>Como o sensor de ponto cego mede a distância?</div><div class="r"><b>Referência:</b> o HC-SR04 manda um pulso de ultrassom e mede o tempo que o eco demora a voltar. Quanto maior o tempo, mais longe está o objeto.</div></div>
+  <div class="q"><div class="p"><span>2.</span>Por que quatro sensores, e por que lidos um de cada vez?</div><div class="r"><b>Referência:</b> um por ponto cego (frente, traseira, esquerda e direita). Lidos em sequência para que um não "ouça" o eco do outro.</div></div>
+  <div class="q"><div class="p"><span>3.</span>A partir de que distância o kit avisa?</div><div class="r"><b>Referência:</b> a partir de 1 metro o kit já avisa, e só isso: avisa que existe alguma coisa perto, sem dizer o que é.</div></div>
+  <div class="q"><div class="p"><span>4.</span>Como descobrem que a lâmpada da seta queimou? Por que não medir só a tensão?</div><div class="r"><b>Referência:</b> um módulo mede a corrente na linha da seta. Seta acionada sem corrente é lâmpada queimada. A tensão não serve porque continua presente mesmo com a lâmpada queimada.</div></div>
+  <div class="q"><div class="p"><span>5.</span>Se vários avisos acontecem juntos, qual a prioridade?</div><div class="r"><b>Referência:</b> quem decide é o motorista. No aplicativo, cada sensor vira um cartão; quando um sensor apita, o cartão fica vermelho e o motorista escolhe o que fazer.</div></div>
+  <div class="q"><div class="p"><span>6.</span>O sensor de chuva avisa que a pista está molhada?</div><div class="r"><b>Referência:</b> não exatamente. Ele sente gotas na própria placa, que fica exposta ao tempo, e isso indica chuva. Não mede o estado da pista, que pode estar molhada sem chover naquele ponto.</div></div>
+  <div class="q"><div class="p"><span>7.</span>E se um sensor quebrar? O motorista fica sabendo?</div><div class="r"><b>Referência:</b> a ideia é o aplicativo enviar um teste: se não receber a resposta do sensor, o cartão fica amarelo avisando. Sem esse teste, um sensor quebrado poderia passar despercebido.</div></div>
+  <div class="q"><div class="p"><span>8.</span>Dá para instalar em um caminhão de verdade?</div><div class="r"><b>Referência:</b> até dá, mas hoje os sensores não têm nenhuma proteção e ficam muito vulneráveis (chuva, poeira, pancadas). A parte elétrica do caminhão também precisaria de um técnico.</div></div>
+</section>
+
+<!-- ============ ENSAIO ============ -->
+<section class="pg neutro">
+  <h1>Ensaio em casa (15 minutos)</h1>
+  <p>Marquem um horário, sentem juntos e façam como se fosse a apresentação de verdade.</p>
+
+  <div class="grade3">
+    <div class="cartao"><h3>3 min · Apresentação</h3><p>O aluno apresenta o projeto sem interrupção: problema, solução, como funciona e o que ainda falta.</p></div>
+    <div class="cartao"><h3>8 min · Perguntas</h3><p>Escolha 4 ou 5 perguntas das páginas anteriores, incluindo pelo menos uma que mostre um limite do projeto.</p></div>
+    <div class="cartao"><h3>4 min · Conversa</h3><p>Dois elogios, uma sugestão e a pergunta: "o que você explicaria diferente da próxima vez?".</p></div>
+  </div>
+
+  <h2>Ficha de acompanhamento para quem assiste</h2>
+  <table class="ficha">
+    <tr><th>O que observar</th><th>Ainda não</th><th>Mais ou menos</th><th>Muito bem</th></tr>
+    <tr><td>Explicou o problema com clareza</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Explicou como o projeto funciona, sem decorar</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Respondeu com as próprias palavras</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Foi honesto sobre os limites do projeto</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Disse "não sei, mas..." quando precisou</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Mostrou orgulho do que fez</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+    <tr><td>Falou em tom e velocidade fáceis de acompanhar</td><td><span class="caixa"></span></td><td><span class="caixa"></span></td><td><span class="caixa"></span></td></tr>
+  </table>
+
+  <h3>Meus dois elogios</h3>
+  <p>1. ____________________________________________________________________________</p>
+  <p>2. ____________________________________________________________________________</p>
+  <h3>Minha sugestão</h3>
+  <p>____________________________________________________________________________</p>
+
+  <div class="dica"><b>Para quem assiste:</b> não é preciso entender de eletrônica. Se você entendeu o problema, a solução e por que a equipe fez assim, a apresentação está boa. Se ficou confuso, é isso que o aluno precisa ouvir antes do dia.</div>
+</section>
+
+</body>
+</html>

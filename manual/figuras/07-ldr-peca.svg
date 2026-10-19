@@ -1,0 +1,37 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="15" y="32" width="270" height="98" rx="7" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <!-- LDR -->
+  <circle cx="75" cy="81" r="30" fill="#f5d98b" stroke="#a98307" stroke-width="2.5"/>
+  <polyline points="52,68 98,68 98,75 52,75 52,82 98,82 98,89 52,89 52,96 98,96" fill="none" stroke="#6d4c41" stroke-width="2.4" stroke-linejoin="round"/>
+  <text x="75" y="17" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">LDR</text>
+  <text x="75" y="28" font-size="9" fill="#5b6770" text-anchor="middle">(sensor de luz)</text>
+  <!-- parafuso de ajuste -->
+  <rect x="127" y="52" width="38" height="38" rx="3" fill="#0d47a1" stroke="#082a63" stroke-width="1.5"/>
+  <circle cx="146" cy="71" r="12" fill="#90caf9" stroke="#082a63"/>
+  <line x1="138" y1="71" x2="154" y2="71" stroke="#082a63" stroke-width="2.4"/>
+  <text x="146" y="17" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">parafuso</text>
+  <text x="146" y="28" font-size="9" fill="#5b6770" text-anchor="middle">ajuste do DO</text>
+  <!-- circuito pronto -->
+  <rect x="190" y="56" width="56" height="30" rx="2" fill="#263238"/>
+  <circle cx="198" cy="64" r="2" fill="#78909c"/>
+  <text x="228" y="17" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">circuito pronto</text>
+  <text x="228" y="28" font-size="9" fill="#5b6770" text-anchor="middle">já vem no módulo</text>
+  <!-- leds -->
+  <rect x="195" y="102" width="9" height="6" fill="#e53935"/>
+  <rect x="215" y="102" width="9" height="6" fill="#43a047"/>
+  <!-- pinos -->
+  <rect x="86" y="130" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="124" y="130" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="162" y="130" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="200" y="130" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <text x="90.5" y="164" font-size="11" font-weight="700" fill="#c62828" text-anchor="middle">VCC</text>
+  <text x="128.5" y="164" font-size="11" font-weight="700" fill="#202124" text-anchor="middle">GND</text>
+  <text x="166.5" y="164" font-size="11" font-weight="700" fill="#5b6770" text-anchor="middle">DO</text>
+  <text x="204.5" y="164" font-size="11" font-weight="700" fill="#188038" text-anchor="middle">AO</text>
+  <text x="90.5" y="176" font-size="9" fill="#5b6770" text-anchor="middle">5 V</text>
+  <text x="128.5" y="176" font-size="9" fill="#5b6770" text-anchor="middle">terra</text>
+  <text x="166.5" y="176" font-size="9" fill="#5b6770" text-anchor="middle">sim/não</text>
+  <text x="204.5" y="176" font-size="9" fill="#5b6770" text-anchor="middle">número</text>
+  <text x="204.5" y="187" font-size="9" font-weight="700" fill="#188038" text-anchor="middle">(usamos este)</text>
+</svg>

@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/B2-AnjosDaEstrada.ino.hex'
+elf = 'build/B2-AnjosDaEstrada.ino.elf'

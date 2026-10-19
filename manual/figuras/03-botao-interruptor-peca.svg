@@ -1,0 +1,44 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- botao de 4 pernas -->
+  <text x="75" y="16" font-size="10.5" font-weight="700" fill="#37474f" text-anchor="middle">Botão</text>
+  <text x="75" y="28" font-size="9" fill="#5b6770" text-anchor="middle">volta sozinho ao soltar</text>
+  <!-- pernas -->
+  <g fill="#cfd8dc" stroke="#78909c" stroke-width="1">
+    <rect x="22" y="48" width="12" height="5"/><rect x="22" y="94" width="12" height="5"/>
+    <rect x="116" y="48" width="12" height="5"/><rect x="116" y="94" width="12" height="5"/>
+  </g>
+  <rect x="32" y="42" width="86" height="64" rx="5" fill="#37474f" stroke="#1c2529" stroke-width="2"/>
+  <circle cx="75" cy="74" r="22" fill="#e53935" stroke="#9b1c1c" stroke-width="2"/>
+  <circle cx="68" cy="67" r="6" fill="#ffffff" opacity=".35"/>
+  <!-- ligacoes internas -->
+  <g stroke="#f9a825" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <line x1="18" y1="50" x2="18" y2="97"/><line x1="132" y1="50" x2="132" y2="97"/>
+  </g>
+  <text x="75" y="119" font-size="9" fill="#b4510a" text-anchor="middle">laranja: pernas já ligadas por dentro</text>
+  <text x="75" y="130" font-size="9" fill="#5b6770" text-anchor="middle">apertar liga um lado ao outro</text>
+
+  <!-- interruptor deslizante -->
+  <text x="228" y="16" font-size="10.5" font-weight="700" fill="#37474f" text-anchor="middle">Interruptor</text>
+  <text x="228" y="28" font-size="9" fill="#5b6770" text-anchor="middle">fica na posição em que você deixa</text>
+  <rect x="180" y="58" width="96" height="34" rx="4" fill="#546e7a" stroke="#263238" stroke-width="2"/>
+  <rect x="190" y="66" width="76" height="18" rx="3" fill="#263238"/>
+  <rect x="190" y="62" width="30" height="26" rx="3" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5"/>
+  <g stroke="#90a4ae" stroke-width="1.2"><line x1="200" y1="66" x2="200" y2="84"/><line x1="206" y1="66" x2="206" y2="84"/><line x1="212" y1="66" x2="212" y2="84"/></g>
+  <g fill="#cfd8dc" stroke="#78909c" stroke-width="1">
+    <rect x="192" y="92" width="6" height="12"/><rect x="224" y="92" width="6" height="12"/><rect x="258" y="92" width="6" height="12"/>
+  </g>
+  <text x="195" y="52" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">desligado</text>
+  <text x="262" y="52" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">ligado</text>
+
+  <!-- simbolos -->
+  <line x1="12" y1="138" x2="290" y2="138" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="6" y="154" font-size="9.5" font-weight="700" fill="#37474f">Símbolos no esquema</text>
+  <g stroke="#37474f" stroke-width="2.2" fill="none" stroke-linecap="round">
+    <path d="M30,176 L62,176"/><path d="M62,176 L90,164"/><path d="M96,176 L120,176"/>
+    <path d="M190,176 L222,176"/><path d="M222,176 L250,164"/><path d="M256,176 L280,176"/>
+  </g>
+  <circle cx="62" cy="176" r="2.6" fill="#37474f"/><circle cx="96" cy="176" r="2.6" fill="#37474f"/>
+  <circle cx="222" cy="176" r="2.6" fill="#37474f"/><circle cx="256" cy="176" r="2.6" fill="#37474f"/>
+  <text x="75" y="188" font-size="9" fill="#5b6770" text-anchor="middle">aberto (solto)</text>
+  <text x="235" y="188" font-size="9" fill="#5b6770" text-anchor="middle">aberto (desligado)</text>
+</svg>

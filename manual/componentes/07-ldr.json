@@ -1,0 +1,74 @@
+{
+  "nome": "Sensor de luz LDR",
+  "nome_curto": "LDR",
+  "apelido": "O olho do Arduino: sente se está claro ou escuro",
+  "categoria": "sensor",
+  "nivel": 2,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "O LDR é um resistor que muda com a luz: no claro deixa a corrente passar fácil; no escuro, com dificuldade. O módulo de 4 pinos já vem com o circuito pronto.",
+  "pra_que_serve": "Saber se está claro ou escuro. O Arduino lê um número e avisa o motorista que escureceu e é hora de acender os faróis.",
+  "onde_vive": [
+    "Postes de rua que acendem sozinhos ao anoitecer.",
+    "Luzinha de tomada que acende quando a sala escurece.",
+    "Celular que ajusta o brilho da tela conforme a claridade."
+  ],
+  "legenda_peca": "Módulo LDR de 4 pinos: o disco claro é o sensor.",
+  "ficha": {
+    "Liga em": "5 V",
+    "Saídas": "AO (número) e DO (sim/não)",
+    "Valor lido": "de 0 a 1023",
+    "No escuro": "o número SOBE"
+  },
+  "passos": [
+    "A luz chega ao LDR e muda o quanto ele deixa a corrente passar.",
+    "O LDR e um resistor fixo dividem a tensão do 5 V.",
+    "O ponto do meio fica com mais ou menos volts e vai ao pino AO.",
+    "O Arduino lê um número de 0 a 1023: escuro = número alto."
+  ],
+  "formula": "Escuro = número ALTO. Claro = número BAIXO. Acima de 800, o kit entende que está com pouca luz.",
+  "no_projeto": {
+    "B2": {
+      "texto": "O sensor fica no console do caminhão. Quando a noite chega ou o caminhão entra num túnel, o número sobe. Passou de 800, a tela mostra \"POUCA LUZ, acenda os faróis\". Usamos só a saída AO; o 800 precisa ser calibrado no módulo real.",
+      "pinos": [
+        [
+          "Saída usada",
+          "AO em pino analógico"
+        ],
+        [
+          "Pouca luz",
+          "acima de 800"
+        ],
+        [
+          "Prioridade",
+          "abaixo de pista molhada"
+        ]
+      ],
+      "ligacao": [
+        [
+          "VCC",
+          "5V",
+          "vermelho"
+        ],
+        [
+          "GND",
+          "GND",
+          "preto"
+        ],
+        [
+          "AO",
+          "pino analógico",
+          "verde"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Farol de outro carro ou o LED do kit perto do sensor enganam a leitura.",
+    "Túnel e sombra de ponte escurecem de repente: espere alguns segundos de escuro.",
+    "Calibre o 800 pelo Serial. Se o número cair no escuro, o módulo é invertido."
+  ],
+  "desafio": "Na sala clara o AO lê 200. Você cobre o LDR com a mão e ele lê 850. Quanto o número subiu? Passou de 800? O que a tela mostra?",
+  "resposta": "Subiu 650 (850 − 200). Passou de 800, então a tela mostra \"POUCA LUZ, acenda os faróis\"."
+}

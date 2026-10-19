@@ -1,0 +1,44 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- orelhas de fixacao -->
+  <rect x="18" y="52" width="140" height="18" rx="9" fill="#90a4ae" stroke="#546e7a" stroke-width="2"/>
+  <circle cx="30" cy="61" r="4.5" fill="#fff" stroke="#546e7a"/>
+  <circle cx="146" cy="61" r="4.5" fill="#fff" stroke="#546e7a"/>
+  <!-- carcaca -->
+  <circle cx="88" cy="62" r="48" fill="#cfd8dc" stroke="#607d8b" stroke-width="2.5"/>
+  <circle cx="88" cy="62" r="38" fill="none" stroke="#b0bec5" stroke-width="1.5"/>
+  <!-- eixo -->
+  <circle cx="88" cy="46" r="15" fill="#90a4ae" stroke="#546e7a" stroke-width="2"/>
+  <circle cx="88" cy="46" r="8" fill="#fff8e1" stroke="#8d6e00" stroke-width="2"/>
+  <line x1="84.5" y1="40" x2="84.5" y2="52" stroke="#8d6e00" stroke-width="1.2"/>
+  <line x1="91.5" y1="40" x2="91.5" y2="52" stroke="#8d6e00" stroke-width="1.2"/>
+  <!-- fios -->
+  <g fill="none" stroke-width="3" stroke-linecap="round">
+    <path d="M76,108 C76,125 74,130 74,140" stroke="#1a73e8"/>
+    <path d="M82,109 C82,125 80,130 80,140" stroke="#e91e8c"/>
+    <path d="M88,110 C88,125 87,130 87,140" stroke="#f2c200"/>
+    <path d="M94,109 C94,125 94,130 94,140" stroke="#f29900"/>
+    <path d="M100,108 C100,125 101,130 101,140" stroke="#d93025"/>
+  </g>
+  <rect x="66" y="140" width="44" height="22" rx="3" fill="#f5f5f5" stroke="#9aa0a6" stroke-width="1.5"/>
+  <g fill="#455a64">
+    <rect x="70" y="146" width="5" height="10"/><rect x="77" y="146" width="5" height="10"/><rect x="84.5" y="146" width="5" height="10"/>
+    <rect x="92" y="146" width="5" height="10"/><rect x="99" y="146" width="5" height="10"/>
+  </g>
+  <!-- rotulos -->
+  <g stroke="#5b6770" stroke-width="1.1">
+    <line x1="97" y1="42" x2="172" y2="30"/>
+    <line x1="154" y1="62" x2="172" y2="64"/>
+    <line x1="126" y1="86" x2="172" y2="98"/>
+    <line x1="110" y1="152" x2="124" y2="152"/>
+  </g>
+  <text x="176" y="30" font-size="10.5" font-weight="700" fill="#0d47a1">Eixo de saída</text>
+  <text x="176" y="42" font-size="9" fill="#5b6770">(é ele que gira)</text>
+  <text x="176" y="67" font-size="10.5" font-weight="700" fill="#0d47a1">Orelha de fixação</text>
+  <text x="176" y="101" font-size="10.5" font-weight="700" fill="#0d47a1">Carcaça metálica</text>
+  <text x="176" y="113" font-size="9" fill="#5b6770">(bobinas e engrenagens</text>
+  <text x="176" y="124" font-size="9" fill="#5b6770">ficam por dentro)</text>
+  <text x="128" y="148" font-size="10.5" font-weight="700" fill="#0d47a1">Plugue de 5 pinos</text>
+  <text x="128" y="160" font-size="9" fill="#c62828" font-weight="700">vermelho = comum (+5 V)</text>
+  <text x="128" y="171" font-size="9" fill="#5b6770">azul, rosa, amarelo, laranja</text>
+  <text x="128" y="182" font-size="9" fill="#5b6770">= as 4 bobinas</text>
+</svg>

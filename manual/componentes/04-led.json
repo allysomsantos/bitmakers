@@ -1,0 +1,73 @@
+{
+  "nome": "LED",
+  "nome_curto": "LED + 220 Ω",
+  "apelido": "A luzinha que só passa corrente de um lado",
+  "categoria": "interface",
+  "nivel": 1,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "O LED é uma luzinha que acende quando a corrente passa, mas só em um sentido. Tem duas pernas: ânodo (+) e cátodo (−).",
+  "pra_que_serve": "Avisar com luz que algo aconteceu. Gasta pouca energia, quase não esquenta e dura muito.",
+  "onde_vive": [
+    "Lanternas, lâmpadas de casa e faróis de carros novos.",
+    "A luzinha de TV, roteador e carregador ligados.",
+    "Semáforos, setas e luz de freio dos veículos."
+  ],
+  "legenda_peca": "LED de 5 mm com as pernas identificadas e o símbolo do esquema.",
+  "ficha": {
+    "Acende com": "cerca de 2 V (vermelho)",
+    "Corrente": "até uns 20 mA",
+    "Lado certo": "perna longa é o +",
+    "Sempre com": "um resistor"
+  },
+  "passos": [
+    "O LED é como uma catraca: a corrente só passa do + para o −.",
+    "Quando a corrente passa, o LED vira luz.",
+    "O resistor segura a corrente e protege o LED.",
+    "Sem ele, passa corrente demais e o LED queima em segundos."
+  ],
+  "formula": "Regra de ouro: LED sempre com resistor. No 5 V, um de 220 Ω deixa passar uns 14 mA: acende bem e não queima (a conta está na página 05).",
+  "no_projeto": {
+    "B2": {
+      "texto": "O LED de alerta (num pino digital, com resistor de 220 Ω) é o aviso de luz do kit. Outros dois LEDs, cada um com 220 Ω ligado ao 5 V, fazem de lâmpadas das setas. Tirar um LED simula lâmpada queimada.",
+      "pinos": [
+        [
+          "LED de alerta",
+          "pino digital → 220 Ω → LED → GND"
+        ],
+        [
+          "Lâmpada da seta",
+          "5 V → LED + 220 Ω"
+        ],
+        [
+          "Seta acesa",
+          "passam uns 14 mA"
+        ],
+        [
+          "Lâmpada queimada",
+          "quase nada passa"
+        ]
+      ],
+      "ligacao": [
+        [
+          "Ânodo (+)",
+          "pino digital",
+          "laranja"
+        ],
+        [
+          "Cátodo (−)",
+          "GND",
+          "preto"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "Sem resistor, o LED recebe corrente demais e queima.",
+    "Tem lado: perna longa é o +, lado chato é o −. Invertido, não acende.",
+    "Cada pino do Arduino aguenta uns 20 mA: um LED com resistor é tranquilo."
+  ],
+  "desafio": "Na seta, tiramos o LED do protoboard. O que acontece com a luz? E com a corrente no circuito?",
+  "resposta": "A luz apaga: o caminho fica cortado e não passa corrente. É assim que o kit simula uma lâmpada queimada."
+}

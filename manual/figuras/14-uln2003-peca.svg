@@ -1,0 +1,42 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="20" y="22" width="260" height="114" rx="7" fill="#1565c0" stroke="#0a2f6b" stroke-width="2"/>
+  <!-- plugue do motor -->
+  <rect x="38" y="30" width="86" height="26" rx="3" fill="#f5f5f5" stroke="#9aa0a6" stroke-width="1.5"/>
+  <g fill="#455a64">
+    <rect x="46" y="38" width="8" height="12"/><rect x="58" y="38" width="8" height="12"/><rect x="70" y="38" width="8" height="12"/>
+    <rect x="82" y="38" width="8" height="12"/><rect x="94" y="38" width="8" height="12"/>
+  </g>
+  <rect x="108" y="30" width="10" height="5" fill="#9aa0a6"/>
+  <!-- LEDs -->
+  <g stroke="#8e0000" stroke-width="1.5">
+    <circle cx="170" cy="44" r="7" fill="#ff5252"/><circle cx="194" cy="44" r="7" fill="#ff5252"/>
+    <circle cx="218" cy="44" r="7" fill="#ff5252"/><circle cx="242" cy="44" r="7" fill="#ff5252"/>
+  </g>
+  <!-- chip -->
+  <g stroke="#cfd8dc" stroke-width="2">
+    <line x1="92" y1="78" x2="92" y2="72"/><line x1="108" y1="78" x2="108" y2="72"/><line x1="124" y1="78" x2="124" y2="72"/><line x1="140" y1="78" x2="140" y2="72"/><line x1="156" y1="78" x2="156" y2="72"/><line x1="172" y1="78" x2="172" y2="72"/>
+    <line x1="92" y1="106" x2="92" y2="112"/><line x1="108" y1="106" x2="108" y2="112"/><line x1="124" y1="106" x2="124" y2="112"/><line x1="140" y1="106" x2="140" y2="112"/><line x1="156" y1="106" x2="156" y2="112"/><line x1="172" y1="106" x2="172" y2="112"/>
+  </g>
+  <rect x="82" y="78" width="100" height="28" rx="2" fill="#263238"/>
+  <text x="132" y="97" font-size="10" font-weight="700" fill="#eceff1" text-anchor="middle">ULN2003</text>
+  <!-- pinos IN -->
+  <rect x="45.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="75.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="105.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="135.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="215.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <rect x="245.5" y="136" width="9" height="18" fill="#ffd54f" stroke="#b28704"/>
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <text x="50" y="167" fill="#0d47a1">IN1</text><text x="80" y="167" fill="#0d47a1">IN2</text>
+    <text x="110" y="167" fill="#0d47a1">IN3</text><text x="140" y="167" fill="#0d47a1">IN4</text>
+    <text x="220" y="167" fill="#202124">−</text><text x="250" y="167" fill="#c62828">+</text>
+  </g>
+  <g font-size="9" fill="#5b6770" text-anchor="middle">
+    <text x="95" y="180">4 pinos digitais</text>
+    <text x="220" y="180">GND</text><text x="250" y="180">5 V ext.</text>
+  </g>
+  <!-- rotulos -->
+  <text x="81" y="14" font-size="10.5" font-weight="700" fill="#0d47a1" text-anchor="middle">Plugue do motor</text>
+  <text x="206" y="14" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">4 LEDs das bobinas</text>
+</svg>

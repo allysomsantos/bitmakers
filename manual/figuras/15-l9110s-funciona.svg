@@ -1,0 +1,46 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <text x="210" y="14" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">1 O Arduino manda 2 sinais · 2 as chaves escolhem o lado da corrente</text>
+
+  <!-- ===== Painel 3: um sentido ===== -->
+  <rect x="6" y="24" width="126" height="146" rx="8" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.6"/>
+  <text x="69" y="44" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">A-IA: ALTO</text>
+  <text x="69" y="58" font-size="9.5" font-weight="700" fill="#5b6770" text-anchor="middle">A-IB: BAIXO</text>
+  <path d="M22,80 H100 V73 L118,84 L100,95 V88 H22 z" fill="#d9640a"/>
+  <text x="69" y="74" font-size="9" fill="#37474f" text-anchor="middle">corrente</text>
+  <line x1="16" y1="116" x2="49" y2="116" stroke="#202124" stroke-width="3"/>
+  <line x1="89" y1="116" x2="122" y2="116" stroke="#202124" stroke-width="3"/>
+  <circle cx="69" cy="116" r="20" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+  <text x="69" y="122" font-size="14" font-weight="700" fill="#37474f" text-anchor="middle">M</text>
+  <text x="18" y="142" font-size="9" font-weight="700" fill="#37474f">OA</text>
+  <text x="106" y="142" font-size="9" font-weight="700" fill="#37474f">OB</text>
+  <text x="69" y="162" font-size="9.5" font-weight="700" fill="#d9640a" text-anchor="middle">3 gira num sentido</text>
+
+  <!-- ===== Painel 4: parado ===== -->
+  <rect x="147" y="24" width="126" height="146" rx="8" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.6"/>
+  <text x="210" y="44" font-size="9.5" font-weight="700" fill="#5b6770" text-anchor="middle">A-IA: BAIXO</text>
+  <text x="210" y="58" font-size="9.5" font-weight="700" fill="#5b6770" text-anchor="middle">A-IB: BAIXO</text>
+  <text x="210" y="88" font-size="9" fill="#37474f" text-anchor="middle">sem corrente</text>
+  <line x1="157" y1="116" x2="190" y2="116" stroke="#202124" stroke-width="3"/>
+  <line x1="230" y1="116" x2="263" y2="116" stroke="#202124" stroke-width="3"/>
+  <circle cx="210" cy="116" r="20" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+  <text x="210" y="122" font-size="14" font-weight="700" fill="#37474f" text-anchor="middle">M</text>
+  <text x="159" y="142" font-size="9" font-weight="700" fill="#37474f">OA</text>
+  <text x="247" y="142" font-size="9" font-weight="700" fill="#37474f">OB</text>
+  <text x="210" y="162" font-size="9.5" font-weight="700" fill="#c62828" text-anchor="middle">4 parado</text>
+
+  <!-- ===== Painel 5: sentido contrario ===== -->
+  <rect x="288" y="24" width="126" height="146" rx="8" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.6"/>
+  <text x="351" y="44" font-size="9.5" font-weight="700" fill="#5b6770" text-anchor="middle">A-IA: BAIXO</text>
+  <text x="351" y="58" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">A-IB: ALTO</text>
+  <path d="M394,80 H316 V73 L298,84 L316,95 V88 H394 z" fill="#d9640a"/>
+  <text x="351" y="74" font-size="9" fill="#37474f" text-anchor="middle">corrente</text>
+  <line x1="298" y1="116" x2="331" y2="116" stroke="#202124" stroke-width="3"/>
+  <line x1="371" y1="116" x2="404" y2="116" stroke="#202124" stroke-width="3"/>
+  <circle cx="351" cy="116" r="20" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+  <text x="351" y="122" font-size="14" font-weight="700" fill="#37474f" text-anchor="middle">M</text>
+  <text x="300" y="142" font-size="9" font-weight="700" fill="#37474f">OA</text>
+  <text x="388" y="142" font-size="9" font-weight="700" fill="#37474f">OB</text>
+  <text x="351" y="162" font-size="9.5" font-weight="700" fill="#d9640a" text-anchor="middle">5 gira ao contrário</text>
+
+  <text x="210" y="192" font-size="9" fill="#5b6770" text-anchor="middle">A corrente entra por um lado do motor e sai pelo outro. Trocar o lado troca o sentido.</text>
+</svg>

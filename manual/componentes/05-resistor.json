@@ -1,0 +1,76 @@
+{
+  "nome": "Resistor",
+  "nome_curto": "Resistor",
+  "apelido": "O freio da eletricidade: controla a corrente",
+  "categoria": "montagem",
+  "nivel": 1,
+  "projetos": [
+    "B1",
+    "B2"
+  ],
+  "o_que_e": "Um componente que segura a corrente elétrica, como um cano estreito segura a água. Essa \"dificuldade\" se chama resistência e se mede em ohms (Ω). As cores no corpo mostram o valor.",
+  "pra_que_serve": "Proteger peças, como o LED, limitando a corrente. Dois resistores juntos também diminuem uma tensão.",
+  "onde_vive": [
+    "Em quase toda placa eletrônica: celular, TV, carregador.",
+    "Chuveiro e ferro elétrico: a resistência esquenta.",
+    "Controle de volume e de brilho: mudam a resistência."
+  ],
+  "legenda_peca": "Resistor de 220 Ω e a tabela do código de cores.",
+  "ficha": {
+    "Unidade": "ohm (Ω); 1 kΩ = 1.000 Ω",
+    "Lado certo": "não tem",
+    "Valor": "mostrado pelas cores",
+    "Nos projetos": "220 Ω, 1 kΩ e 2 kΩ"
+  },
+  "passos": [
+    "É como um cano estreito: passa menos corrente.",
+    "Mais ohms = mais difícil de passar = menos corrente.",
+    "A energia que fica para trás vira um pouco de calor.",
+    "Tensão, corrente e resistência andam juntas (Lei de Ohm).",
+    "Dois resistores em fila dividem a tensão: 5 V vira cerca de 3,3 V."
+  ],
+  "formula": "Lei de Ohm: V = R × I, ou I = V ÷ R. No LED: 5 V − 2 V = 3 V sobram para o resistor; 3 ÷ 220 ≈ 0,014 A (14 mA).",
+  "no_projeto": {
+    "B1": {
+      "texto": "O Bluetooth (HC-06) aceita só 3,3 V, e o Uno manda 5 V. Dois resistores dividem a tensão: 5 V vira cerca de 3,3 V.",
+      "pinos": [
+        [
+          "Do Arduino",
+          "pino digital → 1 kΩ → RXD"
+        ],
+        [
+          "Para o GND",
+          "RXD → 2 kΩ → GND"
+        ],
+        [
+          "Resultado",
+          "cerca de 3,3 V"
+        ]
+      ]
+    },
+    "B2": {
+      "texto": "Um resistor de 220 Ω junto de cada LED: o de alerta e os das setas. O par 1 kΩ + 2 kΩ protege o Bluetooth.",
+      "pinos": [
+        [
+          "LED de alerta",
+          "pino digital → 220 Ω → LED"
+        ],
+        [
+          "LEDs das setas",
+          "5 V → LED + 220 Ω"
+        ],
+        [
+          "HC-06",
+          "pino digital → 1 kΩ + 2 kΩ"
+        ]
+      ]
+    }
+  },
+  "cuidados": [
+    "O resistor não tem lado: pode ligar de qualquer jeito.",
+    "LED sem resistor recebe corrente demais e queima.",
+    "Anel dourado no fim. 1 kΩ: marrom-preto-vermelho. 2 kΩ: vermelho-preto-vermelho."
+  ],
+  "desafio": "Um LED com resistor de 330 Ω no 5 V (sobram 3 V para o resistor): qual a corrente? Fica mais fraca ou mais forte que com 220 Ω?",
+  "resposta": "3 ÷ 330 ≈ 0,009 A = 9 mA. É menos que os 14 mA do 220 Ω: mais resistência, menos corrente, luz mais fraca."
+}

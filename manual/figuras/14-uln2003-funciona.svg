@@ -1,0 +1,42 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- fonte -->
+  <rect x="140" y="4" width="140" height="28" rx="6" fill="#fff8e1" stroke="#e2a600" stroke-width="2"/>
+  <text x="210" y="22" font-size="9.5" font-weight="700" fill="#8d6e00" text-anchor="middle">Fonte de 5 V externa</text>
+  <path d="M203,32 H217 V44 H225 L210,54 L195,44 H203 z" fill="#d93025"/>
+  <text x="232" y="48" font-size="9" font-weight="700" fill="#c62828">a força</text>
+
+  <!-- Arduino -->
+  <rect x="6" y="64" width="86" height="60" rx="8" fill="#e0f2f1" stroke="#00796b" stroke-width="2"/>
+  <text x="49" y="88" font-size="10" font-weight="700" fill="#004d40" text-anchor="middle">Arduino</text>
+  <text x="49" y="102" font-size="9" fill="#004d40" text-anchor="middle">4 pinos digitais</text>
+  <text x="49" y="114" font-size="9" fill="#004d40" text-anchor="middle">(IN1 a IN4)</text>
+  <path d="M92,92 H124 V87 L136,96 L124,105 V100 H92 z" fill="#188038"/>
+  <text x="114" y="80" font-size="9.5" font-weight="700" fill="#188038" text-anchor="middle">1 sinal</text>
+
+  <!-- ULN2003 -->
+  <rect x="140" y="58" width="140" height="94" rx="8" fill="#e3f2fd" stroke="#1a73e8" stroke-width="2"/>
+  <text x="210" y="74" font-size="10" font-weight="700" fill="#0d47a1" text-anchor="middle">ULN2003</text>
+  <polygon points="160,84 160,124 200,104" fill="#fff" stroke="#0d47a1" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="246" cy="100" r="7" fill="#ff5252" stroke="#8e0000" stroke-width="1.5"/>
+  <text x="246" y="120" font-size="9" fill="#37474f" text-anchor="middle">LED acende</text>
+  <text x="210" y="139" font-size="9.5" font-weight="700" fill="#0d47a1" text-anchor="middle">2 amplificador</text>
+  <text x="210" y="150" font-size="9.5" font-weight="700" fill="#0d47a1" text-anchor="middle">de corrente</text>
+
+  <!-- motor -->
+  <path d="M280,88 H318 V78 L338,98 L318,118 V108 H280 z" fill="#ff9800" stroke="#d9640a" stroke-width="1.5"/>
+  <text x="310" y="72" font-size="9.5" font-weight="700" fill="#d9640a" text-anchor="middle">3 corrente</text>
+  <text x="310" y="136" font-size="9.5" font-weight="700" fill="#d9640a" text-anchor="middle">grande</text>
+  <rect x="338" y="64" width="76" height="68" rx="8" fill="#fff3e0" stroke="#d9640a" stroke-width="2"/>
+  <text x="376" y="92" font-size="10" font-weight="700" fill="#d9640a" text-anchor="middle">Bobina</text>
+  <text x="376" y="106" font-size="9" fill="#37474f" text-anchor="middle">do motor</text>
+  <text x="376" y="118" font-size="9" fill="#37474f" text-anchor="middle">28BYJ-48</text>
+
+  <!-- comparacao -->
+  <text x="6" y="166" font-size="9.5" font-weight="700" fill="#37474f">Quanta corrente cada um dá ou pede:</text>
+  <text x="6" y="181" font-size="9" fill="#37474f">Pino do Arduino</text>
+  <rect x="100" y="173" width="8" height="10" fill="#188038"/>
+  <text x="114" y="181" font-size="9" font-weight="700" fill="#188038">até 20 mA</text>
+  <text x="6" y="196" font-size="9" fill="#37474f">Motor 28BYJ-48</text>
+  <rect x="100" y="188" width="96" height="10" fill="#d9640a"/>
+  <text x="202" y="196" font-size="9" font-weight="700" fill="#d9640a">mais de 200 mA</text>
+</svg>

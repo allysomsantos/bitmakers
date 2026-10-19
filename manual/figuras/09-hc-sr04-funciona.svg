@@ -1,0 +1,51 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-sr04" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+    <marker id="setaL-sr04" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+
+  <!-- sensor -->
+  <rect x="6" y="20" width="48" height="52" rx="6" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <circle cx="22" cy="36" r="8" fill="#455a64" stroke="#cfd8dc" stroke-width="2.6"/>
+  <circle cx="22" cy="56" r="8" fill="#455a64" stroke="#cfd8dc" stroke-width="2.6"/>
+  <text x="30" y="88" font-size="10.5" font-weight="700" fill="#0d47a1" text-anchor="middle">HC-SR04</text>
+
+  <!-- objeto -->
+  <rect x="366" y="14" width="40" height="64" rx="4" fill="#90a4ae" stroke="#546e7a" stroke-width="2"/>
+  <text x="386" y="92" font-size="10.5" font-weight="700" fill="#37474f" text-anchor="middle">objeto</text>
+
+  <!-- ida -->
+  <g fill="none" stroke="#d9640a" stroke-width="2.8" stroke-linecap="round">
+    <path d="M70,34 q9,8 0,16"/>
+    <path d="M86,28 q13,14 0,28"/>
+    <path d="M104,22 q17,20 0,40"/>
+  </g>
+  <text x="130" y="30" font-size="10.5" font-weight="700" fill="#d9640a">1) o apito vai</text>
+
+  <!-- volta -->
+  <g fill="none" stroke="#188038" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="5 4">
+    <path d="M350,38 q-9,8 0,16"/>
+    <path d="M334,32 q-13,14 0,28"/>
+    <path d="M316,26 q-17,20 0,40"/>
+  </g>
+  <text x="214" y="70" font-size="10.5" font-weight="700" fill="#188038">2) o eco volta</text>
+
+  <!-- distancia -->
+  <line x1="58" y1="104" x2="362" y2="104" stroke="#5b6770" stroke-width="1.6" marker-start="url(#setaL-sr04)" marker-end="url(#seta-sr04)"/>
+  <text x="210" y="99" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">a distância que queremos descobrir</text>
+
+  <!-- cronometro: perto x longe -->
+  <text x="6" y="130" font-size="10.5" font-weight="700" fill="#37474f">3) o Arduino cronometra o tempo do eco:</text>
+
+  <text x="6" y="155" font-size="10.5" font-weight="700" fill="#188038">Pertinho</text>
+  <rect x="86" y="144" width="50" height="15" rx="3" fill="#a5d6a7" stroke="#188038" stroke-width="1.4"/>
+  <text x="144" y="156" font-size="10" fill="#37474f">eco rápido = objeto perto</text>
+
+  <text x="6" y="185" font-size="10.5" font-weight="700" fill="#d9640a">Longe</text>
+  <rect x="86" y="174" width="160" height="15" rx="3" fill="#ffcc80" stroke="#d9640a" stroke-width="1.4"/>
+  <text x="254" y="186" font-size="10" fill="#37474f">eco demora = objeto longe</text>
+</svg>

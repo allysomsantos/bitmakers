@@ -1,0 +1,44 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-cel" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto">
+      <path d="M0,0 L8,0 L4,8 z" fill="#c62828"/>
+    </marker>
+  </defs>
+  <!-- barra -->
+  <rect x="30" y="54" width="240" height="58" rx="7" fill="#b0bec5" stroke="#78909c" stroke-width="2"/>
+  <!-- furo central em osso -->
+  <rect x="112" y="66" width="76" height="30" rx="15" fill="#eceff1" stroke="#78909c" stroke-width="1.6"/>
+  <!-- furos de fixacao -->
+  <circle cx="48" cy="70" r="5" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <circle cx="48" cy="96" r="5" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <circle cx="252" cy="70" r="5" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <circle cx="252" cy="96" r="5" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <!-- extensometro -->
+  <rect x="122" y="42" width="56" height="14" rx="2" fill="#ffd54f" stroke="#b28704" stroke-width="1.6"/>
+  <polyline points="128,49 134,45 140,53 146,45 152,53 158,45 164,53 170,49" fill="none" stroke="#b28704" stroke-width="1.4"/>
+  <text x="150" y="36" font-size="10" font-weight="700" fill="#8a6a00" text-anchor="middle">sensor colado na barra</text>
+  <!-- seta de peso -->
+  <line x1="252" y1="14" x2="252" y2="50" stroke="#c62828" stroke-width="3.2" marker-end="url(#seta-cel)"/>
+  <text x="252" y="12" font-size="10" font-weight="700" fill="#c62828" text-anchor="middle" dy="-0">peso</text>
+  <text x="48" y="44" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">lado fixo</text>
+  <!-- fios -->
+  <g fill="none" stroke-width="3.6" stroke-linecap="round">
+    <path d="M62,112 L62,126 L52,138 L52,146" stroke="#d93025"/>
+    <path d="M76,112 L76,126 L112,138 L112,146" stroke="#202124"/>
+    <path d="M90,112 L90,126 L172,138 L172,146" stroke="#9aa0a6"/>
+    <path d="M104,112 L104,126 L232,138 L232,146" stroke="#188038"/>
+  </g>
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <text x="52" y="162" fill="#c62828">E+</text>
+    <text x="112" y="162" fill="#202124">E−</text>
+    <text x="172" y="162" fill="#5b6770">A+</text>
+    <text x="232" y="162" fill="#188038">A−</text>
+  </g>
+  <g font-size="9" fill="#5b6770" text-anchor="middle">
+    <text x="52" y="174">vermelho</text>
+    <text x="112" y="174">preto</text>
+    <text x="172" y="174">branco</text>
+    <text x="232" y="174">verde</text>
+    <text x="150" y="186">(as cores variam: confira o datasheet)</text>
+  </g>
+</svg>

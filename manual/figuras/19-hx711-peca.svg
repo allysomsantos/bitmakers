@@ -1,0 +1,48 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="20" y="30" width="260" height="100" rx="7" fill="#2e7d32" stroke="#1b5e20" stroke-width="2"/>
+  <!-- entradas da celula (em cima) -->
+  <g fill="#ffd54f" stroke="#b28704" stroke-width="1.2">
+    <circle cx="48" cy="46" r="5"/><circle cx="78" cy="46" r="5"/><circle cx="108" cy="46" r="5"/>
+    <circle cx="138" cy="46" r="5"/><circle cx="168" cy="46" r="5"/><circle cx="198" cy="46" r="5"/>
+  </g>
+  <g font-size="10" font-weight="700" text-anchor="middle">
+    <text x="48" y="22" fill="#c62828">E+</text>
+    <text x="78" y="22" fill="#202124">E−</text>
+    <text x="108" y="22" fill="#188038">A−</text>
+    <text x="138" y="22" fill="#5b6770">A+</text>
+    <text x="168" y="22" fill="#5b6770">B−</text>
+    <text x="198" y="22" fill="#5b6770">B+</text>
+  </g>
+  <text x="236" y="42" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">entradas da</text>
+  <text x="236" y="53" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">célula de carga</text>
+  <!-- chip -->
+  <rect x="100" y="70" width="64" height="38" rx="3" fill="#263238"/>
+  <circle cx="108" cy="78" r="2" fill="#90a4ae"/>
+  <text x="132" y="94" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">HX711</text>
+  <rect x="38" y="76" width="22" height="9" rx="1" fill="#263238"/>
+  <rect x="38" y="92" width="22" height="9" rx="1" fill="#263238"/>
+  <rect x="190" y="82" width="14" height="14" rx="2" fill="#b0bec5" stroke="#78909c"/>
+  <text x="236" y="90" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">aumenta o</text>
+  <text x="236" y="101" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">sinal</text>
+  <!-- pinos para o Arduino -->
+  <g fill="#ffd54f" stroke="#b28704">
+    <rect x="76" y="130" width="9" height="20"/>
+    <rect x="120" y="130" width="9" height="20"/>
+    <rect x="164" y="130" width="9" height="20"/>
+    <rect x="208" y="130" width="9" height="20"/>
+  </g>
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <text x="80.5" y="166" fill="#202124">GND</text>
+    <text x="124.5" y="166" fill="#188038">DT</text>
+    <text x="168.5" y="166" fill="#d9640a">SCK</text>
+    <text x="212.5" y="166" fill="#c62828">VCC</text>
+  </g>
+  <g font-size="9" fill="#5b6770" text-anchor="middle">
+    <text x="80.5" y="178">terra</text>
+    <text x="124.5" y="178">número</text>
+    <text x="168.5" y="178">pedido</text>
+    <text x="212.5" y="178">5 V</text>
+  </g>
+  <text x="150" y="189" font-size="9.5" font-weight="700" fill="#0d47a1" text-anchor="middle">para o Arduino</text>
+</svg>

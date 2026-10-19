@@ -1,0 +1,71 @@
+{
+  "nome": "Botão e interruptor",
+  "nome_curto": "Botão",
+  "apelido": "A chave que abre e fecha o caminho da corrente",
+  "categoria": "interface",
+  "nivel": 1,
+  "projetos": [
+    "B2"
+  ],
+  "o_que_e": "Uma chave que abre ou fecha o caminho da corrente. O botão só fecha enquanto você aperta. O interruptor fica travado em ligado ou desligado.",
+  "pra_que_serve": "Deixar uma pessoa mandar no circuito: ligar, desligar ou avisar o Arduino com um aperto.",
+  "onde_vive": [
+    "Controle remoto, teclado e campainha: cada tecla é um botão.",
+    "Interruptor de luz da parede da sua casa.",
+    "Painel do carro: setas, pisca-alerta e vidro elétrico."
+  ],
+  "legenda_peca": "Botão de 4 pernas (esquerda) e interruptor de deslizar (direita).",
+  "ficha": {
+    "Botão do kit": "6 mm, 4 pernas",
+    "Tipos": "botão e interruptor",
+    "Lado certo": "não tem (sem + ou −)",
+    "Cuidado": "use pernas de lados opostos"
+  },
+  "passos": [
+    "Dentro há dois contatos de metal com um espaço entre eles.",
+    "Solto: o espaço isola e a corrente não passa.",
+    "Apertou: uma lâmina de metal encosta nos dois contatos.",
+    "Caminho fechado: a corrente passa pelo botão.",
+    "No botão, uma mola solta a lâmina. O interruptor fica travado."
+  ],
+  "formula": "Aberto = caminho cortado, a corrente não passa. Fechado = caminho livre, passa. O botão só fecha enquanto você aperta.",
+  "no_projeto": {
+    "B2": {
+      "texto": "São dois botões, um para cada seta (esquerda e direita). Apertar é \"ligar a seta\": o botão leva o 5 V até o LED que faz de lâmpada. Solto, não passa nada e a seta fica apagada.",
+      "pinos": [
+        [
+          "Entra",
+          "5 V"
+        ],
+        [
+          "Sai",
+          "vai ao medidor INA219 (VIN+)"
+        ],
+        [
+          "Quantidade",
+          "2 (um por seta)"
+        ]
+      ],
+      "ligacao": [
+        [
+          "Terminal 1",
+          "5V (Uno)",
+          "vermelho"
+        ],
+        [
+          "Terminal 2",
+          "INA219 VIN+",
+          "amarelo"
+        ]
+      ],
+      "ligacao_destino": "Uno / INA219"
+    }
+  },
+  "cuidados": [
+    "Botão de 4 pernas: duas pernas de cada lado já são ligadas. Use pernas de lados opostos.",
+    "O botão não \"segura\": se precisa ficar ligado sozinho, use interruptor.",
+    "Ao apertar, o botão treme um instante: no código, ignore esse ruído."
+  ],
+  "desafio": "O LED da seta acende com o botão solto? E apertado? Se apertou e o LED continua apagado, o que pode estar errado?",
+  "resposta": "Solto: apagado, o caminho está cortado. Apertado: acende. Se não acende, o LED pode estar virado, solto ou queimado, ou um fio mal encaixado."
+}

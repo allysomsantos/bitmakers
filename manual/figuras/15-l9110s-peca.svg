@@ -1,0 +1,35 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="25" y="34" width="250" height="100" rx="7" fill="#d32f2f" stroke="#7f0000" stroke-width="2"/>
+  <!-- bornes de saida -->
+  <rect x="45" y="22" width="64" height="28" rx="3" fill="#2e7d32" stroke="#1b5e20" stroke-width="1.5"/>
+  <circle cx="62" cy="36" r="6" fill="#cfd8dc" stroke="#607d8b"/><circle cx="92" cy="36" r="6" fill="#cfd8dc" stroke="#607d8b"/>
+  <rect x="191" y="22" width="64" height="28" rx="3" fill="#9e9e9e" stroke="#616161" stroke-width="1.5"/>
+  <circle cx="208" cy="36" r="6" fill="#eceff1" stroke="#78909c"/><circle cx="238" cy="36" r="6" fill="#eceff1" stroke="#78909c"/>
+  <text x="62" y="14" font-size="11" font-weight="700" fill="#188038" text-anchor="middle">OA</text>
+  <text x="92" y="14" font-size="11" font-weight="700" fill="#188038" text-anchor="middle">OB</text>
+  <text x="208" y="14" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">OA</text>
+  <text x="238" y="14" font-size="10" font-weight="700" fill="#5b6770" text-anchor="middle">OB</text>
+  <!-- chips -->
+  <rect x="62" y="66" width="62" height="34" rx="2" fill="#263238"/>
+  <text x="93" y="87" font-size="9.5" font-weight="700" fill="#eceff1" text-anchor="middle">L9110S</text>
+  <rect x="176" y="66" width="62" height="34" rx="2" fill="#263238"/>
+  <text x="207" y="87" font-size="9.5" font-weight="700" fill="#eceff1" text-anchor="middle">L9110S</text>
+  <text x="77" y="118" font-size="9" fill="#ffe0e0" text-anchor="middle">canal A (usado)</text>
+  <text x="223" y="118" font-size="9" fill="#ffe0e0" text-anchor="middle">canal B (livre)</text>
+  <!-- pinos de entrada -->
+  <g fill="#ffd54f" stroke="#b28704">
+    <rect x="50.5" y="134" width="9" height="18"/><rect x="86.5" y="134" width="9" height="18"/><rect x="122.5" y="134" width="9" height="18"/>
+    <rect x="158.5" y="134" width="9" height="18"/><rect x="194.5" y="134" width="9" height="18"/><rect x="230.5" y="134" width="9" height="18"/>
+  </g>
+  <g font-size="10.5" font-weight="700" text-anchor="middle">
+    <text x="55" y="166" fill="#c62828">VCC</text><text x="91" y="166" fill="#202124">GND</text>
+    <text x="127" y="166" fill="#d9640a">A-IA</text><text x="163" y="166" fill="#188038">A-IB</text>
+    <text x="199" y="166" fill="#78909c">B-IA</text><text x="235" y="166" fill="#78909c">B-IB</text>
+  </g>
+  <g font-size="9" fill="#5b6770" text-anchor="middle">
+    <text x="55" y="179">fonte 5 V</text><text x="91" y="179">terra</text>
+    <text x="145" y="179">↑ 2 pinos digitais ↑</text>
+    <text x="199" y="179">livre</text><text x="235" y="179">livre</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <!-- placa -->
+  <rect x="22" y="36" width="262" height="116" rx="6" fill="#00838f" stroke="#005662" stroke-width="2"/>
+  <!-- USB -->
+  <rect x="6" y="58" width="46" height="40" rx="2" fill="#b0bec5" stroke="#607d8b" stroke-width="1.5"/>
+  <rect x="12" y="64" width="34" height="28" fill="#eceff1" stroke="#90a4ae"/>
+  <text x="29" y="82" font-size="9" font-weight="700" fill="#37474f" text-anchor="middle">USB</text>
+  <!-- plug de energia -->
+  <rect x="6" y="110" width="38" height="36" rx="2" fill="#263238" stroke="#101518"/>
+  <circle cx="22" cy="128" r="7" fill="#101518" stroke="#546e7a"/>
+  <text x="25" y="157" font-size="9" fill="#5b6770" text-anchor="middle">energia</text>
+  <!-- botao reset -->
+  <circle cx="72" cy="58" r="7" fill="#c62828" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="72" y="76" font-size="9" fill="#ffffff" text-anchor="middle">RESET</text>
+  <!-- chip -->
+  <rect x="112" y="78" width="88" height="26" rx="2" fill="#263238"/>
+  <path d="M112,87 a4,4 0 0 1 0,8" fill="#00838f"/>
+  <text x="156" y="95" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">CÉREBRO</text>
+  <!-- cristal e LED L -->
+  <rect x="212" y="82" width="20" height="10" rx="2" fill="#cfd8dc" stroke="#78909c"/>
+  <rect x="246" y="58" width="8" height="5" fill="#ffd54f"/>
+  <text x="232" y="74" font-size="9" fill="#ffffff" text-anchor="middle">L</text>
+  <text x="170" y="130" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">ARDUINO UNO</text>
+
+  <!-- cabecalho digital (topo) -->
+  <rect x="96" y="36" width="176" height="10" fill="#212121"/>
+  <g fill="#ffd54f">
+    <rect x="100" y="39" width="4" height="4"/><rect x="109" y="39" width="4" height="4"/><rect x="118" y="39" width="4" height="4"/>
+    <rect x="127" y="39" width="4" height="4"/><rect x="136" y="39" width="4" height="4"/><rect x="145" y="39" width="4" height="4"/>
+    <rect x="154" y="39" width="4" height="4"/><rect x="163" y="39" width="4" height="4"/><rect x="176" y="39" width="4" height="4"/>
+    <rect x="185" y="39" width="4" height="4"/><rect x="194" y="39" width="4" height="4"/><rect x="203" y="39" width="4" height="4"/>
+    <rect x="212" y="39" width="4" height="4"/><rect x="221" y="39" width="4" height="4"/><rect x="230" y="39" width="4" height="4"/>
+    <rect x="239" y="39" width="4" height="4"/><rect x="248" y="39" width="4" height="4"/><rect x="257" y="39" width="4" height="4"/>
+  </g>
+  <text x="184" y="16" font-size="10.5" font-weight="700" fill="#0d3c75" text-anchor="middle">Pinos digitais D0 a D13</text>
+  <text x="184" y="28" font-size="9" fill="#5b6770" text-anchor="middle">ligam e desligam: LED, buzzer...</text>
+  <text x="100" y="31" font-size="9" font-weight="700" fill="#0d3c75">13</text>
+  <text x="262" y="31" font-size="9" font-weight="700" fill="#0d3c75" text-anchor="end">0</text>
+
+  <!-- cabecalho alimentacao (baixo) -->
+  <rect x="92" y="142" width="78" height="10" fill="#212121"/>
+  <g fill="#ffd54f">
+    <rect x="96" y="145" width="4" height="4"/><rect x="105" y="145" width="4" height="4"/><rect x="114" y="145" width="4" height="4"/>
+    <rect x="123" y="145" width="4" height="4"/><rect x="132" y="145" width="4" height="4"/><rect x="141" y="145" width="4" height="4"/>
+    <rect x="150" y="145" width="4" height="4"/><rect x="159" y="145" width="4" height="4"/>
+  </g>
+  <!-- cabecalho analogico -->
+  <rect x="186" y="142" width="56" height="10" fill="#212121"/>
+  <g fill="#ffd54f">
+    <rect x="190" y="145" width="4" height="4"/><rect x="199" y="145" width="4" height="4"/><rect x="208" y="145" width="4" height="4"/>
+    <rect x="217" y="145" width="4" height="4"/><rect x="226" y="145" width="4" height="4"/><rect x="235" y="145" width="4" height="4"/>
+  </g>
+  <text x="124" y="168" font-size="10.5" font-weight="700" fill="#c62828" text-anchor="middle">Alimentação</text>
+  <text x="124" y="180" font-size="9" fill="#5b6770" text-anchor="middle">5V · 3,3V · GND</text>
+  <text x="226" y="168" font-size="10.5" font-weight="700" fill="#0d3c75" text-anchor="middle">Analógicos A0 a A5</text>
+  <text x="226" y="180" font-size="9" fill="#5b6770" text-anchor="middle">leem sensores</text>
+</svg>

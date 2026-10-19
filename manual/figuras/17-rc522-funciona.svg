@@ -1,0 +1,51 @@
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta-rc" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d9640a"/>
+    </marker>
+    <marker id="setaV-rc" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#188038"/>
+    </marker>
+    <marker id="setaC-rc" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#5b6770"/>
+    </marker>
+  </defs>
+
+  <!-- leitor -->
+  <rect x="6" y="24" width="96" height="104" rx="7" fill="#1e88e5" stroke="#0d47a1" stroke-width="2"/>
+  <rect x="16" y="34" width="76" height="84" rx="4" fill="none" stroke="#eceff1" stroke-width="3"/>
+  <rect x="26" y="44" width="56" height="64" rx="3" fill="none" stroke="#eceff1" stroke-width="3"/>
+  <rect x="36" y="54" width="36" height="44" rx="2" fill="none" stroke="#eceff1" stroke-width="3"/>
+  <text x="54" y="146" font-size="11" font-weight="700" fill="#0d47a1" text-anchor="middle">RC522</text>
+  <text x="54" y="159" font-size="9.5" fill="#37474f" text-anchor="middle">(o leitor)</text>
+
+  <!-- energia invisivel -->
+  <g fill="none" stroke="#d9640a" stroke-width="2.6" stroke-linecap="round">
+    <path d="M114,60 q14,26 0,52"/>
+    <path d="M130,50 q20,36 0,72"/>
+  </g>
+
+  <!-- tag -->
+  <rect x="268" y="34" width="146" height="94" rx="8" fill="#fafafa" stroke="#78909c" stroke-width="2"/>
+  <rect x="278" y="44" width="126" height="74" rx="4" fill="none" stroke="#90a4ae" stroke-width="2.4"/>
+  <rect x="288" y="54" width="106" height="54" rx="3" fill="none" stroke="#90a4ae" stroke-width="2.4"/>
+  <rect x="298" y="64" width="86" height="34" rx="2" fill="none" stroke="#90a4ae" stroke-width="2.4"/>
+  <rect x="326" y="70" width="30" height="22" rx="2" fill="#ffd54f" stroke="#b28704" stroke-width="1.6"/>
+  <text x="341" y="85" font-size="9.5" font-weight="700" fill="#37474f" text-anchor="middle">chip</text>
+  <text x="341" y="145" font-size="11" font-weight="700" fill="#37474f" text-anchor="middle">tag (sem bateria)</text>
+  <text x="341" y="159" font-size="10" font-weight="700" fill="#b28704" text-anchor="middle">2) acorda com a energia</text>
+  <text x="341" y="26" font-size="10.5" font-weight="700" fill="#188038" text-anchor="middle">UID: 0A:0B:0C:0D</text>
+
+  <!-- setas -->
+  <line x1="150" y1="68" x2="262" y2="68" stroke="#d9640a" stroke-width="2.6" marker-end="url(#seta-rc)"/>
+  <text x="206" y="60" font-size="10.5" font-weight="700" fill="#d9640a" text-anchor="middle">1) energia invisível</text>
+  <line x1="262" y1="96" x2="150" y2="96" stroke="#188038" stroke-width="2.6" stroke-dasharray="5 3" marker-end="url(#setaV-rc)"/>
+  <text x="206" y="116" font-size="10.5" font-weight="700" fill="#188038" text-anchor="middle">3) a tag responde</text>
+
+  <!-- fluxo para o Arduino -->
+  <rect x="6" y="166" width="190" height="28" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.8"/>
+  <text x="101" y="184" font-size="10" font-weight="700" fill="#37474f" text-anchor="middle">4) o RC522 recebe o número</text>
+  <line x1="198" y1="180" x2="222" y2="180" stroke="#5b6770" stroke-width="2" marker-end="url(#setaC-rc)"/>
+  <rect x="224" y="166" width="190" height="28" rx="6" fill="#e0f2f1" stroke="#00796b" stroke-width="1.8"/>
+  <text x="319" y="184" font-size="10" font-weight="700" fill="#004d40" text-anchor="middle">5) o Arduino lê o número</text>
+</svg>
