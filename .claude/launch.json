@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "amicao",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8081", "--directory", "B1-Amicao/app"],
+      "port": 8081
+    },
+    {
+      "name": "anjos",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8082", "--directory", "B2-AnjosDaEstrada/app"],
+      "port": 8082
+    }
+  ]
+}
