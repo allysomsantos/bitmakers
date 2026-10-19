@@ -68,7 +68,7 @@ Decisões já tomadas:
 - `#define SIMULACAO 1/0` troca passos por volta (200 no Wokwi, 2048 no 28BYJ-48), fator da balança (420 no Wokwi; real precisa calibrar) e tempos.
 - Stepper declarado como `Stepper(passos, 4, 6, 5, 7)` (ordem IN1-IN3-IN2-IN4). No Wokwi a fiação é D4→A+, D6→A−, D5→B+, D7→B−, então o mesmo código funciona nos dois.
 - Peso < 1 kg vai como `null` (cachorro fora da balança).
-- Intervalo mínimo entre porções por cachorro (30 s na simulação, 4 h no real).
+- Intervalo mínimo entre porções por cachorro (15 s na simulação, 4 h no real).
 - Bomba com tempo máximo: se estourar, desliga e manda alerta `reservatorio_vazio`.
 - O Arduino **não tem relógio**: o app carimba data/hora ao receber. Alertas de "sumiu" e "perdeu peso" são calculados no app, não no Arduino.
 - Tag fora da lista **não gera nada**. O cadastro é feito no app pelo **modo cadastro** (30 s): o app manda `cadastrar`, lê o `tag_lida`, pede nome e foto e manda `permitir`. O Arduino guarda até 10 tags (UID de 4 ou 7 bytes + nome) na EEPROM, 18 bytes por slot.
@@ -126,4 +126,4 @@ Protocolo (uma linha a cada ~500 ms): `{"frente_esq":12,"frente_dir":null,"tras_
 4. Calibração na montagem real: fator da balança, `LIMITE_AGUA`, `LIMITE_CHUVA`, `LIMIAR_CORRENTE_MA` e as faixas de distância (`DIST_ATENCAO_CM`, `DIST_CRITICO_CM`; no caminhão real, ×10).
 5. Briefing do B1 ainda fala em Wi-Fi e notificações; a equipe deve ajustar para "Bluetooth para tablet no protótipo".
 6. Questões físicas do B1 para discutir com a equipe: o RC522 lê só a 2–5 cm (posição do leitor no totem) e o cachorro precisa ficar inteiro sobre a balança.
-7. Problemas conhecidos no firmware (não corrigidos, fora do escopo desta tarefa): no B2, a linha do LCD "Reduza velocidade" tem 17 caracteres e só cabem 16 (o último some). No B1, enquanto atende um cachorro (pesagem, ração, mensagem: vários segundos) o Arduino não lê comandos do app.
+7. Problemas conhecidos no firmware (não corrigidos, fora do escopo desta tarefa): no B2, a linha do LCD "Reduza velocidade" tem 17 caracteres e só cabem 16 (o último some). No B1, o Arduino lê os comandos do app durante as esperas (`esperarLendo`, pois o buffer do SoftwareSerial guarda só 63 bytes), mas o movimento do motor de passo da ração ainda bloqueia por alguns segundos; por isso o app manda um comando por vez e espera a resposta do Arduino (até 1,5 s).

@@ -72,7 +72,7 @@ Os dois projetos usam HM-10. Para o tablet saber qual é qual na hora de parear,
      if (Serial.available()) bluetooth.write(Serial.read());
    }
    ```
-2. Abra o Monitor Serial a **9600 baud**, com **"Sem final de linha"** (o HM-10 não gosta de `\r\n` nos comandos AT).
+2. Abra o Monitor Serial a **9600 baud**, com **"Sem final de linha"** (o HM-10 não gosta de `\r\n` nos comandos AT). Os comandos AT só funcionam **enquanto nenhum celular ou tablet estiver conectado** ao módulo.
 3. Digite `AT`: a resposta esperada é `OK`.
 4. Digite `AT+NAMEAMICAO`: a resposta esperada é `OK+Set:AMICAO`.
 5. Desligue e ligue o módulo de novo para o nome valer. Depois grave o `B1-Amicao.ino` de volta (com `SIMULACAO 0`).
@@ -130,5 +130,5 @@ Cada evento é uma linha de JSON (9600 baud):
 O app é a fonte da verdade: toda vez que conecta, manda `listar` e acerta a lista do Arduino. Se o tablet novo não tem cachorros e o totem já tem tags, o app **pergunta** antes de apagar.
 
 ## Limites que você precisa saber
-- Enquanto o totem atende um cachorro (pesar, soltar ração, mostrar mensagem: alguns segundos), ele **não lê comandos** do app. Um comando enviado nessa hora pode se perder.
+- O totem lê os comandos do app durante as esperas (pesagem e mensagem), mas o **movimento do motor da ração continua bloqueando** por alguns segundos. O app manda **um comando por vez** e espera a resposta do Arduino (até 1,5 s) antes de mandar o próximo, para não encher o buffer do módulo Bluetooth (63 bytes).
 - O RC522 lê só a 2 a 5 cm: a posição do leitor no totem precisa ser pensada junto com a balança, porque o cachorro tem que ficar inteiro sobre ela.

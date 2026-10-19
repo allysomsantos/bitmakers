@@ -85,7 +85,7 @@ cd B2-AnjosDaEstrada
 arduino-cli compile --fqbn arduino:avr:uno --output-dir build .
 wokwi-cli --timeout 10000 .
 ```
-Deve aparecer a saída do Monitor Serial da simulação (`distancia=... chuva=... luz=...`).
+Deve aparecer a saída do Monitor Serial da simulação: linhas `APP> {json}` (uma por leitura) e uma linha `DEBUG chuva=... mA_esq=... mA_dir=...`. Não há LDR (luz) neste projeto.
 
 ### 3c. (Opcional) Extensão Wokwi para VS Code
 Se usar o VS Code, a extensão **Wokwi Simulator** abre o `diagram.json` visualmente e roda a simulação dentro do editor, usando o mesmo `wokwi.toml` de cada pasta. Ela pede uma licença na primeira vez; siga as instruções que aparecem.

@@ -157,7 +157,7 @@ Caminhão em **SVG redesenhado, visto de cima, frente para cima**, no centro. Es
 - Cada card de distância mostra o número em cm; a zona no caminhão acende com a mesma cor.
 - Cada farol mostra desligado, ok ou queimado, com o ícone no caminhão.
 - Estado sempre com **cor, ícone e texto** juntos.
-- Botão **Mudo** fixo no canto; faixa de conexão.
+- Botão **Mudo** fixo no canto. O botão **Conectar** some quando conecta, e o banner "Sem comunicação com o caminhão" avisa a falta de sinal.
 - Botão "Conectar" também **libera o áudio** (gesto exigido pelo Chrome) e ativa o **Wake Lock** para a tela do tablet não apagar.
 - O app não controla o volume de mídia do tablet.
 

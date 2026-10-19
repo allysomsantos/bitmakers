@@ -89,7 +89,7 @@ Os dois projetos usam HM-10. Para o tablet saber qual é qual na hora de parear,
      if (Serial.available()) bluetooth.write(Serial.read());
    }
    ```
-2. Abra o Monitor Serial a **9600 baud**, com **"Sem final de linha"** (o HM-10 não gosta de `\r\n` nos comandos AT).
+2. Abra o Monitor Serial a **9600 baud**, com **"Sem final de linha"** (o HM-10 não gosta de `\r\n` nos comandos AT). Os comandos AT só funcionam **enquanto nenhum celular ou tablet estiver conectado** ao módulo.
 3. Digite `AT`: a resposta esperada é `OK`.
 4. Digite `AT+NAMEANJOS`: a resposta esperada é `OK+Set:ANJOS`.
 5. Desligue e ligue o módulo de novo para o nome valer. Depois grave o `B2-AnjosDaEstrada.ino` de volta (com `SIMULACAO 0`).

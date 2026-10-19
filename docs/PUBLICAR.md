@@ -12,7 +12,7 @@ O Chrome só libera Bluetooth em HTTPS. O jeito mais simples e gratuito é o Git
 3. No GitHub: Settings → Pages → Source: branch `main`, pasta `/ (root)`.
 4. Os endereços ficam `https://<usuario>.github.io/bitmakers-apps/amicao/` e `.../anjos/`.
 5. No tablet (Chrome): abra o endereço, confirme que o app abre, depois menu ⋮ → **Instalar app**. Abrir uma vez com internet; depois funciona offline.
-6. Para atualizar: mude o número de `VERSAO` no `sw.js`, copie os arquivos de novo e faça commit. O app instalado troca de versão na próxima abertura.
+6. Para atualizar: mude o número de `VERSAO` no `sw.js`, copie os arquivos de novo, faça commit e `git push`. O app instalado troca de versão na próxima abertura.
 
 Conferir depois de publicar: no Chrome do computador, DevTools → Application → Service Workers (registrado) e Manifest (sem erros, ícones carregam).
 

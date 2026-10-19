@@ -50,11 +50,11 @@ Marque cada item quando fizer no tablet, com o HM-10 montado:
 [ ] Conecta e o selo "Conectado" aparece no topo
 [ ] Desligar o Arduino: o app mostra desconectado e tenta reconectar sozinho (3 s)
 [ ] Linhas chegam inteiras (sem JSON cortado) — conferir que os cards atualizam
-[ ] Tela do tablet não apaga com o app aberto (o B1 NÃO pede Wake Lock: se apagar, aumente o tempo de tela do tablet)
+[ ] Tela do tablet não apaga com o app aberto (Wake Lock)
 [ ] B1: cadastrar um cachorro de verdade e conferir que o LCD mostra o nome
 [ ] B1: tag que não está na lista não faz nada
 ```
 
 Observações:
-- O app do B1 **não** pede Wake Lock nem toca som (só o app do B2 faz isso). Se o tablet apagar a tela, o Android pode suspender o Bluetooth: deixe o tempo de tela do tablet bem longo nas configurações.
-- Comandos enviados enquanto o totem está atendendo um cachorro podem se perder (o Arduino não lê Bluetooth nesses segundos).
+- O app do B1 pede Wake Lock ao tocar em **Conectar** (para a tela não apagar e o Bluetooth não cair), mas não toca som. Se o Chrome negar o Wake Lock, deixe o tempo de tela do tablet bem longo nas configurações.
+- O app manda um comando por vez ao totem e espera a resposta (até 1,5 s). O totem lê os comandos durante as esperas, mas o movimento do motor da ração ainda bloqueia por alguns segundos.
