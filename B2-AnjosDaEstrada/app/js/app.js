@@ -4,6 +4,7 @@ import { criarBle } from './ble.js';
 import { CaminhaoFalso } from './caminhao-falso.js';
 import { montarPainelSimulador } from './simulador.js';
 import { montarTela } from './tela.js';
+import { criarSom } from './som.js';
 import { h } from './dom.js';
 
 const SEM_SINAL_MS = 3000;   // sem linha por mais de 3 s = sem comunicacao
@@ -16,6 +17,27 @@ let chaveBanners = '';
 const tela = montarTela(document.getElementById('painel'));
 const bannersEl = document.getElementById('banners');
 const botaoConectar = document.getElementById('btn-conectar');
+const som = criarSom();
+const botaoMudo = document.getElementById('btn-mudo');
+let travaTela = null;
+
+// Mantem a tela do tablet acesa (sem isso o Android suspende o app e o som para).
+async function manterTelaLigada() {
+  try {
+    travaTela = await navigator.wakeLock?.request('screen');
+  } catch {
+    travaTela = null;   // sem suporte ou negado: segue sem a trava
+  }
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') manterTelaLigada();
+});
+
+botaoMudo.addEventListener('click', () => {
+  const mudo = som.alternarMudo();
+  botaoMudo.textContent = mudo ? '🔇 Som desligado' : '🔊 Som ligado';
+  botaoMudo.setAttribute('aria-pressed', String(mudo));
+});
 
 function receberLinha(texto) {
   const leitura = lerLeitura(lerLinha(texto));
@@ -36,6 +58,7 @@ function ciclo() {
   const semSinal = ultimaChegada === 0 || performance.now() - ultimaChegada > SEM_SINAL_MS;
   const leitura = semSinal ? null : ultimaLeitura;
   tela.atualizar(leitura);
+  som.atualizar(leitura);
 
   const banners = [];
   if (leitura) {
@@ -52,6 +75,8 @@ let falso = null;
 let ble = null;
 
 botaoConectar.addEventListener('click', async () => {
+  som.liberar();            // o toque em "Conectar" libera o audio
+  manterTelaLigada();
   if (modoSimulador) {
     falso.iniciar();
     botaoConectar.hidden = true;
