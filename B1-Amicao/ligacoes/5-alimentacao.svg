@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1480" width="1500" height="1480" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1500" height="1480" fill="#141414"/>
+<rect x="30" y="40" width="250" height="230" rx="14" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="1.5" />
+<text x="155.0" y="84" font-size="28" fill="#cfcdc2" text-anchor="middle" font-weight="600" >Fonte 5V separada</text>
+<text x="258" y="137" font-size="22" fill="#a5a398" text-anchor="end" font-weight="400" >GND</text>
+<text x="258" y="217" font-size="22" fill="#a5a398" text-anchor="end" font-weight="400" >+5V</text>
+<text x="155.0" y="248" font-size="18" fill="#a5a398" text-anchor="middle" font-weight="400" >2A ou mais</text>
+<rect x="600" y="40" width="280" height="150" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="740.0" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="622" y="137" font-size="22" fill="#b5b3a8" text-anchor="start" font-weight="400" >GND</text>
+<text x="740.0" y="168" font-size="18" fill="#b5b3a8" text-anchor="middle" font-weight="400" >alimentado à parte (USB ou jack)</text>
+<rect x="600" y="230" width="280" height="240" rx="14" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="740.0" y="274" font-size="28" fill="#f5c46b" text-anchor="middle" font-weight="600" >ULN2003 (motor)</text>
+<text x="622" y="327" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >−</text>
+<text x="622" y="407" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >+</text>
+<rect x="600" y="510" width="280" height="250" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="740.0" y="554" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >Módulo relé</text>
+<text x="622" y="607" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >VCC</text>
+<text x="622" y="687" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >COM</text>
+<rect x="600" y="800" width="280" height="170" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="740.0" y="844" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Bomba d'água</text>
+<text x="622" y="863" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >+ (vem do NO do relé)</text>
+<text x="622" y="897" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >−</text>
+<rect x="600" y="1010" width="280" height="190" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="740.0" y="1054" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >HX711</text>
+<text x="622" y="1107" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >VCC</text>
+<text x="622" y="1157" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >GND</text>
+<rect x="600" y="1240" width="280" height="190" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="740.0" y="1284" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Bluetooth HM-10</text>
+<text x="622" y="1337" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >VCC</text>
+<text x="622" y="1387" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >GND</text>
+<polyline points="280,130 460,130 460,1380" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="280,210 400,210 400,1330" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="460,130 600,130" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="460" cy="130" r="7" fill="#8a8880"/>
+<polyline points="460,320 600,320" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="460" cy="320" r="7" fill="#8a8880"/>
+<polyline points="460,890 600,890" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="460" cy="890" r="7" fill="#8a8880"/>
+<polyline points="460,1150 600,1150" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="460" cy="1150" r="7" fill="#8a8880"/>
+<polyline points="460,1380 600,1380" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="460" cy="1380" r="7" fill="#8a8880"/>
+<path d="M 400 400 L 451 400 a 9 9 0 0 1 18 0 L 600 400" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="400" cy="400" r="7" fill="#e5484d"/>
+<path d="M 400 600 L 451 600 a 9 9 0 0 1 18 0 L 600 600" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="7" fill="#e5484d"/>
+<path d="M 400 680 L 451 680 a 9 9 0 0 1 18 0 L 600 680" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="400" cy="680" r="7" fill="#e5484d"/>
+<path d="M 400 1100 L 451 1100 a 9 9 0 0 1 18 0 L 600 1100" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="400" cy="1100" r="7" fill="#e5484d"/>
+<path d="M 400 1330 L 451 1330 a 9 9 0 0 1 18 0 L 600 1330" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="400" cy="1330" r="7" fill="#e5484d"/>
+<rect x="960" y="40" width="500" height="400" rx="14" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="1.5" />
+<text x="985" y="82" font-size="20" fill="#e8e6dc" text-anchor="start" font-weight="600" >Tudo que é 5V fica na fonte separada:</text>
+<text x="985" y="114" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >• motor de passo (ULN2003)</text>
+<text x="985" y="146" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >• relé e bomba</text>
+<text x="985" y="178" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >• HX711 (balança)</text>
+<text x="985" y="210" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >• HM-10 (Bluetooth)</text>
+<text x="985" y="274" font-size="20" fill="#e8e6dc" text-anchor="start" font-weight="600" >No 3,3V do Arduino fica só:</text>
+<text x="985" y="306" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >• RC522</text>
+<text x="985" y="370" font-size="20" fill="#e8e6dc" text-anchor="start" font-weight="600" >O GND é um só: liga o GND da fonte</text>
+<text x="985" y="402" font-size="20" fill="#e8e6dc" text-anchor="start" font-weight="600" >no GND do Arduino.</text>
+<text x="985" y="430" font-size="19" fill="#ff9a9a" text-anchor="start" font-weight="400" >Nunca ligue o +5V da fonte no pino 5V do Arduino.</text>
+</svg>

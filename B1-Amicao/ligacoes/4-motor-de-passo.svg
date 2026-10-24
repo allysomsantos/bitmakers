@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1370 820" width="1370" height="820" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1370" height="820" fill="#141414"/>
+<rect x="30" y="40" width="225" height="520" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="142.5" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="233" y="137" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D4</text>
+<text x="233" y="217" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D5</text>
+<text x="233" y="297" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D6</text>
+<text x="233" y="377" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D7</text>
+<text x="233" y="537" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<rect x="560" y="40" width="300" height="670" rx="14" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="710.0" y="84" font-size="28" fill="#f5c46b" text-anchor="middle" font-weight="600" >ULN2003</text>
+<text x="582" y="137" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN1</text>
+<text x="582" y="217" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN2</text>
+<text x="582" y="297" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN3</text>
+<text x="582" y="377" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN4</text>
+<text x="582" y="537" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >−</text>
+<text x="582" y="617" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >+</text>
+<text x="710.0" y="688" font-size="18" fill="#e6b050" text-anchor="middle" font-weight="400" >driver do motor</text>
+<polyline points="255,130 560,130" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,210 560,210" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,290 560,290" fill="none" stroke="#e8c93d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,370 560,370" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,530 560,530" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="560,610 440,610" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="430" y="617" font-size="20" fill="#e8e6dc" text-anchor="end" font-weight="400" >5V (fonte separada)</text>
+<rect x="1060" y="190" width="280" height="300" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="1200.0" y="234" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Motor 28BYJ-48</text>
+<text x="1200.0" y="468" font-size="18" fill="#7fb2ee" text-anchor="middle" font-weight="400" >5 fios, conector branco</text>
+<polyline points="860,270 1060,270" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="860,294 1060,294" fill="none" stroke="#ec7fb0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="860,318 1060,318" fill="none" stroke="#e8c93d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="860,342 1060,342" fill="none" stroke="#e8913a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="860,366 1060,366" fill="none" stroke="#e5484d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="960" y="245" font-size="17" fill="#a5a398" text-anchor="middle" font-weight="400" >conector branco de 5 pinos</text>
+<text x="960" y="397" font-size="17" fill="#a5a398" text-anchor="middle" font-weight="400" >encaixa de um jeito só</text>
+<text x="30" y="755" font-size="19" fill="#f5b25c" text-anchor="start" font-weight="400" >Teste na bancada: o + pode ir no 5V do Arduino (USB no PC, motor sem carga).</text>
+<text x="30" y="785" font-size="19" fill="#a5a398" text-anchor="start" font-weight="400" >Montagem final: 5V da fonte separada, com o GND ligado no GND do Arduino.</text>
+</svg>

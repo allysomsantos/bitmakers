@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1330 830" width="1330" height="830" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1330" height="830" fill="#141414"/>
+<rect x="30" y="40" width="225" height="740" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="142.5" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="233" y="137" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D10</text>
+<text x="233" y="217" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D13</text>
+<text x="233" y="297" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D11</text>
+<text x="233" y="377" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D12</text>
+<text x="233" y="537" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<text x="233" y="617" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D9</text>
+<text x="233" y="697" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >3.3V</text>
+<rect x="560" y="40" width="300" height="740" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="710.0" y="84" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >RC522</text>
+<text x="582" y="137" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SDA</text>
+<text x="582" y="217" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SCK</text>
+<text x="582" y="297" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >MOSI</text>
+<text x="582" y="377" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >MISO</text>
+<text x="582" y="457" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >IRQ</text>
+<text x="582" y="537" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >GND</text>
+<text x="582" y="617" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >RST</text>
+<text x="582" y="697" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >3.3V</text>
+<text x="710.0" y="758" font-size="18" fill="#ff9a9a" text-anchor="middle" font-weight="400" >só 3.3V — nunca 5V!</text>
+<polyline points="255,130 560,130" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,210 560,210" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,290 560,290" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,370 560,370" fill="none" stroke="#e8c93d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,530 560,530" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,610 560,610" fill="none" stroke="#ec7fb0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,690 560,690" fill="none" stroke="#e8913a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="407" y="457" font-size="19" fill="#a5a398" text-anchor="middle" font-weight="400" >IRQ não é ligado</text>
+<rect x="980" y="280" width="300" height="200" rx="14" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="1.5" />
+<text x="1130" y="330" font-size="24" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Tag NFC da coleira</text>
+<text x="1130" y="375" font-size="20" fill="#cfcdc2" text-anchor="middle" font-weight="400" >encostar a 2–5 cm</text>
+<text x="1130" y="405" font-size="20" fill="#cfcdc2" text-anchor="middle" font-weight="400" >da antena do leitor</text>
+<text x="1130" y="450" font-size="17" fill="#a5a398" text-anchor="middle" font-weight="400" >(o RC522 lê bem de pertinho)</text>
+</svg>

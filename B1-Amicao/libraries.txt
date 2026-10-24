@@ -1,3 +1,2 @@
-LiquidCrystal I2C
 HX711
 MFRC522

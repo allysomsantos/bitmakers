@@ -20,7 +20,10 @@ export function montarPainelSimulador(elemento, falso) {
     h('button', { onclick: () => falso.passarTag(tag.value, parseFloat(peso.value)) }, 'Encostar tag na balança'),
     h('button', { onclick: () => falso.agua(true) }, 'Bomba ligou'),
     h('button', { onclick: () => falso.agua(false) }, 'Bomba desligou'),
-    h('button', { onclick: () => falso.reservatorioVazio() }, 'Reservatório vazio'),
+    h('button', { onclick: () => falso.racao(true) }, 'Motor da ração ligou'),
+    h('button', { onclick: () => falso.racao(false) }, 'Motor da ração desligou'),
     h('button', { onclick: () => falso.ligar() }, 'Arduino reiniciou'),
+    h('button', { onclick: () => falso.definirSensor('leitor', !falso.sensores.leitor) }, 'Liga/desliga o leitor RFID'),
+    h('button', { onclick: () => falso.definirSensor('balanca', !falso.sensores.balanca) }, 'Liga/desliga a balança'),
   );
 }

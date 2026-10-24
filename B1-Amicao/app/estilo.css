@@ -1,52 +1,102 @@
+/* Feito para tablet de 11 polegadas (uns 1280x800 na horizontal, 800x1280 na vertical).
+   Botoes e textos grandes para tocar com o dedo. Em telas menores, vira uma coluna so. */
 :root {
   --fundo: #fff8ee; --texto: #2b2b2b; --verde: #2f7d4f; --verde-claro: #e3f3e8;
   --vermelho: #c0392b; --amarelo: #b7791f; --cinza: #6b6b6b; --borda: #e6d9c3;
+  --sensor-ok: #2fb35f; --sensor-falha: #d63a2f;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { margin: 0; font-family: system-ui, sans-serif; font-size: 18px; background: var(--fundo); color: var(--texto); }
-#topo { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--verde); color: #fff; flex-wrap: wrap; }
-#topo .logo { color: #fff; font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+html { touch-action: manipulation; }
+body { margin: 0; font-family: system-ui, sans-serif; font-size: 20px; background: var(--fundo); color: var(--texto); }
+
+/* ---------- topo ---------- */
+#topo { display: flex; align-items: center; gap: 16px; padding: 12px 24px; background: var(--verde); color: #fff; flex-wrap: wrap; position: sticky; top: 0; z-index: 5; }
+#topo .logo { color: #fff; font-size: 1.7rem; font-weight: 700; text-decoration: none; }
 .espaco { flex: 1; }
-.selo { padding: 4px 12px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; background: #fff; }
-.selo.ok { color: var(--verde); }
-.selo.perigo { color: var(--vermelho); }
+#topo .botao { background: #fff; color: var(--verde); font-weight: 600; }
+#topo .botao.claro { background: var(--verde-claro); }
+
+/* icones de status: verde = funcionando, vermelho = com problema */
+#sensores { display: flex; align-items: center; gap: 14px; }
+.sensor { width: 54px; height: 54px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; border: 3px solid #fff; font-size: 1.6rem; }
+.sensor svg { width: 30px; height: 30px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sensor.ok { background: var(--sensor-ok); }
+.sensor.falha { background: var(--sensor-falha); }
+.sensor.parado { background: #7f8c85; }
+.sensor.ativo { background: #1f78d1; animation: pulsar 0.9s ease-in-out infinite; }
+.separador { width: 2px; height: 36px; background: rgba(255,255,255,0.5); border-radius: 2px; }
+@keyframes pulsar { 50% { opacity: 0.55; } }
+
+/* ---------- elementos comuns ---------- */
+.selo { padding: 4px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; background: #fff; }
+.selo.ok { color: var(--verde); border: 2px solid var(--verde); }
+.selo.perigo { color: var(--vermelho); border: 2px solid var(--vermelho); }
 .selo.aviso { color: var(--amarelo); }
 .selo.neutro { color: var(--cinza); }
-.botao, button { font: inherit; padding: 10px 18px; border: 0; border-radius: 10px; background: var(--verde); color: #fff; text-decoration: none; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; }
-#topo .botao { background: #fff; color: var(--verde); font-weight: 600; }
+.botao, button { font: inherit; padding: 12px 22px; border: 0; border-radius: 14px; background: var(--verde); color: #fff; text-decoration: none; cursor: pointer; min-height: 56px; display: inline-flex; align-items: center; justify-content: center; }
 .botao.claro { background: var(--verde-claro); color: var(--verde); }
-.botao.grande { font-size: 1.2rem; padding: 14px 24px; margin: 16px 0; }
 .botao.perigo, button.perigo { background: var(--vermelho); }
-#alertas { display: flex; flex-direction: column; gap: 6px; padding: 0 16px; }
-.faixa { padding: 12px 16px; border-radius: 10px; margin-top: 8px; display: flex; gap: 12px; align-items: center; font-weight: 600; }
+#alertas { display: flex; flex-direction: column; gap: 6px; padding: 0 24px; }
+.faixa { padding: 14px 18px; border-radius: 12px; margin-top: 10px; display: flex; gap: 12px; align-items: center; font-weight: 600; }
 .faixa.perigo { background: #fdecea; color: var(--vermelho); border: 2px solid var(--vermelho); }
 .faixa.aviso { background: #fff4d6; color: var(--amarelo); border: 2px solid var(--amarelo); }
-.faixa button { padding: 4px 14px; min-height: 36px; }
-main { padding: 16px; max-width: 1100px; margin: 0 auto; }
-.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.card { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 16px; background: #fff; border: 2px solid var(--borda); border-radius: 16px; text-decoration: none; color: inherit; text-align: center; }
-.card.alerta { border-color: var(--vermelho); }
-.card strong { font-size: 1.3rem; }
-.foto { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; background: var(--verde-claro); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.faixa button { padding: 4px 14px; min-height: 40px; }
+main { padding: 24px; max-width: 1500px; margin: 0 auto; }
+h2 { margin: 0 0 12px; font-size: 1.5rem; }
+h3 { font-size: 1.2rem; margin: 20px 0 8px; }
 .ok { color: var(--verde); } .neutro { color: var(--cinza); }
+.perigo-texto { color: var(--vermelho); font-weight: 700; }
 .vazio { color: var(--cinza); grid-column: 1 / -1; }
-.detalhe-topo { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
-.detalhe-topo .foto { width: 90px; height: 90px; }
-.grafico { width: 100%; max-width: 640px; background: #fff; border: 2px solid var(--borda); border-radius: 12px; }
+
+.foto { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; background: var(--verde-claro); display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0; }
+
+/* ---------- tela inicial: cachorros a esquerda, passadas a direita ---------- */
+.inicio { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+@media (min-width: 900px) { .inicio { grid-template-columns: 1.1fr 1fr; } }
+.painel { background: #fff; border: 2px solid var(--borda); border-radius: 22px; padding: 20px; }
+.painel-titulo { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.painel-titulo h2 { margin: 0; }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+.card { display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 16px; background: var(--fundo); border: 2px solid var(--borda); border-radius: 18px; text-decoration: none; color: inherit; text-align: center; min-height: 56px; }
+.card.alerta { border-color: var(--vermelho); background: #fdecea; }
+.card strong { font-size: 1.4rem; }
+.peso-card { font-size: 1.2rem; font-weight: 600; }
+
+.lista-passadas { list-style: none; margin: 0; padding: 0; max-height: calc(100vh - 290px); min-height: 280px; overflow-y: auto; }
+.passada { display: grid; grid-template-columns: 56px 1fr auto auto; gap: 14px; align-items: center; padding: 10px 8px; border-bottom: 1px solid var(--borda); }
+.passada .foto { width: 56px; height: 56px; font-size: 1.7rem; }
+.passada-info { display: flex; flex-direction: column; }
+.passada-peso { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.passada-racao { font-weight: 600; white-space: nowrap; }
+.passada.alerta { background: #fdecea; border-radius: 12px; }
+
+/* ---------- detalhe do cachorro ---------- */
+.detalhe-topo { display: flex; align-items: center; gap: 18px; margin: 12px 0; }
+.detalhe-topo .foto { width: 96px; height: 96px; }
+.detalhe-colunas { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) { .detalhe-colunas { grid-template-columns: 1fr 1fr; } }
+.grafico { width: 100%; background: #fff; border: 2px solid var(--borda); border-radius: 14px; }
 .grafico .linha { fill: none; stroke: var(--verde); stroke-width: 3; }
 .grafico .ponto { fill: var(--verde); }
 .grafico text { font-size: 12px; fill: var(--cinza); }
-table.visitas { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
-table.visitas th, table.visitas td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--borda); }
-form label { display: block; margin: 12px 0 4px; font-weight: 600; }
-input, select { font: inherit; padding: 10px; border: 2px solid var(--borda); border-radius: 10px; min-height: 44px; }
-.cadastro .instrucao { font-size: 1.3rem; }
-.cadastro .contagem { font-size: 3rem; font-weight: 700; color: var(--verde); }
+table.visitas { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+table.visitas th, table.visitas td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--borda); }
+table.visitas tr.alerta { background: #fdecea; }
+
+/* ---------- formularios ---------- */
+form label { display: block; margin: 14px 0 6px; font-weight: 600; }
+input, select { font: inherit; padding: 12px; border: 2px solid var(--borda); border-radius: 12px; min-height: 56px; max-width: 100%; }
+.cadastro { max-width: 700px; }
+.cadastro .instrucao { font-size: 1.5rem; }
+.cadastro .contagem { font-size: 3.5rem; font-weight: 700; color: var(--verde); }
 .aviso-texto { color: var(--amarelo); font-weight: 600; }
-#painel-simulador { position: fixed; right: 8px; bottom: 8px; width: 260px; background: #222; color: #fff; padding: 12px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; z-index: 10; }
-#painel-simulador[hidden] { display: none; }
-#painel-simulador button { font-size: 0.85rem; min-height: 36px; padding: 6px 10px; }
-#painel-simulador input, #painel-simulador select { min-height: 32px; padding: 4px; width: 100%; }
+.ajustes { max-width: 800px; }
 .lista-ajustes { list-style: none; padding: 0; }
-.lista-ajustes li { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--borda); }
+.lista-ajustes li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--borda); }
+
+/* ---------- simulador (so com ?sim=1) ---------- */
+#painel-simulador { position: fixed; right: 8px; bottom: 8px; width: 270px; background: #222; color: #fff; padding: 12px; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; z-index: 10; }
+#painel-simulador[hidden] { display: none; }
+#painel-simulador button { font-size: 0.85rem; min-height: 40px; padding: 6px 10px; }
+#painel-simulador input, #painel-simulador select { min-height: 36px; padding: 4px; width: 100%; }

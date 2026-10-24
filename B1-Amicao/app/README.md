@@ -1,6 +1,6 @@
 # App do Amicão (tablet)
 
-App web (PWA) que roda no Chrome do tablet Android. Conversa com o totem por Bluetooth (HM-10, BLE): cadastra os cachorros, guarda o histórico de visitas e peso no próprio tablet e avisa quando um cachorro perde peso ou o reservatório de água acaba.
+App web (PWA) que roda no Chrome do tablet Android. Conversa com o totem por Bluetooth (HM-10, BLE): cadastra os cachorros, guarda o histórico de visitas e peso no próprio tablet e avisa quando o peso de um cachorro varia 20% ou mais da média dele (para mais ou para menos).
 
 HTML, CSS e JavaScript puros, sem build e sem biblioteca. Os alunos não precisam editar o app: ele já vem pronto.
 
@@ -17,15 +17,20 @@ Se o Bluetooth cair, o app mostra "Desconectado" e **tenta reconectar sozinho a 
 ## Como usar o simulador (sem Arduino)
 Abra o app com `?sim=1` no final do endereço. Aparece um painel com um "Arduino falso" que segue as mesmas regras do firmware:
 - escolha uma tag (inclusive uma de 7 bytes e uma "intrusa" que nunca é cadastrada), digite o peso e toque em **Encostar tag na balança**;
-- botões para bomba ligou/desligou, reservatório vazio e Arduino reiniciou.
+- botões para bomba e motor da ração ligou/desligou (os ícones do topo ficam azuis piscando) e Arduino reiniciou;
+- botões para ligar/desligar o leitor e a balança, para ver os ícones do topo ficarem verdes ou vermelhos;
+- o simulador também fica "ocupado" por 8 s depois de uma passada e ignora tags nesse intervalo, como o totem.
 
-Para cadastrar um cachorro no simulador: **Cadastrar cachorro**, encoste uma tag no painel, dê nome e foto, salve. Depois encoste a mesma tag de novo para gerar visitas. Sete, seis, seis e seis kg em quatro visitas disparam o alerta de perda de peso.
+Para cadastrar um cachorro no simulador: **Cadastrar cachorro**, encoste uma tag no painel, dê nome e foto, salve. Depois encoste a mesma tag de novo para gerar visitas. Dez kg e depois sete kg já disparam o alerta (−30%): a regra compara cada pesagem com a média das anteriores e vale a partir da segunda.
 
 Para rodar no computador, de dentro da pasta `app`:
 ```
 python -m http.server 8081
 ```
 e abra `http://localhost:8081/?sim=1`. (Em `localhost` o Service Worker não registra de propósito; só em HTTPS.)
+
+## Onde ficam os dados
+O histórico fica no próprio navegador do tablet (IndexedDB). O app pede ao Chrome para **proteger** esse armazenamento (ele não apaga sozinho); em Ajustes aparece se foi concedido. Instalar o app (menu ⋮ → Instalar app) ajuda. Limpar os dados do site apaga tudo, então exporte um backup de vez em quando (Ajustes mostra a data do último).
 
 ## Como rodar os testes
 De dentro da pasta `app` (precisa do Node.js, nada para instalar):
@@ -47,12 +52,16 @@ Marque cada item quando fizer no tablet, com o HM-10 montado:
 
 ```
 [ ] Pareia com o HM-10 (aparece AMICAO na lista)
-[ ] Conecta e o selo "Conectado" aparece no topo
+[ ] Conecta e os 3 ícones do topo (Bluetooth, leitor, balança) ficam verdes
 [ ] Desligar o Arduino: o app mostra desconectado e tenta reconectar sozinho (3 s)
 [ ] Linhas chegam inteiras (sem JSON cortado) — conferir que os cards atualizam
 [ ] Tela do tablet não apaga com o app aberto (Wake Lock)
-[ ] B1: cadastrar um cachorro de verdade e conferir que o LCD mostra o nome
+[ ] B1: cadastrar um cachorro de verdade e conferir que o nome aparece no app
 [ ] B1: tag que não está na lista não faz nada
+[ ] B1: desligar o leitor ou a balança deixa o ícone vermelho em até 15 s
+[ ] B1: passar uma 2ª tag durante a pesagem/ração/água não dispara nada
+[ ] B1: ícones do motor e da bomba ficam azuis enquanto o totem solta ração e enche a água
+[ ] B1: peso 20% diferente da média mostra o alerta (faixa vermelha e selo no card)
 ```
 
 Observações:

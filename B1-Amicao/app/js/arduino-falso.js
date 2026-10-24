@@ -5,10 +5,15 @@ const MAX_TAGS = 10;
 // Faz o papel do Arduino dentro do navegador, seguindo as mesmas regras do firmware.
 // Serve para testar o app sem hardware (modo ?sim=1).
 export class ArduinoFalso {
-  constructor({ aoLinha, duracaoCadastroMs = 30000, intervaloRacaoMs = 15000, relogio = Date.now }) {
+  constructor({ aoLinha, duracaoCadastroMs = 30000, intervaloRacaoMs = 60000, duracaoProcessoMs = 0, animarProcesso = false, relogio = Date.now }) {
     this.aoLinha = aoLinha;
     this.duracaoCadastroMs = duracaoCadastroMs;
     this.intervaloRacaoMs = intervaloRacaoMs;
+    this.duracaoProcessoMs = duracaoProcessoMs;   // quanto tempo o totem fica "ocupado" depois de uma visita
+    this.animarProcesso = animarProcesso;         // no navegador: motor e bomba acendem em sequencia
+    this.ocupadoAte = 0;
+    this.sensores = { leitor: true, balanca: true };
+    this.temporizadorStatus = null;
     this.relogio = relogio;
     this.tags = new Map();            // uid -> nome (faz o papel da EEPROM)
     this.ultimaPorcao = new Map();    // uid -> momento da ultima racao
@@ -74,28 +79,57 @@ export class ArduinoFalso {
     if (!this.tags.has(uid)) return;   // tag desconhecida: nada acontece
 
     const agora = this.relogio();
+    if (agora < this.ocupadoAte) return;   // totem ocupado (pesando, dando racao e agua): le e descarta a tag
+    this.ocupadoAte = agora + this.duracaoProcessoMs;
     const ultima = this.ultimaPorcao.get(uid);
     const racao = ultima === undefined || agora - ultima >= this.intervaloRacaoMs;
     if (racao) this.ultimaPorcao.set(uid, agora);
 
     const pesoValido = pesoKg >= 1;
-    this.emitir({
+    const visita = {
       evento: 'visita',
       uid,
       peso_kg: pesoValido ? Math.round(pesoKg * 10) / 10 : null,
       racao,
-    });
+    };
+    if (!this.animarProcesso) {
+      this.emitir(visita);
+      return;
+    }
+    // Como no totem: pesa, motor da racao, bomba, e so no fim manda a visita.
+    const passos = racao
+      ? [[0, () => this.racao(true)], [2500, () => this.racao(false)], [2500, () => this.agua(true)],
+         [5500, () => this.agua(false)], [5600, () => this.emitir(visita)]]
+      : [[1500, () => this.emitir(visita)]];
+    for (const [quando, fazer] of passos) setTimeout(fazer, quando);
   }
 
   ligar() {
     this.emitir({ evento: 'ligado' });
+    this.emitirStatus();
+  }
+
+  emitirStatus() {
+    this.emitir({ evento: 'status', leitor: this.sensores.leitor, balanca: this.sensores.balanca });
+  }
+
+  // Simula um sensor que falha ou volta ao normal ('leitor' ou 'balanca').
+  definirSensor(nome, funcionando) {
+    this.sensores[nome] = funcionando;
+    this.emitirStatus();
+  }
+
+  // O firmware repete o status a cada 5 s. So o navegador liga isso (os testes nao).
+  iniciarStatusPeriodico(intervaloMs = 5000) {
+    clearInterval(this.temporizadorStatus);
+    this.temporizadorStatus = setInterval(() => this.emitirStatus(), intervaloMs);
   }
 
   agua(ligada) {
     this.emitir({ evento: 'agua', bomba: ligada ? 'ligada' : 'desligada' });
   }
 
-  reservatorioVazio() {
-    this.emitir({ evento: 'alerta', tipo: 'reservatorio_vazio' });
+  racao(ligado) {
+    this.emitir({ evento: 'racao', motor: ligado ? 'ligado' : 'desligado' });
   }
 }

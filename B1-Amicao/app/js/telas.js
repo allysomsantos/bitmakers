@@ -1,12 +1,18 @@
-import { h, mesmoDia, formatarQuando } from './dom.js';
-import { avaliarPeso, tendencia } from './pesos.js';
+import { h, mesmoDia, formatarQuando, formatarQuandoCurto } from './dom.js';
+import { avaliarPeso, anotarVisitas, tendencia, formatarVariacao } from './pesos.js';
 
 const SETAS = { subiu: '↑', desceu: '↓', igual: '→' };
+const MAX_PASSADAS = 40;   // quantas passadas aparecem na tela inicial
 
 function foto(cachorro) {
   return cachorro.foto
     ? h('img', { class: 'foto', src: cachorro.foto, alt: 'Foto de ' + cachorro.nome })
     : h('div', { class: 'foto sem-foto' }, '🐶');
+}
+
+// "+12% mais pesado" / "−11% mais leve"
+function textoVariacao(comparacao) {
+  return `${formatarVariacao(comparacao)} ${comparacao.direcao === 'mais' ? 'mais pesado' : 'mais leve'}`;
 }
 
 function cardCachorro(estado, cachorro) {
@@ -15,26 +21,69 @@ function cardCachorro(estado, cachorro) {
   const ultimo = pesos.length ? pesos[pesos.length - 1] : null;
   const seta = SETAS[tendencia(pesos)] ?? '';
   const comeuHoje = visitas.some(v => v.racao && mesmoDia(v.quando, new Date()));
-  const perdeuPeso = avaliarPeso(visitas, estado.config).alerta;
+  const avaliacao = avaliarPeso(visitas);
 
   return h('a', {
-      class: 'card' + (perdeuPeso ? ' alerta' : ''),
+      class: 'card' + (avaliacao.alerta ? ' alerta' : ''),
       href: '#/cachorro/' + encodeURIComponent(cachorro.uid),
     },
     foto(cachorro),
     h('strong', {}, cachorro.nome),
     h('span', { class: comeuHoje ? 'ok' : 'neutro' }, comeuHoje ? '✔ Já comeu hoje' : 'Ainda não comeu hoje'),
-    h('span', {}, ultimo !== null ? `${ultimo.toFixed(1)} kg ${seta}` : 'Sem peso ainda'),
-    perdeuPeso ? h('span', { class: 'selo perigo' }, '⚠ Perdeu peso') : '',
+    h('span', { class: 'peso-card' }, ultimo !== null ? `${ultimo.toFixed(1)} kg ${seta}` : 'Sem peso ainda'),
+    avaliacao.alerta ? h('span', { class: 'selo perigo' }, '⚠ ' + textoVariacao(avaliacao)) : '',
   );
+}
+
+// Todas as passadas de todos os cachorros, da mais recente para a mais antiga.
+export function listarPassadas(estado) {
+  const todas = [];
+  for (const cachorro of estado.cachorros) {
+    for (const visita of anotarVisitas(estado.visitas[cachorro.uid] ?? [])) {
+      todas.push({ ...visita, cachorro });
+    }
+  }
+  return todas.sort((a, b) => b.quando.localeCompare(a.quando));
+}
+
+function linhaPassada(passada) {
+  const { cachorro, comparacao } = passada;
+  const alerta = comparacao?.alerta === true;
+  return h('li', { class: 'passada' + (alerta ? ' alerta' : '') },
+    foto(cachorro),
+    h('div', { class: 'passada-info' },
+      h('strong', {}, cachorro.nome),
+      h('span', { class: 'neutro' }, formatarQuandoCurto(passada.quando))),
+    h('div', { class: 'passada-peso' },
+      h('strong', {}, typeof passada.peso_kg === 'number' ? passada.peso_kg.toFixed(1) + ' kg' : 'sem peso'),
+      alerta ? h('span', { class: 'selo perigo' }, '⚠ ' + textoVariacao(comparacao)) : ''),
+    h('span', { class: 'passada-racao ' + (passada.racao ? 'ok' : 'neutro') }, passada.racao ? '🍖 Comeu' : 'Só passou'),
+  );
+}
+
+function painelHistorico(estado) {
+  const passadas = listarPassadas(estado);
+  const hoje = passadas.filter(p => mesmoDia(p.quando, new Date()));
+  const racoesHoje = hoje.filter(p => p.racao).length;
+  return h('section', { class: 'painel historico' },
+    h('div', { class: 'painel-titulo' },
+      h('h2', {}, 'Últimas passadas'),
+      h('span', { class: 'neutro' }, `Hoje: ${hoje.length} passada${hoje.length === 1 ? '' : 's'}, ${racoesHoje} ração${racoesHoje === 1 ? '' : 'ões'}`)),
+    passadas.length
+      ? h('ul', { class: 'lista-passadas' }, passadas.slice(0, MAX_PASSADAS).map(linhaPassada))
+      : h('p', { class: 'vazio' }, 'Nenhuma passada ainda. Quando um cachorro encostar a tag, ela aparece aqui.'));
 }
 
 export function telaInicio(estado, acoes) {
   const cards = estado.cachorros.map(c => cardCachorro(estado, c));
   return h('section', { class: 'inicio' },
-    h('div', { class: 'grade' },
-      cards.length ? cards : h('p', { class: 'vazio' }, 'Nenhum cachorro cadastrado ainda. Toque em "Cadastrar cachorro".')),
-    h('a', { class: 'botao grande', href: '#/cadastro' }, '＋ Cadastrar cachorro'),
+    h('section', { class: 'painel cachorros' },
+      h('div', { class: 'painel-titulo' },
+        h('h2', {}, 'Cachorros'),
+        h('a', { class: 'botao', href: '#/cadastro' }, '＋ Cadastrar cachorro')),
+      h('div', { class: 'grade' },
+        cards.length ? cards : h('p', { class: 'vazio' }, 'Nenhum cachorro cadastrado ainda. Toque em "Cadastrar cachorro".'))),
+    painelHistorico(estado),
   );
 }
 
@@ -78,10 +127,11 @@ export function telaDetalhe(estado, uid) {
 
   const visitas = estado.visitas[uid] ?? [];
   const pesos = visitas.filter(v => typeof v.peso_kg === 'number').map(v => v.peso_kg);
-  const avaliacao = avaliarPeso(visitas, estado.config);
-  const linhas = [...visitas].reverse().map(v => h('tr', {},
+  const avaliacao = avaliarPeso(visitas);
+  const linhas = anotarVisitas(visitas).reverse().map(v => h('tr', { class: v.comparacao?.alerta ? 'alerta' : '' },
     h('td', {}, formatarQuando(v.quando)),
     h('td', {}, v.peso_kg !== null ? v.peso_kg.toFixed(1) + ' kg' : 'sem peso'),
+    h('td', {}, v.comparacao ? h('span', { class: v.comparacao.alerta ? 'perigo-texto' : 'neutro' }, formatarVariacao(v.comparacao)) : '—'),
     h('td', {}, v.racao ? 'Comeu' : 'Só passou'),
   ));
 
@@ -92,16 +142,19 @@ export function telaDetalhe(estado, uid) {
       h('div', {},
         h('h2', {}, cachorro.nome),
         avaliacao.alerta
-          ? h('span', { class: 'selo perigo' }, `⚠ Perdeu peso (${avaliacao.quedaPercentual.toFixed(0)}%)`)
-          : h('span', { class: 'selo ok' }, 'Peso estável'))),
-    h('h3', {}, 'Peso'),
-    graficoPeso(pesos),
-    h('h3', {}, 'Visitas'),
-    linhas.length
-      ? h('table', { class: 'visitas' },
-          h('thead', {}, h('tr', {}, h('th', {}, 'Quando'), h('th', {}, 'Peso'), h('th', {}, 'Ração'))),
-          h('tbody', {}, linhas))
-      : h('p', { class: 'vazio' }, 'Nenhuma visita registrada ainda.'),
+          ? h('span', { class: 'selo perigo' }, '⚠ ' + textoVariacao(avaliacao))
+          : h('span', { class: 'selo ok' }, avaliacao.motivo === 'sem_anteriores' ? 'Primeira pesagem é só referência' : 'Peso estável'))),
+    h('div', { class: 'detalhe-colunas' },
+      h('div', {},
+        h('h3', {}, 'Peso'),
+        graficoPeso(pesos)),
+      h('div', {},
+        h('h3', {}, 'Visitas'),
+        linhas.length
+          ? h('table', { class: 'visitas' },
+              h('thead', {}, h('tr', {}, h('th', {}, 'Quando'), h('th', {}, 'Peso'), h('th', {}, 'Variação'), h('th', {}, 'Ração'))),
+              h('tbody', {}, linhas))
+          : h('p', { class: 'vazio' }, 'Nenhuma visita registrada ainda.'))),
   );
 }
 function formularioCadastro(estado, acoes) {
@@ -155,16 +208,7 @@ export function telaCadastro(estado, acoes) {
   );
 }
 
-function campoNumero(rotulo, valor, minimo, maximo, passo = 1) {
-  const entrada = h('input', { type: 'number', value: valor, min: minimo, max: maximo, step: passo, required: true });
-  return { entrada, linha: h('label', {}, rotulo, entrada) };
-}
-
 export function telaAjustes(estado, acoes) {
-  const queda = campoNumero('Alerta de peso: queda de (%) ', estado.config.quedaPercentual, 1, 50);
-  const recente = campoNumero('Visitas recentes na média ', estado.config.janelaRecente, 1, 10);
-  const anterior = campoNumero('Visitas de referência ', estado.config.janelaAnterior, 1, 20);
-  const minimo = campoNumero('Mínimo de visitas com peso ', estado.config.minimoVisitas, 2, 30);
   const entradaBackup = h('input', { type: 'file', accept: 'application/json' });
 
   return h('section', { class: 'ajustes' },
@@ -176,20 +220,10 @@ export function telaAjustes(estado, acoes) {
       ? h('p', { class: 'ok' }, '✔ Conectado ao totem')
       : h('p', {}, h('button', { onclick: acoes.conectar }, 'Conectar ao totem')),
 
-    h('h3', {}, 'Alerta de perda de peso'),
-    h('form', {
-        onsubmit: (evento) => {
-          evento.preventDefault();
-          acoes.salvarConfig({
-            quedaPercentual: Number(queda.entrada.value),
-            janelaRecente: Number(recente.entrada.value),
-            janelaAnterior: Number(anterior.entrada.value),
-            minimoVisitas: Number(minimo.entrada.value),
-          });
-        },
-      },
-      queda.linha, recente.linha, anterior.linha, minimo.linha,
-      h('p', {}, h('button', { type: 'submit' }, 'Salvar'))),
+    h('h3', {}, 'Alerta de peso'),
+    h('p', { class: 'neutro' },
+      'Cada pesagem é comparada com a média de todas as pesagens anteriores do mesmo cachorro. ' +
+      'Com 20% ou mais de diferença, para mais ou para menos, o app avisa. Vale a partir da segunda pesagem.'),
 
     h('h3', {}, 'Cachorros cadastrados'),
     estado.cachorros.length
@@ -202,6 +236,14 @@ export function telaAjustes(estado, acoes) {
       : h('p', { class: 'vazio' }, 'Nenhum cachorro cadastrado.'),
 
     h('h3', {}, 'Backup'),
+    estado.armazenamento.protegido === true
+      ? h('p', { class: 'ok' }, '✔ Armazenamento protegido: o Chrome não apaga o histórico sozinho.')
+      : h('p', { class: 'aviso-texto' },
+          '⚠ O Chrome pode apagar o histórico se faltar espaço ou se alguém limpar os dados do site. ' +
+          'Instale o app (menu ⋮ → Instalar app) e exporte um backup de vez em quando.'),
+    h('p', { class: 'neutro' }, estado.armazenamento.ultimoBackup
+      ? 'Último backup: ' + formatarQuando(estado.armazenamento.ultimoBackup)
+      : 'Nenhum backup exportado ainda.'),
     h('p', {}, h('button', { onclick: acoes.exportar }, 'Exportar backup')),
     h('label', {}, 'Importar backup (substitui tudo)'), entradaBackup,
     h('p', {}, h('button', { onclick: () => { if (entradaBackup.files[0]) acoes.importar(entradaBackup.files[0]); } }, 'Importar')),

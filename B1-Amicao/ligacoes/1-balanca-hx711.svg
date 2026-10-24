@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1330 1340" width="1330" height="1340" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1330" height="1340" fill="#141414"/>
+<rect x="30" y="40" width="225" height="400" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="142.5" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="233" y="217" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<text x="233" y="297" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A1</text>
+<text x="233" y="377" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A0</text>
+<rect x="470" y="40" width="240" height="400" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="590.0" y="84" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >HX711</text>
+<text x="492" y="137" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >VCC</text>
+<text x="492" y="217" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >GND</text>
+<text x="492" y="297" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >DT</text>
+<text x="492" y="377" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SCK</text>
+<text x="688" y="137" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >E+</text>
+<text x="688" y="217" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >E−</text>
+<text x="688" y="297" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >A−</text>
+<text x="688" y="377" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >A+</text>
+<text x="590.0" y="418" font-size="18" fill="#6fd6ae" text-anchor="middle" font-weight="400" >B− e B+ ficam soltos</text>
+<polyline points="255,210 470,210" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,290 470,290" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,370 470,370" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="470,130 400,130" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="390" y="137" font-size="20" fill="#e8e6dc" text-anchor="end" font-weight="400" >5V da fonte</text>
+<polyline points="710,370 800,370 800,1254" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="710,290 850,290 850,1224" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="710,210 900,210 900,1194" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="710,210 900,210 900,1194" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="710,130 950,130 950,1164" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1050 534 L 950 534" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="950" cy="534" r="7" fill="#e5484d"/>
+<path d="M 1050 564 L 959 564 a 9 9 0 0 0 -18 0 L 900 564" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linecap="round"/>
+<path d="M 1050 564 L 959 564 a 9 9 0 0 0 -18 0 L 900 564" fill="none" stroke="#101010" stroke-width="5" stroke-linecap="round"/>
+<circle cx="900" cy="564" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<path d="M 1050 594 L 959 594 a 9 9 0 0 0 -18 0 L 909 594 a 9 9 0 0 0 -18 0 L 850 594" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="850" cy="594" r="7" fill="#1fa37a"/>
+<path d="M 1050 624 L 959 624 a 9 9 0 0 0 -18 0 L 909 624 a 9 9 0 0 0 -18 0 L 859 624 a 9 9 0 0 0 -18 0 L 800 624" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linecap="round"/>
+<circle cx="800" cy="624" r="7" fill="#f2f0e6"/>
+<path d="M 1050 744 L 950 744" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="950" cy="744" r="7" fill="#e5484d"/>
+<path d="M 1050 774 L 959 774 a 9 9 0 0 0 -18 0 L 900 774" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linecap="round"/>
+<path d="M 1050 774 L 959 774 a 9 9 0 0 0 -18 0 L 900 774" fill="none" stroke="#101010" stroke-width="5" stroke-linecap="round"/>
+<circle cx="900" cy="774" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<path d="M 1050 804 L 959 804 a 9 9 0 0 0 -18 0 L 909 804 a 9 9 0 0 0 -18 0 L 850 804" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="850" cy="804" r="7" fill="#1fa37a"/>
+<path d="M 1050 834 L 959 834 a 9 9 0 0 0 -18 0 L 909 834 a 9 9 0 0 0 -18 0 L 859 834 a 9 9 0 0 0 -18 0 L 800 834" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linecap="round"/>
+<circle cx="800" cy="834" r="7" fill="#f2f0e6"/>
+<path d="M 1050 954 L 950 954" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="950" cy="954" r="7" fill="#e5484d"/>
+<path d="M 1050 984 L 959 984 a 9 9 0 0 0 -18 0 L 900 984" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linecap="round"/>
+<path d="M 1050 984 L 959 984 a 9 9 0 0 0 -18 0 L 900 984" fill="none" stroke="#101010" stroke-width="5" stroke-linecap="round"/>
+<circle cx="900" cy="984" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<path d="M 1050 1014 L 959 1014 a 9 9 0 0 0 -18 0 L 909 1014 a 9 9 0 0 0 -18 0 L 850 1014" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="850" cy="1014" r="7" fill="#1fa37a"/>
+<path d="M 1050 1044 L 959 1044 a 9 9 0 0 0 -18 0 L 909 1044 a 9 9 0 0 0 -18 0 L 859 1044 a 9 9 0 0 0 -18 0 L 800 1044" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linecap="round"/>
+<circle cx="800" cy="1044" r="7" fill="#f2f0e6"/>
+<path d="M 1050 1164 L 950 1164" fill="none" stroke="#e5484d" stroke-width="5" stroke-linecap="round"/>
+<circle cx="950" cy="1164" r="7" fill="#e5484d"/>
+<path d="M 1050 1194 L 900 1194" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linecap="round"/>
+<path d="M 1050 1194 L 900 1194" fill="none" stroke="#101010" stroke-width="5" stroke-linecap="round"/>
+<circle cx="900" cy="1194" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<path d="M 1050 1224 L 850 1224" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linecap="round"/>
+<circle cx="850" cy="1224" r="7" fill="#1fa37a"/>
+<path d="M 1050 1254 L 800 1254" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linecap="round"/>
+<circle cx="800" cy="1254" r="7" fill="#f2f0e6"/>
+<rect x="1050" y="470" width="250" height="190" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1175.0" y="514" font-size="28" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 1 · 20 kg</text>
+<text x="1072" y="541" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >vermelho</text>
+<text x="1072" y="571" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >preto</text>
+<text x="1072" y="601" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >verde</text>
+<text x="1072" y="631" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >branco</text>
+<rect x="1050" y="680" width="250" height="190" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1175.0" y="724" font-size="28" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 2 · 20 kg</text>
+<text x="1072" y="751" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >vermelho</text>
+<text x="1072" y="781" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >preto</text>
+<text x="1072" y="811" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >verde</text>
+<text x="1072" y="841" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >branco</text>
+<rect x="1050" y="890" width="250" height="190" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1175.0" y="934" font-size="28" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 3 · 20 kg</text>
+<text x="1072" y="961" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >vermelho</text>
+<text x="1072" y="991" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >preto</text>
+<text x="1072" y="1021" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >verde</text>
+<text x="1072" y="1051" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >branco</text>
+<rect x="1050" y="1100" width="250" height="190" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1175.0" y="1144" font-size="28" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 4 · 20 kg</text>
+<text x="1072" y="1171" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >vermelho</text>
+<text x="1072" y="1201" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >preto</text>
+<text x="1072" y="1231" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >verde</text>
+<text x="1072" y="1261" font-size="22" fill="#aab6bf" text-anchor="start" font-weight="400" >branco</text>
+<text x="1000" y="110" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="600" >Cor do barramento:</text>
+<polyline points="1000,150 1050,150" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1065" y="157" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >E+ do HX711</text>
+<polyline points="1000,184 1050,184" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="1000,184 1050,184" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1065" y="191" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >E− do HX711</text>
+<polyline points="1000,218 1050,218" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1065" y="225" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >A− do HX711</text>
+<polyline points="1000,252 1050,252" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1065" y="259" font-size="20" fill="#cfcdc2" text-anchor="start" font-weight="400" >A+ do HX711</text>
+<text x="1000" y="320" font-size="19" fill="#9bd3b5" text-anchor="start" font-weight="400" >As 4 células ligam iguais, em paralelo:</text>
+<text x="1000" y="346" font-size="19" fill="#9bd3b5" text-anchor="start" font-weight="400" >fio da mesma cor no mesmo ponto.</text>
+<text x="1000" y="386" font-size="19" fill="#ff9a9a" text-anchor="start" font-weight="400" >Peso negativo? Troque A+ com A−.</text>
+</svg>

@@ -12,9 +12,29 @@
 <body>
   <header id="topo">
     <a href="#/" class="logo">🐾 Amicão</a>
-    <span id="status-conexao" class="selo perigo">Desconectado</span>
-    <span id="status-bomba" class="selo neutro" hidden></span>
     <span class="espaco"></span>
+
+    <!-- Status do totem: verde = funcionando, vermelho = com problema. Toque e segure para ver o nome. -->
+    <div id="sensores" role="group" aria-label="Status dos sensores">
+      <span id="sensor-ble" class="sensor falha" title="Bluetooth" aria-label="Bluetooth">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg>
+      </span>
+      <span id="sensor-leitor" class="sensor falha" title="Leitor de tags" aria-label="Leitor de tags">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8.5a5 5 0 0 1 0 7"/><path d="M10 6a9 9 0 0 1 0 12"/><path d="M14 3.5a13 13 0 0 1 0 17"/></svg>
+      </span>
+      <span id="sensor-balanca" class="sensor falha" title="Balança" aria-label="Balança">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg>
+      </span>
+      <span class="separador" aria-hidden="true"></span>
+      <!-- Motor e bomba: cinza = parado, azul piscando = ligado. Nao ha sensor de retorno. -->
+      <span id="sensor-motor" class="sensor parado" title="Motor da ração" aria-label="Motor da ração">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="9" width="12" height="8" rx="1"/><path d="M9 9V6h6v3M11 6V4h2v2M6 12H3m0-1v5h3M18 11h2v4h-2M20 10v6M8 17v2h8v-2"/></svg>
+      </span>
+      <span id="sensor-bomba" class="sensor parado" title="Bomba d'água" aria-label="Bomba d'água">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.5" cy="14" r="6"/><circle cx="9.5" cy="14" r="2"/><path d="M13.5 9.5L17 5h4M3.5 14H1M4 21h11"/><path d="M19.5 12c1.2 1.6 1.8 2.5 1.8 3.4a1.8 1.8 0 0 1-3.6 0c0-.9.6-1.8 1.8-3.4z"/></svg>
+      </span>
+    </div>
+
     <button id="btn-conectar" class="botao">Conectar</button>
     <a href="#/ajustes" class="botao claro" aria-label="Ajustes">⚙ Ajustes</a>
   </header>

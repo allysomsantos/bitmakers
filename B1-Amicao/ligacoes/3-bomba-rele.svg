@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1530 590" width="1530" height="590" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1530" height="590" fill="#141414"/>
+<rect x="30" y="40" width="225" height="250" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="142.5" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="233" y="137" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D3</text>
+<text x="233" y="217" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<rect x="520" y="40" width="300" height="360" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="670.0" y="84" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >Módulo relé</text>
+<text x="542" y="137" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >IN</text>
+<text x="542" y="217" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >GND</text>
+<text x="542" y="297" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >VCC</text>
+<text x="798" y="137" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >NC</text>
+<text x="798" y="217" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >NO</text>
+<text x="798" y="297" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >COM</text>
+<text x="670.0" y="378" font-size="18" fill="#6fd6ae" text-anchor="middle" font-weight="400" >1 canal, 5V</text>
+<polyline points="255,130 520,130" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="255,210 520,210" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="520,290 440,290" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="430" y="297" font-size="20" fill="#e8e6dc" text-anchor="end" font-weight="400" >5V (fonte separada)</text>
+<text x="840" y="137" font-size="17" fill="#a5a398" text-anchor="start" font-weight="400" >NC fica solto</text>
+<polyline points="820,290 880,290" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="892" y="297" font-size="20" fill="#e8e6dc" text-anchor="start" font-weight="400" >5V</text>
+<rect x="1260" y="130" width="240" height="300" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="1380.0" y="174" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Mini bomba</text>
+<text x="1282" y="217" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >+</text>
+<text x="1282" y="377" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >−</text>
+<text x="1380.0" y="408" font-size="18" fill="#7fb2ee" text-anchor="middle" font-weight="400" >d'água, 5V</text>
+<polyline points="820,210 1260,210" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="900,370 1260,370" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="888" y="377" font-size="20" fill="#e8e6dc" text-anchor="end" font-weight="400" >GND</text>
+<polyline points="1068,210 1068,250" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="1068,330 1068,370" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="1050" y="250" width="36" height="80" rx="6" fill="#2a2a2a" stroke="#999999" stroke-width="1.5" />
+<rect x="1050" y="256" width="36" height="9" rx="2" fill="#e8e6dc" stroke="#e8e6dc" stroke-width="1.5" />
+<circle cx="1068" cy="210" r="7" fill="#e5484d"/>
+<circle cx="1068" cy="370" r="7" fill="#8a8880"/>
+<text x="1100" y="290" font-size="19" fill="#e8e6dc" text-anchor="start" font-weight="400" >diodo 1N4007</text>
+<text x="1100" y="316" font-size="17" fill="#a5a398" text-anchor="start" font-weight="400" >faixa no lado do +</text>
+<text x="30" y="470" font-size="20" fill="#f5b25c" text-anchor="start" font-weight="400" >Este módulo relé (3 pinos: IN, GND, VCC, com transistor) liga com sinal HIGH, como o código já faz.</text>
+<text x="30" y="500" font-size="20" fill="#f5b25c" text-anchor="start" font-weight="400" >Se o relé ligar sozinho ao ligar o Arduino, o seu liga com LOW: troque NIVEL_BOMBA_LIGADA no sketch.</text>
+<text x="30" y="530" font-size="20" fill="#a5a398" text-anchor="start" font-weight="400" >O D8 não é mais usado.</text>
+</svg>

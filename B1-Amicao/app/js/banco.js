@@ -1,4 +1,3 @@
-import { PADRAO } from './pesos.js';
 import { backupValido } from './protocolo.js';
 
 const NOME_BANCO = 'amicao';
@@ -13,7 +12,7 @@ function abrir() {
       db.createObjectStore('cachorros', { keyPath: 'uid' });
       const visitas = db.createObjectStore('visitas', { keyPath: 'id', autoIncrement: true });
       visitas.createIndex('uid', 'uid');
-      db.createObjectStore('config', { keyPath: 'chave' });
+      db.createObjectStore('config', { keyPath: 'chave' });   // nao usada mais; fica para nao mudar a versao do banco
     };
     pedido.onsuccess = () => ok(pedido.result);
     pedido.onerror = () => erro(pedido.error);
@@ -56,20 +55,10 @@ export async function listarVisitas(uid) {
   return lista.sort((a, b) => a.id - b.id);
 }
 
-export async function lerConfig() {
-  const registro = await operar('config', 'readonly', loja => loja.get('principal'));
-  return { ...PADRAO, ...(registro ? registro.valores : {}) };
-}
-
-export function salvarConfig(valores) {
-  return operar('config', 'readwrite', loja => loja.put({ chave: 'principal', valores }));
-}
-
 export async function exportarTudo() {
   const cachorros = await operar('cachorros', 'readonly', loja => loja.getAll());
   const visitas = await operar('visitas', 'readonly', loja => loja.getAll());
-  const config = await lerConfig();
-  return { versao: 1, cachorros, visitas, config };
+  return { versao: 1, cachorros, visitas };
 }
 
 // Troca TUDO que existe pelo conteudo do backup.
@@ -78,7 +67,7 @@ export async function importarTudo(dados) {
   if (!backupValido(dados)) throw new Error('Backup inválido.');
   const db = await abrir();
   await new Promise((ok, erro) => {
-    const transacao = db.transaction(['cachorros', 'visitas', 'config'], 'readwrite');
+    const transacao = db.transaction(['cachorros', 'visitas'], 'readwrite');
     transacao.oncomplete = ok;
     transacao.onerror = () => erro(transacao.error);
     transacao.onabort = () => erro(transacao.error ?? new Error('Importação cancelada.'));
@@ -87,7 +76,6 @@ export async function importarTudo(dados) {
       transacao.objectStore('visitas').clear();
       for (const c of dados.cachorros) transacao.objectStore('cachorros').put(c);
       for (const v of dados.visitas) transacao.objectStore('visitas').put(v);
-      transacao.objectStore('config').put({ chave: 'principal', valores: dados.config ?? {} });
     } catch (falha) {
       transacao.abort();   // desfaz tudo, inclusive os clear()
       erro(falha);

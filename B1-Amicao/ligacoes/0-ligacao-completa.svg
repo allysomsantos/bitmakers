@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 2694" width="1900" height="2694" font-family="'Segoe UI', Arial, sans-serif">
+<rect width="1900" height="2694" fill="#141414"/>
+<rect x="1675" y="70" width="50" height="1970" rx="16" fill="#6e1f1f" stroke="#c0392b" stroke-width="2" />
+<text x="1700" y="54" font-size="22" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Protoboard 400 pontos</text>
+<rect x="1685" y="105" width="30" height="1915" rx="8" fill="#2b2b2b" stroke="#9a9a9a" stroke-width="2" />
+<text x="1700" y="98" font-size="15" fill="#9a9a9a" text-anchor="middle" font-weight="600" >GND</text>
+<rect x="1300" y="480" width="180" height="550" rx="16" fill="#6e1f1f" stroke="#c0392b" stroke-width="2" />
+<text x="1390" y="1058" font-size="20" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Protoboard 170 pontos</text>
+<text x="1390" y="1084" font-size="14" fill="#a5a398" text-anchor="middle" font-weight="400" >todo o 5V: motor, relé, bomba, HX711, HM-10</text>
+<rect x="1332" y="490" width="36" height="425" rx="8" fill="#5c1a1a" stroke="#e5484d" stroke-width="2" />
+<rect x="1332" y="935" width="36" height="85" rx="8" fill="#5c1a1a" stroke="#e5484d" stroke-width="2" />
+<rect x="1412" y="490" width="36" height="530" rx="8" fill="#2b2b2b" stroke="#9a9a9a" stroke-width="2" />
+<text x="1350" y="516" font-size="13" fill="#e5484d" text-anchor="middle" font-weight="600" >5V</text>
+<text x="1430" y="516" font-size="13" fill="#9a9a9a" text-anchor="middle" font-weight="600" >GND</text>
+<rect x="520" y="330" width="300" height="310" rx="14" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="670.0" y="374" font-size="28" fill="#f5c46b" text-anchor="middle" font-weight="600" >ULN2003</text>
+<text x="542" y="417" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN1</text>
+<text x="542" y="467" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN2</text>
+<text x="542" y="517" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN3</text>
+<text x="542" y="567" font-size="22" fill="#e6b050" text-anchor="start" font-weight="400" >IN4</text>
+<text x="798" y="547" font-size="22" fill="#e6b050" text-anchor="end" font-weight="400" >−</text>
+<text x="798" y="597" font-size="22" fill="#e6b050" text-anchor="end" font-weight="400" >+</text>
+<text x="670.0" y="618" font-size="18" fill="#e6b050" text-anchor="middle" font-weight="400" >driver do motor</text>
+<rect x="940" y="330" width="220" height="190" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="1050.0" y="374" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Motor 28BYJ-48</text>
+<text x="1050.0" y="498" font-size="18" fill="#7fb2ee" text-anchor="middle" font-weight="400" >conector de 5 fios</text>
+<rect x="1300" y="330" width="180" height="110" rx="14" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="1.5" />
+<text x="1390.0" y="374" font-size="28" fill="#cfcdc2" text-anchor="middle" font-weight="600" >Fonte 5V (2A)</text>
+<text x="1350" y="426" font-size="17" fill="#a5a398" text-anchor="middle" font-weight="400" >+</text>
+<text x="1430" y="426" font-size="17" fill="#a5a398" text-anchor="middle" font-weight="400" >−</text>
+<rect x="520" y="680" width="300" height="330" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="670.0" y="724" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >Módulo relé</text>
+<text x="542" y="767" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >IN</text>
+<text x="798" y="767" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >NO</text>
+<text x="798" y="857" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >COM</text>
+<text x="798" y="907" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >VCC</text>
+<text x="798" y="957" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >GND</text>
+<rect x="940" y="680" width="220" height="150" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="1050.0" y="724" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Mini bomba</text>
+<text x="962" y="767" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >+</text>
+<text x="1138" y="767" font-size="22" fill="#7fb2ee" text-anchor="end" font-weight="400" >−</text>
+<rect x="1010" y="780" width="80" height="18" rx="4" fill="#2a2a2a" stroke="#999999" stroke-width="1.5" />
+<rect x="1010" y="780" width="12" height="18" rx="2" fill="#e8e6dc" stroke="#e8e6dc" stroke-width="1.5" />
+<text x="1050" y="818" font-size="15" fill="#7fb2ee" text-anchor="middle" font-weight="400" >diodo 1N4007</text>
+<rect x="520" y="1050" width="300" height="440" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="670.0" y="1094" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino do leitor</text>
+<text x="542" y="1137" font-size="22" fill="#b5b3a8" text-anchor="start" font-weight="400" >A4 (SDA)</text>
+<text x="542" y="1187" font-size="22" fill="#b5b3a8" text-anchor="start" font-weight="400" >A5 (SCL)</text>
+<text x="542" y="1237" font-size="22" fill="#b5b3a8" text-anchor="start" font-weight="400" >GND</text>
+<text x="798" y="1137" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D10</text>
+<text x="798" y="1187" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D13</text>
+<text x="798" y="1237" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D11</text>
+<text x="798" y="1287" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D12</text>
+<text x="798" y="1337" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D9</text>
+<text x="798" y="1387" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >3.3V</text>
+<text x="798" y="1437" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<text x="670.0" y="1468" font-size="18" fill="#b5b3a8" text-anchor="middle" font-weight="400" >USB próprio</text>
+<rect x="940" y="1050" width="220" height="440" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="1050.0" y="1094" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >RC522</text>
+<text x="962" y="1137" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SDA</text>
+<text x="962" y="1187" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SCK</text>
+<text x="962" y="1237" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >MOSI</text>
+<text x="962" y="1287" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >MISO</text>
+<text x="962" y="1337" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >RST</text>
+<text x="962" y="1387" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >3.3V</text>
+<text x="962" y="1437" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >GND</text>
+<text x="1050.0" y="1468" font-size="18" fill="#ff9a9a" text-anchor="middle" font-weight="400" >só 3.3V, nunca 5V</text>
+<rect x="520" y="1530" width="300" height="190" rx="14" fill="#0a3d6e" stroke="#3b82f6" stroke-width="1.5" />
+<text x="670.0" y="1574" font-size="28" fill="#a9cdf7" text-anchor="middle" font-weight="600" >Bluetooth HM-10</text>
+<text x="542" y="1617" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >TXD</text>
+<text x="542" y="1667" font-size="22" fill="#7fb2ee" text-anchor="start" font-weight="400" >RXD</text>
+<text x="798" y="1617" font-size="22" fill="#7fb2ee" text-anchor="end" font-weight="400" >VCC</text>
+<text x="798" y="1667" font-size="22" fill="#7fb2ee" text-anchor="end" font-weight="400" >GND</text>
+<rect x="520" y="1870" width="300" height="190" rx="14" fill="#0a5240" stroke="#2a9d78" stroke-width="1.5" />
+<text x="670.0" y="1914" font-size="28" fill="#8ee3bf" text-anchor="middle" font-weight="600" >HX711</text>
+<text x="542" y="1957" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >DT</text>
+<text x="542" y="2007" font-size="22" fill="#6fd6ae" text-anchor="start" font-weight="400" >SCK</text>
+<text x="798" y="1957" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >VCC</text>
+<text x="798" y="2007" font-size="22" fill="#6fd6ae" text-anchor="end" font-weight="400" >GND</text>
+<text x="560" y="2046" font-size="17" fill="#6fd6ae" text-anchor="middle" font-weight="400" >E+</text>
+<text x="620" y="2046" font-size="17" fill="#6fd6ae" text-anchor="middle" font-weight="400" >E−</text>
+<text x="680" y="2046" font-size="17" fill="#6fd6ae" text-anchor="middle" font-weight="400" >A−</text>
+<text x="740" y="2046" font-size="17" fill="#6fd6ae" text-anchor="middle" font-weight="400" >A+</text>
+<rect x="30" y="40" width="225" height="2020" rx="14" fill="#47453f" stroke="#6e6c63" stroke-width="1.5" />
+<text x="142.5" y="84" font-size="28" fill="#e8e6dc" text-anchor="middle" font-weight="600" >Arduino Uno</text>
+<text x="233" y="197" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<text x="233" y="417" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D4</text>
+<text x="233" y="467" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D5</text>
+<text x="233" y="517" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D6</text>
+<text x="233" y="567" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D7</text>
+<text x="233" y="767" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D3</text>
+<text x="233" y="1137" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A4</text>
+<text x="233" y="1187" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A5</text>
+<text x="233" y="1617" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >D2</text>
+<text x="233" y="1667" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A3</text>
+<text x="233" y="1957" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A1</text>
+<text x="233" y="2007" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >A0</text>
+<text x="233" y="1237" font-size="22" fill="#b5b3a8" text-anchor="end" font-weight="400" >GND</text>
+<text x="142" y="110" font-size="16" fill="#b5b3a8" text-anchor="middle" font-weight="400" >alimentado por USB ou jack</text>
+<path d="M 255 190 L 1700 190" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1700" cy="190" r="7" fill="#8a8880"/>
+<path d="M 255 410 L 520 410" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 460 L 520 460" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 510 L 520 510" fill="none" stroke="#e8c93d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 560 L 520 560" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 760 L 520 760" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 1130 L 520 1130" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 1180 L 520 1180" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 1610 L 520 1610" fill="none" stroke="#e8913a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 1950 L 520 1950" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 2000 L 520 2000" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 255 1660 L 450 1660 L 520 1660" fill="none" stroke="#ec7fb0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="320.0" y="1646.0" width="60" height="28" rx="6" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="350" y="1666" font-size="17" fill="#f5c46b" text-anchor="middle" font-weight="600" >1k</text>
+<circle cx="450" cy="1660" r="7" fill="#ec7fb0"/>
+<path d="M 450 1660 L 450 1820 L 1700 1820" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="436.0" y="1679.0" width="28" height="52" rx="6" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="450" y="1711" font-size="17" fill="#f5c46b" text-anchor="middle" font-weight="600" >1k</text>
+<rect x="436.0" y="1749.0" width="28" height="52" rx="6" fill="#5c3a0a" stroke="#c98a2b" stroke-width="1.5" />
+<text x="450" y="1781" font-size="17" fill="#f5c46b" text-anchor="middle" font-weight="600" >1k</text>
+<circle cx="1700" cy="1820" r="7" fill="#8a8880"/>
+<text x="480" y="1808" font-size="15" fill="#a5a398" text-anchor="start" font-weight="400" >divisor: 2 resistores de 1k em série até o GND</text>
+<path d="M 255 1230 L 520 1230" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1130 L 940 1130" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1180 L 940 1180" fill="none" stroke="#8b6fdc" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1230 L 940 1230" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1280 L 940 1280" fill="none" stroke="#e8c93d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1330 L 940 1330" fill="none" stroke="#ec7fb0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1380 L 940 1380" fill="none" stroke="#e8913a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1430 L 940 1430" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1660 L 1700 1660" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1700" cy="1660" r="7" fill="#8a8880"/>
+<path d="M 820 2000 L 1700 2000" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1700" cy="2000" r="7" fill="#8a8880"/>
+<path d="M 820 415 L 940 415" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 435 L 940 435" fill="none" stroke="#ec7fb0" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 455 L 940 455" fill="none" stroke="#e8c93d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 475 L 940 475" fill="none" stroke="#e8913a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 495 L 940 495" fill="none" stroke="#e5484d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 540 L 1341 540 a 9 9 0 0 1 18 0 L 1430 540" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1430" cy="540" r="7" fill="#8a8880"/>
+<path d="M 820 590 L 1350 590" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="590" r="7" fill="#e5484d"/>
+<path d="M 820 850 L 1350 850" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="850" r="7" fill="#e5484d"/>
+<path d="M 820 900 L 1350 900" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="900" r="7" fill="#e5484d"/>
+<path d="M 820 950 L 1341 950 a 9 9 0 0 1 18 0 L 1430 950" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1430" cy="950" r="7" fill="#8a8880"/>
+<path d="M 1160 760 L 1341 760 a 9 9 0 0 1 18 0 L 1430 760" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1430" cy="760" r="7" fill="#8a8880"/>
+<path d="M 820 760 L 940 760" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 820 1610 L 1230 1610 L 1230 975 L 1350 975" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="975" r="7" fill="#e5484d"/>
+<path d="M 820 1950 L 1270 1950 L 1270 1829 a 9 9 0 0 0 0 -18 L 1270 1669 a 9 9 0 0 0 0 -18 L 1270 1002 L 1350 1002" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="1002" r="7" fill="#e5484d"/>
+<path d="M 1350 915 L 1320 915 L 1320 935 L 1350 935" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="915" r="7" fill="#e5484d"/>
+<circle cx="1350" cy="935" r="7" fill="#e5484d"/>
+<text x="1310" y="930.0" font-size="13" fill="#e8e6dc" text-anchor="end" font-weight="400" >jumper</text>
+<path d="M 1350 440 L 1350 490" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1430 440 L 1430 490" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1430 660 L 1700 660" fill="none" stroke="#8a8880" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1430" cy="660" r="7" fill="#8a8880"/>
+<circle cx="1700" cy="660" r="7" fill="#8a8880"/>
+<text x="1585.0" y="648" font-size="17" fill="#cfcdc2" text-anchor="middle" font-weight="600" >GND comum</text>
+<path d="M 740 2060 L 740 2110 L 1685 2110" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 680 2060 L 680 2146 L 1630 2146" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 620 2060 L 620 2182 L 1575 2182" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 620 2060 L 620 2182 L 1575 2182" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 560 2060 L 560 2218 L 1520 2218" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="640" y="2270" width="250" height="120" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="765" y="2355" font-size="24" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 1 · 20 kg</text>
+<text x="680" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verm.</text>
+<path d="M 680 2270 L 680 2218" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="680" cy="2218" r="7" fill="#e5484d"/>
+<text x="735" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >preto</text>
+<path d="M 735 2270 L 735 2227 a 9 9 0 0 0 0 -18 L 735 2182" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 735 2270 L 735 2227 a 9 9 0 0 0 0 -18 L 735 2182" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="735" cy="2182" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<text x="790" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verde</text>
+<path d="M 790 2270 L 790 2227 a 9 9 0 0 0 0 -18 L 790 2191 a 9 9 0 0 0 0 -18 L 790 2146" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="790" cy="2146" r="7" fill="#1fa37a"/>
+<text x="845" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >branco</text>
+<path d="M 845 2270 L 845 2227 a 9 9 0 0 0 0 -18 L 845 2191 a 9 9 0 0 0 0 -18 L 845 2155 a 9 9 0 0 0 0 -18 L 845 2110" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="845" cy="2110" r="7" fill="#f2f0e6"/>
+<rect x="920" y="2270" width="250" height="120" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1045" y="2355" font-size="24" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 2 · 20 kg</text>
+<text x="960" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verm.</text>
+<path d="M 960 2270 L 960 2218" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="960" cy="2218" r="7" fill="#e5484d"/>
+<text x="1015" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >preto</text>
+<path d="M 1015 2270 L 1015 2227 a 9 9 0 0 0 0 -18 L 1015 2182" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1015 2270 L 1015 2227 a 9 9 0 0 0 0 -18 L 1015 2182" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1015" cy="2182" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<text x="1070" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verde</text>
+<path d="M 1070 2270 L 1070 2227 a 9 9 0 0 0 0 -18 L 1070 2191 a 9 9 0 0 0 0 -18 L 1070 2146" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1070" cy="2146" r="7" fill="#1fa37a"/>
+<text x="1125" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >branco</text>
+<path d="M 1125 2270 L 1125 2227 a 9 9 0 0 0 0 -18 L 1125 2191 a 9 9 0 0 0 0 -18 L 1125 2155 a 9 9 0 0 0 0 -18 L 1125 2110" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1125" cy="2110" r="7" fill="#f2f0e6"/>
+<rect x="1200" y="2270" width="250" height="120" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1325" y="2355" font-size="24" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 3 · 20 kg</text>
+<text x="1240" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verm.</text>
+<path d="M 1240 2270 L 1240 2218" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1240" cy="2218" r="7" fill="#e5484d"/>
+<text x="1295" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >preto</text>
+<path d="M 1295 2270 L 1295 2227 a 9 9 0 0 0 0 -18 L 1295 2182" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1295 2270 L 1295 2227 a 9 9 0 0 0 0 -18 L 1295 2182" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1295" cy="2182" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<text x="1350" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verde</text>
+<path d="M 1350 2270 L 1350 2227 a 9 9 0 0 0 0 -18 L 1350 2191 a 9 9 0 0 0 0 -18 L 1350 2146" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1350" cy="2146" r="7" fill="#1fa37a"/>
+<text x="1405" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >branco</text>
+<path d="M 1405 2270 L 1405 2227 a 9 9 0 0 0 0 -18 L 1405 2191 a 9 9 0 0 0 0 -18 L 1405 2155 a 9 9 0 0 0 0 -18 L 1405 2110" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1405" cy="2110" r="7" fill="#f2f0e6"/>
+<rect x="1480" y="2270" width="250" height="120" rx="14" fill="#2f3438" stroke="#7d8b96" stroke-width="1.5" />
+<text x="1605" y="2355" font-size="24" fill="#d5dde3" text-anchor="middle" font-weight="600" >Célula 4 · 20 kg</text>
+<text x="1520" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verm.</text>
+<path d="M 1520 2270 L 1520 2218" fill="none" stroke="#e5484d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1520" cy="2218" r="7" fill="#e5484d"/>
+<text x="1575" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >preto</text>
+<path d="M 1575 2270 L 1575 2182" fill="none" stroke="#d0d0d0" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M 1575 2270 L 1575 2182" fill="none" stroke="#101010" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1575" cy="2182" r="7" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<text x="1630" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >verde</text>
+<path d="M 1630 2270 L 1630 2146" fill="none" stroke="#1fa37a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1630" cy="2146" r="7" fill="#1fa37a"/>
+<text x="1685" y="2298" font-size="14" fill="#aab6bf" text-anchor="middle" font-weight="400" >branco</text>
+<path d="M 1685 2270 L 1685 2110" fill="none" stroke="#f2f0e6" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1685" cy="2110" r="7" fill="#f2f0e6"/>
+<circle cx="560" cy="2060" r="6" fill="#e5484d"/>
+<circle cx="620" cy="2060" r="6" fill="#101010" stroke="#9a9a9a" stroke-width="2"/>
+<circle cx="680" cy="2060" r="6" fill="#1fa37a"/>
+<circle cx="740" cy="2060" r="6" fill="#f2f0e6"/>
+<text x="30" y="2450" font-size="19" fill="#cfcdc2" text-anchor="start" font-weight="400" >Protoboard 400 pontos: só o GND comum. Os pinos 5V e 3,3V do Arduino principal não são usados.</text>
+<text x="30" y="2482" font-size="19" fill="#cfcdc2" text-anchor="start" font-weight="400" >O RC522 fica num segundo Arduino (leitor-rfid, USB próprio) que fala com o principal por I2C: A4 com A4, A5 com A5 e GND com GND. Nunca ligue 5V com 5V.</text>
+<text x="30" y="2514" font-size="19" fill="#cfcdc2" text-anchor="start" font-weight="400" >Protoboard 170 pontos: todo o 5V vem da fonte separada (motor, relé, bomba, HX711 e HM-10). Cada faixa tem 5 furos: o 5V usa duas faixas ligadas por um jumper.</text>
+<text x="30" y="2546" font-size="19" fill="#ff9a9a" text-anchor="start" font-weight="400" >A ponte de GND comum entre as duas protoboards é obrigatória. Nunca ligue o +5V da fonte no 5V do Arduino.</text>
+<text x="30" y="2578" font-size="19" fill="#f5b25c" text-anchor="start" font-weight="400" >Relé de 3 pinos com transistor: liga com HIGH. Se ligar sozinho ao ligar o Arduino, troque NIVEL_BOMBA_LIGADA. Teste a bomba sem água.</text>
+<text x="30" y="2610" font-size="19" fill="#cfcdc2" text-anchor="start" font-weight="400" >4 células de 20 kg em paralelo: todos os fios da mesma cor vão no mesmo ponto (E+, E−, A−, A+). Peso negativo? Troque A+ com A−.</text>
+<text x="30" y="2642" font-size="19" fill="#cfcdc2" text-anchor="start" font-weight="400" >HM-10 no 5V (só se o módulo tiver regulador, 3.3V-6V). Os pinos de dados continuam 3,3V: divisor A3 → 1k → RXD, RXD → 1k → 1k → GND. TXD direto no D2.</text>
+</svg>

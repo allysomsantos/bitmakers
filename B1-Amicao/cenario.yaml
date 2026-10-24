@@ -1,16 +1,13 @@
-name: 'B1 - Amicao: cadastro de tags, visita, intervalo, remocao e agua'
+name: 'B1 - Amicao: cadastro de tags, visita, intervalo, remocao e agua por visita'
 version: 1
 author: 'BITMAKERS'
 steps:
   # 1. Liga com a balanca vazia (ela zera no boot). A EEPROM do Wokwi comeca vazia: ninguem cadastrado.
   - wait-serial: 'ligado'
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-1-tela-inicial.png
 
   # 2. Rex (Blue Card, uid 0A:0B:0C:0D) sobe na balanca com 7 kg e passa a tag SEM cadastro.
-  #    Esperado: NADA acontece (nenhuma linha APP> nova e o LCD continua em AMICAO).
-  #    O Wokwi nao tem "esperar que NAO apareca nada": o print mostra o LCD depois de 2 s
+  #    Esperado: NADA acontece (nenhuma linha APP> nova; so aparece "MSG> Tag nao cadastrada" no Serial).
+  #    O Wokwi nao tem "esperar que NAO apareca nada": confira o Serial depois de 2 s
   #    e o log do Serial (--serial-log-file) mostra que nao saiu nenhuma linha.
   - set-control:
       part-id: balanca
@@ -25,9 +22,6 @@ steps:
       control: tagPresent
       value: 1
   - delay: 2s
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-6-tag-sem-cadastro.png
   - set-control:
       part-id: rfid
       control: tagPresent
@@ -38,9 +32,6 @@ steps:
   - write-serial: "{\"cmd\":\"cadastrar\"}\n"
   - wait-serial: '"evento":"modo_cadastro","ativo":true'
   - delay: 300ms
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-5-cadastro.png
 
   # 4. Passa a tag: sai tag_lida com o UID e o modo cadastro termina
   - set-control:
@@ -59,19 +50,16 @@ steps:
   - write-serial: "{\"cmd\":\"permitir\",\"uid\":\"0A:0B:0C:0D\",\"nome\":\"Rex\"}\n"
   - wait-serial: '"evento":"cadastros","uids":["0A:0B:0C:0D"]'
 
-  # 6. Agora o Rex e reconhecido: LCD mostra "Ola, Rex!", solta racao e manda a visita
+  # 6. Agora o Rex e reconhecido: o Serial mostra "MSG> Ola, Rex!", solta racao e manda a visita
   - set-control:
       part-id: rfid
       control: tagPresent
       value: 1
   - delay: 250ms
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-2-pesando.png
+  # A agua vem junto com a visita: bomba liga e desliga antes do evento "visita"
+  - wait-serial: '"bomba":"ligada"'
+  - wait-serial: '"bomba":"desligada"'
   - wait-serial: '"evento":"visita","uid":"0A:0B:0C:0D"'
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-3-visita-rex.png
 
   # 7. Tira a tag, espera passar os 3 s de "mesma tag repetida" e passa o Rex de novo.
   #    Intervalo da simulacao e 15 s, entao ele deve receber "racao":false
@@ -85,9 +73,6 @@ steps:
       control: tagPresent
       value: 1
   - wait-serial: '"racao":false'
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-4-rex-ja-comeu.png
   - set-control:
       part-id: rfid
       control: tagPresent
@@ -107,9 +92,6 @@ steps:
       control: tagPresent
       value: 1
   - wait-serial: '"evento":"visita","uid":"11:22:33:44"'
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-7-visita-pipoca.png
   - set-control:
       part-id: rfid
       control: tagPresent
@@ -133,32 +115,7 @@ steps:
       control: tagPresent
       value: 1
   - delay: 2s
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-8-removido.png
   - set-control:
       part-id: rfid
       control: tagPresent
       value: 0
-
-  # 11. Agua: potenciometro ao maximo = pote seco, bomba liga; volta ao zero, desliga
-  - set-control:
-      part-id: agua
-      control: position
-      value: 1
-  - wait-serial: '"bomba":"ligada"'
-  - set-control:
-      part-id: agua
-      control: position
-      value: 0
-  - wait-serial: '"bomba":"desligada"'
-
-  # 12. Reservatorio vazio: seco por mais de 5 s, a bomba desliga e manda alerta
-  - set-control:
-      part-id: agua
-      control: position
-      value: 1
-  - wait-serial: 'reservatorio_vazio'
-  - take-screenshot:
-      part-id: lcd1
-      save-to: prints/b1-9-sem-agua.png

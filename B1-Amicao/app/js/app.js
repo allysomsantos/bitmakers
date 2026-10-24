@@ -1,5 +1,5 @@
 import { lerLinha, comando, uidValido, nomeParaLcd, backupValido } from './protocolo.js';
-import { PADRAO, avaliarPeso } from './pesos.js';
+import { avaliarPeso, formatarVariacao } from './pesos.js';
 import * as banco from './banco.js';
 import { criarBle } from './ble.js';
 import { ArduinoFalso } from './arduino-falso.js';
@@ -21,10 +21,11 @@ function novoCadastro() {
 export const estado = {
   conexao: 'desconectado',   // 'conectando' | 'conectado' | 'desconectado'
   bomba: 'desligada',
-  reservatorioVazio: false,
+  motor: 'desligado',
+  armazenamento: { protegido: null, ultimoBackup: null },   // protegido: o Chrome nao apaga os dados sozinho
   cachorros: [],
   visitas: {},               // uid -> lista de visitas em ordem cronologica
-  config: { ...PADRAO },
+  sensores: { leitor: false, balanca: false, vistoEm: 0 },   // o totem avisa a cada 5 s (evento "status")
   cadastro: novoCadastro(),
 };
 
@@ -92,9 +93,10 @@ function receberLinha(texto) {
   if (ev.evento === 'visita') registrarVisita(ev);
   else if (ev.evento === 'agua') {
     estado.bomba = ev.bomba;
-    if (ev.bomba === 'ligada') estado.reservatorioVazio = false;
-  } else if (ev.evento === 'alerta' && ev.tipo === 'reservatorio_vazio') {
-    estado.reservatorioVazio = true;
+  } else if (ev.evento === 'racao') {
+    estado.motor = ev.motor;
+  } else if (ev.evento === 'status') {
+    estado.sensores = { leitor: ev.leitor === true, balanca: ev.balanca === true, vistoEm: Date.now() };
   } else if (ev.evento === 'modo_cadastro') {
     if (ev.ativo) estado.cadastro = { ...novoCadastro(), fase: 'ouvindo', fimEm: Date.now() + DURACAO_CADASTRO_MS };
     else if (estado.cadastro.fase === 'ouvindo') estado.cadastro.fase = 'esgotado';
@@ -223,12 +225,6 @@ export const acoes = {
     render();
   },
 
-  async salvarConfig(valores) {
-    estado.config = { ...PADRAO, ...valores };
-    await banco.salvarConfig(estado.config);
-    render();
-  },
-
   async exportar() {
     const dados = await banco.exportarTudo();
     const link = h('a', {
@@ -236,6 +232,9 @@ export const acoes = {
       download: `amicao-backup-${new Date().toISOString().slice(0, 10)}.json`,
     });
     link.click();
+    estado.armazenamento.ultimoBackup = new Date().toISOString();
+    try { localStorage.setItem('amicao-ultimo-backup', estado.armazenamento.ultimoBackup); } catch { /* sem localStorage: segue */ }
+    render();
   },
 
   async importar(arquivo) {
@@ -265,17 +264,43 @@ export const acoes = {
 };
 
 // ---------- desenho ----------
+const SENSORES_VALIDADE_MS = 15000;   // sem "status" por mais que isso, o sensor aparece como falha
+
+// Pinta o icone de verde (funcionando) ou vermelho (com problema).
+function marcarSensor(id, funcionando, nome, situacao) {
+  const el = document.getElementById(id);
+  el.classList.toggle('ok', funcionando);
+  el.classList.toggle('falha', !funcionando);
+  const texto = `${nome}: ${situacao}`;
+  el.title = texto;
+  el.setAttribute('aria-label', texto);
+}
+
+function marcarAtuador(id, ativo, nome) {
+  const el = document.getElementById(id);
+  el.classList.toggle('ativo', ativo);
+  el.classList.toggle('parado', !ativo);
+  const texto = `${nome}: ${ativo ? 'ligado agora' : 'parado'} (sem sensor de retorno)`;
+  el.title = texto;
+  el.setAttribute('aria-label', texto);
+}
+
 function atualizarTopo() {
-  const selo = document.getElementById('status-conexao');
-  selo.textContent = { conectado: 'Conectado', conectando: 'Conectando…', desconectado: 'Desconectado' }[estado.conexao];
-  selo.className = 'selo ' + (estado.conexao === 'conectado' ? 'ok' : 'perigo');
+  const conectado = estado.conexao === 'conectado';
+  const recente = Date.now() - estado.sensores.vistoEm < SENSORES_VALIDADE_MS;
 
-  const bomba = document.getElementById('status-bomba');
-  bomba.hidden = estado.conexao !== 'conectado';
-  bomba.textContent = estado.bomba === 'ligada' ? '💧 Bomba ligada' : '💧 Bomba desligada';
-  bomba.className = 'selo ' + (estado.bomba === 'ligada' ? 'aviso' : 'neutro');
+  const textoBle = { conectado: 'conectado', conectando: 'conectando…', desconectado: 'desconectado' }[estado.conexao];
+  marcarSensor('sensor-ble', conectado, 'Bluetooth', textoBle);
+  const leitorOk = conectado && recente && estado.sensores.leitor;
+  const balancaOk = conectado && recente && estado.sensores.balanca;
+  marcarSensor('sensor-leitor', leitorOk, 'Leitor de tags', leitorOk ? 'funcionando' : 'com problema');
+  marcarSensor('sensor-balanca', balancaOk, 'Balança', balancaOk ? 'funcionando' : 'com problema');
 
-  document.getElementById('btn-conectar').hidden = modoSimulador || estado.conexao === 'conectado';
+  // Motor e bomba nao tem sensor de retorno: o icone so mostra se o totem MANDOU ligar (azul) ou nao (cinza).
+  marcarAtuador('sensor-motor', conectado && estado.motor === 'ligado', 'Motor da ração');
+  marcarAtuador('sensor-bomba', conectado && estado.bomba === 'ligada', "Bomba d'água");
+
+  document.getElementById('btn-conectar').hidden = modoSimulador || conectado;
 }
 
 function atualizarAlertas() {
@@ -283,16 +308,13 @@ function atualizarAlertas() {
   if (estado.conexao !== 'conectado') {
     faixas.push(h('div', { class: 'faixa aviso' }, 'Desconectado: visitas não estão sendo registradas.'));
   }
-  if (estado.reservatorioVazio) {
-    faixas.push(h('div', { class: 'faixa perigo' },
-      '⚠ Reservatório de água vazio. ',
-      h('button', { onclick: () => { estado.reservatorioVazio = false; render(); } }, 'Entendi')));
-  }
   for (const cachorro of estado.cachorros) {
-    const r = avaliarPeso(estado.visitas[cachorro.uid] ?? [], estado.config);
+    const r = avaliarPeso(estado.visitas[cachorro.uid] ?? []);
     if (r.alerta) {
+      const sentido = r.direcao === 'mais' ? 'mais pesado' : 'mais leve';
       faixas.push(h('div', { class: 'faixa perigo' },
-        `⚠ ${cachorro.nome} perdeu peso: a média das últimas visitas caiu ${r.quedaPercentual.toFixed(0)}%.`));
+        `⚠ ${cachorro.nome} está ${formatarVariacao(r).replace(/^[+−]/, '')} ${sentido} que a média ` +
+        `(agora ${r.ultimoKg.toFixed(1)} kg, média ${r.mediaAnterior.toFixed(1)} kg).`));
     }
   }
   alertasEl.replaceChildren(...faixas);
@@ -343,7 +365,6 @@ setInterval(() => {
 
 // ---------- inicio ----------
 async function carregarDados() {
-  estado.config = await banco.lerConfig();
   estado.cachorros = await banco.listarCachorros();
   estado.visitas = {};
   for (const c of estado.cachorros) estado.visitas[c.uid] = await banco.listarVisitas(c.uid);
@@ -351,15 +372,32 @@ async function carregarDados() {
 
 function aoMudarEstadoBle(novo) {
   estado.conexao = novo;
+  if (novo !== 'conectado') {
+    estado.sensores = { leitor: false, balanca: false, vistoEm: 0 };
+    estado.motor = 'desligado';
+    estado.bomba = 'desligada';
+  }
   if (novo === 'conectado') pedirListar();
   render();
 }
 
+// Pede ao Chrome para NAO apagar os dados do app sozinho (o historico fica so no tablet).
+async function protegerArmazenamento() {
+  try {
+    if (navigator.storage?.persisted && await navigator.storage.persisted()) estado.armazenamento.protegido = true;
+    else if (navigator.storage?.persist) estado.armazenamento.protegido = await navigator.storage.persist();
+  } catch {
+    estado.armazenamento.protegido = null;
+  }
+  try { estado.armazenamento.ultimoBackup = localStorage.getItem('amicao-ultimo-backup'); } catch { /* sem localStorage */ }
+}
+
 async function iniciar() {
   await carregarDados();
+  await protegerArmazenamento();
 
   if (modoSimulador) {
-    falso = new ArduinoFalso({ aoLinha: receberLinha });
+    falso = new ArduinoFalso({ aoLinha: receberLinha, duracaoProcessoMs: 8000, animarProcesso: true });
     montarPainelSimulador(document.getElementById('painel-simulador'), falso);
     estado.conexao = 'conectado';
   } else {
@@ -372,8 +410,10 @@ async function iniciar() {
 
   if (modoSimulador) {
     falso.ligar();
+    falso.iniciarStatusPeriodico();
     pedirListar();
   }
+  setInterval(atualizarTopo, 3000);   // para o icone ficar vermelho se o totem parar de avisar
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     navigator.serviceWorker.register('sw.js');
   }

@@ -45,9 +45,56 @@ test('visita: racao na primeira vez, sem racao dentro do intervalo, com racao de
   linhas.length = 0;
   falso.passarTag(REX, 7);
   falso.passarTag(REX, 7);
-  avancar(16000);
+  avancar(61000);   // o intervalo da racao e de 1 minuto
   falso.passarTag(REX, 7);
   assert.deepEqual(linhas.map(l => l.racao), [true, false, true]);
+});
+
+test('totem ocupado: tag que chega durante o processo e descartada, e volta a valer depois', () => {
+  const { falso, linhas, avancar } = criar({ duracaoProcessoMs: 5000 });
+  falso.receberComando(comando.permitir(REX, 'Rex'));
+  falso.receberComando(comando.permitir('11:22:33:44', 'Pipoca'));
+  linhas.length = 0;
+  falso.passarTag(REX, 7);                 // comeca o processo
+  avancar(2000);
+  falso.passarTag('11:22:33:44', 5);       // durante o processo: ignorada
+  assert.equal(linhas.length, 1);
+  avancar(4000);                           // processo terminou
+  falso.passarTag('11:22:33:44', 5);       // agora vale
+  assert.deepEqual(linhas.map(l => l.uid), [REX, '11:22:33:44']);
+});
+
+test('racao e agua mandam os eventos do motor e da bomba', () => {
+  const { falso, linhas } = criar();
+  falso.racao(true);
+  falso.racao(false);
+  falso.agua(true);
+  assert.deepEqual(linhas, [
+    { evento: 'racao', motor: 'ligado' },
+    { evento: 'racao', motor: 'desligado' },
+    { evento: 'agua', bomba: 'ligada' },
+  ]);
+});
+
+test('ligar manda o evento ligado e o status dos sensores', () => {
+  const { falso, linhas } = criar();
+  falso.ligar();
+  assert.deepEqual(linhas, [
+    { evento: 'ligado' },
+    { evento: 'status', leitor: true, balanca: true },
+  ]);
+});
+
+test('definirSensor avisa quando um sensor falha e quando volta', () => {
+  const { falso, linhas } = criar();
+  falso.definirSensor('leitor', false);
+  falso.definirSensor('leitor', true);
+  falso.definirSensor('balanca', false);
+  assert.deepEqual(linhas, [
+    { evento: 'status', leitor: false, balanca: true },
+    { evento: 'status', leitor: true, balanca: true },
+    { evento: 'status', leitor: true, balanca: false },
+  ]);
 });
 
 test('peso abaixo de 1 kg vira null e o peso sai com 1 casa', () => {
