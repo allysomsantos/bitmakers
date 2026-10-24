@@ -105,7 +105,7 @@ Kit de sensores de baixo custo para caminhões antigos, com painel num tablet na
 
 | Função | Peça real | Dublê no Wokwi | Pinos Uno |
 |---|---|---|---|
-| Proximidade (4 cantos) | 4 × HC-SR04 | hc-sr04 | frente esq TRIG 4/ECHO 5, frente dir 6/7, trás esq 8/9, trás dir 10/11 |
+| Proximidade (4 cantos) | 4 × HC-SR04 | hc-sr04 | frente esq TRIG 8/ECHO 9, frente dir 10/11, trás esq 4/5, trás dir 6/7 |
 | Pista molhada | FC-37 (AO) | potenciômetro | A0 |
 | Farol esquerdo / direito (sempre ligados) | LED 220Ω + INA219 | LED 220Ω + chave "LED removido" (D13 e A3) | INA219 0x40 e 0x41 no I2C |
 | Console | LCD I2C | lcd1602 i2c | A4, A5 |

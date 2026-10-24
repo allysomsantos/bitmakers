@@ -38,10 +38,10 @@ O Wokwi **não tem INA219**. Por isso, com `SIMULACAO 1`, os pinos D13 e A3 vira
 | Componente | Pino do componente | Arduino |
 |---|---|---|
 | LCD I2C | VCC / GND / SDA / SCL | 5V / GND / A4 / A5 |
-| HC-SR04 frente esquerda | VCC / GND / TRIG / ECHO | 5V / GND / 4 / 5 |
-| HC-SR04 frente direita | VCC / GND / TRIG / ECHO | 5V / GND / 6 / 7 |
-| HC-SR04 trás esquerda | VCC / GND / TRIG / ECHO | 5V / GND / 8 / 9 |
-| HC-SR04 trás direita | VCC / GND / TRIG / ECHO | 5V / GND / 10 / 11 |
+| HC-SR04 frente esquerda | VCC / GND / TRIG / ECHO | 5V / GND / 8 / 9 |
+| HC-SR04 frente direita | VCC / GND / TRIG / ECHO | 5V / GND / 10 / 11 |
+| HC-SR04 trás esquerda | VCC / GND / TRIG / ECHO | 5V / GND / 4 / 5 |
+| HC-SR04 trás direita | VCC / GND / TRIG / ECHO | 5V / GND / 6 / 7 |
 | FC-37 (módulo) | VCC / GND / AO | 5V / GND / A0 |
 | INA219 esquerdo | VCC / GND / SDA / SCL | 5V / GND / A4 / A5 (endereço 0x40) |
 | INA219 direito | VCC / GND / SDA / SCL | 5V / GND / A4 / A5 (endereço 0x41) |

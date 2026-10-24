@@ -32,8 +32,9 @@ const int PINO_BT_RX = 2;   // TXD do HM-10 (o B2 so envia, mas o pino fica rese
 const int PINO_BT_TX = 3;   // RXD do HM-10 (com divisor de tensao 1k/2k!)
 
 // Sensores de proximidade, na ordem: 0 frente esq, 1 frente dir, 2 tras esq, 3 tras dir
-const int PINOS_TRIG[4] = { 4, 6, 8, 10 };
-const int PINOS_ECHO[4] = { 5, 7, 9, 11 };
+// (na montagem, os sensores dos pinos 8 a 11 ficaram na frente e os dos pinos 4 a 7 atras)
+const int PINOS_TRIG[4] = { 8, 10, 4, 6 };
+const int PINOS_ECHO[4] = { 9, 11, 5, 7 };
 
 const int PINO_CHUVA = A0;  // FC-37 AO
 

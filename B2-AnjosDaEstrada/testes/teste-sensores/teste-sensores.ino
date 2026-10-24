@@ -9,8 +9,9 @@
 */
 
 // Ordem dos sensores: 0 frente esq, 1 frente dir, 2 tras esq, 3 tras dir
-const int PINOS_TRIG[4] = { 4, 6, 8, 10 };
-const int PINOS_ECHO[4] = { 5, 7, 9, 11 };
+// (na montagem, os sensores dos pinos 8 a 11 ficaram na frente e os dos pinos 4 a 7 atras)
+const int PINOS_TRIG[4] = { 8, 10, 4, 6 };
+const int PINOS_ECHO[4] = { 9, 11, 5, 7 };
 const char* NOMES[4]    = { "F.Esq", "F.Dir", "T.Esq", "T.Dir" };
 
 const int DIST_ATENCAO_CM = 20;   // mesmas faixas do app (app/js/faixas.js)
