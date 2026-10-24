@@ -1,11 +1,12 @@
-name: 'B2 - Anjos da Estrada: chuva, farois e prioridade da tela'
+name: 'B2 - Anjos da Estrada: chuva, farol queimado e prioridade da tela'
 version: 1
 author: 'BITMAKERS'
 # ATENCAO: este cenario foi escrito sem poder ser executado (token do Wokwi invalido).
-# Convencao das chaves deslizantes: value 0 = esquerda (desligada), value 1 = direita (ligada).
+# Convencao das chaves deslizantes: value 0 = esquerda, value 1 = direita. Os farois ficam sempre ligados;
+# a chave "LED removido" para a direita simula tirar o LED da protoboard.
 steps:
-  # 1. Tudo parado: HC-SR04 em 200 cm (nada perto), pista seca, farois desligados -> "Tudo OK"
-  - wait-serial: '"chuva":false,"farol_e":"desligado","farol_d":"desligado"}'
+  # 1. Tudo parado: HC-SR04 em 200 cm (nada perto), pista seca, farois com LED -> "Tudo OK"
+  - wait-serial: '"chuva":false,"farol_e":"ok","farol_d":"ok"}'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
@@ -22,16 +23,12 @@ steps:
       part-id: lcd1
       save-to: prints/b2-2-pista-molhada.png
 
-  # 3. Pista seca de novo; liga o farol esquerdo: corrente normal -> "ok"
+  # 3. Pista seca de novo: farol esquerdo com corrente normal -> "ok"
   - set-control:
       part-id: chuva
       control: position
       value: 1
-  - set-control:
-      part-id: sw_fe
-      control: value
-      value: 1
-  - wait-serial: '"farol_e":"ok"'
+  - wait-serial: '"chuva":false,"farol_e":"ok"'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
@@ -48,13 +45,13 @@ steps:
       part-id: lcd1
       save-to: prints/b2-7-farol-queimado.png
 
-  # 5. Desliga a chave do farol esquerdo: volta a "desligado" e o alerta some
+  # 5. Poe o LED de volta (chave "LED esq removido" para a esquerda): volta a "ok" e o alerta some
   - set-control:
-      part-id: sw_fe
+      part-id: sw_sem_e
       control: value
       value: 0
-  - wait-serial: '"farol_e":"desligado"'
+  - wait-serial: '"farol_e":"ok"'
   - delay: 300ms
   - take-screenshot:
       part-id: lcd1
-      save-to: prints/b2-7-farol-desligado.png
+      save-to: prints/b2-7-farol-recolocado.png

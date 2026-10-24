@@ -49,7 +49,7 @@ Os apps (`app/` de cada projeto) têm testes automáticos: `node --test "teste/*
 - O mesmo código roda no Wokwi e na placa real. Peças que o Wokwi não tem são substituídas por "dublês" e identificadas com `wokwi-text` no `diagram.json`.
 - Limiares de sensores ficam em constantes no topo do arquivo, e o Serial mostra as leituras para calibrar na montagem real.
 - **Alimentação:** o B2 usa fonte de tomada **12V 2A** (plugue P4 5,5×2,1, centro positivo). B1: **fonte de 5V separada, 2A ou mais** → tudo que é 5V (motor de passo/ULN2003, relé, bomba e HX711), com GND comum com o Uno; o RC522 fica no 3,3V do Uno do leitor (o HM-10 vai no 5V da fonte, o módulo precisa ter regulador); o Uno é alimentado à parte (USB ou jack) e **nunca** se liga o +5V da fonte no pino 5V do Uno. B2: 12V → jack do Uno, ou LM2596 em 5V → pino 5V do Uno (esquenta menos; não ligar o USB junto). Nunca ligar motor/bomba no 5V do Uno (regulador linear, resseta). RC522 e RXD do HM-10 são 3.3V.
-- O B1 está com `#define SIMULACAO 0` (placa real, pronto para o app; para o Wokwi, troque para 1). O B2 ainda vem com `1`: **troque para 0 antes de gravar na placa real** (no B2, é isso que liga a leitura dos INA219 e desliga as chaves "LED removido").
+- O B1 está com `#define SIMULACAO 0` (placa real, pronto para o app; para o Wokwi, troque para 1). O B2 também está com `0` (placa real); para o Wokwi, troque para 1 (no B2, o `1` liga as chaves "LED removido" no lugar da leitura dos faróis).
 - Rádio: **HM-10 (BLE)** nos dois projetos. O HC-06 é Bluetooth Classic e o Chrome não conecta nele.
 
 ---
@@ -115,7 +115,8 @@ O som é do app (não há buzzer). Prioridade do LCD: proximidade crítica > pro
 
 Detalhes que já foram decididos:
 - Cada farol (sempre ligado): 5V → INA219 (VIN+ → VIN−) → 220Ω → LED → GND. **A orientação do INA219 importa:** VIN+ e VIN− invertidos leem corrente negativa e dão "farol queimado" falso.
-- O INA219 da direita precisa do endereço 0x41 (jumper A0 soldado). O sketch lê o registrador de tensão do shunt direto (sem biblioteca); com shunt de 0,1 Ω, 1 unidade = 0,1 mA.
+- `#define MODO_FAROL` no sketch do B2 (só vale com `SIMULACAO 0`): `0` = faróis não montados (manda `"desligado"`), `1` = INA219, `2` (atual) = sem INA219, lê a tensão do LED em A1 (esquerdo) e A2 (direito). No modo 2 há um fio do ponto entre o resistor e o LED até o pino analógico, e `LED_NO_LADO_DO_5V` diz a ordem das peças: `1` = 5V → LED → 220Ω → GND, LED aceso lê ~650 e queimado/removido cai a ~30 (`LIMITE_TENSAO_LED` = 300); `0` (atual, igual ao desenho) = 5V → 220Ω → LED → GND, aceso lê ~400 a 650 e queimado sobe a ~1023 (`LIMITE_TENSAO_LED_ALTO` = 900). Não mede corrente: no caminhão real (faróis de amperes) o certo é o INA219. O Serial mostra `led_esq` e `led_dir` para calibrar.
+- Modo 1: o INA219 da direita precisa do endereço 0x41 (jumper A0 soldado). O sketch lê o registrador de tensão do shunt direto (sem biblioteca); com shunt de 0,1 Ω, 1 unidade = 0,1 mA.
 - Com `SIMULACAO 1`, D13 e A3 são duas chaves "LED removido" (chave na direita = LED tirado). O Wokwi não tem INA219.
 - Os 4 HC-SR04 são lidos um por vez (75 ms entre eles) para um não ouvir o eco do outro. Apontar todos para fora do caminhão.
 - O app toca os sons (bipes de proximidade, tom contínuo no crítico, tons de alerta repetidos a cada 10 s). O intervalo vai de 600 ms a 20 cm até 200 ms a 10 cm (a 12 cm são 280 ms).

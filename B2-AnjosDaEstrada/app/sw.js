@@ -1,6 +1,6 @@
 // Guarda os arquivos do app para abrir sem internet.
 // Ao publicar uma versao nova, troque o numero em VERSAO.
-const VERSAO = 'anjos-v1';
+const VERSAO = 'anjos-v4';
 const ARQUIVOS = [
   './', 'index.html', 'estilo.css', 'manifest.webmanifest', 'icone.svg', 'icone-192.png', 'icone-512.png',
   'js/app.js', 'js/ble.js', 'js/dom.js', 'js/protocolo.js', 'js/faixas.js', 'js/caminhao.js',

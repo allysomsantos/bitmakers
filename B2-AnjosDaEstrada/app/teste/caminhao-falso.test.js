@@ -7,20 +7,18 @@ test('linha do estado inicial e uma leitura valida', () => {
   const falso = new CaminhaoFalso({ aoLinha: () => {} });
   assert.deepEqual(lerLeitura(lerLinha(falso.linha())), {
     frente_esq: null, frente_dir: null, tras_esq: null, tras_dir: null,
-    chuva: false, farol_e: 'desligado', farol_d: 'desligado',
+    chuva: false, farol_e: 'ok', farol_d: 'ok',
   });
 });
 
-test('regra do farol: chave desligada, ligada e ligada sem LED', () => {
+test('regra do farol: sempre ligado, sem LED = queimado, com LED de novo = ok', () => {
   const falso = new CaminhaoFalso({ aoLinha: () => {} });
-  falso.chaveEsq = true;
-  falso.chaveDir = true;
   falso.semLedDir = true;
   const leitura = lerLeitura(lerLinha(falso.linha()));
   assert.equal(leitura.farol_e, 'ok');
   assert.equal(leitura.farol_d, 'queimado');
-  falso.chaveDir = false;
-  assert.equal(lerLeitura(lerLinha(falso.linha())).farol_d, 'desligado');
+  falso.semLedDir = false;
+  assert.equal(lerLeitura(lerLinha(falso.linha())).farol_d, 'ok');
 });
 
 test('distancias e chuva aparecem na linha', () => {

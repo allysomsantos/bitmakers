@@ -1,11 +1,11 @@
 // Regras de proximidade e de alerta do B2. Funcoes puras.
 // Escala de prototipo; no caminhao de verdade, multiplique os limites por 10.
 
-export const DIST_ATENCAO = 15;        // cm: de 15 a 5 cm e atencao
-export const DIST_CRITICO = 5;         // cm: abaixo de 5 cm e critico
+export const DIST_ATENCAO = 20;        // cm: de 20 a 10 cm e atencao
+export const DIST_CRITICO = 10;        // cm: abaixo de 10 cm e critico
 export const DIST_MINIMA_VALIDA = 2;   // cm: o HC-SR04 nao le com confianca abaixo disso (conta como critico)
-export const BIPE_LENTO_MS = 600;      // intervalo entre bipes a 15 cm
-export const BIPE_RAPIDO_MS = 200;     // intervalo entre bipes a 5 cm
+export const BIPE_LENTO_MS = 600;      // intervalo entre bipes a 20 cm
+export const BIPE_RAPIDO_MS = 200;     // intervalo entre bipes a 10 cm
 export const CAMPOS_DISTANCIA = ['frente_esq', 'frente_dir', 'tras_esq', 'tras_dir'];
 
 // cm null = sem eco, ou seja, nada por perto.
@@ -21,7 +21,7 @@ export function menorDistancia(leitura) {
   return validas.length ? Math.min(...validas) : null;
 }
 
-// Entre 15 cm (600 ms) e 5 cm (200 ms) o intervalo diminui em linha reta.
+// Entre 20 cm (600 ms) e 10 cm (200 ms) o intervalo diminui em linha reta.
 export function intervaloBipe(cm) {
   const limitado = Math.min(DIST_ATENCAO, Math.max(DIST_CRITICO, cm));
   const fracao = (limitado - DIST_CRITICO) / (DIST_ATENCAO - DIST_CRITICO);

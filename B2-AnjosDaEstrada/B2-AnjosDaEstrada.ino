@@ -1,25 +1,30 @@
 /*
   ANJOS DA ESTRADA — BITMAKERS B2
-  Console de seguranca para veiculos antigos.
+  Kit de seguranca para veiculos antigos. Manda tudo pro app no tablet.
 
   Sensores:
     - 4 x HC-SR04 ........ proximidade: frente esquerda/direita e tras esquerda/direita
     - FC-37 .............. pista molhada   (no Wokwi: potenciometro)
-    - 2 x chave + LED + INA219 .. farois. Chave ligada e sem corrente no LED = farol queimado
-  Saidas:
-    - LCD 16x2 I2C ....... console do motorista
-    - LED ................ alerta
-    - Bluetooth HM-10 .... manda tudo pro app no tablet (o som fica no app)
+    - 2 x LED ............ farois (sempre ligados). LED sem corrente = farol queimado
+                           (medido pelo INA219 ou pela tensao do LED, veja MODO_FAROL)
+  Saida:
+    - Bluetooth HM-10 .... manda as leituras pro app (o som e as telas ficam no app)
 
-  O codigo e o MESMO no Wokwi e na montagem real; so muda SIMULACAO.
+  O codigo e o MESMO no Wokwi e na montagem real; so mudam SIMULACAO e MODO_FAROL.
   Na montagem real, abra o Monitor Serial e ajuste os LIMITES abaixo
   olhando os valores que os sensores de verdade mostram.
 */
 
-#define SIMULACAO 1   // 1 = Wokwi   |   0 = montagem real
+#define SIMULACAO 0          // 1 = Wokwi   |   0 = montagem real
+#define MODO_FAROL 2         // como saber se o LED queimou (so vale com SIMULACAO 0):
+                             //   0 = farois nao montados (manda "desligado")
+                             //   1 = INA219 mede a corrente do LED (I2C: A4 e A5)
+                             //   2 = le a tensao do LED direto no Arduino (A1 e A2), sem INA219
+#define LED_NO_LADO_DO_5V 0  // so no MODO_FAROL 2: ordem das pecas em cada farol
+                             //   1 = 5V -> LED -> 220 ohms -> GND   (fio do A1/A2 no ponto entre os dois)
+                             //   0 = 5V -> 220 ohms -> LED -> GND   (fio do A1/A2 no ponto entre os dois)
 
 #include <Wire.h>
-#include <LiquidCrystal_I2C.h>
 #include <SoftwareSerial.h>
 
 // ---------------- PINOS ----------------
@@ -30,36 +35,35 @@ const int PINO_BT_TX = 3;   // RXD do HM-10 (com divisor de tensao 1k/2k!)
 const int PINOS_TRIG[4] = { 4, 6, 8, 10 };
 const int PINOS_ECHO[4] = { 5, 7, 9, 11 };
 
-const int PINO_LED       = 12;  // LED de alerta
-const int PINO_CHUVA     = A0;  // FC-37 AO
-const int PINO_CHAVE_ESQ = A1;  // chave do farol esquerdo (HIGH = ligada)
-const int PINO_CHAVE_DIR = A2;  // chave do farol direito  (HIGH = ligada)
+const int PINO_CHUVA = A0;  // FC-37 AO
 
 #if SIMULACAO
   const int PINO_SEM_LED_ESQ = 13;  // Wokwi: chave "LED esquerdo removido" (LOW = removido)
   const int PINO_SEM_LED_DIR = A3;  // Wokwi: chave "LED direito removido"  (LOW = removido)
 #else
-  const byte ENDERECO_INA_ESQ = 0x40;  // INA219 do farol esquerdo
-  const byte ENDERECO_INA_DIR = 0x41;  // INA219 do farol direito (jumper A0 soldado)
+  const byte ENDERECO_INA_ESQ = 0x40;  // MODO_FAROL 1: INA219 do farol esquerdo
+  const byte ENDERECO_INA_DIR = 0x41;  // MODO_FAROL 1: INA219 do farol direito (jumper A0 soldado)
+  const int PINOS_LED[2] = { A1, A2 };  // MODO_FAROL 2: ponto entre o resistor 220 e o LED (A1 = esquerdo, A2 = direito)
 #endif
 
 // ---------------- AJUSTES ----------------
-const int   DIST_ATENCAO_CM = 15;    // de 15 a 5 cm: atencao (escala de prototipo; no caminhao real, x10)
-const int   DIST_CRITICO_CM = 5;     // abaixo de 5 cm: critico
+// As faixas de distancia (atencao / critico) ficam no app.
 const int   LIMITE_CHUVA    = 500;   // FC-37: valor CAI quando molha. Abaixo = molhado
-const float LIMIAR_CORRENTE_MA = 3.0;  // chave ligada e corrente abaixo disso = LED queimado/removido
+const float LIMIAR_CORRENTE_MA = 3.0;  // MODO_FAROL 1: corrente abaixo disso = LED queimado/removido
+const int   LIMITE_TENSAO_LED = 300;   // MODO_FAROL 2, LED_NO_LADO_DO_5V 1: LED aceso le ~650; queimado/removido cai a ~30. Abaixo disso = queimado
+const int   LIMITE_TENSAO_LED_ALTO = 900;  // MODO_FAROL 2, LED_NO_LADO_DO_5V 0: LED aceso le ~400 a 650; queimado/removido sobe a ~1023. Acima disso = queimado
 const int   LEITURAS_PARA_QUEIMADO = 3;  // leituras seguidas sem corrente antes de avisar
 const unsigned long TEMPO_ECO_US = 25000UL;  // espera o eco por 25 ms (cerca de 4 m)
+const int   INTERVALO_SENSORES_MS = 75;    // pausa entre um sensor e o proximo (o som do anterior precisa sumir)
 
-const char* NOMES_CURTOS[4] = { "F.Esq", "F.Dir", "T.Esq", "T.Dir" };
 const char* CHAVES_JSON[4]  = { "frente_esq", "frente_dir", "tras_esq", "tras_dir" };
 
-LiquidCrystal_I2C lcd(0x27, 16, 2);
 SoftwareSerial bluetooth(PINO_BT_RX, PINO_BT_TX);
 
 int distancia[4];                  // em cm; -1 = sem eco
 int leiturasSemCorrente[2] = { 0, 0 };
-float correnteMa[2] = { 0, 0 };    // so para mostrar no Serial
+float correnteMa[2] = { 0, 0 };    // so para mostrar no Serial (MODO_FAROL 1)
+int leituraLed[2] = { 0, 0 };      // so para mostrar no Serial (MODO_FAROL 2)
 
 // ---------------- DISTANCIA ----------------
 // Mede a distancia em cm. Retorna -1 se nao voltou eco.
@@ -72,15 +76,6 @@ int medirCm(int sensor) {
   long duracao = pulseIn(PINOS_ECHO[sensor], HIGH, TEMPO_ECO_US);
   if (duracao == 0) return -1;
   return duracao / 58;
-}
-
-// Indice do sensor com o objeto mais perto, ou -1 se nenhum viu nada.
-int sensorMaisPerto() {
-  int melhor = -1;
-  for (int i = 0; i < 4; i++) {
-    if (distancia[i] >= 0 && (melhor < 0 || distancia[i] < distancia[melhor])) melhor = i;
-  }
-  return melhor;
 }
 
 // ---------------- FAROIS ----------------
@@ -103,34 +98,39 @@ float lerCorrenteMa(int lado) {
 #endif
 }
 
-// "desligado", "ok" ou "queimado". Queimado = chave ligada e sem corrente varias leituras seguidas.
-const char* estadoFarol(int lado) {
-  bool ligada = digitalRead(lado == 0 ? PINO_CHAVE_ESQ : PINO_CHAVE_DIR) == HIGH;
-  if (!ligada) {
-    leiturasSemCorrente[lado] = 0;
-    correnteMa[lado] = 0;
-    return "desligado";
-  }
+// true se o LED do farol esta queimado/removido nesta leitura. lado: 0 = esquerdo, 1 = direito.
+bool ledSemCorrente(int lado) {
+#if !SIMULACAO && MODO_FAROL == 2
+  // O pino le o ponto entre o resistor e o LED.
+  leituraLed[lado] = analogRead(PINOS_LED[lado]);
+#if LED_NO_LADO_DO_5V
+  // 5V -> LED -> 220 ohms -> GND. LED aceso: o ponto fica em 5 V menos a tensao do LED (~3 V).
+  // LED aberto: sem corrente, o resistor puxa o ponto para 0 V.
+  return leituraLed[lado] < LIMITE_TENSAO_LED;
+#else
+  // 5V -> 220 ohms -> LED -> GND. LED aceso: o ponto fica na tensao do LED (~2 V).
+  // LED aberto: sem corrente, o ponto sobe a 5 V.
+  return leituraLed[lado] > LIMITE_TENSAO_LED_ALTO;
+#endif
+#else
   correnteMa[lado] = lerCorrenteMa(lado);
-  if (correnteMa[lado] < LIMIAR_CORRENTE_MA) {
+  return correnteMa[lado] < LIMIAR_CORRENTE_MA;
+#endif
+}
+
+// "ok" ou "queimado". O farol fica sempre ligado: queimado = sem corrente varias leituras seguidas.
+// Sem os farois montados (MODO_FAROL 0), manda "desligado" (o app mostra "Desligado" em vez de dar alarme falso).
+const char* estadoFarol(int lado) {
+#if !SIMULACAO && MODO_FAROL == 0
+  return "desligado";
+#else
+  if (ledSemCorrente(lado)) {
     if (leiturasSemCorrente[lado] < 100) leiturasSemCorrente[lado]++;
   } else {
     leiturasSemCorrente[lado] = 0;
   }
   return leiturasSemCorrente[lado] >= LEITURAS_PARA_QUEIMADO ? "queimado" : "ok";
-}
-
-// ---------------- LCD ----------------
-// Escreve uma linha inteira no LCD (completa com espacos pra apagar o resto)
-void escreverLinha(int linha, String texto) {
-  while (texto.length() < 16) texto += " ";
-  lcd.setCursor(0, linha);
-  lcd.print(texto);
-}
-
-void mostrar(String linha1, String linha2) {
-  escreverLinha(0, linha1);
-  escreverLinha(1, linha2);
+#endif
 }
 
 // ---------------- ENVIO PRO APP ----------------
@@ -163,60 +163,35 @@ void setup() {
     pinMode(PINOS_TRIG[i], OUTPUT);
     pinMode(PINOS_ECHO[i], INPUT);
   }
-  pinMode(PINO_LED, OUTPUT);
-  pinMode(PINO_CHAVE_ESQ, INPUT);   // a chave tem resistor de 10k pro GND
-  pinMode(PINO_CHAVE_DIR, INPUT);
 #if SIMULACAO
   pinMode(PINO_SEM_LED_ESQ, INPUT_PULLUP);
   pinMode(PINO_SEM_LED_DIR, INPUT_PULLUP);
 #endif
-
-  lcd.init();
-  lcd.backlight();
-  mostrar("ANJOS DA ESTRADA", "Iniciando...");
-  delay(1500);
 }
 
 void loop() {
   // 1. LER OS SENSORES (um de cada vez, pra um sensor nao ouvir o eco do outro)
   for (int i = 0; i < 4; i++) {
     distancia[i] = medirCm(i);
-    delay(50);
+    delay(INTERVALO_SENSORES_MS);
   }
   int chuvaBruto = analogRead(PINO_CHUVA);
   bool chuva = chuvaBruto < LIMITE_CHUVA;
   const char* farolE = estadoFarol(0);
   const char* farolD = estadoFarol(1);
-  bool queimadoE = strcmp(farolE, "queimado") == 0;
-  bool queimadoD = strcmp(farolD, "queimado") == 0;
 
-  int perto = sensorMaisPerto();
-  bool critico = perto >= 0 && distancia[perto] < DIST_CRITICO_CM;
-  bool atencao = perto >= 0 && distancia[perto] <= DIST_ATENCAO_CM && !critico;
-
-  // 2. DECIDIR O QUE MOSTRAR (do mais urgente pro menos urgente)
-  if (critico) {
-    mostrar("!! CRITICO !!", String(NOMES_CURTOS[perto]) + " " + String(distancia[perto]) + " cm");
-  } else if (atencao) {
-    mostrar("ATENCAO", String(NOMES_CURTOS[perto]) + " " + String(distancia[perto]) + " cm");
-  } else if (queimadoE || queimadoD) {
-    mostrar("FAROL QUEIMADO", queimadoE && queimadoD ? "Esq e Dir" : (queimadoE ? "Esquerdo" : "Direito"));
-  } else if (chuva) {
-    mostrar("PISTA MOLHADA", "Reduza velocidade");
-  } else {
-    mostrar("ANJOS DA ESTRADA", "Tudo OK");
-  }
-
-  // 3. LED DE ALERTA (o som e feito pelo app no tablet)
-  digitalWrite(PINO_LED, (critico || atencao || queimadoE || queimadoD || chuva) ? HIGH : LOW);
-
-  // 4. ENVIAR PRO APP (Serial com "APP> " e Bluetooth)
+  // 2. ENVIAR PRO APP (o som e as telas sao do app no tablet) (Serial com "APP> " e Bluetooth)
   Serial.print(F("APP> "));
   imprimirLeitura(Serial, chuva, farolE, farolD);
   imprimirLeitura(bluetooth, chuva, farolE, farolD);
 
-  // 5. VALORES BRUTOS NO MONITOR SERIAL (pra calibrar na montagem real)
+  // 3. VALORES BRUTOS NO MONITOR SERIAL (pra calibrar na montagem real)
   Serial.print(F("DEBUG chuva=")); Serial.print(chuvaBruto);
+#if !SIMULACAO && MODO_FAROL == 2
+  Serial.print(F("  led_esq="));   Serial.print(leituraLed[0]);
+  Serial.print(F("  led_dir="));   Serial.println(leituraLed[1]);
+#else
   Serial.print(F("  mA_esq="));    Serial.print(correnteMa[0], 1);
   Serial.print(F("  mA_dir="));    Serial.println(correnteMa[1], 1);
+#endif
 }

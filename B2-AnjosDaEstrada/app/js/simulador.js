@@ -31,9 +31,7 @@ export function montarPainelSimulador(elemento, falso) {
     h('strong', {}, 'Simulador (caminhão falso)'),
     ...CAMPOS.map(controleDistancia),
     caixa('Pista molhada', 'chuva'),
-    caixa('Chave farol esquerdo ligada', 'chaveEsq'),
     caixa('LED esquerdo removido', 'semLedEsq'),
-    caixa('Chave farol direito ligada', 'chaveDir'),
     caixa('LED direito removido', 'semLedDir'),
     h('label', { class: 'linha' }, pausa, ' Pausar (simula sem sinal)'),
   );
